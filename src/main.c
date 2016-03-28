@@ -5,10 +5,10 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Mon Mar 28 20:03:22 2016 Philippe Lefevre
+** Last update Mon Mar 28 20:10:04 2016 Philippe Lefevre
 */
 
-#include		"tekadventure.h"
+#include		"main.h"
 
 static t_bunny_response	key(t_bunny_event_state	state,
 			    t_bunny_keysym	key,

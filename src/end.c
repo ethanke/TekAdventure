@@ -5,10 +5,10 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:59:10 2016 Philippe Lefevre
-** Last update Mon Mar 28 20:01:39 2016 Philippe Lefevre
+** Last update Mon Mar 28 20:09:47 2016 Philippe Lefevre
 */
 
-#include		"tekadventure.h"
+#include		"main.h"
 
 int			clean(t_prog *prog, int out)
 {

@@ -5,10 +5,10 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:58:37 2016 Philippe Lefevre
-** Last update Mon Mar 28 20:01:13 2016 Philippe Lefevre
+** Last update Mon Mar 28 20:09:57 2016 Philippe Lefevre
 */
 
-#include		"tekadventure.h"
+#include		"main.h"
 
 t_bunny_response	mainloop(void *p)
 {
