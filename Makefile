@@ -5,7 +5,7 @@
 ## Login   <lefevr_h@epitech.net>
 ## 
 ## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
-## Last update Mon Mar 28 19:54:41 2016 Philippe Lefevre
+## Last update Mon Mar 28 20:02:16 2016 Philippe Lefevre
 ##
 
 NAME		=	tekadventure
@@ -38,7 +38,9 @@ LDFLAGS		=	-L/home/${USER}/.froot/lib		\
 			-lstdc++ -ldl				\
 			-lm
 
-SRC		=	$(SRCDIR)/main.c
+SRC		=	$(SRCDIR)/main.c			\
+			$(SRCDIR)/loop.c			\
+			$(SRCDIR)/end.c
 
 OBJ		=	$(SRC:.c=.o)
 

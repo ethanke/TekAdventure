@@ -5,43 +5,20 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Mon Mar 28 19:53:44 2016 Philippe Lefevre
+** Last update Mon Mar 28 20:03:22 2016 Philippe Lefevre
 */
 
-#include		<lapin.h>
-#include		"main.h"
+#include		"tekadventure.h"
 
 static t_bunny_response	key(t_bunny_event_state	state,
 			    t_bunny_keysym	key,
 			    void		*data)
 {
-  t_prog		*prog;
-
   (void)state;
   (void)data;
-  prog = (t_prog *)data;
-  (void)prog;
   if (key == BKS_ESCAPE)
     return (EXIT_ON_SUCCESS);
   return (GO_ON);
-}
-
-static t_bunny_response	mainloop(void *p)
-{
-  t_prog			*prog;
-
-  prog = p;
-  bunny_blit(&prog->win->buffer, &prog->array->clipable, &prog->position);
-  bunny_display(prog->win);
-  return (GO_ON);
-}
-
-static int		clean(t_prog *prog,
-			      int out)
-{
-  bunny_delete_clipable(&prog->array->clipable);
-  bunny_stop(prog->win);
-  return (out);
 }
 
 int			main(int ac, char **av, char **env)
