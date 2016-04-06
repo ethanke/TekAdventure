@@ -5,13 +5,13 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:28:22 2016 Gaëtan Léandre
-** Last update Thu Apr  7 00:18:44 2016 Gaëtan Léandre
+** Last update Thu Apr  7 01:15:46 2016 Gaëtan Léandre
 */
 
 #include 		"main.h"
 
 void			put_image(t_texture *bmp,
-				  t_prog *prog,
+				  t_bunny_pixelarray *pix,
 				  t_bunny_position *pos)
 {
   t_bunny_position	tmp;
@@ -26,7 +26,7 @@ void			put_image(t_texture *bmp,
       tmp.x = pos->x;
       while (j < bmp->width)
 	{
-	  tektranspa(prog->pix, &tmp, &bmp->color[i][j]);
+	  tektranspa(pix, &tmp, &bmp->color[i][j]);
 	  tmp.x++;
 	  j++;
 	}
@@ -38,7 +38,7 @@ void			put_image(t_texture *bmp,
 void			place_image(t_hitbox *pos,
 				    t_hitbox *fetch,
 				    t_texture *tex,
-				    t_prog *prog)
+				    t_bunny_pixelarray *pix)
 {
   t_bunny_position	tmp;
   int			i;
@@ -54,7 +54,7 @@ void			place_image(t_hitbox *pos,
       tmp.x = pos->x;
       while (j < pos->width)
 	{
-	  tektranspa(prog->pix, &tmp,
+	  tektranspa(pix, &tmp,
 		     &tex->color[(int)(((float)i / (float)pos->height) *
 				  (float)(fetch->height) + (float)fetch->y)]
 		     [(int)(((float)j / (float)pos->width)
