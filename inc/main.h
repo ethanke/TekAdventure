@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 20:02:40 2016 Philippe Lefevre
-** Last update Mon Mar 28 20:09:33 2016 Philippe Lefevre
+** Last update Wed Apr  6 21:06:52 2016 victor sousa
 */
 
 #ifndef			MAIN_H_
@@ -28,6 +28,9 @@ typedef	struct		s_prog
 }			t_prog;
 
 t_bunny_response	mainloop(void *p);
+t_bunny_response	event_key(t_bunny_event_state state,
+				  t_bunny_keysym      key,
+				  void                *data);
 int			clean(t_prog *prog, int out);
 
 # define		SUCCESS	0
