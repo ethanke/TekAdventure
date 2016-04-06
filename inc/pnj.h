@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:24:51 2016 Ethan Kerdelhue
-** Last update Wed Apr  6 23:33:40 2016 Ethan Kerdelhue
+** Last update Wed Apr  6 23:38:39 2016 Ethan Kerdelhue
 */
 
 #ifndef PNJ_H_
@@ -23,7 +23,8 @@ typedef struct 		s_pnj
   char 			*name;
   char			*text;
   t_trade		*trade;
-  unsigned int		id_sprite;
+  t_hitbox		*sprite_hitbox;
+  t_texture		*sprite;
 } 			t_pnj;
 
 #endif
