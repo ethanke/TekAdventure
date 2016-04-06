@@ -5,11 +5,13 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:24:51 2016 Ethan Kerdelhue
-** Last update Wed Apr  6 23:38:39 2016 Ethan Kerdelhue
+** Last update Wed Apr  6 23:44:21 2016 Ethan Kerdelhue
 */
 
 #ifndef PNJ_H_
 # define PNJ_H_
+
+# include "main.h"
 
 typedef struct		s_trade
 {
