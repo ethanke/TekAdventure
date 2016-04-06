@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:41:06 2016 Gaëtan Léandre
-** Last update Thu Apr  7 00:26:18 2016 Gaëtan Léandre
+** Last update Thu Apr  7 01:17:14 2016 Gaëtan Léandre
 */
 
 #ifndef			_IMAGE_H_
@@ -32,12 +32,12 @@ t_texture      		*load_image(const char *file, t_ptr_list *ptr_list);
 t_texture		*pix_array_to_texture(t_bunny_pixelarray *pix,
 					      t_ptr_list **pr);
 void			put_image(t_texture *bmp,
-				  t_prog *prog,
+				  t_bunny_pixelarray *pix,
 				  t_bunny_position *pos);
 void			place_image(t_hitbox *pos,
 				    t_hitbox *fetch,
 				    t_texture *tex,
-				    t_prog *prog);
+				    t_bunny_pixelarray *pix);
 t_hitbox		create_hitbox(int x, int y, int width, int height);
 t_hitbox		*create_hitbox_ptr(t_bunny_position pos, int width,
 					   int height, t_ptr_list *ptr_list);
