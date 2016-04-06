@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Wed Apr  6 23:47:44 2016 Philippe Lefevre
+** Last update Wed Apr  6 23:53:28 2016 Philippe Lefevre
 */
 
 #ifndef			DECORS_H_
@@ -14,7 +14,7 @@
 typedef struct		s_breakable
 {
   unsigned int		is_breakable;
-  unsigned int		vie;
+  unsigned int		life;
   unsigned int		*break_by;
   unsigned int		lootable;
   unsigned int		**loot;

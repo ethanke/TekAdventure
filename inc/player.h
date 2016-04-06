@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Wed Apr  6 23:44:24 2016 Philippe Lefevre
+** Last update Wed Apr  6 23:53:24 2016 Philippe Lefevre
 */
 
 #ifndef			PLAYER_H_
@@ -13,7 +13,7 @@
 
 typedef struct		s_player
 {
-  unsigned int		vie;
+  unsigned int		life;
   unsigned int		token;
   char			*name;
   t_texture		*sprite;
