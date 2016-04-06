@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 00:11:13 2016 Gaëtan Léandre
-** Last update Thu Apr  7 00:11:44 2016 Gaëtan Léandre
+** Last update Thu Apr  7 00:14:42 2016 victor sousa
 */
 
 #ifndef			PROG_H_
@@ -16,7 +16,7 @@ typedef	struct		s_prog
   t_bunny_window	*win;
   t_bunny_pixelarray	*array;
   t_ptr_list		*ptr_list;
-  t_bunny_position	position;
+  t_bunny_position	blit_pos;
 }			t_prog;
 
 #endif			/* !PROG_H_ */

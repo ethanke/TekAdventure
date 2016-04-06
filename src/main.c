@@ -5,10 +5,18 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Wed Apr  6 21:07:33 2016 victor sousa
+** Last update Thu Apr  7 00:14:54 2016 victor sousa
 */
 
 #include		"main.h"
+
+int			init_prog(t_prog *prog)
+{
+  prog->blit_pos.x = 0;
+  prog->blit_pos.y = 0;
+  prog->ptr_list = NULL;
+  return (SUCCESS);
+}
 
 int			main(int ac, char **av, char **env)
 {
@@ -22,6 +30,8 @@ int			main(int ac, char **av, char **env)
     return (ERROR);
   if ((prog.array = bunny_new_pixelarray(WIN_WIDTH, WIN_HEIGHT)) == NULL)
     return (ERROR);
+
+  init_prog(&prog);
   bunny_set_key_response(event_key);
   bunny_set_loop_main_function(mainloop);
   if (bunny_loop(prog.win, 60, &prog) == EXIT_ON_ERROR)

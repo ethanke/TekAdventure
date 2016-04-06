@@ -5,7 +5,7 @@
 ## Login   <lefevr_h@epitech.net>
 ## 
 ## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
-## Last update Wed Apr  6 23:11:58 2016 victor sousa
+## Last update Wed Apr  6 23:46:12 2016 victor sousa
 ##
 
 NAME		=	tekadventure
@@ -24,7 +24,7 @@ LIBDIR		=	lib
 RM		=	rm -f
 
 CC		=	gcc
-CFLAGS		=	-W -Werror -Wall -Wextra		\
+CFLAGS		=	-W -Wall -Wextra -g3 -ggdb	\
 			-ansi -pedantic				\
 			-I/home/${USER}/.froot/include		\
 			-I$(INCDIR)
