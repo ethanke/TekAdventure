@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:41:06 2016 Gaëtan Léandre
-** Last update Thu Apr  7 00:06:56 2016 Gaëtan Léandre
+** Last update Thu Apr  7 00:26:18 2016 Gaëtan Léandre
 */
 
 #ifndef			_IMAGE_H_
@@ -30,7 +30,7 @@ typedef struct		s_hitbox
 
 t_texture      		*load_image(const char *file, t_ptr_list *ptr_list);
 t_texture		*pix_array_to_texture(t_bunny_pixelarray *pix,
-					      t_ptr_list *pr);
+					      t_ptr_list **pr);
 void			put_image(t_texture *bmp,
 				  t_prog *prog,
 				  t_bunny_position *pos);

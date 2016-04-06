@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Thu Apr  7 00:14:54 2016 victor sousa
+** Last update Thu Apr  7 00:20:29 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -28,7 +28,7 @@ int			main(int ac, char **av, char **env)
     return (ERROR);
   if ((prog.win = bunny_start(WIN_WIDTH, WIN_HEIGHT, false, WIN_NAME)) == NULL)
     return (ERROR);
-  if ((prog.array = bunny_new_pixelarray(WIN_WIDTH, WIN_HEIGHT)) == NULL)
+  if ((prog.pix = bunny_new_pixelarray(WIN_WIDTH, WIN_HEIGHT)) == NULL)
     return (ERROR);
 
   init_prog(&prog);

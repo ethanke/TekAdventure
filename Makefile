@@ -1,11 +1,11 @@
 ##
 ## Makefile for Raytracer in /home/lefevr_h/Repository/Epitech/Year_1/Infographie/gfx_raytracer1
-## 
+##
 ## Made by Philippe Lefevre
 ## Login   <lefevr_h@epitech.net>
-## 
+##
 ## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
-## Last update Wed Apr  6 23:46:12 2016 victor sousa
+## Last update Thu Apr  7 00:17:57 2016 Gaëtan Léandre
 ##
 
 NAME		=	tekadventure
@@ -18,6 +18,7 @@ RED		=	"\033[0;31m"
 
 SRCDIR		=	src
 UTILSDIR	=	$(SRCDIR)/utils
+IMGDIR		=	$(SRCDIR)/image
 INCDIR		=	inc
 LIBDIR		=	lib
 
@@ -46,6 +47,11 @@ SRC		=	$(SRCDIR)/main.c			\
 
 SRC		+=	$(UTILSDIR)/xmalloc.c			\
 			$(UTILSDIR)/ptr_list.c
+
+SRC		+=	$(IMGDIR)/disp_image.c			\
+			$(IMGDIR)/hitbox_creator.c		\
+			$(IMGDIR)/load_image.c			\
+			$(IMGDIR)/tekpixel.c
 
 OBJ		=	$(SRC:.c=.o)
 
