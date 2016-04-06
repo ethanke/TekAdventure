@@ -5,12 +5,16 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 20:02:40 2016 Philippe Lefevre
-** Last update Wed Apr  6 22:59:27 2016 victor sousa
+** Last update Wed Apr  6 23:12:42 2016 victor sousa
 */
 
 #ifndef			MAIN_H_
 # define		MAIN_H_
+
 # include		<lapin.h>
+# include		<unistd.h>
+
+# include		"utils.h"
 
 # ifndef		WIN_SETTING
 #  define		WIN_SETTING
@@ -18,12 +22,6 @@
 #  define		WIN_HEIGHT	768
 #  define		WIN_WIDTH	1024
 # endif			/* !WIN_SETTING */
-
-typedef struct		s_ptr_list
-{
-  void			*ptr;
-  struct s_ptr_list	*next;
-}			t_ptr_list;
 
 typedef	struct		s_prog
 {
