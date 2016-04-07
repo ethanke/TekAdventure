@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 ** 
 ** Started on  Wed Apr  6 23:08:25 2016 victor sousa
-** Last update Thu Apr  7 00:07:18 2016 victor sousa
+** Last update Thu Apr  7 02:11:00 2016 victor sousa
 */
 
 #ifndef                 UTILS_H_
@@ -19,7 +19,8 @@ typedef	struct		s_ptr_list
   void			*ptr;
   struct s_ptr_list	*next;
 }			t_ptr_list;
-t_ptr_list              *push_ptr(t_ptr_list *prev, void *ptr);
+
+int			push_ptr(t_ptr_list **head, void *ptr);
 void			free_ptr(t_ptr_list *ptr_list);
 
 /* COMMON */

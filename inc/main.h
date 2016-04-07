@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 20:02:40 2016 Philippe Lefevre
-** Last update Thu Apr  7 00:12:20 2016 Gaëtan Léandre
+** Last update Thu Apr  7 02:18:41 2016 victor sousa
 */
 
 #ifndef			MAIN_H_
@@ -15,8 +15,8 @@
 # include		<unistd.h>
 
 # include		"utils.h"
-# include		"prog.h"
 # include		"image.h"
+# include		"prog.h"
 
 # ifndef		WIN_SETTING
 #  define		WIN_SETTING

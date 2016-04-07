@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:41:06 2016 Gaëtan Léandre
-** Last update Thu Apr  7 01:17:14 2016 Gaëtan Léandre
+** Last update Thu Apr  7 02:18:43 2016 victor sousa
 */
 
 #ifndef			_IMAGE_H_
@@ -13,22 +13,22 @@
 
 #include		"main.h"
 
-typedef struct		s_texture
+typedef struct          s_texture
 {
-  int			width;
-  int			height;
-  t_color		**color;
-}			t_texture;
+  int                   width;
+  int                   height;
+  t_color               **color;
+}                       t_texture;
 
-typedef struct		s_hitbox
+typedef struct          s_hitbox
 {
-  int			x;
-  int			y;
-  int			width;
-  int			height;
-}			t_hitbox;
+  int                   x;
+  int                   y;
+  int                   width;
+  int                   height;
+}                       t_hitbox;
 
-t_texture      		*load_image(const char *file, t_ptr_list *ptr_list);
+t_texture      		*load_image(const char *file, t_ptr_list **ptr_list);
 t_texture		*pix_array_to_texture(t_bunny_pixelarray *pix,
 					      t_ptr_list **pr);
 void			put_image(t_texture *bmp,

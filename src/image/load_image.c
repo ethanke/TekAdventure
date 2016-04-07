@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:25:07 2016 Gaëtan Léandre
-** Last update Thu Apr  7 00:25:50 2016 Gaëtan Léandre
+** Last update Thu Apr  7 02:07:58 2016 victor sousa
 */
 
 #include 		"main.h"
@@ -40,11 +40,11 @@ t_texture		*pix_array_to_texture(t_bunny_pixelarray *pix,
   return (out);
 }
 
-t_texture      		*load_image(const char *file, t_ptr_list *ptr_list)
+t_texture      		*load_image(const char *file, t_ptr_list **ptr_list)
 {
   t_bunny_pixelarray	*tmp;
 
   if ((tmp = bunny_load_pixelarray(file)) == NULL)
     return (NULL);
-  return (pix_array_to_texture(tmp, &ptr_list));
+  return (pix_array_to_texture(tmp, ptr_list));
 }
