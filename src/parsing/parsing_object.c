@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Thu Apr  7 22:45:10 2016 Philippe Lefevre
+** Last update Thu Apr  7 23:41:13 2016 Philippe Lefevre
 */
 
 #include		"parsing.h"
@@ -22,15 +22,15 @@ t_object		*create_object_node(int id,
     return (NULL);
   if ((str = (char *)bunny_ini_get_field(ini, "object", "name", id)) == NULL)
     return (NULL);
-  if ((object->name = my_strdup(str, (*ptr_list))) == NULL)
+  if ((object->name = my_strdup(str, ptr_list)) == NULL)
     return (NULL);
-  free(str);
   if ((str = (char *)bunny_ini_get_field(ini, "object", "damage", id)) == NULL)
     return (NULL);
   object->damage = my_getnbr(str);
-  free(str);
+  /* free(str); */
   object->next = NULL;
   object->prev = NULL;
+  /* printf("name (%s) - damage (%d) - id (%d)\n", object->name, object->damage, id); */
   return (object);
 }
 
@@ -41,11 +41,12 @@ t_object		*list_add_object(t_object *list, int id,
   t_object		*new;
   t_object		*tmp;
 
-  new = create_object_node(id, ini, ptr_list);
+  if ((new = create_object_node(id, ini, ptr_list)) == NULL)
+    return (NULL);
   if (list == NULL)
     return (new);
   tmp = list;
-  while (tmp != NULL)
+  while (tmp->next != NULL)
     tmp = tmp->next;
   new->prev = tmp;
   new->next = NULL;
@@ -61,13 +62,14 @@ t_object		*load_object(t_bunny_ini *ini, t_ptr_list **ptr_list)
   int			i;
 
   i = 0;
-  if ((str = (char *)bunny_ini_get_field(ini, "count", "nb_object", 0)) == NULL)
+  if ((str = (char *)bunny_ini_get_field(ini, "count", "object_count", 0)) == NULL)
     return (NULL);
   nb_object = my_getnbr(str);
-  free(str);
+  list = NULL;
   while (i != nb_object)
     {
-      list = list_add_object(list, i, ini, ptr_list);
+      if ((list = list_add_object(list, i, ini, ptr_list)) == NULL)
+	return (NULL);
       i++;
     }
   return (list);
