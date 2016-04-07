@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Thu Apr  7 05:25:40 2016 victor sousa
+** Last update Thu Apr  7 05:54:52 2016 victor sousa
 */
 
 #include		"main.h"
@@ -58,6 +58,9 @@ int			init_prog(t_prog *prog)
   prog->player.inventory_open = 0;
   if ((prog->player.inv_open_sprite =
        load_image("ressources/sprites/inventory_full.png", &prog->ptr_list)) == NULL)
+    return (ERROR);
+  if ((prog->player.hotbar_sprite =
+       load_image("ressources/sprites/hotbar.png", &prog->ptr_list)) == NULL)
     return (ERROR);
   return (SUCCESS);
 }
