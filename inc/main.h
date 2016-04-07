@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 20:02:40 2016 Philippe Lefevre
-** Last update Thu Apr  7 02:18:41 2016 victor sousa
+** Last update Thu Apr  7 03:00:59 2016 Ethan Kerdelhue
 */
 
 #ifndef			MAIN_H_
@@ -16,6 +16,8 @@
 
 # include		"utils.h"
 # include		"image.h"
+# include		"sprite.h"
+# include		"my_list.h"
 # include		"prog.h"
 
 # ifndef		WIN_SETTING

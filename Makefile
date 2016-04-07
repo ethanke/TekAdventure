@@ -5,7 +5,7 @@
 ## Login   <lefevr_h@epitech.net>
 ##
 ## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
-## Last update Thu Apr  7 00:17:57 2016 Gaëtan Léandre
+## Last update Wed Apr  6 21:08:57 2016 Kerdelhue Ethan
 ##
 
 NAME		=	tekadventure
@@ -43,10 +43,17 @@ LDFLAGS		=	-L/home/${USER}/.froot/lib		\
 SRC		=	$(SRCDIR)/main.c			\
 			$(SRCDIR)/loop.c			\
 			$(SRCDIR)/event_key.c			\
-			$(SRCDIR)/end.c
+			$(SRCDIR)/end.c				\
+			$(SRCDIR)/parsing/load_sprite.c		\
 
 SRC		+=	$(UTILSDIR)/xmalloc.c			\
-			$(UTILSDIR)/ptr_list.c
+			$(UTILSDIR)/ptr_list.c			\
+			$(UTILSDIR)/my_strdup.c			\
+			$(UTILSDIR)/my_getnbr.c			\
+			$(UTILSDIR)/my_puterror.c		\
+			$(UTILSDIR)/my_strlen.c			\
+			$(UTILSDIR)/list_create_node.c		\
+			$(UTILSDIR)/list_add_node.c		\
 
 SRC		+=	$(IMGDIR)/disp_image.c			\
 			$(IMGDIR)/hitbox_creator.c		\
