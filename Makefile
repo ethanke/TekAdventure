@@ -5,7 +5,7 @@
 ## Login   <lefevr_h@epitech.net>
 ##
 ## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
-## Last update Thu Apr  7 05:27:25 2016 Gaëtan Léandre
+## Last update Thu Apr  7 22:36:06 2016 Philippe Lefevre
 ##
 
 NAME		=	tekadventure
@@ -20,6 +20,7 @@ SRCDIR		=	src
 DISPDIR		=	$(SRCDIR)/disp
 UTILSDIR	=	$(SRCDIR)/utils
 IMGDIR		=	$(SRCDIR)/image
+PARSDIR		=	$(SRCDIR)/parsing
 INCDIR		=	inc
 LIBDIR		=	lib
 
@@ -44,8 +45,10 @@ LDFLAGS		=	-L/home/${USER}/.froot/lib		\
 SRC		=	$(SRCDIR)/main.c			\
 			$(SRCDIR)/loop.c			\
 			$(SRCDIR)/event_key.c			\
-			$(SRCDIR)/end.c				\
-			$(SRCDIR)/parsing/load_sprite.c		\
+			$(SRCDIR)/end.c
+
+SRC		+=	$(PARSDIR)/parsing.c			\
+			$(PARSDIR)/parsing_object.c
 
 SRC		+=	$(DISPDIR)/disp_inventory.c		\
 			$(DISPDIR)/disp_scene.c

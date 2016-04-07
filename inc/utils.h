@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Wed Apr  6 23:08:25 2016 victor sousa
-** Last update Thu Apr  7 03:07:08 2016 Ethan Kerdelhue
+** Last update Thu Apr  7 22:01:40 2016 Philippe Lefevre
 */
 
 #ifndef                 UTILS_H_
@@ -24,7 +24,7 @@ int			push_ptr(t_ptr_list **head, void *ptr);
 void			free_ptr(t_ptr_list *ptr_list);
 
 /* COMMON */
-void			my_puterror(char *str);
+int			my_puterror(char *str);
 int			my_strlen(char *str);
 int			my_getnbr(char *str);
 void                    *xmalloc(int size, t_ptr_list **ptr_list);

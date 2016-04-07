@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Thu Apr  7 05:54:52 2016 victor sousa
+** Last update Thu Apr  7 22:40:11 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -69,8 +69,9 @@ int			main(int ac, char **av, char **env)
 {
   t_prog		prog;
 
-  (void)ac;
-  (void)av;
+  if (ac != 2)
+    return (my_puterror("Error: Use ")
+	    + my_puterror(av[0]) + my_puterror(" file.ini\n"));
   set_max_heap_size(500);
   if (env == NULL)
     return (ERROR);
@@ -86,6 +87,7 @@ int			main(int ac, char **av, char **env)
   prog.pix_id = 0;
   if (init_prog(&prog) == ERROR)
     return (clean(&prog, ERROR));
+  parsing(av[1], &prog.ptr_list);
   if ((prog.lion_img = load_image("ressources/sprites/lion.jpg", &prog.ptr_list)) == NULL)
     return (ERROR);
   bunny_set_key_response(event_key);

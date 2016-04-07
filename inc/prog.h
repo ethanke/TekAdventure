@@ -5,11 +5,15 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 00:11:13 2016 Gaëtan Léandre
-** Last update Thu Apr  7 05:24:21 2016 victor sousa
+** Last update Thu Apr  7 22:07:42 2016 Philippe Lefevre
 */
 
 #ifndef			PROG_H_
 # define		PROG_H_
+
+# include		"utils.h"
+# include		"image.h"
+# include		"player.h"
 
 typedef	struct		s_prog
 {
@@ -23,7 +27,7 @@ typedef	struct		s_prog
   t_bunny_position	blit_pos;
 
   t_texture		*lion_img;
-  
+
   t_player		player;
   int			inv[36][2];
 }			t_prog;

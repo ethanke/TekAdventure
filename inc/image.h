@@ -5,13 +5,14 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:41:06 2016 Gaëtan Léandre
-** Last update Thu Apr  7 03:55:49 2016 Gaëtan Léandre
+** Last update Thu Apr  7 22:06:57 2016 Philippe Lefevre
 */
 
 #ifndef			_IMAGE_H_
 # define		_IMAGE_H_
+#include		<lapin.h>
 
-#include		"main.h"
+# include		"utils.h"
 
 typedef struct          s_texture
 {
