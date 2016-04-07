@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Thu Apr  7 05:18:50 2016 victor sousa
+** Last update Thu Apr  7 05:25:40 2016 victor sousa
 */
 
 #include		"main.h"
@@ -73,17 +73,18 @@ int			main(int ac, char **av, char **env)
     return (ERROR);
   if ((prog.win = bunny_start(WIN_WIDTH, WIN_HEIGHT, false, WIN_NAME)) == NULL)
     return (ERROR);
-  if ((prog.pix = bunny_new_pixelarray(WIN_WIDTH, WIN_HEIGHT)) == NULL)
+  if ((prog.pix0 = bunny_new_pixelarray(WIN_WIDTH, WIN_HEIGHT)) == NULL)
     return (ERROR);
+  if ((prog.pix1 = bunny_new_pixelarray(WIN_WIDTH, WIN_HEIGHT)) == NULL)
+    return (ERROR);
+  if ((prog.pix2 = bunny_new_pixelarray(WIN_WIDTH, WIN_HEIGHT)) == NULL)
+    return (ERROR);
+  prog.pix = prog.pix0;
+  prog.pix_id = 0;
   if (init_prog(&prog) == ERROR)
     return (clean(&prog, ERROR));
   if ((prog.lion_img = load_image("ressources/sprites/lion.jpg", &prog.ptr_list)) == NULL)
     return (ERROR);
-  place_image(create_hitbox_ptr(prog.blit_pos, WIN_WIDTH,
-                                WIN_HEIGHT, prog.ptr_list),
-              create_hitbox_ptr(prog.blit_pos, prog.lion_img->width,
-                                prog.lion_img->height, prog.ptr_list),
-				prog.lion_img, prog.pix);
   bunny_set_key_response(event_key);
   bunny_set_loop_main_function(mainloop);
   if (bunny_loop(prog.win, 60, &prog) == EXIT_ON_ERROR)
