@@ -5,11 +5,12 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Thu Apr  7 00:31:16 2016 Philippe Lefevre
+** Last update Thu Apr  7 05:02:26 2016 victor sousa
 */
 
 #ifndef			PARSING_H_
 # define		PARSING_H_
+
 # include		"main.h"
 
 int			parsing(const char *file);

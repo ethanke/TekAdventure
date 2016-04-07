@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Thu Apr  7 02:38:18 2016 Philippe Lefevre
+** Last update Thu Apr  7 06:08:32 2016 Philippe Lefevre
 */
 
 #ifndef			SCENE_H_
@@ -17,11 +17,14 @@
 typedef struct		s_scene
 {
   t_texture		*ground;
-  t_hitbox		*ground_hitbox;
+  unsigned int		height;
+  unsigned int		size; 
   t_back		*back;
   t_pnj			*pnj;
   t_objet		*objet;
   t_decors		*decors;
+  struct t_scene	*prev;
+  struct t_scene	*next;
 }			t_scene;
 
 #endif			/* !SCENE_H_ */
