@@ -5,45 +5,32 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Thu Apr  7 00:39:08 2016 Ethan Kerdelhue
-** Last update Thu Apr  7 01:19:12 2016 Ethan Kerdelhue
+** Last update Thu Apr  7 03:05:05 2016 Ethan Kerdelhue
 */
 
 #include 	"main.h"
-
-char		*my_strdup(char *str, t_ptr_list *ptr_list)
-{
-  int		i;
-  char		*new;
-
-  i = 0;
-  new = xmalloc(my_strlen(str), ptr_list);
-  while (str[i])
-    {
-      new[i] = str[i];
-      i++;
-    }
-  new[i] = '\0';
-  free(str);
-  return (new);
-}
 
 t_sprite	*create_sprite_node(char *path, int id, t_ptr_list *ptr_list)
 {
   t_sprite	*sprite;
 
-  sprite = xmalloc(sizeof(t_sprite), ptr_list);
-  sprite->path = my_strdup(path);
+  if ((sprite = xmalloc(sizeof(t_sprite), &ptr_list)) == NULL)
+      return (NULL);
+  sprite->path = my_strdup(path, ptr_list);
   sprite->id = id;
+  return (sprite);
 }
 
-t_sprite	*load_sprite(t_bunny_ini *ini, t_ptr_list *ptr_list)
+t_list		*load_sprite(t_bunny_ini *ini, t_ptr_list *ptr_list)
 {
   t_list	*list;
+  char		*tmp;
   int		nb_sprite;
   int		i;
 
   i = 0;
-  nb_sprite = my_getnbr(bunny_ini_get_field(ini, "count", "nb_sprite", 0));
+  tmp = (char *)bunny_ini_get_field(ini, "count", "nb_sprite", 0);
+  nb_sprite = my_getnbr(tmp);
   if (nb_sprite == 0)
     {
       my_puterror("Error : nb_sprite is null");
@@ -53,7 +40,11 @@ t_sprite	*load_sprite(t_bunny_ini *ini, t_ptr_list *ptr_list)
     {
       list = list_add_node(list,
 			   (void *)create_sprite_node
-			   (bunny_ini_get_field(ini, "sprite", "path", i), i));
+			   ((char *)
+			    bunny_ini_get_field(ini, "sprite", "path", i)
+			    , i, ptr_list));
       i++;
     }
+  free(tmp);
+  return (list);
 }

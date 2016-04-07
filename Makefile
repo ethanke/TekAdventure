@@ -5,7 +5,7 @@
 ## Login   <lefevr_h@epitech.net>
 ##
 ## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
-## Last update Thu Apr  7 00:17:57 2016 Gaëtan Léandre
+## Last update Thu Apr  7 03:36:05 2016 victor sousa
 ##
 
 NAME		=	tekadventure
@@ -17,6 +17,7 @@ TEAL		=	"\033[1;36m"
 RED		=	"\033[0;31m"
 
 SRCDIR		=	src
+DISPDIR		=	$(SRCDIR)/disp
 UTILSDIR	=	$(SRCDIR)/utils
 IMGDIR		=	$(SRCDIR)/image
 INCDIR		=	inc
@@ -43,10 +44,19 @@ LDFLAGS		=	-L/home/${USER}/.froot/lib		\
 SRC		=	$(SRCDIR)/main.c			\
 			$(SRCDIR)/loop.c			\
 			$(SRCDIR)/event_key.c			\
-			$(SRCDIR)/end.c
+			$(SRCDIR)/end.c				\
+			$(SRCDIR)/parsing/load_sprite.c		\
+
+SRC		+=	$(DISPDIR)/disp_inventory.c
 
 SRC		+=	$(UTILSDIR)/xmalloc.c			\
-			$(UTILSDIR)/ptr_list.c
+			$(UTILSDIR)/ptr_list.c			\
+			$(UTILSDIR)/my_strdup.c			\
+			$(UTILSDIR)/my_getnbr.c			\
+			$(UTILSDIR)/my_puterror.c		\
+			$(UTILSDIR)/my_strlen.c			\
+			$(UTILSDIR)/list_create_node.c		\
+			$(UTILSDIR)/list_add_node.c		\
 
 SRC		+=	$(IMGDIR)/disp_image.c			\
 			$(IMGDIR)/hitbox_creator.c		\
