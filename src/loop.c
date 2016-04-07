@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:58:37 2016 Philippe Lefevre
-** Last update Thu Apr  7 05:26:16 2016 victor sousa
+** Last update Thu Apr  7 05:28:51 2016 victor sousa
 */
 
 #include		"main.h"
@@ -35,13 +35,12 @@ t_bunny_response	mainloop(void *p)
   t_prog			*prog;
 
   prog = p;
-  disp_inventory(prog);
-
   place_image(create_hitbox_ptr(prog->blit_pos, WIN_WIDTH,
 				WIN_HEIGHT, prog->ptr_list),
               create_hitbox_ptr(prog->blit_pos, prog->lion_img->width,
                                 prog->lion_img->height, prog->ptr_list),
 	      prog->lion_img, prog->pix);
+  disp_inventory(prog);
   bunny_blit(&prog->win->buffer, &prog->pix->clipable, &prog->blit_pos);
   swap_pix(prog);
   bunny_display(prog->win);
