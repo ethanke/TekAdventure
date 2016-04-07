@@ -5,17 +5,45 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 02:56:24 2016 Gaëtan Léandre
-** Last update Thu Apr  7 03:42:43 2016 Gaëtan Léandre
+** Last update Thu Apr  7 07:27:21 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
 
-void			disp_background(t_back *first, t_bunny_pixelarray *pix)
+void			disp_background(t_back *first, t_bunny_pixelarray *pix,
+					float percent)
 {
   t_back		*tmp;
+  t_hitbox		pos;
+  int			dist_max;
+  int			size;
 
   tmp = first;
   fill_image(pix, BLACK);
   while (tmp->next != NULL)
     tmp = tmp->next;
+  dist_max = tmp->dist;
+  while (tmp != NULL)
+    {
+      size = dist_max - tmp->dist;
+      pos.width = tmp->sprite->width + size;
+      pos.height = tmp->sprite->height;
+      pos.x = (int)((float)size * percent) - size;
+      pos.y = 0;
+      redim_image(&pos, tmp->sprite, pix);
+      tmp = tmp->prev;
+    }
 }
+
+/*void			disp_ground(t_scene *scene,t_bunny_pixelarray *pix,
+				    float percent)
+{
+  t_hitbox		pos;
+
+  t_bunny_position	square_size
+  pos = create_hitbox(0, pix->clipable.clip_height - scene->height,
+		      pix->clipable.clip_width, pix->clipable.clip_height);
+  redim_image(&pos, scene->ground, pix);
+
+  scene->ground
+}*/

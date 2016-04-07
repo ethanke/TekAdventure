@@ -5,7 +5,7 @@
 ## Login   <lefevr_h@epitech.net>
 ##
 ## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
-## Last update Thu Apr  7 03:36:05 2016 victor sousa
+## Last update Thu Apr  7 05:27:25 2016 Gaëtan Léandre
 ##
 
 NAME		=	tekadventure
@@ -47,7 +47,8 @@ SRC		=	$(SRCDIR)/main.c			\
 			$(SRCDIR)/end.c				\
 			$(SRCDIR)/parsing/load_sprite.c		\
 
-SRC		+=	$(DISPDIR)/disp_inventory.c
+SRC		+=	$(DISPDIR)/disp_inventory.c		\
+			$(DISPDIR)/disp_scene.c
 
 SRC		+=	$(UTILSDIR)/xmalloc.c			\
 			$(UTILSDIR)/ptr_list.c			\
