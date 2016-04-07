@@ -5,7 +5,7 @@
 ## Login   <lefevr_h@epitech.net>
 ##
 ## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
-## Last update Wed Apr  6 21:08:57 2016 Kerdelhue Ethan
+## Last update Thu Apr  7 03:36:05 2016 victor sousa
 ##
 
 NAME		=	tekadventure
@@ -17,6 +17,7 @@ TEAL		=	"\033[1;36m"
 RED		=	"\033[0;31m"
 
 SRCDIR		=	src
+DISPDIR		=	$(SRCDIR)/disp
 UTILSDIR	=	$(SRCDIR)/utils
 IMGDIR		=	$(SRCDIR)/image
 INCDIR		=	inc
@@ -45,6 +46,8 @@ SRC		=	$(SRCDIR)/main.c			\
 			$(SRCDIR)/event_key.c			\
 			$(SRCDIR)/end.c				\
 			$(SRCDIR)/parsing/load_sprite.c		\
+
+SRC		+=	$(DISPDIR)/disp_inventory.c
 
 SRC		+=	$(UTILSDIR)/xmalloc.c			\
 			$(UTILSDIR)/ptr_list.c			\
