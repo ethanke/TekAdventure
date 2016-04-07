@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:41:06 2016 Gaëtan Léandre
-** Last update Thu Apr  7 02:18:43 2016 victor sousa
+** Last update Thu Apr  7 03:55:49 2016 Gaëtan Léandre
 */
 
 #ifndef			_IMAGE_H_
@@ -36,6 +36,10 @@ void			put_image(t_texture *bmp,
 				  t_bunny_position *pos);
 void			place_image(t_hitbox *pos,
 				    t_hitbox *fetch,
+				    t_texture *tex,
+				    t_bunny_pixelarray *pix);
+void			fill_image(t_bunny_pixelarray *pix, unsigned int col);
+void			redim_image(t_hitbox *pos,
 				    t_texture *tex,
 				    t_bunny_pixelarray *pix);
 t_hitbox		create_hitbox(int x, int y, int width, int height);
