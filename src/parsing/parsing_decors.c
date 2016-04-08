@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Fri Apr  8 06:59:11 2016 Ethan Kerdelhue
+** Last update Fri Apr  8 07:28:10 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -67,7 +67,7 @@ t_hitbox		*create_decors_hitbox(int id, t_bunny_ini *ini,
 
   if ((hitbox = xmalloc(sizeof(*hitbox), ptr_list)) == NULL)
     return (NULL);
-  if ((str = (char *)bunny_ini_get_field(ini, "object", "sprite_hitbox", id)) == NULL)
+  if ((str = (char *)bunny_ini_get_field(ini, "decors", "sprite_hitbox", id)) == NULL)
     return (NULL);
   i = -1;
   hitbox->x = my_getnbr(str);

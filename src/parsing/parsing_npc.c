@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr  8 02:30:51 2016 Ethan Kerdelhue
-** Last update Fri Apr  8 07:08:41 2016 Ethan Kerdelhue
+** Last update Fri Apr  8 07:31:14 2016 Philippe Lefevre
 */
 
 #include	"main.h"
@@ -63,6 +63,28 @@ t_trade		*get_trade(char *str, t_ptr_list **ptr_list)
   return (tmp);
 }
 
+t_hitbox		*create_npc_hitbox(int id, t_bunny_ini *ini,
+						 t_ptr_list **ptr_list)
+{
+  t_hitbox		*hitbox;
+  char			*str;
+  int			i;
+
+  if ((hitbox = xmalloc(sizeof(*hitbox), ptr_list)) == NULL)
+    return (NULL);
+  if ((str = (char *)bunny_ini_get_field(ini, "npc", "sprite_hitbox", id)) == NULL)
+    return (NULL);
+  i = -1;
+  hitbox->x = my_getnbr(str);
+  while (str[++i] && str[i] != ';');
+  hitbox->y = my_getnbr(str + i + 1);
+  while (str[++i] && str[i] != ';');
+  hitbox->width = my_getnbr(str + i + 1);
+  while (str[++i] && str[i] != ';');
+  hitbox->height = my_getnbr(str + i + 1);
+  return (hitbox);
+}
+
 t_npc		*create_npc_node(int id,
 				 t_bunny_ini *ini,
 				 t_ptr_list **ptr_list)
@@ -83,6 +105,7 @@ t_npc		*create_npc_node(int id,
   if ((str = (char *)bunny_ini_get_field(ini, "npc", "trade", id)) == NULL)
     return (my_puterror_n("No \"trade\" field in npc scope"));
   npc->trade = get_trade(str, ptr_list);
+  npc->sprite_hitbox = create_npc_hitbox(id, ini, ptr_list);
   npc->id = id;
   npc->next = NULL;
   npc->prev = NULL;
