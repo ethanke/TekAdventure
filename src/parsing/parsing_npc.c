@@ -48,9 +48,7 @@ t_trade		*get_trade(char *str, t_ptr_list **ptr_list)
 
   tmp = xmalloc(sizeof(tmp), ptr_list);
   tmp->item_player_id = my_getnbr(str);
-  printf("ITEM P ID -> %d\n", tmp->item_player_id);
   tmp->amount_player = get_a_player(str);
-  printf("AMOUNT P -> %d\n", tmp->amount_player);
   tmp->item_npc_id = get_i_npc(str);
   tmp->amount_npc = get_a_npc(str);
   return (tmp);
