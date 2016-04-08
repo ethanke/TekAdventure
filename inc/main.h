@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 20:02:40 2016 Philippe Lefevre
-** Last update Thu Apr  7 22:35:01 2016 Philippe Lefevre
+** Last update Fri Apr  8 03:17:45 2016 Ethan Kerdelhue
 */
 
 #ifndef			MAIN_H_
@@ -22,6 +22,7 @@
 # include		"player.h"
 # include		"prog.h"
 # include		"disp.h"
+# include		"npc.h"
 # include		"parsing.h"
 
 # ifndef		WIN_SETTING
