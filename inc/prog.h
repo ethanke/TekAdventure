@@ -13,6 +13,7 @@
 
 # include		"utils.h"
 # include		"image.h"
+# include		"scene.h"
 # include		"player.h"
 
 typedef	struct		s_prog
@@ -29,6 +30,7 @@ typedef	struct		s_prog
   t_texture		*lion_img;
 
   t_player		*player;
+  t_scene		*scene;
 }			t_prog;
 
 #endif			/* !PROG_H_ */

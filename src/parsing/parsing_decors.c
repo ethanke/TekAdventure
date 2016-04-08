@@ -54,7 +54,7 @@ t_decors		*create_decors_node(int id,
 					    t_ptr_list **ptr_list)
 {
   t_decors		*decors;
-  t_hitbox		decors_hitbox;
+  /*  t_hitbox		decors_hitbox;*/
   char			*str;
 
   if ((decors = xmalloc(sizeof(*decors), ptr_list)) == NULL)

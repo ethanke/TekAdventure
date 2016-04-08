@@ -15,7 +15,8 @@ int			init_prog(t_prog *prog, char *str)
   prog->blit_pos.x = 0;
   prog->blit_pos.y = 0;
   prog->ptr_list = NULL;
-  prog->player = load_player(bunny_load_ini(str), &prog->ptr_list);
+  if ((prog->scene = parsing(str, &prog->player, &prog->ptr_list)) == NULL)
+    return (ERROR);
   prog->player->inventory_open = 0;
   if ((prog->player->inv_open_sprite =
        load_image("ressources/sprites/inventory_full.png", &prog->ptr_list)) == NULL)
@@ -29,7 +30,6 @@ int			init_prog(t_prog *prog, char *str)
 int			main(int ac, char **av, char **env)
 {
   t_prog		prog;
-  t_scene		*scene;
 
   if (ac != 2)
     return (my_puterror("Error: Use ")
@@ -50,8 +50,6 @@ int			main(int ac, char **av, char **env)
 
   if (init_prog(&prog, av[1]) == ERROR)
     return (clean(&prog, ERROR));
-  if ((scene = parsing(av[1], &prog.player, &prog.ptr_list)) == NULL)
-    return (ERROR);
   if ((prog.lion_img = load_image("ressources/sprites/lion.jpg", &prog.ptr_list)) == NULL)
     return (ERROR);
   bunny_set_key_response(event_key);
