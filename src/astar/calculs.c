@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Fri Apr  8 06:26:22 2016 Gaëtan Léandre
-** Last update Fri Apr  8 06:26:50 2016 Gaëtan Léandre
+** Last update Fri Apr  8 06:36:30 2016 Gaëtan Léandre
 */
 
 #include	"astar.h"
@@ -16,8 +16,8 @@ int		calculDistance(int xA, int xB, int yA, int yB)
   int distanceBC;
   int distanceTotale;
 
-  distanceAC = (int)sqrt(pow(xB-xA,2));
-  distanceBC = (int)sqrt(pow(yA-yB,2));
+  distanceAC = (int)sqrt(pow(xB-xA, 2));
+  distanceBC = (int)sqrt(pow(yA-yB, 2));
   distanceTotale = distanceAC + distanceBC + 1;
   return (distanceTotale);
 }
