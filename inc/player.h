@@ -5,11 +5,13 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Fri Apr  8 01:11:04 2016 Ethan Kerdelhue
+** Last update Fri Apr  8 01:42:50 2016 Ethan Kerdelhue
 */
 
 #ifndef			PLAYER_H_
 # define		PLAYER_H_
+
+# define		SIZE_INVENTORY	36
 
 typedef struct		s_item
 {

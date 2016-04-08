@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:08:59 2016 Philippe Lefevre
-** Last update Fri Apr  8 00:37:27 2016 Ethan Kerdelhue
+** Last update Fri Apr  8 02:00:21 2016 Ethan Kerdelhue
 */
 
 #include		"parsing.h"
@@ -18,6 +18,7 @@ int			parsing(const char *file, t_ptr_list **ptr_list)
   t_object		*tmp;
   t_sprite		*sprite;
   t_sprite		*tmp2;
+  t_player		*player;
   int			i;
 
   ini = bunny_load_ini(file);
@@ -38,6 +39,14 @@ int			parsing(const char *file, t_ptr_list **ptr_list)
     {
       printf("path (%s) - id (%d) - id (%d)\n", tmp2->path, tmp2->id, i++);
       tmp2 = tmp2->next;
+    }
+  player = load_player(ini, ptr_list);
+  printf("name (%s) - life (%d) - token (%d)", player->name, player->life, player->token);
+  i = 0;
+  while (i != SIZE_INVENTORY)
+    {
+      printf("object id (%d) - amound (%d)", player->inventory[i].id, player->inventory[i].amount);
+      i++;
     }
   return (0);
 }

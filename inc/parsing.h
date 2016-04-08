@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Fri Apr  8 01:14:18 2016 Ethan Kerdelhue
+** Last update Fri Apr  8 01:41:48 2016 Ethan Kerdelhue
 */
 
 #ifndef			PARSING_H_
@@ -16,5 +16,6 @@
 int			parsing(const char *file, t_ptr_list **ptr_list);
 t_object		*load_object(t_bunny_ini *ini, t_ptr_list **ptr_list);
 t_sprite		*load_sprite(t_bunny_ini *ini, t_ptr_list **ptr_list);
+t_player		*load_player(t_bunny_ini *ini, t_ptr_list **ptr_list);
 
 #endif			/* !PARSING_H_ */
