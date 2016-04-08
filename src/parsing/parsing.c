@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:08:59 2016 Philippe Lefevre
-** Last update Sat Apr  9 00:48:06 2016 Philippe Lefevre
+** Last update Sat Apr  9 01:15:45 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -40,5 +40,6 @@ t_scene			*parsing(const char *file, t_player **player,
     return (NULL);
   if ((scene = load_scene(ini, stockage, ptr_list)) == NULL)
     return (NULL);
+  bunny_delete_ini(ini);
   return (scene);
 }
