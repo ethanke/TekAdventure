@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Fri Apr  8 05:09:50 2016 Philippe Lefevre
+** Last update Fri Apr  8 06:55:41 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -49,12 +49,34 @@ t_breakable		*create_decors_breakable(int id, t_bunny_ini *ini,
   return (breakable);
 }
 
+t_hitbox		*create_decors_hitbox(int id, t_bunny_ini *ini,
+						 t_ptr_list **ptr_list)
+{
+  t_hitbox		*hitbox;
+  char			*str;
+  int			i;
+
+  if ((hitbox = xmalloc(sizeof(*hitbox), ptr_list)) == NULL)
+    return (NULL);
+  if ((str = (char *)bunny_ini_get_field(ini, "object", "sprite_hitbox", id)) == NULL)
+    return (NULL);
+  i = -1;
+  hitbox.x = my_getnbr(str);
+  while (str[++i] && str[i] != ';');
+  hitbox.y = my_getnbr(str + i + 1);
+  while (str[++i] && str[i] != ';');
+  hitbox.width = my_getnbr(str + i + 1);
+  while (str[++i] && str[i] != ';');
+  hitbox.height = my_getnbr(str + i + 1);
+  return (hitbox);
+}
+
 t_decors		*create_decors_node(int id,
 					    t_bunny_ini *ini,
 					    t_ptr_list **ptr_list)
 {
   t_decors		*decors;
-  /*  t_hitbox		decors_hitbox;*/
+  t_hitbox		decors_hitbox;
   char			*str;
 
   if ((decors = xmalloc(sizeof(*decors), ptr_list)) == NULL)
@@ -66,6 +88,8 @@ t_decors		*create_decors_node(int id,
     return (NULL);
   if ((decors->decors_breakable =
        create_decors_breakable(id, ini, ptr_list)) == NULL)
+    return (NULL);
+  if ((decors->decors_hitbox = create_decors_hitbox(id, ini, ptr_list)) == NULL)
     return (NULL);
   decors->next = NULL;
   decors->prev = NULL;
