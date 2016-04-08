@@ -5,10 +5,19 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Fri Apr  8 05:07:10 2016 Philippe Lefevre
+** Last update Fri Apr  8 07:03:21 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
+
+static t_object		*my_puterror_n(char *str)
+{
+  t_object 	*tmp;
+
+  tmp = NULL;
+  write(2, str, my_strlen(str));
+  return (tmp);
+}
 
 t_object		*create_object_node(int id,
 					    t_bunny_ini *ini,
@@ -18,14 +27,14 @@ t_object		*create_object_node(int id,
   char			*str;
 
   if ((object = xmalloc(sizeof(t_object), ptr_list)) == NULL)
-    return (NULL);
+    return (my_puterror_n("Malloc fail"));
   object->object_id = id;
   if ((str = (char *)bunny_ini_get_field(ini, "object", "name", id)) == NULL)
-    return (NULL);
+    return (my_puterror_n("No \"name\" in object scope"));
   if ((object->name = my_strdup(str, ptr_list)) == NULL)
-    return (NULL);
+    return (my_puterror_n("Strdup fail"));
   if ((str = (char *)bunny_ini_get_field(ini, "object", "damage", id)) == NULL)
-    return (NULL);
+    return (my_puterror_n("No \"damage\" found in object scope"));
   object->damage = my_getnbr(str);
   object->next = NULL;
   object->prev = NULL;
@@ -61,13 +70,13 @@ t_object		*load_object(t_bunny_ini *ini, t_ptr_list **ptr_list)
 
   i = 0;
   if ((str = (char *)bunny_ini_get_field(ini, "count", "object_count", 0)) == NULL)
-    return (NULL);
+    return (my_puterror_n("No \"object_count\" in count scope"));
   nb_object = my_getnbr(str);
   list = NULL;
   while (i != nb_object)
     {
       if ((list = list_add_object(list, i, ini, ptr_list)) == NULL)
-	return (NULL);
+	return (my_puterror_n("Can't add object"));
       i++;
     }
   return (list);

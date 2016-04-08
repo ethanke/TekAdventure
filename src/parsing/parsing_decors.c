@@ -5,10 +5,19 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Fri Apr  8 06:57:55 2016 Philippe Lefevre
+** Last update Fri Apr  8 06:59:11 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
+
+static t_player		*my_puterror_n(char *str)
+{
+  t_player 	*tmp;
+
+  tmp = NULL;
+  write(2, str, my_strlen(str));
+  return (tmp);
+}
 
 int 			fill_loot_table(char *str, unsigned int tab[2])
 {

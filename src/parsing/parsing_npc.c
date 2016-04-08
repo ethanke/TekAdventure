@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr  8 02:30:51 2016 Ethan Kerdelhue
-** Last update Fri Apr  8 06:57:43 2016 Ethan Kerdelhue
+** Last update Fri Apr  8 07:08:41 2016 Ethan Kerdelhue
 */
 
 #include	"main.h"
@@ -65,9 +65,9 @@ t_trade		*get_trade(char *str, t_ptr_list **ptr_list)
 
 t_npc		*create_npc_node(int id,
 				 t_bunny_ini *ini,
-				 t_npc	*npc,
 				 t_ptr_list **ptr_list)
 {
+  t_npc		*npc;
   char		*str;
 
   if ((npc = xmalloc(sizeof(t_npc), ptr_list)) == NULL)
@@ -96,12 +96,12 @@ t_npc		*list_add_npc(t_npc *list, int id,
   t_npc		*new;
   t_npc		*tmp;
 
-  if ((create_npc_node(id, ini, new, ptr_list)) == NULL)
+  if ((create_npc_node(id, ini, ptr_list)) == NULL)
     return (NULL);
   if (list == NULL)
     return (new);
   tmp = list;
-  while (tmp->next != NULL)
+  while (tmp != NULL)
     tmp = tmp->next;
   new->prev = tmp;
   new->next = NULL;
