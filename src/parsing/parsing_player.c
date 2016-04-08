@@ -5,10 +5,19 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr  8 00:59:55 2016 Ethan Kerdelhue
-** Last update Fri Apr  8 04:33:24 2016 Ethan Kerdelhue
+** Last update Fri Apr  8 06:54:11 2016 Ethan Kerdelhue
 */
 
 #include	"main.h"
+
+static t_player	*my_puterror_n(char *str)
+{
+  t_player 	*tmp;
+
+  tmp = NULL;
+  write(2, str, my_strlen(str));
+  return (tmp);
+}
 
 int		get_item_id(char *str, int *id, int *amount)
 {
@@ -34,15 +43,16 @@ t_player	*load_player(t_bunny_ini *ini, t_ptr_list **ptr_list)
 
   i = -1;
   player = NULL;
-  player = xmalloc(sizeof(t_player), ptr_list);
+  if ((player = xmalloc(sizeof(t_player), ptr_list)) == NULL)
+    return (my_puterror_n("Malloc fail"));
   if ((tmp = (char *)bunny_ini_get_field(ini, "player", "life", 0)) == NULL)
-      return (NULL);
+      return (my_puterror_n("No field life in player scope"));
   player->life = my_getnbr(tmp);
   if ((tmp = (char *)bunny_ini_get_field(ini, "player", "token", 0)) == NULL)
-      return (NULL);
+      return (my_puterror_n("No field token in player scope"));
   player->token = my_getnbr(tmp);
   if ((tmp = (char *)bunny_ini_get_field(ini, "player", "name", 0)) == NULL)
-      return (NULL);
+      return (my_puterror_n("No field name in player scope"));
   player->name = tmp;
   player->inventory = xmalloc(sizeof(t_item) * SIZE_INVENTORY + 1, ptr_list);
   while (++i != SIZE_INVENTORY)

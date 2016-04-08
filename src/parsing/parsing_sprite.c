@@ -5,10 +5,19 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Thu Apr  7 00:39:08 2016 Ethan Kerdelhue
-** Last update Fri Apr  8 00:47:58 2016 Ethan Kerdelhue
+** Last update Fri Apr  8 06:52:33 2016 Ethan Kerdelhue
 */
 
 #include 	"main.h"
+
+static t_sprite	*my_puterror_n(char *str)
+{
+  t_sprite	*tmp;
+
+  tmp = NULL;
+  write(2, str, my_strlen(str));
+  return (tmp);
+}
 
 t_sprite		*create_sprite_node(int id,
 					    t_bunny_ini *ini,
@@ -18,11 +27,11 @@ t_sprite		*create_sprite_node(int id,
   char			*str;
 
   if ((sprite = xmalloc(sizeof(t_sprite), ptr_list)) == NULL)
-    return (NULL);
+    return (my_puterror_n("Malloc fail"));
   if ((str = (char *)bunny_ini_get_field(ini, "sprite", "path", id)) == NULL)
-    return (NULL);
+    return (my_puterror_n("No field path in sprite scope"));
   if ((sprite->path = my_strdup(str, ptr_list)) == NULL)
-    return (NULL);
+    return (my_puterror_n("Strdup fail"));
   sprite->id = id;
   sprite->next = NULL;
   sprite->prev = NULL;
@@ -60,10 +69,7 @@ t_sprite		*load_sprite(t_bunny_ini *ini, t_ptr_list **ptr_list)
   nb_sprite =
       my_getnbr((char *)bunny_ini_get_field(ini, "count", "sprite_count", 0));
   if (nb_sprite == 0)
-    {
-      my_puterror("Error : nb_sprite is null");
-      return (NULL);
-    }
+    return (my_puterror("Error : sprite_count is null"));
   while (i != nb_sprite)
     {
       list = list_add_sprite(list, i, ini, ptr_list);
