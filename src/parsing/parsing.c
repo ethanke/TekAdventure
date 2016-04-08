@@ -5,11 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:08:59 2016 Philippe Lefevre
-<<<<<<< HEAD
-** Last update Fri Apr  8 02:36:39 2016 Philippe Lefevre
-=======
-** Last update Fri Apr  8 02:00:21 2016 Ethan Kerdelhue
->>>>>>> 89e0bab1d782284a1af42477a1499fb336f21ee5
+** Last update Fri Apr  8 02:46:25 2016 Philippe Lefevre
 */
 
 #include		"parsing.h"
