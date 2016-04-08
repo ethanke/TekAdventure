@@ -15,11 +15,11 @@ int			init_prog(t_prog *prog)
   prog->blit_pos.x = 0;
   prog->blit_pos.y = 0;
   prog->ptr_list = NULL;
-  prog->player.inventory_open = 0;
-  if ((prog->player.inv_open_sprite =
+  prog->player->inventory_open = 0;
+  if ((prog->player->inv_open_sprite =
        load_image("ressources/sprites/inventory_full.png", &prog->ptr_list)) == NULL)
     return (ERROR);
-  if ((prog->player.hotbar_sprite =
+  if ((prog->player->hotbar_sprite =
        load_image("ressources/sprites/hotbar.png", &prog->ptr_list)) == NULL)
     return (ERROR);
   return (SUCCESS);
@@ -45,6 +45,9 @@ int			main(int ac, char **av, char **env)
     return (ERROR);
   prog.pix = prog.pix0;
   prog.pix_id = 0;
+  
+  prog.player = load_player(bunny_load_ini(av[1]), &prog.ptr_list);
+  
   if (init_prog(&prog) == ERROR)
     return (clean(&prog, ERROR));
   if (parsing(av[1], &prog.ptr_list))

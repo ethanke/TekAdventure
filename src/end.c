@@ -12,7 +12,9 @@
 
 int			clean(t_prog *prog, int out)
 {
-  bunny_delete_clipable(&prog->pix->clipable);
+  bunny_delete_clipable(&prog->pix0->clipable);
+  bunny_delete_clipable(&prog->pix1->clipable);
+  bunny_delete_clipable(&prog->pix2->clipable);
   bunny_stop(prog->win);
   free_ptr(prog->ptr_list);
   return (out);

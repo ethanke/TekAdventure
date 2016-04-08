@@ -28,7 +28,7 @@ typedef	struct		s_prog
   
   t_texture		*lion_img;
   
-  t_player		player;
+  t_player		*player;
 }			t_prog;
 
 #endif			/* !PROG_H_ */

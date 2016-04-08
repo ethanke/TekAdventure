@@ -21,10 +21,10 @@ t_bunny_response	event_key(t_bunny_event_state state,
     return (EXIT_ON_SUCCESS);
   if (key == BKS_E && state == GO_DOWN)
     {
-      if (prog->player.inventory_open == 0)
-	prog->player.inventory_open = 1;
+      if (prog->player->inventory_open == 0)
+	prog->player->inventory_open = 1;
       else
-	prog->player.inventory_open = 0;
+	prog->player->inventory_open = 0;
     }
   return (GO_ON);
 }

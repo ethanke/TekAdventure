@@ -29,7 +29,6 @@ void                    swap_pix(t_prog *prog)
     }
 }
 
-
 t_bunny_response	mainloop(void *p)
 {
   t_prog			*prog;
@@ -43,8 +42,8 @@ t_bunny_response	mainloop(void *p)
                                 prog->lion_img->height, prog->ptr_list),
 	      prog->lion_img, prog->pix);
   i = -1;
-  while (++i < 36)
-    printf("case: %d \tid: %d\tamount: %d\n", i, prog->player.inventory[i].id, prog->player.inventory[i].amount);
+  while (prog->player->inventory[++i].id != -1 && i < 36)
+    printf("case: %d \tid: %d\tamount: %d\n", i, prog->player->inventory[i].id, prog->player->inventory[i].amount);
   exit(1);
   
   disp_inventory(prog);
