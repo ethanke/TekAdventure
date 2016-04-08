@@ -5,12 +5,13 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Thu Apr  7 01:18:01 2016 Ethan Kerdelhue
-** Last update Thu Apr  7 21:49:19 2016 Philippe Lefevre
+** Last update Fri Apr  8 06:49:41 2016 Ethan Kerdelhue
 */
 
 #include 	"main.h"
 
 int		my_puterror(char *str)
 {
-  return (write(2, str, my_strlen(str)));
+  write(2, str, my_strlen(str));
+  return (0);
 }

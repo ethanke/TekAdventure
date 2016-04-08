@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:08:59 2016 Philippe Lefevre
-** Last update Fri Apr  8 05:43:15 2016 Philippe Lefevre
+** Last update Fri Apr  8 07:33:26 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -41,5 +41,6 @@ t_scene			*parsing(const char *file, t_player **player,
   scene->npc = npc;
   scene->object = object;
   scene->decors = decors;
+  scene->sprite = sprite;
   return (scene);
 }

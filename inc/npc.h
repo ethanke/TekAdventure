@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:24:51 2016 Ethan Kerdelhue
-** Last update Fri Apr  8 03:18:05 2016 Ethan Kerdelhue
+** Last update Fri Apr  8 06:14:46 2016 Ethan Kerdelhue
 */
 
 #ifndef 		NPC_H_
@@ -25,6 +25,7 @@ typedef struct		s_trade
 
 typedef struct 		s_npc
 {
+  int			error;
   int			id;
   char 			*name;
   char			*text;
