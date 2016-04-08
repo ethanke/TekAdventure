@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Fri Apr  8 04:51:26 2016 Gaëtan Léandre
-** Last update Fri Apr  8 06:35:14 2016 Gaëtan Léandre
+** Last update Fri Apr  8 23:28:08 2016 Gaëtan Léandre
 */
 
 #ifndef			_A_STAR_H_
@@ -56,11 +56,13 @@ int			calculDistance(int xA, int xB, int yA, int yB);
 int			calcul_indice(t_star *star, int x, int y);
 void			set_coef(t_star *star, int x, int y);
 void			add_proc(t_star *star, int x, int y);
-void			caseProche(t_star *star);
+int			caseProche(t_star *star);
 t_ind			take_way(t_star *star, int x, int y);
 int			best_way(t_star *star);
 t_depla			*free_star(t_star *star);
-t_depla			*a_star(char **obj, t_posi size,
-				t_posi pos, t_posi end);
+int			init_star(t_star *star, t_posi *size,
+				  t_posi *pos, t_posi *end);
+t_depla			*a_star(char **obj, t_posi *size,
+				t_posi *pos, t_posi *end);
 
 #endif		/*_A_STAR_H_*/

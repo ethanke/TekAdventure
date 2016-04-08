@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Fri Apr  8 06:27:49 2016 Gaëtan Léandre
-** Last update Fri Apr  8 06:28:20 2016 Gaëtan Léandre
+** Last update Fri Apr  8 23:06:26 2016 Gaëtan Léandre
 */
 
 #include	"astar.h"
@@ -36,7 +36,7 @@ void		add_proc(t_star *star, int x, int y)
     }
 }
 
-void		caseProche(t_star *star)
+int		caseProche(t_star *star)
 {
   int		i;
   int		j;
@@ -61,6 +61,6 @@ void		caseProche(t_star *star)
       i++;
     }
   star->open_list[star->cur_x][star->cur_y] = -1;
-  star->ind_list[star->cur_x][star->cur_y]
-  = calcul_indice(star, star->cur_x, star->cur_y) + 1;
+  return (distance == -1 ? -1 : (star->ind_list[star->cur_x][star->cur_y]
+  = calcul_indice(star, star->cur_x, star->cur_y) + 1));
 }

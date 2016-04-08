@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Fri Apr  8 06:25:15 2016 Gaëtan Léandre
-** Last update Fri Apr  8 06:25:47 2016 Gaëtan Léandre
+** Last update Fri Apr  8 23:27:34 2016 Gaëtan Léandre
 */
 
 #include	"astar.h"
@@ -56,4 +56,22 @@ void	 	case_is_free(char **obj, t_star *star)
 	}
       i++;
     }
+}
+
+int		init_star(t_star *star, t_posi *size, t_posi *pos, t_posi *end)
+{
+  star->x = size->x;
+  star->y = size->y;
+  if (size->x < 1 || size->y < 1)
+    return (-1);
+  star->cur_x = pos->x;
+  star->cur_y = pos->y;
+  if (pos->x < 0 || pos->y < 0 || pos->x >= size->x || pos->y >= size->y)
+    return (-1);
+  star->end_x = end->x;
+  star->end_y = end->y;
+  if (end->x < 0 || end->y < 0 || end->x >= size->x || end->y >= size->y)
+    return (-1);
+  star->depla = NULL;
+  return (0);
 }
