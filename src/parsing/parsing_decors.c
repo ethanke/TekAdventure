@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Fri Apr  8 06:55:41 2016 Philippe Lefevre
+** Last update Fri Apr  8 06:57:01 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -61,13 +61,13 @@ t_hitbox		*create_decors_hitbox(int id, t_bunny_ini *ini,
   if ((str = (char *)bunny_ini_get_field(ini, "object", "sprite_hitbox", id)) == NULL)
     return (NULL);
   i = -1;
-  hitbox.x = my_getnbr(str);
+  hitbox->x = my_getnbr(str);
   while (str[++i] && str[i] != ';');
-  hitbox.y = my_getnbr(str + i + 1);
+  hitbox->y = my_getnbr(str + i + 1);
   while (str[++i] && str[i] != ';');
-  hitbox.width = my_getnbr(str + i + 1);
+  hitbox->width = my_getnbr(str + i + 1);
   while (str[++i] && str[i] != ';');
-  hitbox.height = my_getnbr(str + i + 1);
+  hitbox->height = my_getnbr(str + i + 1);
   return (hitbox);
 }
 
