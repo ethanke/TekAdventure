@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Fri Apr  8 06:57:01 2016 Philippe Lefevre
+** Last update Fri Apr  8 06:57:55 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -76,7 +76,6 @@ t_decors		*create_decors_node(int id,
 					    t_ptr_list **ptr_list)
 {
   t_decors		*decors;
-  t_hitbox		decors_hitbox;
   char			*str;
 
   if ((decors = xmalloc(sizeof(*decors), ptr_list)) == NULL)
