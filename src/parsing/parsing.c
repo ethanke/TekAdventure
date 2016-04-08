@@ -19,44 +19,8 @@
 int			parsing(const char *file, t_ptr_list **ptr_list)
 {
   t_bunny_ini		*ini;
-<<<<<<< HEAD
-  t_decors		*objet;
-  t_decors		*tmp;
-=======
-  t_object		*objet;
-  t_object		*tmp;
-  t_sprite		*sprite;
-  t_sprite		*tmp2;
-  t_player		*player;
-  int			i;
->>>>>>> 89e0bab1d782284a1af42477a1499fb336f21ee5
 
   ini = bunny_load_ini(file);
-  if ((objet = load_decors(ini, ptr_list)) == NULL)
-    return (-1);
-  printf("(Je suis la)\n");
-  tmp = objet;
-  while (tmp != NULL)
-    {
-      printf("breakable (%d) - breakable_by (%d)\n", tmp->decors_breakable->is_breakable, tmp->decors_breakable->breakable_by);
-      tmp = tmp->next;
-    }
-  if ((sprite = load_sprite(ini, ptr_list)) == NULL)
-    return (-1);
-  tmp2 = sprite;
-  i = 0;
-  while (tmp2 != NULL)
-    {
-      printf("path (%s) - id (%d) - id (%d)\n", tmp2->path, tmp2->id, i++);
-      tmp2 = tmp2->next;
-    }
-  player = load_player(ini, ptr_list);
-  printf("name (%s) - life (%d) - token (%d)", player->name, player->life, player->token);
-  i = 0;
-  while (i != SIZE_INVENTORY)
-    {
-      printf("object id (%d) - amound (%d)", player->inventory[i].id, player->inventory[i].amount);
-      i++;
-    }
+  (void)ini;
   return (0);
 }
