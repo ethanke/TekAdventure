@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr  8 00:59:55 2016 Ethan Kerdelhue
-** Last update Fri Apr  8 04:26:42 2016 Ethan Kerdelhue
+** Last update Fri Apr  8 04:33:24 2016 Ethan Kerdelhue
 */
 
 #include	"main.h"
@@ -33,6 +33,7 @@ t_player	*load_player(t_bunny_ini *ini, t_ptr_list **ptr_list)
   char		*tmp;
 
   i = -1;
+  player = NULL;
   player = xmalloc(sizeof(t_player), ptr_list);
   if ((tmp = (char *)bunny_ini_get_field(ini, "player", "life", 0)) == NULL)
       return (NULL);

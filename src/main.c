@@ -5,16 +5,17 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Thu Apr  7 23:43:59 2016 Philippe Lefevre
+** Last update Fri Apr  8 04:43:51 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
 
-int			init_prog(t_prog *prog)
+int			init_prog(t_prog *prog, char *str)
 {
   prog->blit_pos.x = 0;
   prog->blit_pos.y = 0;
   prog->ptr_list = NULL;
+  prog->player = load_player(bunny_load_ini(str), &prog->ptr_list);
   prog->player->inventory_open = 0;
   if ((prog->player->inv_open_sprite =
        load_image("ressources/sprites/inventory_full.png", &prog->ptr_list)) == NULL)
@@ -45,10 +46,8 @@ int			main(int ac, char **av, char **env)
     return (ERROR);
   prog.pix = prog.pix0;
   prog.pix_id = 0;
-  
-  prog.player = load_player(bunny_load_ini(av[1]), &prog.ptr_list);
-  
-  if (init_prog(&prog) == ERROR)
+
+  if (init_prog(&prog, av[1]) == ERROR)
     return (clean(&prog, ERROR));
   if (parsing(av[1], &prog.ptr_list))
     return (ERROR);
