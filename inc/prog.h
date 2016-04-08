@@ -25,11 +25,10 @@ typedef	struct		s_prog
   t_bunny_pixelarray	*pix2;
   t_ptr_list		*ptr_list;
   t_bunny_position	blit_pos;
-
+  
   t_texture		*lion_img;
-
+  
   t_player		player;
-  int			inv[36][2];
 }			t_prog;
 
 #endif			/* !PROG_H_ */
