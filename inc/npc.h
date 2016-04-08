@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:24:51 2016 Ethan Kerdelhue
-** Last update Thu Apr  7 00:37:11 2016 Philippe Lefevre
+** Last update Fri Apr  8 02:43:41 2016 Ethan Kerdelhue
 */
 
 #ifndef 		NPC_H_
@@ -16,11 +16,14 @@ typedef struct		s_trade
 {
   unsigned int		item_player_id;
   unsigned int		item_npc_id;
-  int			amount;
+  t_object		item_player;
+  t_object		item_npc;
+  int			amount[2];
 }
 
 typedef struct 		s_npc
 {
+  int			id;
   char 			*name;
   char			*text;
   t_trade		*trade;
