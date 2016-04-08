@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Thu Apr  7 23:41:13 2016 Philippe Lefevre
+** Last update Thu Apr  7 23:58:06 2016 Philippe Lefevre
 */
 
 #include		"parsing.h"
@@ -20,6 +20,7 @@ t_object		*create_object_node(int id,
 
   if ((object = xmalloc(sizeof(t_object), ptr_list)) == NULL)
     return (NULL);
+  object->object_id = id;
   if ((str = (char *)bunny_ini_get_field(ini, "object", "name", id)) == NULL)
     return (NULL);
   if ((object->name = my_strdup(str, ptr_list)) == NULL)
@@ -27,10 +28,8 @@ t_object		*create_object_node(int id,
   if ((str = (char *)bunny_ini_get_field(ini, "object", "damage", id)) == NULL)
     return (NULL);
   object->damage = my_getnbr(str);
-  /* free(str); */
   object->next = NULL;
   object->prev = NULL;
-  /* printf("name (%s) - damage (%d) - id (%d)\n", object->name, object->damage, id); */
   return (object);
 }
 

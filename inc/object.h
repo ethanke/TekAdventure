@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:35:23 2016 Ethan Kerdelhue
-** Last update Thu Apr  7 22:37:03 2016 Philippe Lefevre
+** Last update Thu Apr  7 23:55:37 2016 Philippe Lefevre
 */
 
 #ifndef 		OBJECT_H_
@@ -15,8 +15,9 @@
 
 typedef struct 		s_object
 {
+  unsigned int		object_id;
   char			*name;
-  int			damage;
+  unsigned int		damage;
   t_texture		*texture;
   t_hitbox		*texture_hitbox;
   struct s_object	*prev;
