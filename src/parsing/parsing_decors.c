@@ -5,14 +5,32 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Fri Apr  8 07:28:10 2016 Philippe Lefevre
+** Last update Sat Apr  9 00:23:58 2016 Philippe Lefevre
 */
 
 #include		"main.h"
 
-static t_player		*my_puterror_n(char *str)
+static t_player		*my_puterror_p(char *str)
 {
   t_player 	*tmp;
+
+  tmp = NULL;
+  write(2, str, my_strlen(str));
+  return (tmp);
+}
+
+static t_breakable	*my_puterror_b(char *str)
+{
+  t_breakable 	*tmp;
+
+  tmp = NULL;
+  write(2, str, my_strlen(str));
+  return (tmp);
+}
+
+static t_decors		*my_puterror_d(char *str)
+{
+  t_decors 	*tmp;
 
   tmp = NULL;
   write(2, str, my_strlen(str));
@@ -37,23 +55,23 @@ t_breakable		*create_decors_breakable(int id, t_bunny_ini *ini,
   char			*str;
 
   if ((breakable = xmalloc(sizeof(*breakable), ptr_list)) == NULL)
-    return (NULL);
+    return (my_puterror_b("Error: Malloc failed parsing_decors.c:40\n"));
   if ((str = (char *)bunny_ini_get_field(ini, "decors", "breakable", id)) == NULL)
-    return (NULL);
+    return (my_puterror_b("Error: field decors or decors:breakable not set\n"));
   breakable->is_breakable = my_getnbr(str);
   if ((breakable->is_breakable != 0) && (breakable->is_breakable != 1))
-    return (NULL);
+    return (my_puterror_b("Error: decors breakable must be 0 or 1\n"));
   if ((str = (char *)bunny_ini_get_field(ini, "decors", "breakable_life", id)) == NULL)
-    return (NULL);
+    return (my_puterror_b("Error: field decors or decors:breakable_life not set\n"));
   breakable->life = my_getnbr(str);
   if ((str = (char *)bunny_ini_get_field(ini, "decors", "breakable_by", id)) == NULL)
-    return (NULL);
+    return (my_puterror_b("Error: field decors or decors:breakable_by not set\n"));
   breakable->breakable_by = my_getnbr(str);
   if ((str = (char *)bunny_ini_get_field(ini, "decors", "lootable", id)) == NULL)
-    return (NULL);
+    return (my_puterror_b("Error: field decors or decors:lootable not set\n"));
   breakable->lootable = my_getnbr(str);
   if ((str = (char *)bunny_ini_get_field(ini, "decors", "loot", id)) == NULL)
-    return (NULL);
+    return (my_puterror_b("Error: field decors or decors:loot not set\n"));
   fill_loot_table(str, breakable->loot);
   return (breakable);
 }
@@ -68,7 +86,10 @@ t_hitbox		*create_decors_hitbox(int id, t_bunny_ini *ini,
   if ((hitbox = xmalloc(sizeof(*hitbox), ptr_list)) == NULL)
     return (NULL);
   if ((str = (char *)bunny_ini_get_field(ini, "decors", "sprite_hitbox", id)) == NULL)
-    return (NULL);
+    {
+      my_puterror_p("Error: field decors or decors:sprite_hitbox not set\n");
+      return (NULL);
+    }
   i = -1;
   hitbox->x = my_getnbr(str);
   while (str[++i] && str[i] != ';');
@@ -88,10 +109,10 @@ t_decors		*create_decors_node(int id,
   char			*str;
 
   if ((decors = xmalloc(sizeof(*decors), ptr_list)) == NULL)
-    return (NULL);
+    return (my_puterror_d("Error: field decors or decors:breakable not set\n"));
   decors->decors_id = id;
   if ((str = (char *)bunny_ini_get_field(ini, "decors", "name", id)) == NULL)
-    return (NULL);
+    return (my_puterror_d("Error: field decors or decors:name not set\n"));
   if ((decors->name = my_strdup(str, ptr_list)) == NULL)
     return (NULL);
   if ((decors->decors_breakable =

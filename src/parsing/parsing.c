@@ -5,42 +5,40 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:08:59 2016 Philippe Lefevre
-** Last update Fri Apr  8 07:33:26 2016 Philippe Lefevre
+** Last update Sat Apr  9 00:48:06 2016 Philippe Lefevre
 */
 
 #include		"main.h"
 
+static	t_scene		*my_puterror_s(char *str)
+{
+  t_scene		*ret;
+
+  write(2, str, my_strlen(str));
+  ret = NULL;
+  return (ret);
+}
 t_scene			*parsing(const char *file, t_player **player,
 				 t_ptr_list **ptr_list)
 {
   t_bunny_ini		*ini;
-  t_object		*object;
-  t_sprite		*sprite;
-  t_decors		*decors;
-  t_npc			*npc;
   t_scene		*scene;
+  t_scene		*stockage;
 
   ini = bunny_load_ini(file);
+  if ((stockage = xmalloc(sizeof(*stockage), ptr_list)) == NULL)
+    return (my_puterror_s("Error: xmalloc parsing.c:43\n"));
   if (((*player) = load_player(ini, ptr_list)) == NULL)
     return (NULL);
-
-  if ((object = load_object(ini, ptr_list)) == NULL)
+  if ((stockage->object = load_object(ini, ptr_list)) == NULL)
     return (NULL);
-  if ((sprite = load_sprite(ini, ptr_list)) == NULL)
+  if ((stockage->sprite = load_sprite(ini, ptr_list)) == NULL)
     return (NULL);
-  if ((decors = load_decors(ini, ptr_list)) == NULL)
+  if ((stockage->decors = load_decors(ini, ptr_list)) == NULL)
     return (NULL);
-  if ((npc = load_npc(ini, ptr_list)) == NULL)
+  if ((stockage->npc = load_npc(ini, ptr_list)) == NULL)
     return (NULL);
-
-  /*
-  if ((scene = load_scene(ini, ptr_list)) == NULL)
+  if ((scene = load_scene(ini, stockage, ptr_list)) == NULL)
     return (NULL);
-  */
-  scene = xmalloc(sizeof(*scene), ptr_list);
-  scene->npc = npc;
-  scene->object = object;
-  scene->decors = decors;
-  scene->sprite = sprite;
   return (scene);
 }

@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr  8 02:30:51 2016 Ethan Kerdelhue
-** Last update Fri Apr  8 07:31:14 2016 Philippe Lefevre
+** Last update Sat Apr  9 00:33:29 2016 Philippe Lefevre
 */
 
 #include	"main.h"
@@ -119,7 +119,7 @@ t_npc		*list_add_npc(t_npc *list, int id,
   t_npc		*new;
   t_npc		*tmp;
 
-  if ((create_npc_node(id, ini, ptr_list)) == NULL)
+  if ((new = create_npc_node(id, ini, ptr_list)) == NULL)
     return (NULL);
   if (list == NULL)
     return (new);
@@ -135,19 +135,20 @@ t_npc		*list_add_npc(t_npc *list, int id,
 t_npc		*load_npc(t_bunny_ini *ini, t_ptr_list **ptr_list)
 {
   t_npc		*list;
+  char		*str;
   int		nb_npc;
   int		i;
 
   i = 0;
   list = NULL;
-  nb_npc =
-      my_getnbr((char *)bunny_ini_get_field(ini, "count", "npc_count", 0));
-  if (nb_npc == 0)
-    return (my_puterror_n("npc_count is null, no npc loaded"));
+  if ((str = (char *)bunny_ini_get_field(ini, "count", "npc_count", 0)) == NULL)
+    return (my_puterror_n("Error: count field or count:npc_count not set\n"));
+  if ((nb_npc = my_getnbr(str)) == 0)
+    return (my_puterror_n("npc_count is null, no npc loaded\n"));
   while (i != nb_npc)
     {
       if ((list = list_add_npc(list, i, ini, ptr_list)) == NULL)
-	  return (my_puterror_n("\nCan't add NPC"));
+	  return (NULL);
       i++;
     }
   return (list);
