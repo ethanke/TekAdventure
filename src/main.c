@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Fri Apr  8 04:43:51 2016 Ethan Kerdelhue
+** Last update Fri Apr  8 05:44:09 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -29,6 +29,7 @@ int			init_prog(t_prog *prog, char *str)
 int			main(int ac, char **av, char **env)
 {
   t_prog		prog;
+  t_scene		*scene;
 
   if (ac != 2)
     return (my_puterror("Error: Use ")
@@ -49,7 +50,7 @@ int			main(int ac, char **av, char **env)
 
   if (init_prog(&prog, av[1]) == ERROR)
     return (clean(&prog, ERROR));
-  if (parsing(av[1], &prog.ptr_list))
+  if ((scene = parsing(av[1], &prog.player, &prog.ptr_list)) == NULL)
     return (ERROR);
   if ((prog.lion_img = load_image("ressources/sprites/lion.jpg", &prog.ptr_list)) == NULL)
     return (ERROR);

@@ -5,11 +5,10 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Fri Apr  8 02:36:16 2016 Philippe Lefevre
+** Last update Fri Apr  8 05:09:50 2016 Philippe Lefevre
 */
 
-#include		"parsing.h"
-#include		"decors.h"
+#include		"main.h"
 
 int 			fill_loot_table(char *str, unsigned int tab[2])
 {

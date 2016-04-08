@@ -5,7 +5,7 @@
 ## Login   <lefevr_h@epitech.net>
 ##
 ## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
-## Last update Thu Apr  7 21:15:02 2016 Kerdelhue Ethan
+## Last update Fri Apr  8 05:26:40 2016 Philippe Lefevre
 ##
 
 NAME		=	tekadventure
@@ -52,6 +52,7 @@ SRC		+=	$(PARSDIR)/parsing.c			\
 			$(PARSDIR)/parsing_decors.c		\
 			$(PARSDIR)/parsing_sprite.c		\
 			$(PARSDIR)/parsing_player.c		\
+			$(PARSDIR)/parsing_scene.c		\
 			$(PARSDIR)/parsing_npc.c		\
 
 SRC		+=	$(DISPDIR)/disp_inventory.c		\

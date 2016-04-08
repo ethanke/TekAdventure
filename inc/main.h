@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 20:02:40 2016 Philippe Lefevre
-** Last update Fri Apr  8 03:17:45 2016 Ethan Kerdelhue
+** Last update Fri Apr  8 05:34:00 2016 Philippe Lefevre
 */
 
 #ifndef			MAIN_H_
@@ -18,12 +18,14 @@
 # include		"image.h"
 # include		"back.h"
 # include		"object.h"
+# include		"decors.h"
 # include		"sprite.h"
 # include		"player.h"
+# include		"npc.h"
 # include		"prog.h"
 # include		"disp.h"
-# include		"npc.h"
 # include		"parsing.h"
+# include		"scene.h"
 
 # ifndef		WIN_SETTING
 #  define		WIN_SETTING
@@ -31,6 +33,7 @@
 #  define		WIN_HEIGHT	768
 #  define		WIN_WIDTH	1024
 # endif			/* !WIN_SETTING */
+
 
 t_bunny_response	mainloop(void *p);
 t_bunny_response	event_key(t_bunny_event_state state,
