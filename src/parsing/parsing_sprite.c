@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Thu Apr  7 00:39:08 2016 Ethan Kerdelhue
-** Last update Fri Apr  8 06:52:33 2016 Ethan Kerdelhue
+** Last update Fri Apr  8 07:25:54 2016 Ethan Kerdelhue
 */
 
 #include 	"main.h"
@@ -32,6 +32,8 @@ t_sprite		*create_sprite_node(int id,
     return (my_puterror_n("No field path in sprite scope"));
   if ((sprite->path = my_strdup(str, ptr_list)) == NULL)
     return (my_puterror_n("Strdup fail"));
+  if ((sprite->sprite = load_image(str, ptr_list)) == NULL)
+    return (my_puterror_n("load image fail"));
   sprite->id = id;
   sprite->next = NULL;
   sprite->prev = NULL;
