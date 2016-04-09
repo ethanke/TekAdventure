@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 14:34:08 2016 Victor Sousa
-** Last update Sat Apr  9 15:31:40 2016 Victor Sousa
+** Last update Sat Apr  9 18:52:23 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -29,7 +29,7 @@ void			disp_selected_hotbar_inv_item(t_prog *prog)
 {
   t_bunny_position	pos;
 
-  if (prog->player->inv_selected == -1)
+  if (prog->player->inv_selected == -1 || prog->player->inv_selected > 11)
     return;
   pos.x = WIN_WIDTH / 2 - (prog->player->hotbar_sprite->width / 2) / 4 + 10;
   pos.y = WIN_HEIGHT - prog->player->hotbar_sprite->height / 4 + 10;
@@ -50,13 +50,6 @@ void			disp_selected_full_inv_item(t_prog *prog)
 	  + 10;
       pos.x += 40.45 * (prog->player->inv_selected % 12);
       pos.y += 36 * (prog->player->inv_selected / 12 - 1);
-      draw_selected(prog, create_hitbox_ptr(pos, 36, 30, prog->ptr_list));
-    }
-  else
-    {
-      pos.y = WIN_HEIGHT / 2 - (prog->player->inv_open_sprite->height / 2) / 4
-	  + 122;
-      pos.x += 40.45 * prog->player->inv_selected;
       draw_selected(prog, create_hitbox_ptr(pos, 36, 30, prog->ptr_list));
     }
 }

@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:47:01 2016 Victor Sousa
-** Last update Sat Apr  9 14:01:59 2016 Victor Sousa
+** Last update Sat Apr  9 18:50:53 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -76,6 +76,6 @@ int			get_click_place_inventory(t_prog *prog,
   x = find_x_place_inv(prog, click_pos);
   y = find_y_place_inv(prog, click_pos);
   if (x != -1 && y != -1)
-    return (x + (y % 4) * 12);
+    return (x + (y % 3) * 12);
   return (-1);
 }
