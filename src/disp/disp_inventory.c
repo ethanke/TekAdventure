@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Thu Apr  7 02:58:27 2016 victor sousa
-** Last update Sat Apr  9 18:36:00 2016 Victor Sousa
+** Last update Sat Apr  9 22:13:45 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -49,6 +49,27 @@ static void		disp_top_big_inventory(t_prog *prog,
     }
 }
 
+static void		disp_floating_item(t_prog *prog)
+{
+  t_bunny_position	pos;
+  t_bunny_position	*click_pos;
+
+  click_pos = (t_bunny_position *)bunny_get_mouse_position();
+  if (prog->player->inv_selected != -1)
+    {
+      pos.x = click_pos->x - prog->player->inventory
+        [(int)prog->player->inv_selected].object->texture_hitbox->width / 2;
+      pos.y = click_pos->y - prog->player->inventory
+        [(int)prog->player->inv_selected].object->texture_hitbox->height / 2;
+      place_image(create_hitbox_ptr(pos, 36, 30, prog->ptr_list),
+                prog->player->inventory
+                [(int)prog->player->inv_selected].object->texture_hitbox,
+                prog->player->inventory
+                [(int)prog->player->inv_selected].object->texture,
+                prog->pix);
+    }
+}
+
 void			disp_inventory(t_prog *prog)
 {
   t_bunny_position	pos;
@@ -62,4 +83,5 @@ void			disp_inventory(t_prog *prog)
       disp_selected_full_inv_item(prog);
     }
   disp_hotbar(prog);
+  disp_floating_item(prog);
 }
