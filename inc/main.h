@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 20:02:40 2016 Philippe Lefevre
-** Last update Fri Apr  8 05:34:00 2016 Philippe Lefevre
+** Last update Sat Apr  9 06:17:54 2016 Philippe Lefevre
 */
 
 #ifndef			MAIN_H_
@@ -16,7 +16,6 @@
 
 # include		"utils.h"
 # include		"image.h"
-# include		"back.h"
 # include		"object.h"
 # include		"decors.h"
 # include		"sprite.h"

@@ -5,11 +5,19 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Sat Apr  9 05:51:51 2016 Philippe Lefevre
+** Last update Sat Apr  9 07:12:52 2016 Philippe Lefevre
 */
 
 #include		"main.h"
 
+static t_scene		*my_puterror_s(char *str)
+{
+  t_scene		*ret;
+
+  write(2, str, my_strlen(str));
+  ret = NULL;
+  return (ret);
+}
 t_object		*link_object(t_object *object, t_sprite *sprite)
 {
   t_object		*tmp_object;
@@ -89,14 +97,58 @@ t_item			*link_inventory_item(t_item *inventory, t_object *object)
   return (inventory);
 }
 
+t_ground		*ground_fill(t_bunny_ini *ini, t_scene *scene)
+{
+  t_npc			*npc;
+  t_decors		*decors;
+  char			*str;
+  int			i;
+
+  i = -1;
+  while (++i != (scene->size.x * scene->size.y))
+    {
+      scene->ground[i].npc = NULL;
+      scene->ground[i].decors = NULL;
+    }
+  scene->ground[i].npc = NULL;
+  scene->ground[i].decors = NULL;
+  if ((str = (char *)bunny_ini_get_field(ini, "count", "scene_npc_count", 0)) == NULL)
+    return (NULL);
+  i = my_getnbr(str);
+  if ((str = (char *)bunny_ini_get_field(ini, "count", "scene_decors_count", 0)) == NULL)
+    return (NULL);
+  i = my_getnbr(str);
+  return (scene->ground);
+}
+
+t_scene			*link_ground(t_bunny_ini *ini, t_scene *scene,
+				    t_ptr_list **ptr_list)
+{
+  t_ground		*ground;
+  char			*str;
+
+  if ((str = (char *)bunny_ini_get_field(ini, "scene", "nb_x_case", 0)) == NULL)
+    return (my_puterror_s("Error: scene or scene:nb_x_case not set\n"));
+  scene->size.x = my_getnbr(str);
+  if ((str = (char *)bunny_ini_get_field(ini, "scene", "nb_y_case", 0)) == NULL)
+    return (my_puterror_s("Error: scene or scene:nb_y_case not set\n"));
+  scene->size.y = my_getnbr(str);
+  if ((ground = xmalloc((sizeof(*ground) * ((scene->size.x * scene->size.y) + 1)), ptr_list)) == NULL)
+    return (my_puterror_s("Error: Malloc failed ground.c:t_ground\n"));
+  ground = ground_fill(ini, scene);
+  scene->ground = ground;
+  return (scene);
+}
+
 t_scene			*load_scene(t_bunny_ini *ini, t_scene *scene,
 				    t_ptr_list **ptr_list)
 {
+  /* Penser gestion d'erreur id deja existant ou inexistant sur toute les list, sprite objet ... */
+  /* Penser verifé taille image, image 25cm, hibox 26cms */
   scene->object = link_object(scene->object, scene->sprite);
   scene->player->inventory = link_inventory_item(scene->player->inventory, scene->object);
   scene->decors = link_decors(scene->decors, scene->sprite);
   scene->npc = link_npc(scene->npc, scene->sprite);
-  (void)ini;
-  (void)ptr_list;
+  scene = link_ground(ini, scene, ptr_list);
   return (scene);
 }

@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr  8 00:59:55 2016 Ethan Kerdelhue
-** Last update Sat Apr  9 00:42:47 2016 Philippe Lefevre
+** Last update Sat Apr  9 07:08:42 2016 Philippe Lefevre
 */
 
 #include	"main.h"
@@ -60,8 +60,10 @@ t_player	*load_player(t_bunny_ini *ini, t_ptr_list **ptr_list)
       tmp = (char *)bunny_ini_get_field(ini, "player", "inventory", i);
       get_item_id(tmp, &player->inventory[i].id,
 		  &player->inventory[i].amount);
+      &player->inventory[i].selected = 0;
     }
   player->inventory[i].id = 0;
   player->inventory[i].amount = 0;
+  &player->inventory[i].selected = 0;
   return (player);
 }

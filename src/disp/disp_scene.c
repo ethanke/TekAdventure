@@ -5,11 +5,11 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 02:56:24 2016 Gaëtan Léandre
-** Last update Thu Apr  7 07:27:21 2016 Gaëtan Léandre
+** Last update Sat Apr  9 06:43:28 2016 Philippe Lefevre
 */
 
 #include		"main.h"
-
+/*
 void			disp_background(t_back *first, t_bunny_pixelarray *pix,
 					float percent)
 {
@@ -35,7 +35,7 @@ void			disp_background(t_back *first, t_bunny_pixelarray *pix,
     }
 }
 
-/*void			disp_ground(t_scene *scene,t_bunny_pixelarray *pix,
+void			disp_ground(t_scene *scene,t_bunny_pixelarray *pix,
 				    float percent)
 {
   t_hitbox		pos;
