@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Sat Apr  9 05:28:25 2016 Philippe Lefevre
+** Last update Sat Apr  9 05:43:54 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -52,7 +52,7 @@ t_object		*create_object_node(int id,
     return (my_puterror_n("Malloc fail\n"));
   if ((str = (char *)bunny_ini_get_field(ini, "object", "object_id", id)) == NULL)
     return (my_puterror_n("Error: object or object:object_id not set\n"));
-  object->object_id = my_strlen(str);
+  object->object_id = my_getnbr(str);
   if ((str = (char *)bunny_ini_get_field(ini, "object", "name", id)) == NULL)
     return (my_puterror_n("No \"name\" in object scope\n"));
   if ((object->name = my_strdup(str, ptr_list)) == NULL)

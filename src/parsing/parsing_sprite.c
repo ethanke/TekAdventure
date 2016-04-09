@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Thu Apr  7 00:39:08 2016 Ethan Kerdelhue
-** Last update Sat Apr  9 04:25:43 2016 Philippe Lefevre
+** Last update Sat Apr  9 05:41:46 2016 Philippe Lefevre
 */
 
 #include 		"main.h"
@@ -36,7 +36,7 @@ t_sprite		*create_sprite_node(int id,
     return (my_puterror_n("load image fail"));
   if ((str = (char *)bunny_ini_get_field(ini, "sprite", "sprite_id", id)) == NULL)
     return (my_puterror_n("No field sprite_id in sprite scope"));
-  sprite->id = my_strlen(str);
+  sprite->id = my_getnbr(str);
   sprite->next = NULL;
   sprite->prev = NULL;
   return (sprite);
