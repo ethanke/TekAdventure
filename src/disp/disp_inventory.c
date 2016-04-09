@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Thu Apr  7 02:58:27 2016 victor sousa
-** Last update Sat Apr  9 15:26:15 2016 Victor Sousa
+** Last update Sat Apr  9 15:38:07 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -35,12 +35,12 @@ static void		disp_top_big_inventory(t_prog *prog,
   i = 11;
   while (++i < 48)
     {
-      pos.x = (int)x;
       if (i % 12 == 0 && i != 12)
 	{
 	  x = _pos->x + 10;
 	  pos.y += 35;
 	}
+      pos.x = (int)x;
       if (prog->player->inventory[i].id != -1)
 	place_image(create_hitbox_ptr(pos, 36, 30, prog->ptr_list),
 		    prog->player->inventory[i].object->texture_hitbox,
