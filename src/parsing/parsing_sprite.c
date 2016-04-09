@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Thu Apr  7 00:39:08 2016 Ethan Kerdelhue
-** Last update Sat Apr  9 01:18:54 2016 Philippe Lefevre
+** Last update Sat Apr  9 02:08:26 2016 Philippe Lefevre
 */
 
 #include 		"main.h"
@@ -30,7 +30,6 @@ t_sprite		*create_sprite_node(int id,
     return (my_puterror_n("Error: Malloc fail"));
   if ((str = (char *)bunny_ini_get_field(ini, "sprite", "path", id)) == NULL)
     return (my_puterror_n("No field path in sprite scope"));
-  printf("%s\n", str);
   if ((sprite->path = my_strdup(str, ptr_list)) == NULL)
     return (my_puterror_n("Strdup fail"));
   if ((sprite->sprite = load_image(str, ptr_list)) == NULL)
