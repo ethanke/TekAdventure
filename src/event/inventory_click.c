@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 09:11:28 2016 Victor Sousa
-** Last update Sat Apr  9 14:54:36 2016 Victor Sousa
+** Last update Sat Apr  9 15:42:32 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -25,7 +25,7 @@ void			handle_inventory_click(t_prog *prog)
   if (prog->player->inventory[(int)prog->player->inv_selected].id == -1 &&
       need_to_move == -1)
     prog->player->inv_selected = -1;
-  if (need_to_move != -1)
+  if (need_to_move != -1 && prog->player->inv_selected != -1)
     {
       my_swap_item(&prog->player->inventory[need_to_move],
 		   &prog->player->inventory[(int)prog->player->inv_selected]);
