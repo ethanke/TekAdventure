@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Sat Apr  9 05:39:19 2016 Philippe Lefevre
+** Last update Sat Apr  9 05:45:45 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -23,11 +23,7 @@ t_object		*link_object(t_object *object, t_sprite *sprite)
 	{
 	  printf("%d %s - %d %s\n", tmp_sprite->id, tmp_sprite->path, tmp_object->sprite_id, tmp_object->name);
 	  if (tmp_sprite->id == tmp_object->sprite_id)
-	    {
-	      printf("sprite = (%p)\n", (void *)tmp_sprite->sprite);
-	      tmp_object->texture = tmp_sprite->sprite;
-	      printf("object = (%p)\n", (void *)tmp_object->texture);
-	    }
+	    tmp_object->texture = tmp_sprite->sprite;
 	  tmp_sprite = tmp_sprite->next;
 	}
       tmp_object = tmp_object->next;
