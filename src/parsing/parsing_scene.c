@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Sat Apr  9 11:14:29 2016 Philippe Lefevre
+** Last update Sat Apr  9 12:04:29 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -205,5 +205,6 @@ t_scene			*load_scene(t_bunny_ini *ini, t_scene *scene,
   scene->decors = link_decors(scene->decors, scene->sprite);
   scene->npc = link_npc(scene->npc, scene->sprite);
   scene = link_ground(ini, scene, ptr_list);
+  set_hitbox_ground(scene, (*ptr_list));
   return (scene);
 }
