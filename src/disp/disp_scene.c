@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 02:56:24 2016 Gaëtan Léandre
-** Last update Sat Apr  9 12:06:19 2016 Gaëtan Léandre
+** Last update Sat Apr  9 12:18:47 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -98,7 +98,7 @@ void			put_grille(t_ground *ground, t_bunny_position *grille,
       j = 0;
       while (j < grille->x)
 	{
-	  if (ground[j + i * grille->x].npc != NULL)
+	  if (ground[j + i * grille->x].npc != NULL && ground[j + i * grille->x].hitbox_npc != NULL)
 	    {
 	      tmp = ground[j + i * grille->x].hitbox_npc;
 	      item = create_hitbox((int)((float)(EQUART * ((float)(grille->y - i - 1) / (float)grille->y)) * percent) + tmp->x,
@@ -106,7 +106,7 @@ void			put_grille(t_ground *ground, t_bunny_position *grille,
 	      place_image(&item, ground[j + i * grille->x].npc->texture_hitbox,
 			  ground[j + i * grille->x].npc->texture, pix);
 	    }
-	  if (ground[j + i * grille->x].decors != NULL)
+	  if (ground[j + i * grille->x].decors != NULL && ground[j + i * grille->x].hitbox_decors != NULL)
 	    {
 	      tmp = ground[j + i * grille->x].hitbox_decors;
 	      item = create_hitbox((int)((float)(EQUART * ((float)(grille->y - i - 1) / (float)grille->y)) * percent) + tmp->x,
