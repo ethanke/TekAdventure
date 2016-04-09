@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr  8 02:30:51 2016 Ethan Kerdelhue
-** Last update Sat Apr  9 01:22:06 2016 Philippe Lefevre
+** Last update Sat Apr  9 02:12:23 2016 Philippe Lefevre
 */
 
 #include	"main.h"
@@ -124,8 +124,9 @@ t_npc		*list_add_npc(t_npc *list, int id,
   if (list == NULL)
     return (new);
   tmp = list;
-  while (tmp != NULL)
+  while (tmp->next != NULL)
     tmp = tmp->next;
+  if (tmp == NULL)
   new->prev = tmp;
   new->next = NULL;
   tmp->next = new;
