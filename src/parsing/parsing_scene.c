@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Sat Apr  9 10:44:38 2016 Philippe Lefevre
+** Last update Sat Apr  9 10:48:19 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -197,7 +197,8 @@ t_scene			*link_ground(t_bunny_ini *ini, t_scene *scene,
   if ((ground = xmalloc((sizeof(*ground) * ((scene->size.x * scene->size.y) + 1)), ptr_list)) == NULL)
     return (my_puterror_s("Error: Malloc failed ground.c:t_ground\n"));
   scene->ground = ground;
-  scene->ground = ground_fill(ini, scene);
+  if ((scene->ground = ground_fill(ini, scene)) == NULL)
+    return (NULL);
   return (scene);
 }
 
