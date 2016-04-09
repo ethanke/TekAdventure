@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Sat Apr  9 04:27:22 2016 Philippe Lefevre
+** Last update Sat Apr  9 05:28:25 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -49,14 +49,16 @@ t_object		*create_object_node(int id,
   char			*str;
 
   if ((object = xmalloc(sizeof(t_object), ptr_list)) == NULL)
-    return (my_puterror_n("Malloc fail"));
-  object->object_id = id;
+    return (my_puterror_n("Malloc fail\n"));
+  if ((str = (char *)bunny_ini_get_field(ini, "object", "object_id", id)) == NULL)
+    return (my_puterror_n("Error: object or object:object_id not set\n"));
+  object->object_id = my_strlen(str);
   if ((str = (char *)bunny_ini_get_field(ini, "object", "name", id)) == NULL)
-    return (my_puterror_n("No \"name\" in object scope"));
+    return (my_puterror_n("No \"name\" in object scope\n"));
   if ((object->name = my_strdup(str, ptr_list)) == NULL)
-    return (my_puterror_n("Strdup fail"));
+    return (my_puterror_n("Strdup fail\n"));
   if ((str = (char *)bunny_ini_get_field(ini, "object", "damage", id)) == NULL)
-    return (my_puterror_n("No \"damage\" found in object scope"));
+    return (my_puterror_n("No \"damage\" found in object scope\n"));
   object->damage = my_getnbr(str);
   if ((str = (char *)bunny_ini_get_field(ini, "object", "sprite_id", id)) == NULL)
     return (my_puterror_n("Error: object or object:sprite_id not set\n"));
