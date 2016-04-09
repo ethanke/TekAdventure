@@ -5,16 +5,27 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Sat Apr  9 09:49:08 2016 Philippe Lefevre
+** Last update Sat Apr  9 11:44:08 2016 Gaëtan Léandre
 */
 
 #ifndef			SCENE_H_
 # define		SCENE_H_
 # include		"main.h"
 
+# define		EQUART		200
+
+typedef struct		s_grille
+{
+  int			start_y;
+  int			case_x;
+  int			case_y;
+}			t_grille;
+
 typedef struct 		s_ground
 {
+  t_hitbox		*hitbox_npc;
   t_npc			*npc;
+  t_hitbox		*hitbox_decors;
   t_decors		*decors;
 }			t_ground;
 
