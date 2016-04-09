@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Thu Apr  7 03:01:13 2016 victor sousa
-** Last update Sat Apr  9 12:02:18 2016 Gaëtan Léandre
+** Last update Sat Apr  9 15:16:02 2016 Victor Sousa
 */
 
 #ifndef 		DISP_H_
@@ -15,6 +15,8 @@
 
 void			disp_hotbar(t_prog *prog);
 void			disp_inventory(t_prog *prog);
+void			disp_selected_hotbar_inv_item(t_prog *prog);
+void			disp_selected_full_inv_item(t_prog *prog);
 void			disp_ground(t_scene *scene, t_bunny_pixelarray *pix,
 				    float percent);
 void			set_hitbox_ground(t_scene *scene, t_ptr_list *ptr_list);

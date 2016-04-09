@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Thu Apr  7 02:58:27 2016 victor sousa
-** Last update Sat Apr  9 13:15:00 2016 Victor Sousa
+** Last update Sat Apr  9 15:26:15 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -83,6 +83,7 @@ void			disp_inventory(t_prog *prog)
       disp_big_inventory(prog, &pos);
       disp_top_big_inventory(prog, &pos);
       disp_bot_big_inventory(prog, &pos);
+      disp_selected_full_inv_item(prog);
     }
   disp_hotbar(prog);
 }

@@ -57,6 +57,7 @@ SRC		+=	$(PARSDIR)/parsing.c			\
 
 SRC		+=	$(DISPDIR)/disp_hotbar.c		\
 			$(DISPDIR)/disp_inventory.c		\
+			$(DISPDIR)/disp_selected_inv_item.c	\
 			$(DISPDIR)/disp_scene.c
 
 SRC		+=	$(EVENTDIR)/event_key.c			\
@@ -72,6 +73,7 @@ SRC		+=	$(UTILSDIR)/xmalloc.c			\
 			$(UTILSDIR)/my_strlen.c			\
 			$(UTILSDIR)/list_create_node.c		\
 			$(UTILSDIR)/list_add_node.c		\
+			$(UTILSDIR)/my_swap.c
 
 SRC		+=	$(IMGDIR)/disp_image.c			\
 			$(IMGDIR)/hitbox_creator.c		\

@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 08:30:39 2016 Victor Sousa
-** Last update Sat Apr  9 13:13:56 2016 Victor Sousa
+** Last update Sat Apr  9 15:19:46 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -44,4 +44,6 @@ void			disp_hotbar(t_prog *prog)
 		    prog->player->inventory[i].object->texture, prog->pix);
       x += 40.45;
     }
+  if (prog->player->inventory_open != 1)
+    disp_selected_hotbar_inv_item(prog);
 }

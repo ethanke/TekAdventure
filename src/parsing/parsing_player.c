@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr  8 00:59:55 2016 Ethan Kerdelhue
-** Last update Sat Apr  9 09:58:23 2016 Philippe Lefevre
+** Last update Sat Apr  9 14:41:57 2016 Victor Sousa
 */
 
 #include	"main.h"
@@ -80,5 +80,6 @@ t_player	*load_player(t_bunny_ini *ini, t_ptr_list **ptr_list)
       while (tmp[++j] && tmp[j] != ';');
       player->inventory[slot].amount = my_getnbr(tmp + j + 1);
     }
+  player->inv_selected = -1;
   return (player);
 }
