@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Sat Apr  9 00:23:58 2016 Philippe Lefevre
+** Last update Sat Apr  9 04:29:24 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -115,6 +115,9 @@ t_decors		*create_decors_node(int id,
     return (my_puterror_d("Error: field decors or decors:name not set\n"));
   if ((decors->name = my_strdup(str, ptr_list)) == NULL)
     return (NULL);
+  if ((str = (char *)bunny_ini_get_field(ini, "decors", "sprite_id", id)) == NULL)
+    return (my_puterror_d("Error: field decors or decors:sprite_id not set\n"));
+  decors->sprite_id = my_getnbr(str);
   if ((decors->decors_breakable =
        create_decors_breakable(id, ini, ptr_list)) == NULL)
     return (NULL);
