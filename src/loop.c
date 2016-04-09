@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:58:37 2016 Philippe Lefevre
-** Last update Sat Apr  9 11:13:55 2016 Philippe Lefevre
+** Last update Sat Apr  9 12:07:06 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -40,6 +40,7 @@ t_bunny_response	mainloop(void *p)
                                 prog->lion_img->height, prog->ptr_list),
 	      prog->lion_img, prog->pix);
   disp_inventory(prog);
+  disp_ground(prog->scene, prog->pix, 0.5);
   bunny_blit(&prog->win->buffer, &prog->pix->clipable, &prog->blit_pos);
   swap_pix(prog);
   bunny_display(prog->win);

@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 02:56:24 2016 Gaëtan Léandre
-** Last update Sat Apr  9 12:00:31 2016 Gaëtan Léandre
+** Last update Sat Apr  9 12:06:19 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -152,10 +152,10 @@ void			set_hitbox_ground(t_scene *scene, t_ptr_list *ptr_list)
 void			disp_ground(t_scene *scene, t_bunny_pixelarray *pix,
 				    float percent)
 {
-  t_hitbox		pos;
+/*  t_hitbox		pos;*/
 
-  pos = create_hitbox(0, pix->clipable.clip_height - scene->height,
+/*  pos = create_hitbox(0, pix->clipable.clip_height - scene->height,
 		      pix->clipable.clip_width, scene->height);
-  redim_image(&pos, scene->sol, pix);
+  redim_image(&pos, scene->sol, pix);*/
   put_grille(scene->ground, &scene->size, percent, pix);
 }
