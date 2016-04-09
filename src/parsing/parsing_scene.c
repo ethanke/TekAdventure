@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Sat Apr  9 10:48:19 2016 Philippe Lefevre
+** Last update Sat Apr  9 10:49:58 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -128,7 +128,7 @@ t_ground		*ground_fill(t_bunny_ini *ini, t_scene *scene)
     return (NULL);
   i = my_getnbr(str);
   j = 0;
-  while (j <= i)
+  while (j < i)
     {
       npc = scene->npc;
       if ((str = (char *)bunny_ini_get_field(ini, "scene", "npc_id", j)) == NULL)
@@ -156,7 +156,7 @@ t_ground		*ground_fill(t_bunny_ini *ini, t_scene *scene)
     return (NULL);
   i = my_getnbr(str);
   j = 0;
-  while (j <= i)
+  while (j < i)
     {
       decors = scene->decors;
       if ((str = (char *)bunny_ini_get_field(ini, "scene", "decors_id", j)) == NULL)
