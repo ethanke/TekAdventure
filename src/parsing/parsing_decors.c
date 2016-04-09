@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Sat Apr  9 04:29:24 2016 Philippe Lefevre
+** Last update Sat Apr  9 05:59:28 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -110,7 +110,9 @@ t_decors		*create_decors_node(int id,
 
   if ((decors = xmalloc(sizeof(*decors), ptr_list)) == NULL)
     return (my_puterror_d("Error: field decors or decors:breakable not set\n"));
-  decors->decors_id = id;
+  if ((str = (char *)bunny_ini_get_field(ini, "decors", "decors_id", id)) == NULL)
+    return (my_puterror_d("Error: field decors or decors:decors_id not set\n"));
+  decors->decors_id = my_getnbr(str);
   if ((str = (char *)bunny_ini_get_field(ini, "decors", "name", id)) == NULL)
     return (my_puterror_d("Error: field decors or decors:name not set\n"));
   if ((decors->name = my_strdup(str, ptr_list)) == NULL)
@@ -121,7 +123,7 @@ t_decors		*create_decors_node(int id,
   if ((decors->decors_breakable =
        create_decors_breakable(id, ini, ptr_list)) == NULL)
     return (NULL);
-  if ((decors->decors_hitbox = create_decors_hitbox(id, ini, ptr_list)) == NULL)
+  if ((decors->texture_hitbox = create_decors_hitbox(id, ini, ptr_list)) == NULL)
     return (NULL);
   decors->next = NULL;
   decors->prev = NULL;

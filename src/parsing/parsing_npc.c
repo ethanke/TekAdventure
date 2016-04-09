@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr  8 02:30:51 2016 Ethan Kerdelhue
-** Last update Sat Apr  9 02:12:23 2016 Philippe Lefevre
+** Last update Sat Apr  9 06:01:19 2016 Philippe Lefevre
 */
 
 #include	"main.h"
@@ -105,8 +105,13 @@ t_npc		*create_npc_node(int id,
   if ((str = (char *)bunny_ini_get_field(ini, "npc", "trade", id)) == NULL)
     return (my_puterror_n("No \"trade\" field in npc scope"));
   npc->trade = get_trade(str, ptr_list);
-  npc->sprite_hitbox = create_npc_hitbox(id, ini, ptr_list);
-  npc->id = id;
+  npc->texture_hitbox = create_npc_hitbox(id, ini, ptr_list);
+  if ((str = (char *)bunny_ini_get_field(ini, "npc", "npc_id", id)) == NULL)
+    return (my_puterror_n("Error: npc_id not set"));
+  npc->npc_id = my_getnbr(str);
+  if ((str = (char *)bunny_ini_get_field(ini, "npc", "sprite_id", id)) == NULL)
+    return (my_puterror_n("Error: sprite_id not set"));
+  npc->sprite_id = my_getnbr(str);
   npc->next = NULL;
   npc->prev = NULL;
   return (npc);
