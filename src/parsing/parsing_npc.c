@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr  8 02:30:51 2016 Ethan Kerdelhue
-** Last update Sat Apr  9 00:33:29 2016 Philippe Lefevre
+** Last update Sat Apr  9 01:22:06 2016 Philippe Lefevre
 */
 
 #include	"main.h"
@@ -55,7 +55,7 @@ t_trade		*get_trade(char *str, t_ptr_list **ptr_list)
 {
   t_trade	*tmp;
 
-  tmp = xmalloc(sizeof(tmp), ptr_list);
+  tmp = xmalloc(sizeof(*tmp), ptr_list);
   tmp->item_player_id = my_getnbr(str);
   tmp->amount_player = get_a_player(str);
   tmp->item_npc_id = get_i_npc(str);
