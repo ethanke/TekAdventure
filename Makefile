@@ -55,7 +55,8 @@ SRC		+=	$(PARSDIR)/parsing.c			\
 			$(PARSDIR)/parsing_scene.c		\
 			$(PARSDIR)/parsing_npc.c		\
 
-SRC		+=	$(DISPDIR)/disp_inventory.c		\
+SRC		+=	$(DISPDIR)/disp_hotbar.c		\
+			$(DISPDIR)/disp_inventory.c		\
 			$(DISPDIR)/disp_scene.c
 
 SRC		+=	$(UTILSDIR)/xmalloc.c			\
