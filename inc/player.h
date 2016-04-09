@@ -5,20 +5,19 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Sat Apr  9 09:07:44 2016 Victor Sousa
+** Last update Sat Apr  9 09:32:43 2016 Philippe Lefevre
 */
 
 #ifndef			PLAYER_H_
 # define		PLAYER_H_
 
-# define		SIZE_INVENTORY	36
+# define		SIZE_INVENTORY	48
 
 typedef struct		s_item
 {
   int			id;
   int			amount;
   t_object		*object;
-  char			selected;
 }			t_item;
 
 typedef struct		s_player

@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr  8 00:59:55 2016 Ethan Kerdelhue
-** Last update Sat Apr  9 07:15:33 2016 Philippe Lefevre
+** Last update Sat Apr  9 09:43:55 2016 Philippe Lefevre
 */
 
 #include	"main.h"
@@ -37,11 +37,13 @@ int		get_item_id(char *str, int *id, int *amount)
 
 t_player	*load_player(t_bunny_ini *ini, t_ptr_list **ptr_list)
 {
-  int		i;
   t_player	*player;
   char		*tmp;
+  int		inventory_count;
+  int		slot;
+  int		i;
+  int		j;
 
-  i = -1;
   player = NULL;
   if ((player = xmalloc(sizeof(t_player), ptr_list)) == NULL)
     return (my_puterror_n("Malloc fail"));
@@ -54,16 +56,29 @@ t_player	*load_player(t_bunny_ini *ini, t_ptr_list **ptr_list)
   if ((tmp = (char *)bunny_ini_get_field(ini, "player", "name", 0)) == NULL)
       return (my_puterror_n("No field name in player scope"));
   player->name = tmp;
-  player->inventory = xmalloc(sizeof(t_item) * (SIZE_INVENTORY + 1), ptr_list);
+  player->inventory = NULL;
+  if ((player->inventory = xmalloc(sizeof(t_item) * (SIZE_INVENTORY + 1), ptr_list)) == NULL)
+    return (NULL);
+  i = -1;
   while (++i != SIZE_INVENTORY)
     {
-      tmp = (char *)bunny_ini_get_field(ini, "player", "inventory", i);
-      get_item_id(tmp, &player->inventory[i].id,
-		  &player->inventory[i].amount);
-      player->inventory[i].selected = 0;
+      player->inventory[i].id = 0;
+      player->inventory[i].amount = 0;
     }
-  player->inventory[i].id = 0;
-  player->inventory[i].amount = 0;
-  player->inventory[i].selected = 0;
+  if ((tmp = (char *)bunny_ini_get_field(ini, "player", "inventory_count", 0)) == NULL)
+    return (my_puterror_n("Error: player or player:inventory_count not set"));
+  inventory_count = my_getnbr(tmp);
+  i = -1;
+  while (++i < inventory_count)
+    {
+      if ((tmp = (char *)bunny_ini_get_field(ini, "player", "inventory", i)) == NULL)
+	return (my_puterror_n("Error: player or player:inventory not set"));
+      j = -1;
+      slot = my_getnbr(tmp);
+      while (tmp[++j] && tmp[j] != ';');
+      player->inventory[slot].id = my_getnbr(tmp + j + 1);
+      while (tmp[++j] && tmp[j] != ';');
+      player->inventory[slot].amount = my_getnbr(tmp + j + 1);
+    }
   return (player);
 }
