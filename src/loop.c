@@ -32,20 +32,13 @@ void                    swap_pix(t_prog *prog)
 t_bunny_response	mainloop(void *p)
 {
   t_prog			*prog;
-  int				i;
 
   prog = p;
-
   place_image(create_hitbox_ptr(prog->blit_pos, WIN_WIDTH,
 				WIN_HEIGHT, prog->ptr_list),
               create_hitbox_ptr(prog->blit_pos, prog->lion_img->width,
                                 prog->lion_img->height, prog->ptr_list),
 	      prog->lion_img, prog->pix);
-  i = -1;
-  while (prog->player->inventory[++i].id != -1 && i < 36)
-    printf("case: %d \tid: %d\tamount: %d\n", i, prog->player->inventory[i].id, prog->player->inventory[i].amount);
-  exit(1);
-  
   disp_inventory(prog);
   bunny_blit(&prog->win->buffer, &prog->pix->clipable, &prog->blit_pos);
   swap_pix(prog);
