@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Sat Apr  9 09:32:43 2016 Philippe Lefevre
+** Last update Sat Apr  9 11:55:30 2016 Victor Sousa
 */
 
 #ifndef			PLAYER_H_
@@ -29,6 +29,7 @@ typedef struct		s_player
   t_hitbox		*sprite_hitbox;
   t_item		*inventory;
   char			inventory_open;
+  char			inv_selected;
   t_texture		*inv_open_sprite;
   t_texture		*hotbar_sprite;
 }			t_player;

@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 20:02:40 2016 Philippe Lefevre
-** Last update Sat Apr  9 06:17:54 2016 Philippe Lefevre
+** Last update Sat Apr  9 11:50:42 2016 Victor Sousa
 */
 
 #ifndef			MAIN_H_
@@ -25,6 +25,7 @@
 # include		"disp.h"
 # include		"parsing.h"
 # include		"scene.h"
+# include		"event.h"
 
 # ifndef		WIN_SETTING
 #  define		WIN_SETTING
@@ -35,9 +36,7 @@
 
 
 t_bunny_response	mainloop(void *p);
-t_bunny_response	event_key(t_bunny_event_state state,
-				  t_bunny_keysym      key,
-				  void                *data);
+
 int			clean(t_prog *prog, int out);
 
 # define		SUCCESS	0

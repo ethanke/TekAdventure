@@ -18,6 +18,7 @@ RED		=	"\033[0;31m"
 
 SRCDIR		=	src
 DISPDIR		=	$(SRCDIR)/disp
+EVENTDIR	=	$(SRCDIR)/event
 UTILSDIR	=	$(SRCDIR)/utils
 IMGDIR		=	$(SRCDIR)/image
 PARSDIR		=	$(SRCDIR)/parsing
@@ -44,7 +45,6 @@ LDFLAGS		=	-L/home/${USER}/.froot/lib		\
 
 SRC		=	$(SRCDIR)/main.c			\
 			$(SRCDIR)/loop.c			\
-			$(SRCDIR)/event_key.c			\
 			$(SRCDIR)/end.c
 
 SRC		+=	$(PARSDIR)/parsing.c			\
@@ -58,6 +58,11 @@ SRC		+=	$(PARSDIR)/parsing.c			\
 SRC		+=	$(DISPDIR)/disp_hotbar.c		\
 			$(DISPDIR)/disp_inventory.c		\
 			$(DISPDIR)/disp_scene.c
+
+SRC		+=	$(EVENTDIR)/event_key.c			\
+			$(EVENTDIR)/event_click.c		\
+			$(EVENTDIR)/inventory_click.c		\
+			$(EVENTDIR)/get_click_inventory_pos.c
 
 SRC		+=	$(UTILSDIR)/xmalloc.c			\
 			$(UTILSDIR)/ptr_list.c			\

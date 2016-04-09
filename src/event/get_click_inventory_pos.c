@@ -1,0 +1,47 @@
+/*
+** get_click_inventory_pos.c for  in /home/sousa_v/rendu/lapin/TekAdventure_temp/src/event/
+**
+** Made by Victor Sousa
+** Login   <sousa_v@epitech.eu>
+**
+** Started on  Sat Apr  9 11:47:01 2016 Victor Sousa
+** Last update Sat Apr  9 11:54:37 2016 Victor Sousa
+*/
+
+#include		"main.h"
+
+int			get_click_place_hotbar(t_prog *prog,
+				       t_bunny_position *click_pos)
+{
+  if (click_pos->x >= WIN_WIDTH / 2 -
+      (prog->player->hotbar_sprite->width / 2) / 4 + 10 &&
+      click_pos->x <= WIN_WIDTH / 2 +
+      (prog->player->hotbar_sprite->width / 2) / 4 - 10 &&
+      click_pos->y >= WIN_HEIGHT -
+      prog->player->hotbar_sprite->height / 4 + 10 &&
+      click_pos->y <= WIN_HEIGHT - 10)
+    {
+      return ((click_pos->x -
+	       (WIN_WIDTH / 2 - (prog->player->hotbar_sprite->width / 2)
+		/ 4 + 10 )) / 40);
+    }
+  return (-1);
+}
+
+int			get_click_place_inventory(t_prog *prog,
+				       t_bunny_position *click_pos)
+{
+  if (click_pos->x >= WIN_WIDTH / 2 -
+      (prog->player->hotbar_sprite->width / 2) / 4 + 10 &&
+      click_pos->x <= WIN_WIDTH / 2 +
+      (prog->player->hotbar_sprite->width / 2) / 4 - 10 &&
+      click_pos->y >= WIN_HEIGHT -
+      prog->player->hotbar_sprite->height / 4 + 10 &&
+      click_pos->y <= WIN_HEIGHT - 10)
+    {
+      return ((click_pos->x -
+	       (WIN_WIDTH / 2 - (prog->player->hotbar_sprite->width / 2)
+		/ 4 + 10 )) / 40);
+    }
+  return (-1);
+}

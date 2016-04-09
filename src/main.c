@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Fri Apr  8 05:44:09 2016 Philippe Lefevre
+** Last update Sat Apr  9 11:17:27 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -52,6 +52,7 @@ int			main(int ac, char **av, char **env)
     return (clean(&prog, ERROR));
   if ((prog.lion_img = load_image("ressources/sprites/lion.jpg", &prog.ptr_list)) == NULL)
     return (ERROR);
+  bunny_set_click_response(event_click);
   bunny_set_key_response(event_key);
   bunny_set_loop_main_function(mainloop);
   if (bunny_loop(prog.win, 60, &prog) == EXIT_ON_ERROR)
