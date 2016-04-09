@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr  8 00:59:55 2016 Ethan Kerdelhue
-** Last update Sat Apr  9 09:43:55 2016 Philippe Lefevre
+** Last update Sat Apr  9 09:58:23 2016 Philippe Lefevre
 */
 
 #include	"main.h"
@@ -62,8 +62,8 @@ t_player	*load_player(t_bunny_ini *ini, t_ptr_list **ptr_list)
   i = -1;
   while (++i != SIZE_INVENTORY)
     {
-      player->inventory[i].id = 0;
-      player->inventory[i].amount = 0;
+      player->inventory[i].id = -1;
+      player->inventory[i].amount = -1;
     }
   if ((tmp = (char *)bunny_ini_get_field(ini, "player", "inventory_count", 0)) == NULL)
     return (my_puterror_n("Error: player or player:inventory_count not set"));

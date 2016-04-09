@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Sat Apr  9 07:37:53 2016 Philippe Lefevre
+** Last update Sat Apr  9 10:02:31 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -143,7 +143,7 @@ t_ground		*ground_fill(t_bunny_ini *ini, t_scene *scene)
       while (npc->next != NULL)
 	{
 	  if (npc->npc_id == tab[0])
-	    scene->ground[(tab[1] * tab[2])].npc = npc;
+	    scene->ground[(tab[1] + (tab[2] * scene->size.x))].npc = npc;
 	  npc = npc->next;
 	}
       j++;
@@ -167,7 +167,7 @@ t_ground		*ground_fill(t_bunny_ini *ini, t_scene *scene)
       while (decors->next != NULL)
       {
 	if (decors->decors_id == tab[0])
-	  scene->ground[(tab[1] * tab[2])].decors = decors;
+	  scene->ground[(tab[1] + (tab[2] * scene->size.x))].decors = decors;
 	decors = decors->next;
       }
       j++;
