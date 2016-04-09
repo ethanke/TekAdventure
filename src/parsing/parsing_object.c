@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Sat Apr  9 00:47:53 2016 Philippe Lefevre
+** Last update Sat Apr  9 04:08:09 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -58,6 +58,9 @@ t_object		*create_object_node(int id,
   if ((str = (char *)bunny_ini_get_field(ini, "object", "damage", id)) == NULL)
     return (my_puterror_n("No \"damage\" found in object scope"));
   object->damage = my_getnbr(str);
+  if ((str = (char *)bunny_ini_get_field(ini, "object", "sprite_id", id)) == NULL)
+    return (my_puterror_n("Error: decors or decors:sprite_id not set\n"));
+  object->sprite_id = my_getnbr(str);
   object->texture_hitbox = create_object_hitbox(id, ini, ptr_list);
   object->next = NULL;
   object->prev = NULL;

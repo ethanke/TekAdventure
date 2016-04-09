@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Fri Apr  8 07:24:43 2016 Ethan Kerdelhue
+** Last update Sat Apr  9 04:20:24 2016 Philippe Lefevre
 */
 
 #ifndef			SPRITE_H_
@@ -15,7 +15,7 @@
 
 typedef struct		s_sprite
 {
-  unsigned int		id;
+  int			id;
   char			*path;
   t_texture		*sprite;
   struct s_sprite	*next;

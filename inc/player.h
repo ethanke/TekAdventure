@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Fri Apr  8 01:42:50 2016 Ethan Kerdelhue
+** Last update Sat Apr  9 04:19:18 2016 Philippe Lefevre
 */
 
 #ifndef			PLAYER_H_

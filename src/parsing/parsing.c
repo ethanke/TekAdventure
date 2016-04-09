@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:08:59 2016 Philippe Lefevre
-** Last update Sat Apr  9 02:16:52 2016 Philippe Lefevre
+** Last update Sat Apr  9 02:47:37 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -28,7 +28,7 @@ t_scene			*parsing(const char *file, t_player **player,
   ini = bunny_load_ini(file);
   if ((stockage = xmalloc(sizeof(*stockage), ptr_list)) == NULL)
     return (my_puterror_s("Error: xmalloc parsing.c:43\n"));
-  if (((*player) = load_player(ini, ptr_list)) == NULL)
+  if ((stockage->player = load_player(ini, ptr_list)) == NULL)
     return (NULL);
   if ((stockage->object = load_object(ini, ptr_list)) == NULL)
     return (NULL);
@@ -40,6 +40,7 @@ t_scene			*parsing(const char *file, t_player **player,
     return (NULL);
   if ((scene = load_scene(ini, stockage, ptr_list)) == NULL)
     return (NULL);
+  (*player) = stockage->player;
   bunny_delete_ini(ini);
   return (scene);
 }
