@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Sat Apr  9 07:12:52 2016 Philippe Lefevre
+** Last update Sat Apr  9 07:37:53 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -18,6 +18,16 @@ static t_scene		*my_puterror_s(char *str)
   ret = NULL;
   return (ret);
 }
+
+static t_ground		*my_puterror_g(char *str)
+{
+  t_ground		*ret;
+
+  write(2, str, my_strlen(str));
+  ret = NULL;
+  return (ret);
+}
+
 t_object		*link_object(t_object *object, t_sprite *sprite)
 {
   t_object		*tmp_object;
@@ -101,8 +111,10 @@ t_ground		*ground_fill(t_bunny_ini *ini, t_scene *scene)
 {
   t_npc			*npc;
   t_decors		*decors;
+  int			tab[3];
   char			*str;
   int			i;
+  int			j;
 
   i = -1;
   while (++i != (scene->size.x * scene->size.y))
@@ -115,9 +127,51 @@ t_ground		*ground_fill(t_bunny_ini *ini, t_scene *scene)
   if ((str = (char *)bunny_ini_get_field(ini, "count", "scene_npc_count", 0)) == NULL)
     return (NULL);
   i = my_getnbr(str);
+  j = 0;
+  while (j != i)
+    {
+      npc = scene->npc;
+      if ((str = (char *)bunny_ini_get_field(ini, "scene", "npc_id", j)) == NULL)
+	return (my_puterror_g("Error: scene or scene:npc_id not set\n"));
+      tab[0] = my_getnbr(str);
+      if ((str = (char *)bunny_ini_get_field(ini, "scene", "npc_pos", j)) == NULL)
+	return (my_puterror_g("Error: scene or scene:npc_pos not set\n"));
+      tab[1] = my_getnbr(str);
+      i = -1;
+      while (str[++i] && str[i] != ';');
+      tab[2] = my_getnbr(str + i + 1);
+      while (npc->next != NULL)
+	{
+	  if (npc->npc_id == tab[0])
+	    scene->ground[(tab[1] * tab[2])].npc = npc;
+	  npc = npc->next;
+	}
+      j++;
+    }
   if ((str = (char *)bunny_ini_get_field(ini, "count", "scene_decors_count", 0)) == NULL)
     return (NULL);
   i = my_getnbr(str);
+  j = 0;
+  while (j != i)
+    {
+      decors = scene->decors;
+      if ((str = (char *)bunny_ini_get_field(ini, "scene", "decors_id", j)) == NULL)
+      return (my_puterror_g("Error: scene or scene:decors_id not set\n"));
+      tab[0] = my_getnbr(str);
+      if ((str = (char *)bunny_ini_get_field(ini, "scene", "decors_pos", j)) == NULL)
+      return (my_puterror_g("Error: scene or scene:decors_pos not set\n"));
+      tab[1] = my_getnbr(str);
+      i = -1;
+      while (str[++i] && str[i] != ';');
+      tab[2] = my_getnbr(str + i + 1);
+      while (decors->next != NULL)
+      {
+	if (decors->decors_id == tab[0])
+	  scene->ground[(tab[1] * tab[2])].decors = decors;
+	decors = decors->next;
+      }
+      j++;
+    }
   return (scene->ground);
 }
 
@@ -127,6 +181,7 @@ t_scene			*link_ground(t_bunny_ini *ini, t_scene *scene,
   t_ground		*ground;
   char			*str;
 
+  ground = NULL;
   if ((str = (char *)bunny_ini_get_field(ini, "scene", "nb_x_case", 0)) == NULL)
     return (my_puterror_s("Error: scene or scene:nb_x_case not set\n"));
   scene->size.x = my_getnbr(str);
@@ -135,8 +190,8 @@ t_scene			*link_ground(t_bunny_ini *ini, t_scene *scene,
   scene->size.y = my_getnbr(str);
   if ((ground = xmalloc((sizeof(*ground) * ((scene->size.x * scene->size.y) + 1)), ptr_list)) == NULL)
     return (my_puterror_s("Error: Malloc failed ground.c:t_ground\n"));
-  ground = ground_fill(ini, scene);
   scene->ground = ground;
+  scene->ground = ground_fill(ini, scene);
   return (scene);
 }
 
