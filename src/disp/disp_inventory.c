@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Thu Apr  7 02:58:27 2016 victor sousa
-** Last update Sat Apr  9 08:47:13 2016 Victor Sousa
+** Last update Sat Apr  9 08:48:08 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -30,7 +30,7 @@ static void		disp_top_big_inventory(t_prog *prog,
 
   pos.x = _pos->x + 10;
   pos.y = _pos->y + 12;
-  i = -1;
+  i = 8;
   while (++i < 36)
     {
       if (prog->player->inventory[i].id != -1)
