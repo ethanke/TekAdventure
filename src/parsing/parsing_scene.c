@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Sat Apr  9 10:02:31 2016 Philippe Lefevre
+** Last update Sat Apr  9 10:44:38 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -128,7 +128,7 @@ t_ground		*ground_fill(t_bunny_ini *ini, t_scene *scene)
     return (NULL);
   i = my_getnbr(str);
   j = 0;
-  while (j != i)
+  while (j <= i)
     {
       npc = scene->npc;
       if ((str = (char *)bunny_ini_get_field(ini, "scene", "npc_id", j)) == NULL)
@@ -143,23 +143,27 @@ t_ground		*ground_fill(t_bunny_ini *ini, t_scene *scene)
       while (npc->next != NULL)
 	{
 	  if (npc->npc_id == tab[0])
-	    scene->ground[(tab[1] + (tab[2] * scene->size.x))].npc = npc;
+	    {
+	      scene->ground[(tab[1] + (tab[2] * scene->size.x))].npc = npc;
+	    }
 	  npc = npc->next;
 	}
+      printf("(Ici)\n");
       j++;
     }
+  printf("(%d)\n", j);
   if ((str = (char *)bunny_ini_get_field(ini, "count", "scene_decors_count", 0)) == NULL)
     return (NULL);
   i = my_getnbr(str);
   j = 0;
-  while (j != i)
+  while (j <= i)
     {
       decors = scene->decors;
       if ((str = (char *)bunny_ini_get_field(ini, "scene", "decors_id", j)) == NULL)
-      return (my_puterror_g("Error: scene or scene:decors_id not set\n"));
+	return (my_puterror_g("Error: scene or scene:decors_id not set\n"));
       tab[0] = my_getnbr(str);
       if ((str = (char *)bunny_ini_get_field(ini, "scene", "decors_pos", j)) == NULL)
-      return (my_puterror_g("Error: scene or scene:decors_pos not set\n"));
+	return (my_puterror_g("Error: scene or scene:decors_pos not set\n"));
       tab[1] = my_getnbr(str);
       i = -1;
       while (str[++i] && str[i] != ';');
@@ -167,7 +171,9 @@ t_ground		*ground_fill(t_bunny_ini *ini, t_scene *scene)
       while (decors->next != NULL)
       {
 	if (decors->decors_id == tab[0])
-	  scene->ground[(tab[1] + (tab[2] * scene->size.x))].decors = decors;
+	    {
+	      scene->ground[(tab[1] + (tab[2] * scene->size.x))].decors = decors;
+	    }
 	decors = decors->next;
       }
       j++;
