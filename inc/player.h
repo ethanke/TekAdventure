@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Sat Apr  9 04:19:18 2016 Philippe Lefevre
+** Last update Sat Apr  9 09:07:44 2016 Victor Sousa
 */
 
 #ifndef			PLAYER_H_
@@ -18,6 +18,7 @@ typedef struct		s_item
   int			id;
   int			amount;
   t_object		*object;
+  char			selected;
 }			t_item;
 
 typedef struct		s_player
