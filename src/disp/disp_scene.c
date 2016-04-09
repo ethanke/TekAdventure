@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 02:56:24 2016 Gaëtan Léandre
-** Last update Sat Apr  9 11:44:16 2016 Gaëtan Léandre
+** Last update Sat Apr  9 12:00:31 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -120,15 +120,14 @@ void			put_grille(t_ground *ground, t_bunny_position *grille,
     }
 }
 
-void			set_hitbox_ground(t_scene *scene, t_ptr_list *ptr_list,
-					  t_bunny_pixelarray *pix)
+void			set_hitbox_ground(t_scene *scene, t_ptr_list *ptr_list)
 {
   t_grille		grille;
   t_hitbox		place;
   t_bunny_position	pos;
 
-  place = create_hitbox(0, pix->clipable.clip_height - scene->height,
-			pix->clipable.clip_width, scene->height);
+  place = create_hitbox(0, WIN_HEIGHT - scene->height,
+			WIN_WIDTH, scene->height);
   grille = get_grille_param(&place, &scene->size);
   pos.y = 0;
   while (pos.y < scene->size.y)
