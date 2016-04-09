@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:47:01 2016 Victor Sousa
-** Last update Sat Apr  9 18:50:53 2016 Victor Sousa
+** Last update Sat Apr  9 21:57:24 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -43,7 +43,7 @@ static int		find_y_place_inv(t_prog *prog,
       return ((click_pos->y -
 	       (WIN_HEIGHT / 2 +
                (prog->player->inv_open_sprite->height / 2) / 4 -
-		10)) / 35 + 4);
+		10)) / 36 + 3);
     }
   return (-1);
 }
@@ -76,6 +76,6 @@ int			get_click_place_inventory(t_prog *prog,
   x = find_x_place_inv(prog, click_pos);
   y = find_y_place_inv(prog, click_pos);
   if (x != -1 && y != -1)
-    return (x + (y % 3) * 12);
+    return (x + (y % 4) * 12);
   return (-1);
 }
