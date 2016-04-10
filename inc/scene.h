@@ -5,14 +5,14 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Sun Apr 10 22:12:26 2016 Gaëtan Léandre
+** Last update Mon Apr 11 00:44:17 2016 Gaëtan Léandre
 */
 
 #ifndef			SCENE_H_
 # define		SCENE_H_
 # include		"main.h"
 
-# define		EQUART		200
+# define		EQUART		100
 
 typedef struct		s_grille
 {

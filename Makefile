@@ -5,7 +5,7 @@
 ## Login   <lefevr_h@epitech.net>
 ##
 ## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
-## Last update Sun Apr 10 18:20:21 2016 Kerdelhue Ethan
+## Last update Mon Apr 11 00:51:34 2016 Gaëtan Léandre
 ##
 
 NAME		=	tekadventure
@@ -58,7 +58,9 @@ SRC		+=	$(PARSDIR)/parsing.c			\
 SRC		+=	$(DISPDIR)/disp_hotbar.c		\
 			$(DISPDIR)/disp_inventory.c		\
 			$(DISPDIR)/disp_selected_inv_item.c	\
-			$(DISPDIR)/disp_scene.c
+			$(DISPDIR)/disp_scene.c			\
+			$(DISPDIR)/init_hitbox_scene.c		\
+			$(DISPDIR)/disp_utils.c
 
 SRC		+=	$(EVENTDIR)/event_key.c			\
 			$(EVENTDIR)/event_click.c		\
