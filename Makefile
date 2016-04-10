@@ -5,7 +5,7 @@
 ## Login   <lefevr_h@epitech.net>
 ##
 ## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
-## Last update Fri Apr  8 05:26:40 2016 Philippe Lefevre
+## Last update Sun Apr 10 18:20:21 2016 Kerdelhue Ethan
 ##
 
 NAME		=	tekadventure
@@ -63,7 +63,8 @@ SRC		+=	$(DISPDIR)/disp_hotbar.c		\
 SRC		+=	$(EVENTDIR)/event_key.c			\
 			$(EVENTDIR)/event_click.c		\
 			$(EVENTDIR)/inventory_click.c		\
-			$(EVENTDIR)/get_click_inventory_pos.c
+			$(EVENTDIR)/get_click_inventory_pos.c	\
+			$(EVENTDIR)/fight/start_fight.c		\
 
 SRC		+=	$(UTILSDIR)/xmalloc.c			\
 			$(UTILSDIR)/ptr_list.c			\
