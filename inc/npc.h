@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:24:51 2016 Ethan Kerdelhue
-** Last update Sat Apr  9 06:00:47 2016 Philippe Lefevre
+** Last update Sun Apr 10 23:43:58 2016 Ethan Kerdelhue
 */
 
 #ifndef 		NPC_H_
@@ -32,6 +32,8 @@ typedef struct 		s_npc
   int			sprite_id;
   t_hitbox		*texture_hitbox;
   t_texture		*texture;
+  int			damage_min;
+  int			damage_max;
   struct s_npc 		*next;
   struct s_npc		*prev;
 } 			t_npc;
