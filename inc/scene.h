@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Sat Apr  9 11:44:08 2016 Gaëtan Léandre
+** Last update Sun Apr 10 18:25:08 2016 Gaëtan Léandre
 */
 
 #ifndef			SCENE_H_
@@ -19,6 +19,7 @@ typedef struct		s_grille
   int			start_y;
   int			case_x;
   int			case_y;
+  int			grille_y;
 }			t_grille;
 
 typedef struct 		s_ground
@@ -34,6 +35,7 @@ typedef struct		s_scene
   unsigned int		height;
   t_texture		*sol;
   t_bunny_position	size;
+  float			coef;
   t_sprite		*sprite; /* Ne pas utilser temporaire */
   t_npc			*npc;	/* Ne pas utilser temporaire */
   t_object		*object; /* Ne pas utilser temporaire */
