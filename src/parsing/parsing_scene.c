@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Sat Apr  9 12:10:54 2016 Philippe Lefevre
+** Last update Sun Apr 10 18:13:22 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -193,7 +193,7 @@ t_scene			*link_ground(t_bunny_ini *ini, t_scene *scene,
   scene->ground = ground;
   if ((scene->ground = ground_fill(ini, scene)) == NULL)
     return (NULL);
-  scene->height = 600;
+  scene->height = 300;
   return (scene);
 }
 
