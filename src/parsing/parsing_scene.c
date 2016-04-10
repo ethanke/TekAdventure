@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Sun Apr 10 18:13:22 2016 Gaëtan Léandre
+** Last update Sun Apr 10 22:27:40 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -115,6 +115,7 @@ t_ground		*ground_fill(t_bunny_ini *ini, t_scene *scene)
   char			*str;
   int			i;
   int			j;
+  int			k;
 
   i = -1;
   while (++i != (scene->size.x * scene->size.y))
@@ -128,7 +129,7 @@ t_ground		*ground_fill(t_bunny_ini *ini, t_scene *scene)
     return (NULL);
   i = my_getnbr(str);
   j = 0;
-  while (j <= i)
+  while (j < i)
     {
       if ((str = (char *)bunny_ini_get_field(ini, "scene", "npc_id", j)) == NULL)
 	return (my_puterror_g("Error: scene or scene:npc_id not set\n"));
@@ -136,9 +137,9 @@ t_ground		*ground_fill(t_bunny_ini *ini, t_scene *scene)
       if ((str = (char *)bunny_ini_get_field(ini, "scene", "npc_pos", j)) == NULL)
 	return (my_puterror_g("Error: scene or scene:npc_pos not set\n"));
       tab[1] = my_getnbr(str);
-      i = -1;
-      while (str[++i] && str[i] != ';');
-      tab[2] = my_getnbr(str + i + 1);
+      k = -1;
+      while (str[++k] && str[k] != ';');
+      tab[2] = my_getnbr(str + k + 1);
       npc = scene->npc;
       while (npc != NULL)
 	{
@@ -160,9 +161,9 @@ t_ground		*ground_fill(t_bunny_ini *ini, t_scene *scene)
       if ((str = (char *)bunny_ini_get_field(ini, "scene", "decors_pos", j)) == NULL)
 	return (my_puterror_g("Error: scene or scene:decors_pos not set\n"));
       tab[1] = my_getnbr(str);
-      i = -1;
-      while (str[++i] && str[i] != ';');
-      tab[2] = my_getnbr(str + i + 1);
+      k = -1;
+      while (str[++k] && str[k] != ';');
+      tab[2] = my_getnbr(str + k + 1);
       decors = scene->decors;
       while (decors != NULL)
       {
