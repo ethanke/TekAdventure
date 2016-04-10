@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 02:56:24 2016 Gaëtan Léandre
-** Last update Sun Apr 10 18:31:59 2016 Gaëtan Léandre
+** Last update Sun Apr 10 21:42:01 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -41,16 +41,20 @@ t_hitbox		*set_npc_hitbox(t_grille *grille, t_npc *npc,
 {
   t_hitbox		*result;
   int			hauteur;
+  int			case_x;
 
   if (npc == NULL)
     return (NULL);
   if ((result = xmalloc(sizeof(t_hitbox), &ptr_list)) == NULL)
     return (NULL);
-  hauteur = grille->case_x * npc->texture_hitbox->height
+  case_x = (grille->size_x - (int)(grille->coef * (float)(grille->grille_y - pos->y - 1))) / (grille->grille_x + 1);
+  hauteur = case_x * npc->texture_hitbox->height
       / npc->texture_hitbox->width;
-  result->x = 10 + grille->case_x * pos->x;
+  result->x = 10 + case_x * pos->x;
+  /*  result->x = 10 + grille->case_x * pos->x;
+  */
   result->y = grille->start_y + 10 + grille->case_y * (pos->y + 1) - hauteur;
-  result->width = grille->case_x;
+  result->width = case_x;
   result->height = hauteur;
   return (result);
 }
@@ -61,16 +65,18 @@ t_hitbox		*set_decors_hitbox(t_grille *grille, t_decors *decors,
 {
   t_hitbox		*result;
   int			hauteur;
+  int			case_x;
 
   if (decors == NULL)
     return (NULL);
   if ((result = xmalloc(sizeof(t_hitbox), &ptr_list)) == NULL)
     return (NULL);
-  hauteur = grille->case_x * decors->texture_hitbox->height
+  case_x = (grille->size_x - (int)(grille->coef * (float)(grille->grille_y - pos->y - 1))) / (grille->grille_x + 1);
+  hauteur = case_x * decors->texture_hitbox->height
       / decors->texture_hitbox->width;
-  result->x = 10 + grille->case_x * pos->x;
+  result->x = 10 + case_x * pos->x;
   result->y = grille->start_y + 10 + grille->case_y * (pos->y + 1) - hauteur;
-  result->width = grille->case_x;
+  result->width = case_x;
   result->height = hauteur;
   return (result);
 }
@@ -80,11 +86,13 @@ t_grille		get_grille_param(t_hitbox *place,
 {
   t_grille		grille;
 
-  grille.case_x = (place->width - 20) / scene->size.x;
   grille.case_y = (place->height - 20) / (scene->size.y + 1);
   grille.start_y = place->y;
+  grille.size_x = place->width - 20;
+  grille.grille_x = scene->size.x;
   grille.grille_y = scene->size.y;
-  scene->coef = EQUART * scene->size.y;
+  scene->coef = (float)(EQUART *  2) / (float)scene->size.y;
+  grille.coef = scene->coef;
   return (grille);
 }
 
