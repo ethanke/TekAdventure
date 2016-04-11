@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:58:37 2016 Philippe Lefevre
-** Last update Mon Apr 11 02:14:42 2016 Victor Sousa
+** Last update Mon Apr 11 02:31:06 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -36,15 +36,19 @@ t_bunny_response	mainloop(void *p)
 
   prog = p;
   mouse_pos = (t_bunny_position *)bunny_get_mouse_position();
-  place_image(create_hitbox_ptr(prog->blit_pos, WIN_WIDTH,
-				WIN_HEIGHT, prog->ptr_list),
-              create_hitbox_ptr(prog->blit_pos, prog->lion_img->width,
-                                prog->lion_img->height, prog->ptr_list),
-	      prog->lion_img, prog->pix);
-  disp_inventory(prog);
-  disp_ground(prog->scene, prog->pix, (float)mouse_pos->x / (float)WIN_WIDTH);
+  if (prog->fight == 1)
+    start_fight(prog, prog->scene->npc);
+  else{
+      place_image(create_hitbox_ptr(prog->blit_pos, WIN_WIDTH,
+				    WIN_HEIGHT, prog->ptr_list),
+		  create_hitbox_ptr(prog->blit_pos, prog->lion_img->width,
+				    prog->lion_img->height, prog->ptr_list),
+		  prog->lion_img, prog->pix);
+      disp_inventory(prog);
+      disp_ground(prog->scene, prog->pix, (float)mouse_pos->x / (float)WIN_WIDTH);
 
-  /*tektext("const char *str", &prog->blit_pos, prog->pix, prog->font);*/
+      /*tektext("const char *str", &prog->blit_pos, prog->pix, prog->font);*/
+  }
 
   bunny_blit(&prog->win->buffer, &prog->pix->clipable, &prog->blit_pos);
   swap_pix(prog);

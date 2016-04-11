@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Mon Apr 11 02:06:10 2016 Victor Sousa
+** Last update Mon Apr 11 02:20:51 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -18,6 +18,12 @@ int			init_prog(t_prog *prog, char *str)
   if ((prog->scene = parsing(str, &prog->player, &prog->ptr_list)) == NULL)
     return (ERROR);
   prog->player->inventory_open = 0;
+
+  if ((prog->font =
+       xmalloc(sizeof(t_font), &prog->ptr_list)) == NULL)
+    return (ERROR);
+  prog->font->size = 20;
+
   if ((prog->player->inv_open_sprite =
        load_image("ressources/sprites/inventory_full.png", &prog->ptr_list)) == NULL)
     return (ERROR);
