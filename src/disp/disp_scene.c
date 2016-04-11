@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 02:56:24 2016 Gaëtan Léandre
-** Last update Mon Apr 11 00:38:46 2016 Gaëtan Léandre
+** Last update Mon Apr 11 07:33:44 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -54,7 +54,7 @@ void			put_grille(t_scene *scene, t_bunny_position *grille,
 	  if (ground[j + i * grille->x].npc != NULL && ground[j + i * grille->x].hitbox_npc != NULL)
 	    {
 	      tmp = ground[j + i * grille->x].hitbox_npc;
-	      item = create_hitbox(10 + (int)(((float)(scene->coef * (float)(grille->y - i))) * percent) + tmp->x,
+	      item = create_hitbox(((float)(WIN_WIDTH - 20 - ground[j + i * grille->x].npc->size_line) * percent) + tmp->x,
 				   tmp->y, tmp->width, tmp->height);
 	      place_image(&item, ground[j + i * grille->x].npc->texture_hitbox,
 			  ground[j + i * grille->x].npc->texture, pix);
@@ -62,7 +62,7 @@ void			put_grille(t_scene *scene, t_bunny_position *grille,
 	  if (ground[j + i * grille->x].decors != NULL && ground[j + i * grille->x].hitbox_decors != NULL)
 	    {
 	      tmp = ground[j + i * grille->x].hitbox_decors;
-	      item = create_hitbox(10 + (int)(((float)(scene->coef * (float)(grille->y - i))) * percent) + tmp->x,
+	      item = create_hitbox(((float)(WIN_WIDTH - 20 - ground[j + i * grille->x].decors->size_line) * percent) + tmp->x,
 				   tmp->y, tmp->width, tmp->height);
 	      place_image(&item, ground[j + i * grille->x].decors->texture_hitbox,
 			  ground[j + i * grille->x].decors->texture, pix);
@@ -70,6 +70,63 @@ void			put_grille(t_scene *scene, t_bunny_position *grille,
 	  j++;
 	}
       i++;
+    }
+}
+
+unsigned int		chose_color(int x, int y, int size_x, t_ground *ground)
+{
+  t_color		color;
+  if (ground[x + y * size_x].npc == NULL && ground[x + y * size_x].decors == NULL)
+    color.full = WHITE;
+  else
+    color.full = RED;
+  color.argb[3] = 100;
+  return (color.full);
+}
+
+void			disp_cases(t_scene *scene, t_bunny_pixelarray *pix,
+				   float percent)
+{
+  t_hitbox		place;
+  t_grille		grille;
+  t_bunny_position	pos;
+  t_bunny_position	palier;
+  int			y;
+  float			case_x;
+  float			coef;
+  t_color		color;
+  float			y_pos;
+  int			x;
+
+  y = 0;
+  place = create_hitbox(0, WIN_HEIGHT - scene->height,
+			WIN_WIDTH, scene->height - 206 / 4);
+  grille = get_grille_param(&place, scene);
+  pos.y = grille.start_y + 10;
+  palier.x = pos.y;
+  palier.y =  grille.start_y + 10 + get_pos_y(y, &grille);
+  while (pos.y < grille.start_y + place.height + 2)
+    {
+      if (pos.y > palier.y)
+	{
+	  palier.x = palier.y;
+	  palier.y =  grille.start_y + 10 + get_pos_y(++y, &grille);
+	}
+      y_pos = (float)((float)(pos.y - palier.x) / (float)(palier.y - palier.x)) + (float)y;
+      coef = (float)((float)grille.size_x - (float)(grille.coef
+    		 * (float)(grille.grille_y - y_pos + 1)))
+      / (float)(grille.size_x);
+      case_x = ((float)grille.case_x * coef);
+      pos.x = ((float)((float)WIN_WIDTH - 20 - (float)case_x * ((float)grille.grille_x)) * percent + 10);
+      x = 0;
+      while (y >= 1 && x < case_x * (float)((grille.grille_x)))
+	{
+	  color.full = chose_color(x / case_x, y - 1, grille.grille_x, scene->ground);
+	  tektranspa(pix, &pos, &color);
+	  x++;
+	  pos.x++;
+	}
+      pos.y++;
     }
 }
 
@@ -82,4 +139,5 @@ void			disp_ground(t_scene *scene, t_bunny_pixelarray *pix,
 		      pix->clipable.clip_width, scene->height);
   redim_image(&pos, scene->sol, pix);*/
   put_grille(scene, &scene->size, percent, pix);
+  disp_cases(scene, pix, percent);
 }

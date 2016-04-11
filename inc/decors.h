@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Sat Apr  9 07:33:04 2016 Philippe Lefevre
+** Last update Mon Apr 11 07:09:59 2016 Gaëtan Léandre
 */
 
 #ifndef			DECORS_H_
@@ -23,6 +23,7 @@ typedef struct		s_breakable
 typedef struct		s_decors
 {
   char			*name;
+  int			size_line;
   int			decors_id;
   int			sprite_id;
   t_texture		*texture;
