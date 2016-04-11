@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:58:37 2016 Philippe Lefevre
-** Last update Sun Apr 10 19:48:34 2016 Kerdelhue Ethan
+** Last update Mon Apr 11 08:08:48 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -44,9 +44,8 @@ t_bunny_response	mainloop(void *p)
 		  create_hitbox_ptr(prog->blit_pos, prog->lion_img->width,
 				    prog->lion_img->height, prog->ptr_list),
 		  prog->lion_img, prog->pix);
-      disp_ground(prog->scene, prog->pix, 1 - (float)mouse_pos->x / (float)WIN_WIDTH);
-
-      tektext("gros fdp\nde merde", &prog->blit_pos, prog->pix, prog->font);
+      disp_ground(prog->scene, prog->pix, 1 - (float)mouse_pos->x /
+		  (float)WIN_WIDTH);
   }
 
   disp_inventory(prog);
