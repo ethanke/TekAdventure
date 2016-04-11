@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:58:37 2016 Philippe Lefevre
-** Last update Mon Apr 11 02:35:45 2016 Victor Sousa
+** Last update Mon Apr 11 03:03:17 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -44,12 +44,12 @@ t_bunny_response	mainloop(void *p)
 		  create_hitbox_ptr(prog->blit_pos, prog->lion_img->width,
 				    prog->lion_img->height, prog->ptr_list),
 		  prog->lion_img, prog->pix);
-      disp_inventory(prog);
-      disp_ground(prog->scene, prog->pix, (float)mouse_pos->x / (float)WIN_WIDTH);
+      disp_ground(prog->scene, prog->pix, 1 - (float)mouse_pos->x / (float)WIN_WIDTH);
 
-      /*tektext("const char *str", &prog->blit_pos, prog->pix, prog->font);*/
+      tektext("const char *str", &prog->blit_pos, prog->pix, prog->font);
   }
 
+  disp_inventory(prog);
   bunny_blit(&prog->win->buffer, &prog->pix->clipable, &prog->blit_pos);
   swap_pix(prog);
   bunny_display(prog->win);
