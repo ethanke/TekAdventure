@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Tue Feb 23 10:27:21 2016 sousa_v
-** Last update Mon Apr 11 07:03:41 2016 Victor Sousa
+** Last update Mon Apr 11 08:14:41 2016 Victor Sousa
 */
 
 #include	"main.h"
@@ -36,6 +36,38 @@ char		get_y_char(char *str, char c)
   return (-1);
 }
 
+static void		place_char(t_hitbox *pos,
+				   t_hitbox *fetch,
+				   t_font *font,
+				   t_bunny_pixelarray *pix)
+{
+  t_bunny_position	tmp;
+  int			i;
+  int			j;
+
+  if (fetch == NULL || pos == NULL)
+    return;
+  i = 0;
+  tmp.y = pos->y;
+  while (i < pos->height)
+    {
+      j = 0;
+      tmp.x = pos->x;
+      while (j < pos->width)
+	{
+	  if (font->font_img->color[(int)(((float)i / (float)pos->height) *
+				     (float)(fetch->height) + (float)fetch->y)]
+	      [(int)(((float)j / (float)pos->width)
+		* (float)(fetch->width) + (float)fetch->x)].argb[ALPHA_CMP] != 0)
+	    tektranspa(pix, &tmp, &font->font_color);
+	  tmp.x++;
+	  j++;
+	}
+      tmp.y++;
+      i++;
+    }
+}
+
 void		tekchar(t_bunny_pixelarray *out,
 			t_font *font,
 			const t_bunny_position *pos,
@@ -53,7 +85,7 @@ void		tekchar(t_bunny_pixelarray *out,
   let_pos.y = get_y_char(str, c) * 25;
   print_pos = create_hitbox(pos->x, pos->y, font->font_size, font->font_size);
   fetch_pos = create_hitbox(let_pos.x, let_pos.y, 25, 25);
-  place_image(&print_pos, &fetch_pos, font->font_img, out);
+  place_char(&print_pos, &fetch_pos, font, out);
   free(str);
 }
 

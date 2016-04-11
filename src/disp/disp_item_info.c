@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Mon Apr 11 07:08:46 2016 Victor Sousa
-** Last update Mon Apr 11 08:04:49 2016 Victor Sousa
+** Last update Mon Apr 11 08:16:50 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -24,7 +24,8 @@ void			disp_item_info(t_prog *prog, t_item *item,
   rect_size.y = IIS_HEIGHT;
   font.font_img = prog->font->font_img;
   font.font_size = 10;
-  my_draw_square(prog->pix, &rect_pos, &rect_size, 0xCFFFFFFF);
+  font.font_color.full = 0xFFF0F0F0;
+  my_draw_square(prog->pix, &rect_pos, &rect_size, 0xCF000000);
   rect_pos.x += 10;
   rect_pos.y += 10;
   tektext(item->object->name, &rect_pos, prog->pix, &font);
