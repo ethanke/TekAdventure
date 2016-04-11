@@ -5,11 +5,12 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:35:23 2016 Ethan Kerdelhue
-** Last update Sat Apr  9 04:19:23 2016 Philippe Lefevre
+** Last update Mon Apr 11 03:36:13 2016 Ethan Kerdelhue
 */
 
 #ifndef 		OBJECT_H_
 # define 		OBJECT_H_
+
 # include		"main.h"
 # include		"image.h"
 
