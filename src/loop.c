@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:58:37 2016 Philippe Lefevre
-** Last update Mon Apr 11 03:03:17 2016 Victor Sousa
+** Last update Mon Apr 11 03:32:32 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -36,7 +36,7 @@ t_bunny_response	mainloop(void *p)
 
   prog = p;
   mouse_pos = (t_bunny_position *)bunny_get_mouse_position();
-  if (prog->fight == 1)
+  if (prog->fight_state == 1)
     start_fight(prog, prog->scene->npc);
   else{
       place_image(create_hitbox_ptr(prog->blit_pos, WIN_WIDTH,
@@ -46,7 +46,7 @@ t_bunny_response	mainloop(void *p)
 		  prog->lion_img, prog->pix);
       disp_ground(prog->scene, prog->pix, 1 - (float)mouse_pos->x / (float)WIN_WIDTH);
 
-      tektext("const char *str", &prog->blit_pos, prog->pix, prog->font);
+      tektext("gros fdp\nde merde", &prog->blit_pos, prog->pix, prog->font);
   }
 
   disp_inventory(prog);

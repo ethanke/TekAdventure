@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:49:08 2016 Victor Sousa
-** Last update Mon Apr 11 00:12:48 2016 Ethan Kerdelhue
+** Last update Mon Apr 11 03:35:34 2016 Victor Sousa
 */
 
 #ifndef			EVENT_H_

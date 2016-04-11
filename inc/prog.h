@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 00:11:13 2016 Gaëtan Léandre
-** Last update Mon Apr 11 01:27:45 2016 Ethan Kerdelhue
+** Last update Mon Apr 11 03:38:32 2016 Victor Sousa
 */
 
 #ifndef			PROG_H_
@@ -27,8 +27,10 @@ typedef	struct		s_prog
   t_font		*font;
   t_ptr_list		*ptr_list;
   t_bunny_position	blit_pos;
-  char			fight;
-  char			need_init-fight;
+
+  struct s_fight	*fight;
+  char			fight_state;
+  char			need_init_fight;
 
   t_texture		*lion_img;
   t_texture		*fight_img;

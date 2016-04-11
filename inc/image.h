@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:41:06 2016 Gaëtan Léandre
-** Last update Mon Apr 11 01:51:24 2016 Victor Sousa
+** Last update Mon Apr 11 03:07:37 2016 Victor Sousa
 */
 
 #ifndef			_IMAGE_H_
@@ -33,7 +33,7 @@ typedef struct          s_hitbox
 typedef struct		s_font
 {
   t_texture		*font_img;
-  int			size;
+  int			font_size;
 }			t_font;
 
 t_texture      		*load_image(const char *file, t_ptr_list **ptr_list);
