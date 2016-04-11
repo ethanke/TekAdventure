@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:58:37 2016 Philippe Lefevre
-** Last update Mon Apr 11 02:32:25 2016 Victor Sousa
+** Last update Mon Apr 11 02:35:45 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -47,7 +47,7 @@ t_bunny_response	mainloop(void *p)
       disp_inventory(prog);
       disp_ground(prog->scene, prog->pix, (float)mouse_pos->x / (float)WIN_WIDTH);
 
-      tektext("const char *str", &prog->blit_pos, prog->pix, prog->font);
+      /*tektext("const char *str", &prog->blit_pos, prog->pix, prog->font);*/
   }
 
   bunny_blit(&prog->win->buffer, &prog->pix->clipable, &prog->blit_pos);
