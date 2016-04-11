@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Mon Apr 11 03:41:36 2016 Victor Sousa
+** Last update Mon Apr 11 05:12:46 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -23,7 +23,7 @@ int			init_prog(t_prog *prog, char *str)
        xmalloc(sizeof(t_font), &prog->ptr_list)) == NULL)
     return (ERROR);
   if ((prog->font->font_img =
-       load_image("ressources/sprites/font.png", &prog->ptr_list)) == NULL)
+       load_image("ressources/sprites/font1.png", &prog->ptr_list)) == NULL)
     return (ERROR);
   prog->font->font_size = 50;
   if ((prog->player->sprite = load_image("ressources/sprites/pnj_1.png", &prog->ptr_list)) == NULL)

@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:41:06 2016 Gaëtan Léandre
-** Last update Mon Apr 11 03:07:37 2016 Victor Sousa
+** Last update Mon Apr 11 05:25:19 2016 Victor Sousa
 */
 
 #ifndef			_IMAGE_H_
@@ -13,7 +13,6 @@
 #include		<lapin.h>
 
 # include		"utils.h"
-
 
 typedef struct          s_texture
 {
