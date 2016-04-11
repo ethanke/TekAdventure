@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Mon Apr 11 03:40:06 2016 Victor Sousa
+** Last update Sun Apr 10 19:49:04 2016 Kerdelhue Ethan
 */
 
 #include		 "main.h"
@@ -21,13 +21,19 @@ int			prepare_fight(t_prog *prog, t_npc *npc)
   return (0);
 }
 
-int			loop_fight(t_fight *fight)
+int			loop_fight(t_prog *prog)
 {
-  if (fight->round_state == 1)
+  t_bunny_position	player_pos;
+
+  player_pos.x = 0 + prog->player->sprite->width / 2;
+  player_pos.y = WIN_HEIGHT / 2 - (prog->player->sprite->height / 2);
+  put_image(prog->fight_img, prog->pix, &prog->blit_pos);
+  put_image(prog->player->sprite, prog->pix, &player_pos);
+  if (prog->fight->round_state == 1)
     {
 
     }
-  if (fight->round_state == 2)
+  if (prog->fight->round_state == 2)
     {
 
     }
@@ -36,21 +42,12 @@ int			loop_fight(t_fight *fight)
 
 int			start_fight(t_prog *prog, t_npc *npc)
 {
-  t_bunny_position	pos;
-  t_bunny_position	player;
-
   if (prog->need_init_fight == 1)
     {
       if (prepare_fight(prog, npc) == -1)
 	return (-1);
-      pos.x = 0;
-      pos.y = 0;
-      player.x = 0 + prog->player->sprite->width / 2;
-      player.y = WIN_HEIGHT / 2 - (prog->player->sprite->height / 2);
-      put_image(prog->fight_img, prog->pix, &pos);
-      put_image(prog->player->sprite, prog->pix, &player);
       prog->need_init_fight = 0;
     }
-  loop_fight(prog->fight);
+  loop_fight(prog);
   return (0);
 }
