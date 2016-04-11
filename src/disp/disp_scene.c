@@ -5,10 +5,10 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 02:56:24 2016 Gaëtan Léandre
-** Last update Mon Apr 11 19:27:21 2016 Gaëtan Léandre
+** Last update Tue Apr 12 01:39:16 2016 Gaëtan Léandre
 */
 
-#include		"main.h"
+#include	 	"main.h"
 
 /*void			disp_background(t_back *first, t_bunny_pixelarray *pix,
 					float percent)
@@ -54,7 +54,7 @@ void			put_grille(t_scene *scene, t_bunny_position *grille,
 	  if (ground[j + i * grille->x].npc != NULL && ground[j + i * grille->x].hitbox_npc != NULL)
 	    {
 	      tmp = ground[j + i * grille->x].hitbox_npc;
-	      item = create_hitbox(10 + (int)(((float)(scene->coef * (float)(grille->y - i))) * percent) + tmp->x,
+	      item = create_hitbox(/*10 + */(int)(((float)(scene->coef * (float)(grille->y - i))) * percent) + tmp->x,
 				   tmp->y, tmp->width, tmp->height);
 	      place_image(&item, ground[j + i * grille->x].npc->texture_hitbox,
 			  ground[j + i * grille->x].npc->texture, pix);
@@ -62,7 +62,7 @@ void			put_grille(t_scene *scene, t_bunny_position *grille,
 	  if (ground[j + i * grille->x].decors != NULL && ground[j + i * grille->x].hitbox_decors != NULL)
 	    {
 	      tmp = ground[j + i * grille->x].hitbox_decors;
-	      item = create_hitbox(10 + (int)(((float)(scene->coef * (float)(grille->y - i))) * percent) + tmp->x,
+	      item = create_hitbox(/*10 + */(int)(((float)(scene->coef * (float)(grille->y - i))) * percent) + tmp->x,
 				   tmp->y, tmp->width, tmp->height);
 	      place_image(&item, ground[j + i * grille->x].decors->texture_hitbox,
 			  ground[j + i * grille->x].decors->texture, pix);
@@ -117,7 +117,7 @@ void			disp_cases(t_scene *scene, t_bunny_pixelarray *pix,
     		 * (float)(grille.grille_y - y_pos + 1)))
       / (float)(grille.size_x);
       case_x = ((float)grille.case_x * coef);
-      pos.x = ((float)((float)WIN_WIDTH - 20 - (float)case_x * ((float)grille.grille_x)) * percent + 10);
+      pos.x = ((float)((float)WIN_WIDTH - 30 - (float)case_x * ((float)grille.grille_x)) * percent + 10);
       x = 0;
       while (y >= 1 && x < case_x * (float)((grille.grille_x)))
 	{

@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Mon Apr 11 00:14:36 2016 Gaëtan Léandre
-** Last update Mon Apr 11 19:28:48 2016 Gaëtan Léandre
+** Last update Tue Apr 12 01:36:32 2016 Gaëtan Léandre
 */
 #include		"main.h"
 
@@ -23,7 +23,7 @@ t_hitbox		*set_npc_hitbox(t_grille *grille, t_npc *npc,
   if ((result = xmalloc(sizeof(t_hitbox), &ptr_list)) == NULL)
     return (NULL);
   coef = (float)((float)grille->size_x - (float)(grille->coef
-		 * (float)(grille->grille_y - pos->y/* - 1*/+ 1)))
+		 * (float)(grille->grille_y - pos->y - 1)))
   / (float)(grille->size_x);
   case_x = ((float)grille->case_x * coef);
   hauteur = case_x * npc->texture_hitbox->height
@@ -49,7 +49,7 @@ t_hitbox		*set_decors_hitbox(t_grille *grille, t_decors *npc,
   if ((result = xmalloc(sizeof(t_hitbox), &ptr_list)) == NULL)
     return (NULL);
   coef = ((float)grille->size_x - (float)(grille->coef
-		 * (float)(grille->grille_y - pos->y + 1)))
+		 * (float)(grille->grille_y - pos->y - 1)))
   / (float)(grille->size_x);
   case_x = (int)((float)grille->case_x * coef);
   hauteur = case_x * npc->texture_hitbox->height
