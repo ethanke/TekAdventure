@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:41:06 2016 Gaëtan Léandre
-** Last update Thu Apr  7 22:06:57 2016 Philippe Lefevre
+** Last update Mon Apr 11 01:51:24 2016 Victor Sousa
 */
 
 #ifndef			_IMAGE_H_
@@ -13,6 +13,7 @@
 #include		<lapin.h>
 
 # include		"utils.h"
+
 
 typedef struct          s_texture
 {
@@ -28,6 +29,12 @@ typedef struct          s_hitbox
   int                   width;
   int                   height;
 }                       t_hitbox;
+
+typedef struct		s_font
+{
+  t_texture		*font_img;
+  int			size;
+}			t_font;
 
 t_texture      		*load_image(const char *file, t_ptr_list **ptr_list);
 t_texture		*pix_array_to_texture(t_bunny_pixelarray *pix,
@@ -52,5 +59,14 @@ void			tekpixel(t_bunny_pixelarray *pix,
 void			tektranspa(t_bunny_pixelarray *pix,
 				   t_bunny_position *pos,
 				   t_color *color);
+void            	tekchar(t_bunny_pixelarray *out,
+				t_font *font,
+				const t_bunny_position *pos,
+				const char c);
+void			tektext(const char *str,
+				const t_bunny_position *pos,
+				t_bunny_pixelarray *out,
+				t_font *font);
+
 
 #endif			/*_IMAGE_H_*/

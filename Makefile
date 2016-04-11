@@ -78,6 +78,7 @@ SRC		+=	$(UTILSDIR)/xmalloc.c			\
 SRC		+=	$(IMGDIR)/disp_image.c			\
 			$(IMGDIR)/hitbox_creator.c		\
 			$(IMGDIR)/load_image.c			\
+			$(IMGDIR)/tektext.c			\
 			$(IMGDIR)/tekpixel.c
 
 OBJ		=	$(SRC:.c=.o)

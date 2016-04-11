@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:58:37 2016 Philippe Lefevre
-** Last update Sun Apr 10 17:32:48 2016 Gaëtan Léandre
+** Last update Mon Apr 11 02:11:50 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -31,16 +31,21 @@ void                    swap_pix(t_prog *prog)
 
 t_bunny_response	mainloop(void *p)
 {
-  t_prog			*prog;
+  t_prog		*prog;
+  t_bunny_position	*mouse_pos;
 
   prog = p;
+  mouse_pos = (t_bunny_position *)bunny_get_mouse_position();
   place_image(create_hitbox_ptr(prog->blit_pos, WIN_WIDTH,
 				WIN_HEIGHT, prog->ptr_list),
               create_hitbox_ptr(prog->blit_pos, prog->lion_img->width,
                                 prog->lion_img->height, prog->ptr_list),
 	      prog->lion_img, prog->pix);
   disp_inventory(prog);
-  disp_ground(prog->scene, prog->pix, 0.5);
+  disp_ground(prog->scene, prog->pix, 1 - (float)mouse_pos->x / (float)WIN_WIDTH);
+
+  /*tektext("const char *str", &prog->blit_pos, prog->pix, prog->font);*/
+
   bunny_blit(&prog->win->buffer, &prog->pix->clipable, &prog->blit_pos);
   swap_pix(prog);
   bunny_display(prog->win);
