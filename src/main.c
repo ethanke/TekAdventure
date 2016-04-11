@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Mon Apr 11 05:12:46 2016 Victor Sousa
+** Last update Mon Apr 11 07:47:15 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -18,6 +18,7 @@ int			init_prog(t_prog *prog, char *str)
   if ((prog->scene = parsing(str, &prog->player, &prog->ptr_list)) == NULL)
     return (ERROR);
   prog->player->inventory_open = 0;
+  prog->fight_state = 0;
   prog->need_init_fight = 1;
   if ((prog->font =
        xmalloc(sizeof(t_font), &prog->ptr_list)) == NULL)
@@ -26,6 +27,7 @@ int			init_prog(t_prog *prog, char *str)
        load_image("ressources/sprites/font1.png", &prog->ptr_list)) == NULL)
     return (ERROR);
   prog->font->font_size = 50;
+  prog->font->font_color.full = 0xFF000000;
   if ((prog->player->sprite = load_image("ressources/sprites/pnj_1.png", &prog->ptr_list)) == NULL)
     return (ERROR);
   if ((prog->fight_img = load_image("ressources/sprites/fight.jpg", &prog->ptr_list)) == NULL)

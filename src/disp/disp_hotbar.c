@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 08:30:39 2016 Victor Sousa
-** Last update Sat Apr  9 15:34:52 2016 Victor Sousa
+** Last update Mon Apr 11 07:27:29 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -22,7 +22,7 @@ static void		disp_hotbar_sprite(t_prog *prog, t_bunny_position *pos)
 	      prog->player->hotbar_sprite, prog->pix);
 }
 
-void			disp_hotbar(t_prog *prog)
+void			disp_hotbar(t_prog *prog, t_bunny_position *m_pos)
 {
   float			x;
   t_bunny_position	pos;
@@ -39,9 +39,14 @@ void			disp_hotbar(t_prog *prog)
     {
       pos.x = (int)x;
       if (prog->player->inventory[i].id != -1)
-	place_image(create_hitbox_ptr(pos, 36, 30, prog->ptr_list),
-		    prog->player->inventory[i].object->texture_hitbox,
-		    prog->player->inventory[i].object->texture, prog->pix);
+	{
+	  place_image(create_hitbox_ptr(pos, 36, 30, prog->ptr_list),
+		      prog->player->inventory[i].object->texture_hitbox,
+		      prog->player->inventory[i].object->texture, prog->pix);
+	  if (m_pos->x >= pos.x && m_pos->x <= pos.x + 40.45 &&
+	      m_pos->y >= pos.y && m_pos->y <= pos.y + 36)
+	    disp_item_info(prog, &prog->player->inventory[i], &pos);
+	}
       x += 40.45;
     }
   disp_selected_hotbar_inv_item(prog);

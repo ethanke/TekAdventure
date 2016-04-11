@@ -5,34 +5,34 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Tue Feb 23 10:27:21 2016 sousa_v
-** Last update Mon Apr 11 05:50:37 2016 Victor Sousa
+** Last update Mon Apr 11 07:03:41 2016 Victor Sousa
 */
 
 #include	"main.h"
 
-char		get_x_char(char c)
+char		get_x_char(char *str, char c)
 {
-  char		str[] = " !\"#$%&'()*+,-./0123456789:;<=>?@\
-ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
   int		i;
 
   i = -1;
   while (str[++i])
-    if (str[i] == c)
-      return (i % 16);
+    {
+      if (str[i] == c)
+	return (i % 16);
+    }
   return (-1);
 }
 
-char		get_y_char(char c)
+char		get_y_char(char *str, char c)
 {
-  char		str[] = " !\"#$%&'()*+,-./0123456789:;<=>?@\
-ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
   int		i;
 
   i = -1;
   while (str[++i])
-    if (str[i] == c)
-      return (i / 16);
+    {
+      if (str[i] == c)
+	return (i / 16);
+    }
   return (-1);
 }
 
@@ -44,12 +44,17 @@ void		tekchar(t_bunny_pixelarray *out,
   t_bunny_position	let_pos;
   t_hitbox		print_pos;
   t_hitbox		fetch_pos;
+  char			*str;
 
-  let_pos.x = get_x_char(c) * 25;
-  let_pos.y = get_y_char(c) * 25;
+  str = malloc(98);
+  str = my_strcpy(str, " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOP");
+  str = my_strcat(str, "QRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
+  let_pos.x = get_x_char(str, c) * 25;
+  let_pos.y = get_y_char(str, c) * 25;
   print_pos = create_hitbox(pos->x, pos->y, font->font_size, font->font_size);
   fetch_pos = create_hitbox(let_pos.x, let_pos.y, 25, 25);
   place_image(&print_pos, &fetch_pos, font->font_img, out);
+  free(str);
 }
 
 void		tektext(const char *str,

@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:41:06 2016 Gaëtan Léandre
-** Last update Mon Apr 11 05:25:19 2016 Victor Sousa
+** Last update Mon Apr 11 07:46:39 2016 Victor Sousa
 */
 
 #ifndef			_IMAGE_H_
@@ -33,6 +33,7 @@ typedef struct		s_font
 {
   t_texture		*font_img;
   int			font_size;
+  t_color		font_color;
 }			t_font;
 
 t_texture      		*load_image(const char *file, t_ptr_list **ptr_list);

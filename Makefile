@@ -58,6 +58,7 @@ SRC		+=	$(PARSDIR)/parsing.c			\
 SRC		+=	$(DISPDIR)/disp_hotbar.c		\
 			$(DISPDIR)/disp_inventory.c		\
 			$(DISPDIR)/disp_selected_inv_item.c	\
+			$(DISPDIR)/disp_item_info.c		\
 			$(DISPDIR)/disp_scene.c			\
 			$(DISPDIR)/init_hitbox_scene.c		\
 			$(DISPDIR)/disp_utils.c
@@ -72,10 +73,14 @@ SRC		+=	$(UTILSDIR)/xmalloc.c			\
 			$(UTILSDIR)/ptr_list.c			\
 			$(UTILSDIR)/my_strdup.c			\
 			$(UTILSDIR)/my_getnbr.c			\
+			$(UTILSDIR)/my_strcat.c			\
+			$(UTILSDIR)/my_strcpy.c			\
 			$(UTILSDIR)/my_puterror.c		\
 			$(UTILSDIR)/my_strlen.c			\
+			$(UTILSDIR)/my_itoa.c			\
 			$(UTILSDIR)/list_create_node.c		\
 			$(UTILSDIR)/list_add_node.c		\
+			$(UTILSDIR)/my_draw_square.c		\
 			$(UTILSDIR)/my_swap.c
 
 SRC		+=	$(IMGDIR)/disp_image.c			\

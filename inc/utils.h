@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Wed Apr  6 23:08:25 2016 victor sousa
-** Last update Sat Apr  9 14:50:31 2016 Victor Sousa
+** Last update Mon Apr 11 07:57:25 2016 Victor Sousa
 */
 
 #ifndef                 UTILS_H_
@@ -28,5 +28,14 @@ int			my_strlen(char *str);
 int			my_getnbr(char *str);
 void                    *xmalloc(int size, t_ptr_list **ptr_list);
 char			*my_strdup(char *str, t_ptr_list **ptr_list);
+char			*my_strcpy(char *dest, char *src);
+char			*my_strcat(char *dest, char *src);
+char			*my_itoa(int nb);
+
+/* COMMON GRAPH */
+void			my_draw_square(t_bunny_pixelarray *pix,
+				       t_bunny_position *pos,
+				       t_bunny_position *size,
+				       unsigned int color);
 
 #endif                  /* !UTILS_H_ */
