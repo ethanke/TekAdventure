@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Tue Apr 12 03:41:45 2016 Gaëtan Léandre
-** Last update Tue Apr 12 03:45:23 2016 Gaëtan Léandre
+** Last update Tue Apr 12 03:50:46 2016 Gaëtan Léandre
 */
 
 #include	 	"main.h"
@@ -31,7 +31,8 @@ float			get_y(t_scene *scene, t_grille *grille, int pos)
   return (y - 1);
 }
 
-int			get_x(float percent, t_grille *grille, int pos, float y_pos)
+int			get_x(float percent, t_grille *grille, int pos,
+			      float y_pos)
 {
   float			case_x;
   float			coef;
@@ -41,7 +42,8 @@ int			get_x(float percent, t_grille *grille, int pos, float y_pos)
 		 * (float)(grille->grille_y - y_pos)))
   / (float)(grille->size_x);
   case_x = ((float)grille->case_x * coef);
-  start_x = ((float)((float)WIN_WIDTH - 30 - (float)case_x * ((float)grille->grille_x)) * percent + 10);
+  start_x = ((float)((float)WIN_WIDTH - 30 -
+	      (float)case_x * ((float)grille->grille_x)) * percent + 10);
   pos -= start_x;
   if (pos < 0)
     return (-1);
