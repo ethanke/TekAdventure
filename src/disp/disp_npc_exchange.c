@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Tue Apr 12 20:17:50 2016 Victor Sousa
-** Last update Wed Apr 13 00:36:18 2016 Victor Sousa
+** Last update Wed Apr 13 01:11:59 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -47,14 +47,17 @@ static void		disp_npc_message(t_prog *prog, t_npc *npc)
 static void 		disp_needed_item(t_prog *prog, t_npc *npc)
 {
   t_bunny_position	pos;
-  t_hitbox		hit1;
 
   (void)npc;
   pos.x = WIN_WIDTH / 2 - prog->scene->object->texture->width / 2 - 15;
   pos.y = WIN_HEIGHT / 2 - prog->scene->object->texture->height / 2 + 90;
-  hit1 = create_hitbox(pos.x, pos.y, 32, 32);
-  place_image_transpa(&hit1, prog->scene->object->texture_hitbox,
+  place_image_transpa(create_hitbox(pos.x, pos.y, 32, 32),
+		      *prog->scene->object->texture_hitbox,
 		      prog->scene->object->texture, prog->pix);
+  pos.x += 115;
+  place_image_transpa(create_hitbox(pos.x, pos.y, 32, 32),
+		      *prog->scene->object->next->texture_hitbox,
+		      prog->scene->object->next->texture, prog->pix);
 }
 
 void			disp_npc_exchange(t_prog *prog, t_npc *npc)
