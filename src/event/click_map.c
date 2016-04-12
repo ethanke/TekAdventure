@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Tue Apr 12 03:55:39 2016 Gaëtan Léandre
-** Last update Wed Apr 13 00:03:32 2016 Gaëtan Léandre
+** Last update Wed Apr 13 00:21:04 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -52,8 +52,6 @@ void			get_npc_clicked(t_ground *ground, t_grille *grille,
 	}
       y--;
     }
-    click->x = -1;
-    click->y = -1;
 }
 
 void			get_decors_clicked(t_ground *ground, t_grille *grille,
@@ -90,8 +88,6 @@ void			get_decors_clicked(t_ground *ground, t_grille *grille,
 	}
       y--;
     }
-  click->x = -1;
-  click->y = -1;
 }
 
 void			get_decors_wnpc(t_ground *ground, t_grille *grille,
@@ -125,6 +121,8 @@ t_map_click		click_map(t_scene *scene, t_bunny_position *mouse_pos,
   t_grille		grille;
   t_map_click		click;
 
+  click.x = -1;
+  click.y = -1;
   click.mouse_pos = mouse_pos;
   click.npc = NULL;
   click.decors = NULL;
