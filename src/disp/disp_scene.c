@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 02:56:24 2016 Gaëtan Léandre
-** Last update Tue Apr 12 20:28:06 2016 Gaëtan Léandre
+** Last update Wed Apr 13 00:55:12 2016 Victor Sousa
 */
 
 #include	 	"main.h"
@@ -40,7 +40,6 @@ void			put_grille(t_scene *scene, t_bunny_position *grille,
 {
   int			i;
   int			j;
-  t_hitbox		item;
   t_hitbox		*tmp;
   t_ground		*ground;
 
@@ -54,17 +53,15 @@ void			put_grille(t_scene *scene, t_bunny_position *grille,
 	  if (ground[j + i * grille->x].npc != NULL && ground[j + i * grille->x].hitbox_npc != NULL)
 	    {
 	      tmp = ground[j + i * grille->x].hitbox_npc;
-	      item = create_hitbox((int)(((float)(scene->coef * (float)(grille->y - i))) * percent) + tmp->x,
-				   tmp->y, tmp->width, tmp->height);
-	      place_image(&item, ground[j + i * grille->x].npc->texture_hitbox,
+	      place_image(create_hitbox((int)(((float)(scene->coef * (float)(grille->y - i))) * percent) + tmp->x,
+					tmp->y, tmp->width, tmp->height), *ground[j + i * grille->x].npc->texture_hitbox,
 			  ground[j + i * grille->x].npc->texture, pix);
 	    }
 	  if (ground[j + i * grille->x].decors != NULL && ground[j + i * grille->x].hitbox_decors != NULL)
 	    {
 	      tmp = ground[j + i * grille->x].hitbox_decors;
-	      item = create_hitbox((int)(((float)(scene->coef * (float)(grille->y - i))) * percent) + tmp->x,
-				   tmp->y, tmp->width, tmp->height);
-	      place_image(&item, ground[j + i * grille->x].decors->texture_hitbox,
+	      place_image(create_hitbox((int)(((float)(scene->coef * (float)(grille->y - i))) * percent) + tmp->x,
+					tmp->y, tmp->width, tmp->height), *ground[j + i * grille->x].decors->texture_hitbox,
 			  ground[j + i * grille->x].decors->texture, pix);
 	    }
 	  j++;

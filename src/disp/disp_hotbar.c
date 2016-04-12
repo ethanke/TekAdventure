@@ -5,20 +5,17 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 08:30:39 2016 Victor Sousa
-** Last update Mon Apr 11 07:27:29 2016 Victor Sousa
+** Last update Wed Apr 13 00:40:07 2016 Victor Sousa
 */
 
 #include		"main.h"
 
 static void		disp_hotbar_sprite(t_prog *prog, t_bunny_position *pos)
 {
-  place_image(create_hitbox_ptr(*pos, prog->player->hotbar_sprite->width / 4,
-				prog->player->hotbar_sprite->height / 4,
-				prog->ptr_list),
-	      create_hitbox_ptr(prog->blit_pos,
-				prog->player->hotbar_sprite->width,
-				prog->player->hotbar_sprite->height,
-				prog->ptr_list),
+  place_image(create_hitbox(pos->x, pos->y, prog->player->hotbar_sprite->width / 4,
+			    prog->player->hotbar_sprite->height / 4),
+	      create_hitbox(0, 0, prog->player->hotbar_sprite->width,
+			    prog->player->hotbar_sprite->height),
 	      prog->player->hotbar_sprite, prog->pix);
 }
 
@@ -40,8 +37,8 @@ void			disp_hotbar(t_prog *prog, t_bunny_position *m_pos)
       pos.x = (int)x;
       if (prog->player->inventory[i].id != -1)
 	{
-	  place_image(create_hitbox_ptr(pos, 36, 30, prog->ptr_list),
-		      prog->player->inventory[i].object->texture_hitbox,
+	  place_image(create_hitbox(pos.x, pos.y, 36, 30),
+		      *prog->player->inventory[i].object->texture_hitbox,
 		      prog->player->inventory[i].object->texture, prog->pix);
 	  if (m_pos->x >= pos.x && m_pos->x <= pos.x + 40.45 &&
 	      m_pos->y >= pos.y && m_pos->y <= pos.y + 36)

@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Thu Apr  7 03:01:13 2016 victor sousa
-** Last update Mon Apr 11 08:05:05 2016 Victor Sousa
+** Last update Wed Apr 13 00:56:40 2016 Victor Sousa
 */
 
 #ifndef 		DISP_H_
@@ -27,6 +27,9 @@ void			disp_selected_hotbar_inv_item(t_prog *prog);
 void			disp_selected_full_inv_item(t_prog *prog);
 void			disp_ground(t_scene *scene, t_bunny_pixelarray *pix,
 				    float percent);
+void			disp_npc_exchange(t_prog *prog, t_npc *npc);
+void			disp_npc(t_prog *prog, t_npc *npc);
+void			disp_player(t_prog *prog, t_player *player);
 void			set_hitbox_ground(t_scene *scene, t_ptr_list *ptr_list);
 void			put_grille(t_scene *scene, t_bunny_position *grille,
 				   float percent, t_bunny_pixelarray *pix);
@@ -41,5 +44,7 @@ t_hitbox		*set_npc_hitbox(t_grille *grille, t_npc *npc,
 int			get_pos_y(int y, t_grille *grille);
 t_grille		get_grille_param(t_hitbox *place,
 					 t_scene *scene);
+
+void			interact_npc(t_prog *prog, t_npc *npc);
 
 #endif			/* !DISP_H_ */

@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 00:11:13 2016 Gaëtan Léandre
-** Last update Mon Apr 11 04:56:41 2016 Victor Sousa
+** Last update Tue Apr 12 21:11:51 2016 Victor Sousa
 */
 
 #ifndef			PROG_H_
@@ -15,6 +15,14 @@
 # include		"image.h"
 # include		"scene.h"
 # include		"player.h"
+
+#ifndef			PROG_STATE_
+# define		PROG_STATE_
+# define		STATE_MENU		0
+# define		STATE_GAME		1
+# define		STATE_NPC		2
+# define		STATE_FIGHT		3
+#endif			/*!PROG_STATE_*/
 
 typedef	struct		s_prog
 {
@@ -27,13 +35,15 @@ typedef	struct		s_prog
   t_font		*font;
   t_ptr_list		*ptr_list;
   t_bunny_position	blit_pos;
-  
+  int			state;
+
   struct s_fight	*fight;
-  char			fight_state;
   char			need_init_fight;
 
   t_texture		*lion_img;
   t_texture		*fight_img;
+  t_texture		*exchange_sprite;
+
   t_player		*player;
   t_scene		*scene;
 }			t_prog;

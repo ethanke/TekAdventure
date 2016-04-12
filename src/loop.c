@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:58:37 2016 Philippe Lefevre
-** Last update Mon Apr 11 08:08:48 2016 Victor Sousa
+** Last update Wed Apr 13 00:39:04 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -36,17 +36,20 @@ t_bunny_response	mainloop(void *p)
 
   prog = p;
   mouse_pos = (t_bunny_position *)bunny_get_mouse_position();
-  if (prog->fight_state == 1)
+  place_image(create_hitbox(0, 0, WIN_WIDTH, WIN_HEIGHT),
+	      create_hitbox(0, 0, prog->lion_img->width,
+			    prog->lion_img->height),
+	      prog->lion_img, prog->pix);
+  disp_ground(prog->scene, prog->pix, 1 - (float)mouse_pos->x /
+	      (float)WIN_WIDTH);
+  if (prog->state == STATE_FIGHT)
     start_fight(prog, prog->scene->npc);
-  else{
-      place_image(create_hitbox_ptr(prog->blit_pos, WIN_WIDTH,
-				    WIN_HEIGHT, prog->ptr_list),
-		  create_hitbox_ptr(prog->blit_pos, prog->lion_img->width,
-				    prog->lion_img->height, prog->ptr_list),
-		  prog->lion_img, prog->pix);
-      disp_ground(prog->scene, prog->pix, 1 - (float)mouse_pos->x /
-		  (float)WIN_WIDTH);
-  }
+  else if (prog->state == STATE_GAME)
+    {
+      /* GAMEPLAY ELEMENT */
+    }
+  else if (prog->state == STATE_NPC)
+    interact_npc(prog, prog->scene->npc->next->next);
 
   disp_inventory(prog);
   bunny_blit(&prog->win->buffer, &prog->pix->clipable, &prog->blit_pos);

@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Wed Apr  6 21:04:44 2016 victor sousa
-** Last update Mon Apr 11 03:32:41 2016 Victor Sousa
+** Last update Tue Apr 12 19:37:03 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -31,10 +31,17 @@ t_bunny_response	event_key(t_bunny_event_state state,
     }
   if (key == BKS_F && state == GO_UP)
     {
-      if (prog->fight_state == 0)
-	prog->fight_state = 1;
+      if (prog->state != STATE_FIGHT)
+  	prog->state = STATE_FIGHT;
       else
-	prog->fight_state = 0;
+	prog->state = STATE_GAME;
+    }
+  if (key == BKS_N && state == GO_UP)
+    {
+      if (prog->state == STATE_GAME)
+	prog->state = STATE_NPC;
+      else
+	prog->state = STATE_GAME;
     }
   return (GO_ON);
 }

@@ -19,6 +19,8 @@ RED		=	"\033[0;31m"
 SRCDIR		=	src
 DISPDIR		=	$(SRCDIR)/disp
 EVENTDIR	=	$(SRCDIR)/event
+FIGHTDIR	=	$(EVENTDIR)/fight
+NPCDIR		=	$(EVENTDIR)/npc
 UTILSDIR	=	$(SRCDIR)/utils
 IMGDIR		=	$(SRCDIR)/image
 PARSDIR		=	$(SRCDIR)/parsing
@@ -61,15 +63,20 @@ SRC		+=	$(DISPDIR)/disp_hotbar.c		\
 			$(DISPDIR)/disp_item_info.c		\
 			$(DISPDIR)/disp_scene.c			\
 			$(DISPDIR)/init_hitbox_scene.c		\
-			$(DISPDIR)/disp_utils.c
+			$(DISPDIR)/disp_utils.c			\
+			$(DISPDIR)/disp_npc_exchange.c		\
+			$(DISPDIR)/disp_npc_interact.c
 
 SRC		+=	$(EVENTDIR)/event_key.c			\
 			$(EVENTDIR)/event_click.c		\
 			$(EVENTDIR)/inventory_click.c		\
 			$(EVENTDIR)/get_click_inventory_pos.c	\
-			$(EVENTDIR)/fight/start_fight.c		\
 			$(EVENTDIR)/get_grille_pos.c		\
-			$(EVENTDIR)/click_map.c
+			$(EVENTDIR)/click_map.c			\
+
+SRC		+=	$(FIGHTDIR)/start_fight.c
+
+SRC		+=	$(NPCDIR)/interact_npc.c
 
 SRC		+=	$(UTILSDIR)/xmalloc.c			\
 			$(UTILSDIR)/ptr_list.c			\

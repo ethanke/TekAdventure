@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:41:06 2016 Gaëtan Léandre
-** Last update Tue Apr 12 13:42:17 2016 Ethan Kerdelhue
+** Last update Wed Apr 13 00:34:11 2016 Victor Sousa
 */
 
 #ifndef			_IMAGE_H_
@@ -13,6 +13,8 @@
 #include		<lapin.h>
 
 # include		"utils.h"
+
+# define		PLACE_IMG_ALPHA		60
 
 typedef struct          s_texture
 {
@@ -42,10 +44,14 @@ t_texture		*pix_array_to_texture(t_bunny_pixelarray *pix,
 void			put_image(t_texture *bmp,
 				  t_bunny_pixelarray *pix,
 				  t_bunny_position *pos);
-void			place_image(t_hitbox *pos,
-				    t_hitbox *fetch,
+void			place_image(t_hitbox pos,
+				    t_hitbox fetch,
 				    t_texture *tex,
 				    t_bunny_pixelarray *pix);
+void			place_image_transpa(t_hitbox *pos,
+					    t_hitbox *fetch,
+					    t_texture *tex,
+					    t_bunny_pixelarray *pix);
 void			fill_image(t_bunny_pixelarray *pix, unsigned int col);
 void			redim_image(t_hitbox *pos,
 				    t_texture *tex,

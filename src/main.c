@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Mon Apr 11 07:26:34 2016 Gaëtan Léandre
+** Last update Tue Apr 12 21:12:19 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -18,7 +18,7 @@ int			init_prog(t_prog *prog, char *str)
   if ((prog->scene = parsing(str, &prog->player, &prog->ptr_list)) == NULL)
     return (ERROR);
   prog->player->inventory_open = 0;
-  prog->fight_state = 0;
+  prog->state = STATE_GAME;
   prog->need_init_fight = 1;
   if ((prog->font =
        xmalloc(sizeof(t_font), &prog->ptr_list)) == NULL)
@@ -37,6 +37,9 @@ int			init_prog(t_prog *prog, char *str)
     return (ERROR);
   if ((prog->player->hotbar_sprite =
        load_image("ressources/sprites/hotbar.png", &prog->ptr_list)) == NULL)
+    return (ERROR);
+  if ((prog->exchange_sprite =
+       load_image("ressources/sprites/exchange.png", &prog->ptr_list)) == NULL)
     return (ERROR);
   return (SUCCESS);
 }
@@ -61,7 +64,6 @@ int			main(int ac, char **av, char **env)
     return (ERROR);
   prog.pix = prog.pix0;
   prog.pix_id = 0;
-
   if (init_prog(&prog, av[1]) == ERROR)
     return (clean(&prog, ERROR));
   if ((prog.lion_img = load_image("ressources/sprites/lion.jpg", &prog.ptr_list)) == NULL)

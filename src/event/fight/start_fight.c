@@ -5,9 +5,11 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Mon Apr 11 04:58:38 2016 Ethan Kerdelhue
+** Last update Tue Apr 12 19:18:50 2016 Victor Sousa
 */
 
+#include		<stdlib.h>
+#include		<time.h>
 #include		"main.h"
 
 int 			my_rand(int min, int max)
@@ -28,6 +30,7 @@ int			prepare_fight(t_prog *prog, t_npc *npc)
   prog->fight->player->damage_max = 35;
   prog->fight->npc->damage_min = 20;
   prog->fight->npc->damage_max = 35;
+  srand(time(NULL));
   return (0);
 }
 
@@ -58,12 +61,12 @@ int			loop_fight(t_prog *prog)
   if (prog->player->life <= 0)
     {
       puts("npc win\n");
-      prog->fight_state = 0;
+      prog->state = STATE_GAME;
     }
   if  (prog->fight->npc->life <= 0)
     {
       puts("player win\n");
-      prog->fight_state = 0;
+      prog->state = STATE_GAME;
     }
 
   return (0);

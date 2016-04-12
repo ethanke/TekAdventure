@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 09:11:28 2016 Victor Sousa
-** Last update Mon Apr 11 01:24:55 2016 Victor Sousa
+** Last update Wed Apr 13 00:55:48 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -20,8 +20,8 @@ void			handle_inventory_click(t_prog *prog)
   if (prog->player->inv_selected != -1)
     {
       need_to_move = prog->player->inv_selected;
-      place_image(create_hitbox_ptr(*click_pos, 36, 30, prog->ptr_list),
-		  prog->player->inventory[need_to_move].object->texture_hitbox,
+      place_image(create_hitbox(click_pos->x, click_pos->y, 36, 30),
+		  *prog->player->inventory[need_to_move].object->texture_hitbox,
 		  prog->player->inventory[need_to_move].object->texture, prog->pix);
     }
   prog->player->inv_selected = get_click_place_hotbar(prog, click_pos);
