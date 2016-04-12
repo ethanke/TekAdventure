@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:41:06 2016 Gaëtan Léandre
-** Last update Wed Apr 13 00:34:11 2016 Victor Sousa
+** Last update Wed Apr 13 01:10:00 2016 Victor Sousa
 */
 
 #ifndef			_IMAGE_H_
@@ -48,8 +48,8 @@ void			place_image(t_hitbox pos,
 				    t_hitbox fetch,
 				    t_texture *tex,
 				    t_bunny_pixelarray *pix);
-void			place_image_transpa(t_hitbox *pos,
-					    t_hitbox *fetch,
+void			place_image_transpa(t_hitbox pos,
+					    t_hitbox fetch,
 					    t_texture *tex,
 					    t_bunny_pixelarray *pix);
 void			fill_image(t_bunny_pixelarray *pix, unsigned int col);
