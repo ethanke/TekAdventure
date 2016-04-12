@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:49:08 2016 Victor Sousa
-** Last update Tue Apr 12 04:01:29 2016 Gaëtan Léandre
+** Last update Tue Apr 12 22:40:37 2016 Gaëtan Léandre
 */
 
 #ifndef			EVENT_H_
@@ -25,6 +25,7 @@ typedef struct		s_map_click
 {
   int			x;
   int			y;
+  t_bunny_position	*mouse_pos;
   t_npc			*npc;
   t_decors		*decors;
 }			t_map_click;
