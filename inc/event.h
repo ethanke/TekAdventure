@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:49:08 2016 Victor Sousa
-** Last update Tue Apr 12 22:40:37 2016 Gaëtan Léandre
+** Last update Tue Apr 12 23:50:34 2016 Gaëtan Léandre
 */
 
 #ifndef			EVENT_H_
@@ -25,6 +25,7 @@ typedef struct		s_map_click
 {
   int			x;
   int			y;
+  t_bunny_position	pos;
   t_bunny_position	*mouse_pos;
   t_npc			*npc;
   t_decors		*decors;
@@ -48,5 +49,7 @@ int			get_x(float percent, t_grille *grille, int pos,
 			      float y_pos);
 t_bunny_position	get_pos(t_scene *scene, float percent,
 				t_bunny_position *mouse_pos);
+t_map_click		click_map(t_scene *scene, t_bunny_position *mouse_pos,
+				  float percent);
 
 #endif			/* !EVENT_H_ */
