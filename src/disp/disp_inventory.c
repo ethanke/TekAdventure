@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Thu Apr  7 02:58:27 2016 victor sousa
-** Last update Mon Apr 11 07:29:06 2016 Victor Sousa
+** Last update Tue Apr 12 18:08:41 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -61,10 +61,8 @@ static void		disp_floating_item(t_prog *prog,
   t_bunny_position	pos;
   if (prog->player->inv_selected != -1)
     {
-      pos.x = click_pos->x - prog->player->inventory
-        [(int)prog->player->inv_selected].object->texture_hitbox->width / 2;
-      pos.y = click_pos->y - prog->player->inventory
-        [(int)prog->player->inv_selected].object->texture_hitbox->height / 2;
+      pos.x = click_pos->x - 20;
+      pos.y = click_pos->y - 18;
       place_image(create_hitbox_ptr(pos, 36, 30, prog->ptr_list),
                 prog->player->inventory
                 [(int)prog->player->inv_selected].object->texture_hitbox,
