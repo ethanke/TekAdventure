@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Tue Apr 12 03:55:39 2016 Gaëtan Léandre
-** Last update Tue Apr 12 23:51:10 2016 Gaëtan Léandre
+** Last update Wed Apr 13 00:03:32 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -42,6 +42,8 @@ void			get_npc_clicked(t_ground *ground, t_grille *grille,
 		{
 		  click->x = x;
 		  click->y = y;
+		  click->pos.x = item.x;
+		  click->pos.y = item.y;
 		  click->npc = ground[x + y * grille->grille_x].npc;
 		  return;
 		}
@@ -78,6 +80,8 @@ void			get_decors_clicked(t_ground *ground, t_grille *grille,
 		{
 		  click->x = x;
 		  click->y = y;
+                  click->pos.x = item.x;
+                  click->pos.y = item.y;
 		  click->decors = ground[x + y * grille->grille_x].decors;
 		  return;
 		}
@@ -108,6 +112,8 @@ void			get_decors_wnpc(t_ground *ground, t_grille *grille,
 			   + tmp->x, tmp->y, tmp->width, tmp->height);
       if (in_hitbox(&item, click->mouse_pos) == 1)
 	click->decors = ground[x + y * grille->grille_x].decors;
+        click->pos.x = item.x < click->pos.x ? click->pos.x : item.x;
+        click->pos.y = item.y;
     }
 }
 
