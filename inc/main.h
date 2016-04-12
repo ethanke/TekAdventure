@@ -5,13 +5,15 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 20:02:40 2016 Philippe Lefevre
-** Last update Sat Apr  9 14:49:57 2016 Victor Sousa
+** Last update Mon Apr 11 04:58:58 2016 Ethan Kerdelhue
 */
 
 #ifndef			MAIN_H_
 # define		MAIN_H_
 
 # include		<lapin.h>
+# include		<stdlib.h>
+# include		<time.h>
 # include		<unistd.h>
 
 # include		"utils.h"
