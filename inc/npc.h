@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:24:51 2016 Ethan Kerdelhue
-** Last update Wed Apr 13 02:19:27 2016 Ethan Kerdelhue
+** Last update Wed Apr 13 05:04:22 2016 Victor Sousa
 */
 
 #ifndef 		NPC_H_
@@ -17,6 +17,7 @@ typedef struct		s_trade
 {
   t_item		*needed;
   t_item		*given;
+  t_item		*in_stock;
 }			t_trade;
 
 typedef struct 		s_npc

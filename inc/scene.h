@@ -5,12 +5,11 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Wed Apr 13 03:51:55 2016 Philippe Lefevre
+** Last update Wed Apr 13 06:16:38 2016 Victor Sousa
 */
 
 #ifndef			SCENE_H_
 # define		SCENE_H_
-# include		"main.h"
 
 # define		EQUART		100
 

@@ -5,13 +5,11 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Thu Apr  7 03:01:13 2016 victor sousa
-** Last update Wed Apr 13 04:17:36 2016 Gaëtan Léandre
+** Last update Wed Apr 13 06:26:10 2016 Victor Sousa
 */
 
 #ifndef 		DISP_H_
 # define 		DISP_H_
-
-# include		"main.h"
 
 #ifndef 		ITEM_INFO_SIZE_
 # define 		ITEM_INFO_SIZE_

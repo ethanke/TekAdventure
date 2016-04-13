@@ -5,14 +5,11 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:41:06 2016 Gaëtan Léandre
-** Last update Wed Apr 13 01:10:00 2016 Victor Sousa
+** Last update Wed Apr 13 06:14:52 2016 Victor Sousa
 */
 
 #ifndef			_IMAGE_H_
 # define		_IMAGE_H_
-#include		<lapin.h>
-
-# include		"utils.h"
 
 # define		PLACE_IMG_ALPHA		60
 

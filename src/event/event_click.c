@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:10:29 2016 Victor Sousa
-** Last update Wed Apr 13 01:30:45 2016 Victor Sousa
+** Last update Wed Apr 13 06:27:04 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -18,6 +18,16 @@ t_bunny_response        event_click(t_bunny_event_state            state,
 
   (void)state;
   prog = (t_prog *)data;
+  if (prog->state == STATE_GAME)
+    {
+      prog->current_click = click_map(prog->scene,
+				      (t_bunny_position *)
+				      bunny_get_mouse_position(),
+				      1 - (float)bunny_get_mouse_position()->x /
+				      (float)WIN_WIDTH);
+    }
+  if (prog->current_click.npc != NULL)
+    prog->state = STATE_NPC_CHOOSE;
   if (button == BMB_LEFT)
     {
       if (prog->state == STATE_GAME)

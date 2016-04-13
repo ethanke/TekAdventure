@@ -5,16 +5,11 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 00:11:13 2016 Gaëtan Léandre
-** Last update Tue Apr 12 21:11:51 2016 Victor Sousa
+** Last update Wed Apr 13 06:23:21 2016 Victor Sousa
 */
 
 #ifndef			PROG_H_
 # define		PROG_H_
-
-# include		"utils.h"
-# include		"image.h"
-# include		"scene.h"
-# include		"player.h"
 
 #ifndef			PROG_STATE_
 # define		PROG_STATE_
@@ -22,7 +17,18 @@
 # define		STATE_GAME		1
 # define		STATE_NPC		2
 # define		STATE_FIGHT		3
+# define		STATE_NPC_CHOOSE	4
 #endif			/*!PROG_STATE_*/
+
+typedef struct		s_map_click
+{
+  int			x;
+  int			y;
+  t_bunny_position	pos;
+  t_bunny_position	*mouse_pos;
+  t_npc			*npc;
+  t_decors		*decors;
+}			t_map_click;
 
 typedef	struct		s_prog
 {
@@ -43,6 +49,8 @@ typedef	struct		s_prog
   t_texture		*lion_img;
   t_texture		*fight_img;
   t_texture		*exchange_sprite;
+
+  t_map_click		current_click;
 
   t_player		*player;
   t_scene		*scene;

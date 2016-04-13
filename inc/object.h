@@ -5,14 +5,11 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:35:23 2016 Ethan Kerdelhue
-** Last update Wed Apr 13 01:28:56 2016 Ethan Kerdelhue
+** Last update Wed Apr 13 06:16:06 2016 Victor Sousa
 */
 
 #ifndef 		OBJECT_H_
 # define 		OBJECT_H_
-
-# include		"main.h"
-# include		"image.h"
 
 typedef struct 		s_object
 {

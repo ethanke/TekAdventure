@@ -5,13 +5,11 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Wed Apr  6 23:08:25 2016 victor sousa
-** Last update Mon Apr 11 07:57:25 2016 Victor Sousa
+** Last update Wed Apr 13 06:16:47 2016 Victor Sousa
 */
 
 #ifndef                 UTILS_H_
 # define                UTILS_H_
-
-# include		"main.h"
 
 /* PTR LIST */
 typedef	struct		s_ptr_list

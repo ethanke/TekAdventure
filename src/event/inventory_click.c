@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 09:11:28 2016 Victor Sousa
-** Last update Wed Apr 13 03:47:20 2016 Victor Sousa
+** Last update Wed Apr 13 05:18:34 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -32,8 +32,19 @@ void			handle_inventory_click(t_prog *prog)
     prog->player->inv_selected = -1;
   if (need_to_move != -1 && prog->player->inv_selected != -1)
     {
-      my_swap_item(&prog->player->inventory[need_to_move],
-		   &prog->player->inventory[(int)prog->player->inv_selected]);
+      if (prog->player->inventory[need_to_move].id ==
+	  prog->player->inventory[(int)prog->player->inv_selected].id &&
+	  need_to_move != prog->player->inv_selected)
+	{
+	  prog->player->inventory[(int)prog->player->inv_selected].amount +=
+	  prog->player->inventory[need_to_move].amount;
+	  prog->player->inventory[need_to_move].id = -1;
+	  prog->player->inventory[need_to_move].amount = 0;
+	  prog->player->inventory[need_to_move].object = NULL;
+	}
+      else
+	my_swap_item(&prog->player->inventory[need_to_move],
+		     &prog->player->inventory[(int)prog->player->inv_selected]);
       prog->player->inv_selected = -1;
     }
 }
@@ -60,7 +71,8 @@ void			handle_inventory_click_npc(t_prog *prog)
     prog->player->inv_selected = -1;
   if (need_to_move != -1 && prog->player->inv_selected != -1)
     {
-      printf("ITEM MOVED INTO PNC\n");
+      my_swap_item(&prog->player->inventory[need_to_move],
+		   &prog->player->inventory[(int)prog->player->inv_selected]);
       prog->player->inv_selected = -1;
     }
 }

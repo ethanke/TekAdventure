@@ -5,14 +5,11 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Fri Apr  8 23:15:49 2016 Philippe Lefevre
+** Last update Wed Apr 13 06:16:13 2016 Victor Sousa
 */
 
 #ifndef			PARSING_H_
 # define		PARSING_H_
-
-# include		"main.h"
-# include		"scene.h"
 
 t_scene			*parsing(const char *file, t_player **player,
 				 t_ptr_list **ptr_list);

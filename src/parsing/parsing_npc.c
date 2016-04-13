@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr  8 02:30:51 2016 Ethan Kerdelhue
-** Last update Wed Apr 13 01:38:52 2016 Philippe Lefevre
+** Last update Wed Apr 13 05:17:53 2016 Victor Sousa
 */
 
 #include	"main.h"
@@ -62,6 +62,10 @@ t_trade		*get_trade(char *str, t_ptr_list **ptr_list)
   tmp->given = xmalloc(sizeof(tmp->given), ptr_list);
   tmp->given->id = get_i_npc(str);
   tmp->given->amount = get_a_npc(str);
+  tmp->in_stock = xmalloc(sizeof(tmp->needed), ptr_list);
+  tmp->in_stock->id = -1;
+  tmp->in_stock->amount = 0;
+  tmp->in_stock->object = NULL;
   return (tmp);
 }
 

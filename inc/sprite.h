@@ -5,13 +5,11 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Sat Apr  9 04:20:24 2016 Philippe Lefevre
+** Last update Wed Apr 13 06:16:42 2016 Victor Sousa
 */
 
 #ifndef			SPRITE_H_
 # define		SPRITE_H_
-
-#include		"main.h"
 
 typedef struct		s_sprite
 {

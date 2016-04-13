@@ -5,11 +5,13 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Tue Mar 29 19:40:02 2016 Philippe Lefevre
-** Last update Sun Apr  3 00:30:22 2016 Philippe Lefevre
+** Last update Wed Apr 13 06:29:02 2016 Victor Sousa
 */
 
 #ifndef			MY_LIST_H_
 # define		MY_LIST_H_
+
+# include		<unistd.h>
 # include		<stdlib.h>
 
 typedef	struct		s_list

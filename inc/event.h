@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:49:08 2016 Victor Sousa
-** Last update Wed Apr 13 03:36:03 2016 Victor Sousa
+** Last update Wed Apr 13 06:23:16 2016 Victor Sousa
 */
 
 #ifndef			EVENT_H_
@@ -21,16 +21,6 @@ typedef struct		s_fight
   t_npc			*npc;
 }			t_fight;
 
-typedef struct		s_map_click
-{
-  int			x;
-  int			y;
-  t_bunny_position	pos;
-  t_bunny_position	*mouse_pos;
-  t_npc			*npc;
-  t_decors		*decors;
-}			t_map_click;
-
 int			start_fight(t_prog *prog, t_npc *npc);
 t_bunny_response	event_key(t_bunny_event_state state,
 				  t_bunny_keysym      key,
@@ -38,6 +28,9 @@ t_bunny_response	event_key(t_bunny_event_state state,
 t_bunny_response        event_click(t_bunny_event_state state,
 				    t_bunny_mousebutton button,
 				    void                *p);
+
+t_map_click		click_map(t_scene *scene, t_bunny_position *mouse_pos,
+				  float percent);
 
 void			handle_inventory_click(t_prog *prog);
 void			handle_inventory_click_npc(t_prog *prog);
