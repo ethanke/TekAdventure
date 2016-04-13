@@ -85,6 +85,7 @@ SRC		+=	$(EVENTDIR)/event_key.c			\
 SRC		+=	$(FIGHTDIR)/start_fight.c		\
 			$(FIGHTDIR)/draw_fight.c		\
 			$(FIGHTDIR)/update_bar.c		\
+			$(FIGHTDIR)/catch_button.c
 
 SRC		+=	$(NPCDIR)/interact_npc.c
 

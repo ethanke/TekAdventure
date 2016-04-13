@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr 13 19:36:12 2016 Ethan Kerdelhue
-** Last update Wed Apr 13 22:24:23 2016 Ethan Kerdelhue
+** Last update Thu Apr 14 00:57:08 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -21,7 +21,6 @@ void			draw_fight(t_prog *prog)
   t_bunny_position	bar2;
   t_bunny_position	bar3;
 
-  sleep(4);
   player_pos.x = prog->fight->player->sprite->width / 2;
   player_pos.y = WIN_HEIGHT / 2 - (prog->fight->player->sprite->height / 2);
   skip.x = WIN_WIDTH / 2 + 1 * prog->attack_button->width;

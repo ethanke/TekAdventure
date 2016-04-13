@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Wed Apr 13 23:56:23 2016 Gaëtan Léandre
+** Last update Thu Apr 14 03:07:12 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -151,9 +151,12 @@ int			prepare_fight(t_prog *prog, t_npc *npc)
   prog->life_bar = xmalloc(sizeof(t_bar), &prog->ptr_list);
   prog->npc_bar = xmalloc(sizeof(t_bar), &prog->ptr_list);
   prog->action_bar = xmalloc(sizeof(t_bar), &prog->ptr_list);
-  prog->action_bar->bar_sprite = load_image("ressources/sprites/bar.png", &prog->ptr_list);
-  prog->life_bar->bar_sprite = load_image("ressources/sprites/bar.png", &prog->ptr_list);
-  prog->npc_bar->bar_sprite = load_image("ressources/sprites/bar.png", &prog->ptr_list);
+  prog->action_bar->bar_sprite =
+      load_image("ressources/sprites/bar.png", &prog->ptr_list);
+  prog->life_bar->bar_sprite =
+      load_image("ressources/sprites/bar.png", &prog->ptr_list);
+  prog->npc_bar->bar_sprite =
+      load_image("ressources/sprites/bar.png", &prog->ptr_list);
   prog->fight->player = prog->player;
   prog->fight->npc = npc;
   prog->fight->npc->life = 100;
@@ -186,6 +189,7 @@ int			prepare_fight(t_prog *prog, t_npc *npc)
 int			loop_fight(t_prog *prog)
 {
   t_bunny_position	pos;
+  int			action_button;
 
   pos.x = WIN_WIDTH / 2;
   pos.y = (WIN_HEIGHT / 2) + 80;
@@ -193,7 +197,7 @@ int			loop_fight(t_prog *prog)
   my_puts("Round -> ", prog->fight->nb_round, 1);
   if (prog->fight->round_state == 1)
     {
-      if (prog->fight->animate == 0)
+      /*if (prog->fight->animate == 0)
 	{
 	  prog->fight->font.font_color.argb[ALPHA_CMP] = 0;
 	  prog->fight->animate = 1;
@@ -203,9 +207,18 @@ int			loop_fight(t_prog *prog)
       if (prog->fight->animate == 1)
 	prog->fight->font.font_color.argb[ALPHA_CMP] += 5;
       tektext(my_itoa(player_damage(prog->fight->player, prog->fight, prog)), &pos, prog->pix, &prog->fight->font);
-      prog->fight->nb_round += 1;
+      prog->fight->nb_round += 1;*/
 
-      prog->fight->round_state = 2;
+      if ((action_button = catch_button(prog)) != -1)
+	printf("button pressed : %d\n", action_button);
+      if (action_button == ATTACK)
+	printf("Vous attaquez\n");
+      if (action_button == DEFEND)
+	printf("Vous vous defendez\n");
+      if (action_button == MAGIC)
+	printf("Vous attaquez magiquement\n");
+      if (action_button == SKIP)
+	prog->fight->round_state = 2;
     }
   if (prog->fight->round_state == 2)
     {
@@ -218,13 +231,13 @@ int			loop_fight(t_prog *prog)
     {
       my_puts("npc win\n", 0, 0);
       prog->state = STATE_GAME;
-      prog->need_init_fight = 0;
+      prog->need_init_fight = 1;
     }
   if  (prog->fight->npc->life <= 0)
     {
       my_puts("player win\n", 0, 0);
       prog->state = STATE_GAME;
-      prog->need_init_fight = 0;
+      prog->need_init_fight = 1;
       prog->scene->ground[prog->current_click.x + prog->current_click.y
       * prog->scene->size.x].npc = NULL;
     }
