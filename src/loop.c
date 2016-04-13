@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:58:37 2016 Philippe Lefevre
-** Last update Wed Apr 13 07:06:58 2016 Gaëtan Léandre
+** Last update Wed Apr 13 07:13:49 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -33,7 +33,7 @@ t_bunny_response	mainloop(void *p)
 {
   t_prog		*prog;
   t_bunny_position	*mouse_pos;
-  int			percent;
+  float			percent;
 
   prog = p;
   mouse_pos = (t_bunny_position *)bunny_get_mouse_position();
