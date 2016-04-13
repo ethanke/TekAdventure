@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Mon Apr 11 00:51:48 2016 Gaëtan Léandre
-** Last update Tue Apr 12 02:31:21 2016 Gaëtan Léandre
+** Last update Wed Apr 13 02:48:26 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -23,6 +23,7 @@ t_grille		get_grille_param(t_hitbox *place,
   grille.grille_y = scene->size.y + 1;
   scene->coef = (float)(EQUART *  2) / (float)scene->size.y;
   grille.coef = scene->coef;
+  grille.height = place->height;
   return (grille);
 }
 
@@ -42,4 +43,14 @@ int			get_pos_y(int y, t_grille *grille)
       i++;
     }
   return (pos);
+}
+
+int			calc_x_h(t_grille *grille, t_bunny_position *pos,
+				 float percent, int x)
+{
+  int			result;
+
+  result = (int)(((float)(grille->coef *
+		  (float)(grille->grille_y  - pos->y - 1))) * percent) + x;
+  return (result);
 }
