@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr  8 00:59:55 2016 Ethan Kerdelhue
-** Last update Mon Apr 11 01:20:20 2016 Victor Sousa
+** Last update Wed Apr 13 03:06:42 2016 Philippe Lefevre
 */
 
 #include	"main.h"
@@ -33,6 +33,28 @@ int		get_item_id(char *str, int *id, int *amount)
       (*amount) = my_getnbr(str + i + 1);
     }
   return (0);
+}
+
+t_hitbox		*create_player_hitbox(int id, t_bunny_ini *ini,
+						 t_ptr_list **ptr_list)
+{
+  t_hitbox		*hitbox;
+  char			*str;
+  int			i;
+
+  if ((hitbox = xmalloc(sizeof(*hitbox), ptr_list)) == NULL)
+    return (NULL);
+  if ((str = (char *)bunny_ini_get_field(ini, "player", "sprite_hitbox", id)) == NULL)
+    return (NULL);
+  i = -1;
+  hitbox->x = my_getnbr(str);
+  while (str[++i] && str[i] != ';');
+  hitbox->y = my_getnbr(str + i + 1);
+  while (str[++i] && str[i] != ';');
+  hitbox->width = my_getnbr(str + i + 1);
+  while (str[++i] && str[i] != ';');
+  hitbox->height = my_getnbr(str + i + 1);
+  return (hitbox);
 }
 
 t_player	*load_player(t_bunny_ini *ini, t_ptr_list **ptr_list)
@@ -81,5 +103,6 @@ t_player	*load_player(t_bunny_ini *ini, t_ptr_list **ptr_list)
       player->inventory[slot].amount = my_getnbr(tmp + j + 1);
     }
   player->inv_selected = -1;
+  player->sprite_hitbox = create_player_hitbox(0, ini, ptr_list);
   return (player);
 }
