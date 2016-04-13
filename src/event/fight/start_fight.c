@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Wed Apr 13 23:50:01 2016 Ethan Kerdelhue
+** Last update Wed Apr 13 23:56:23 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -225,6 +225,8 @@ int			loop_fight(t_prog *prog)
       my_puts("player win\n", 0, 0);
       prog->state = STATE_GAME;
       prog->need_init_fight = 0;
+      prog->scene->ground[prog->current_click.x + prog->current_click.y
+      * prog->scene->size.x].npc = NULL;
     }
   return (0);
 }
