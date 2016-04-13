@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 03:51:52 2016 Gaëtan Léandre
-** Last update Wed Apr 13 04:04:51 2016 Gaëtan Léandre
+** Last update Wed Apr 13 04:31:14 2016 Gaëtan Léandre
 */
 
 #ifndef			PLAYER_H_
@@ -37,6 +37,8 @@ typedef struct		s_move
 
 typedef struct		s_player
 {
+  float			x;
+  float			y;
   int			life;
   unsigned int		token;
   char			*name;
