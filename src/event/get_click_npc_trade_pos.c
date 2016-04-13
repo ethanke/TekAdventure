@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Wed Apr 13 01:32:04 2016 Victor Sousa
-** Last update Wed Apr 13 12:25:00 2016 Victor Sousa
+** Last update Wed Apr 13 23:54:37 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -22,5 +22,14 @@ int			get_click_place_npc_trade(t_prog *prog,
       click_pos->y <= WIN_HEIGHT / 2 -
       prog->scene->object->texture->height / 2 + 122)
     return (-2);
+  if (click_pos->x >= WIN_WIDTH / 2 -
+      prog->scene->object->texture->width / 2 + 100 &&
+      click_pos->x <= WIN_WIDTH / 2 -
+      prog->scene->object->texture->width / 2 + 134 &&
+      click_pos->y >= WIN_HEIGHT / 2 -
+      prog->scene->object->texture->height / 2 + 90 &&
+      click_pos->y <= WIN_HEIGHT / 2 -
+      prog->scene->object->texture->height / 2 + 122)
+    return (-3);
   return (-1);
 }

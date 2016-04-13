@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Tue Apr 12 20:17:50 2016 Victor Sousa
-** Last update Wed Apr 13 23:32:06 2016 Victor Sousa
+** Last update Wed Apr 13 23:55:27 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -76,16 +76,23 @@ static void 		disp_needed_item(t_prog *prog, t_npc *npc)
   pos.x += 115;
   if (npc != NULL && npc->trade->in_stock->amount >= npc->trade->needed->amount)
     {
+      font.font_color.full = 0xFF050505;
       place_image(create_hitbox(pos.x, pos.y, 32, 32),
 		  *npc->trade->given->object->texture_hitbox,
 		  npc->trade->given->object->texture, prog->pix);
-
+      pos.y += 3;
+      tektext(my_itoa(npc->trade->given->amount), &pos, prog->pix, &font);
+      pos.y -= 3;
     }
   else
     {
+      font.font_color.full = 0x55050505;
       place_image_transpa(create_hitbox(pos.x, pos.y, 32, 32),
 			  *npc->trade->given->object->texture_hitbox,
 			  npc->trade->given->object->texture, prog->pix);
+      pos.y += 3;
+      tektext(my_itoa(npc->trade->given->amount), &pos, prog->pix, &font);
+      pos.y -= 3;
     }
 }
 
