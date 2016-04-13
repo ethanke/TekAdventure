@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Wed Apr 13 17:33:06 2016 Philippe Lefevre
+** Last update Wed Apr 13 18:23:04 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -100,7 +100,7 @@ t_object		*load_object(t_bunny_ini *ini, t_ptr_list **ptr_list)
   while (++i != nb_object)
     {
       if ((list = list_add_object(list, i, ini, ptr_list)) == NULL)
-	return (my_puterror_object("Can't add object"));
+	return (NULL);
     }
   return (list);
 }

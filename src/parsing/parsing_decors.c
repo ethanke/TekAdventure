@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Wed Apr 13 17:06:05 2016 Philippe Lefevre
+** Last update Wed Apr 13 18:14:44 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -50,7 +50,6 @@ t_breakable		*create_decors_breakable(int id, t_bunny_ini *ini,
   if ((str = (char *)bunny_ini_get_field(ini, "decors", "decors_loot", id)) == NULL)
     return (my_puterror_breakable("Error: decors:decors_loot field not found\n"));
   fill_loot_table(str, breakable->loot);
-  /* Printf fill loot table */
   return (breakable);
 }
 
@@ -133,11 +132,9 @@ t_decors		*load_decors(t_bunny_ini *ini, t_ptr_list **ptr_list)
   int			i;
 
   if ((str = (char *)bunny_ini_get_field(ini, "decors", "decors_count", 0)) == NULL)
-    return (my_puterror_decors("Error: balise decors \
-			       or decors:decors_count field not found\n"));
+    return (my_puterror_decors("Error: balise decors or decors:decors_count field not found\n"));
   if ((nb_decors = my_getnbr(str)) < 0)
-    return (my_puterror_decors("Error: decors:decors_count \
-				    should not be negative\n"));
+    return (my_puterror_decors("Error: decors:decors_count should not be negative\n"));
   list = NULL;
   i = -1;
   while (++i < nb_decors)

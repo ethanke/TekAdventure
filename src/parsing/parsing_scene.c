@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Wed Apr 13 17:36:57 2016 Philippe Lefevre
+** Last update Wed Apr 13 18:10:18 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -402,10 +402,6 @@ t_sky			*order_sky(t_sky *sky)
 t_scene			*load_scene(t_bunny_ini *ini, t_scene *scene,
 				    t_ptr_list **ptr_list)
 {
-  /* Penser gestion d'erreur id deja existant ou inexistant sur toute les list, sprite objet ... */
-  /* Penser verifé taille image, image 25cm, hibox 26cms */
-  if ((scene->sky = load_sky(ini, ptr_list)) == NULL)
-    return (NULL);
   scene->sky = link_sky(scene->sky, scene->sprite);
   scene->sky = order_sky(scene->sky);
   scene->player = link_player(scene->player, scene->sprite);
