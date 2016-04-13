@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Mon Apr 11 00:51:48 2016 Gaëtan Léandre
-** Last update Wed Apr 13 02:58:28 2016 Gaëtan Léandre
+** Last update Wed Apr 13 04:37:56 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -62,7 +62,8 @@ float			calc_case_x(t_grille *grille, int pos_y,
   float			coef;
   float			case_x;
 
-  y_pos = (float)((float)(pos_y - palier->x) / (float)(palier->y - palier->x)) + (float)y;
+  y_pos = (float)((float)(pos_y - palier->x) / (float)(palier->y - palier->x))
+      + (float)y;
   coef = (float)((float)grille->size_x - (float)(grille->coef
 		 * (float)(grille->grille_y - y_pos + 1)))
   / (float)(grille->size_x);
