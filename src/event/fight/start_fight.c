@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Wed Apr 13 21:44:44 2016 Ethan Kerdelhue
+** Last update Wed Apr 13 23:50:01 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -123,13 +123,20 @@ int 			player_damage(t_player *player, t_fight *fight, t_prog *prog)
     }
   pos.x = WIN_WIDTH / 2;
   pos.y = WIN_HEIGHT / 2;
-  if (fight->font.font_color.argb[ALPHA_CMP] == 255)
+  (void) pos;
+  (void) fight;
+ /* if (fight->font.font_color.argb[ALPHA_CMP] == 255)
     fight->animate = 0;
   if (fight->animate == 1)
     {
       tektext(my_itoa(damage), &pos, prog->pix, &fight->font);
       fight->font.font_color.argb[ALPHA_CMP] -= 5;
     }
+  if (fight->font.font_color.argb[ALPHA_CMP] == 0)
+    {
+      tektext(my_itoa(damage), &pos, prog->pix, &fight->font);
+      fight->font.font_color.argb[ALPHA_CMP] += 5;
+    } */
   return (damage / 1000);
 }
 
@@ -140,7 +147,7 @@ int			prepare_fight(t_prog *prog, t_npc *npc)
   prog->fight->animate = 0;
   prog->fight->font.font_img = prog->font->font_img;
   prog->fight->font.font_size = 14;
-  prog->fight->font.font_color.full = 0x00240CFF;
+  prog->fight->font.font_color.full = WHITE;
   prog->life_bar = xmalloc(sizeof(t_bar), &prog->ptr_list);
   prog->npc_bar = xmalloc(sizeof(t_bar), &prog->ptr_list);
   prog->action_bar = xmalloc(sizeof(t_bar), &prog->ptr_list);
@@ -178,13 +185,26 @@ int			prepare_fight(t_prog *prog, t_npc *npc)
 
 int			loop_fight(t_prog *prog)
 {
+  t_bunny_position	pos;
+
+  pos.x = WIN_WIDTH / 2;
+  pos.y = (WIN_HEIGHT / 2) + 80;
   draw_fight(prog);
   my_puts("Round -> ", prog->fight->nb_round, 1);
   if (prog->fight->round_state == 1)
     {
+      if (prog->fight->animate == 0)
+	{
+	  prog->fight->font.font_color.argb[ALPHA_CMP] = 0;
+	  prog->fight->animate = 1;
+	}
       prog->fight->npc->life -= player_damage(prog->fight->player, prog->fight, prog);
       my_puts("Npc life : ", prog->fight->npc->life, 1);
+      if (prog->fight->animate == 1)
+	prog->fight->font.font_color.argb[ALPHA_CMP] += 5;
+      tektext(my_itoa(player_damage(prog->fight->player, prog->fight, prog)), &pos, prog->pix, &prog->fight->font);
       prog->fight->nb_round += 1;
+
       prog->fight->round_state = 2;
     }
   if (prog->fight->round_state == 2)
@@ -197,11 +217,13 @@ int			loop_fight(t_prog *prog)
   if (prog->player->life <= 0)
     {
       my_puts("npc win\n", 0, 0);
+      prog->state = STATE_GAME;
       prog->need_init_fight = 0;
     }
   if  (prog->fight->npc->life <= 0)
     {
       my_puts("player win\n", 0, 0);
+      prog->state = STATE_GAME;
       prog->need_init_fight = 0;
     }
   return (0);
