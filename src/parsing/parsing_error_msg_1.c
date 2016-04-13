@@ -5,52 +5,67 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Wed Apr 13 08:47:20 2016 Philippe Lefevre
+** Last update Wed Apr 13 22:00:09 2016 Philippe Lefevre
 */
 
 #include		"main.h"
 
-t_scene			*my_puterror_scene(char *str)
+t_scene			*my_puterror_scene(char *beg, int id, char *end)
 {
-  t_scene		*ret;
+  t_scene		*tmp;
 
-  write(2, str, my_strlen(str));
-  ret = NULL;
-  return (ret);
+  write(2, beg, my_strlen(beg));
+  if (id > -1)
+    my_put_nbr(2, id);
+  write(2, end, my_strlen(end));
+  tmp = NULL;
+  return (tmp);
 }
 
-t_ground		*my_puterror_ground(char *str)
+t_ground		*my_puterror_ground(char *beg, int id, char *end)
 {
-  t_ground		*ret;
+  t_ground		*tmp;
 
-  write(2, str, my_strlen(str));
-  ret = NULL;
-  return (ret);
+  write(2, beg, my_strlen(beg));
+  if (id > -1)
+    my_put_nbr(2, id);
+  write(2, end, my_strlen(end));
+  tmp = NULL;
+  return (tmp);
 }
 
-t_sky			*my_puterror_sky(char *str)
+t_sky			*my_puterror_sky(char *beg, int id, char *end)
 {
   t_sky 		*tmp;
 
+  write(2, beg, my_strlen(beg));
+  if (id > -1)
+    my_put_nbr(2, id);
+  write(2, end, my_strlen(end));
   tmp = NULL;
-  write(2, str, my_strlen(str));
   return (tmp);
 }
 
-t_player		*my_puterror_player(char *str)
+t_player		*my_puterror_player(char *beg, int id, char *end)
 {
   t_player 		*tmp;
 
+  write(2, beg, my_strlen(beg));
+  if (id > -1)
+    my_put_nbr(2, id);
+  write(2, end, my_strlen(end));
   tmp = NULL;
-  write(2, str, my_strlen(str));
   return (tmp);
 }
 
-t_object		*my_puterror_object(char *str)
+t_object		*my_puterror_object(char *beg, int id, char *end)
 {
   t_object 		*tmp;
 
+  write(2, beg, my_strlen(beg));
+  if (id > -1)
+    my_put_nbr(2, id);
+  write(2, end, my_strlen(end));
   tmp = NULL;
-  write(2, str, my_strlen(str));
   return (tmp);
 }
