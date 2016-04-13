@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Wed Apr 13 22:03:46 2016 Philippe Lefevre
+** Last update Wed Apr 13 23:24:49 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -112,14 +112,28 @@ t_decors		*list_add_decors(t_decors *list, int id,
 {
   t_decors		*new;
   t_decors		*tmp;
+  int			i;
 
   if ((new = create_decors_node(id, ini, ptr_list)) == NULL)
     return (NULL);
   if (list == NULL)
     return (new);
   tmp = list;
-  while (tmp->next != NULL)
-    tmp = tmp->next;
+  i = 0;
+  while (tmp->next != NULL && ++i)
+    {
+      if (tmp->decors_id == new->decors_id)
+	{
+	  my_puterror_decors("Error: decors:decors_id field ", id, " ");
+	  return (my_puterror_decors("already declared in field ", i, "\n"));
+	}
+      tmp = tmp->next;
+    }
+  if (tmp->decors_id == new->decors_id)
+    {
+      my_puterror_decors("Error: decors:decors_id field ", (id + 1), " ");
+      return (my_puterror_decors("already declared in field ", i, "\n"));
+    }
   new->prev = tmp;
   new->next = NULL;
   tmp->next = new;

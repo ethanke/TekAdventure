@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Thu Apr  7 00:39:08 2016 Ethan Kerdelhue
-** Last update Wed Apr 13 22:04:16 2016 Philippe Lefevre
+** Last update Wed Apr 13 23:26:12 2016 Philippe Lefevre
 */
 
 #include 		"main.h"
@@ -40,21 +40,39 @@ t_sprite		*list_add_sprite(t_sprite *list, int id,
 {
   t_sprite		*new;
   t_sprite		*tmp;
+  int			i;
 
   if ((new = create_sprite_node(id, ini, ptr_list)) == NULL)
     return (NULL);
   if (list == NULL)
     return (new);
   tmp = list;
-  while (tmp->next != NULL)
+  i = 0;
+  while (tmp->next != NULL && ++i)
     {
       if (tmp->id == new->id)
-		{
-		  my_puterror_sprite("Error: sprite:sprite_id field ", new->id, " ");
-		  return (my_puterror_sprite("already declared in field ", tmp->id, "\n"));
-		}
+	{
+	  my_puterror_sprite("Error: sprite:sprite_id field ", id, " ");
+	  return (my_puterror_sprite("already declared in field ", i, "\n"));
+	}
+      else if (my_strcmp(tmp->path, new->path) == 0)
+	{
+	  my_puterror_sprite("Error: sprite:sprite_path field ", id, " ");
+	  return (my_puterror_sprite("already declared in field ", i, "\n"));
+	}
       tmp = tmp->next;
     }
+    if (tmp->id == new->id)
+    {
+      my_puterror_sprite("Error: sprite:sprite_id field ", id, " ");
+      return (my_puterror_sprite("already declared in field ", i, "\n"));
+    }
+    else if (my_strcmp(tmp->path, new->path) == 0)
+    {
+      my_puterror_sprite("Error: sprite:sprite_path id ", id, " ");
+      return (my_puterror_sprite("already declared in sprite id ", i, "\n"));
+    }
+  tmp = tmp;
   new->prev = tmp;
   new->next = NULL;
   tmp->next = new;
@@ -76,6 +94,7 @@ t_sprite		*load_sprite(t_bunny_ini *ini, t_ptr_list **ptr_list)
   list = NULL;
   i = -1;
   while (++i != nb_sprite)
-    list = list_add_sprite(list, i, ini, ptr_list);
+    if ((list = list_add_sprite(list, i, ini, ptr_list)) == NULL)
+	return (NULL);
   return (list);
 }

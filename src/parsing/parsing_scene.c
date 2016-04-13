@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Wed Apr 13 22:18:48 2016 Philippe Lefevre
+** Last update Thu Apr 14 00:42:16 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -74,13 +74,6 @@ t_npc			*link_npc(t_npc *npc, t_sprite *sprite,
 	    tmp_npc->trade->needed->object = tmp_object;
 	  tmp_object = tmp_object->next;
 	}
-      tmp_object = object;
-        while (tmp_object != NULL)
-	{
-  	  if (tmp_object->object_id == tmp_npc->trade->given->id)
-  	    tmp_npc->trade->given->object = tmp_object;
-  	  tmp_object = tmp_object->next;
-  	}
       tmp_npc = tmp_npc->next;
     }
   return (npc);
