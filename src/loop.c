@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:58:37 2016 Philippe Lefevre
-** Last update Wed Apr 13 04:16:31 2016 Gaëtan Léandre
+** Last update Wed Apr 13 07:18:44 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -44,6 +44,8 @@ t_bunny_response	mainloop(void *p)
 	      (float)WIN_WIDTH, prog->player->move.select_move);
   if (prog->state == STATE_FIGHT)
     start_fight(prog, prog->scene->npc);
+  else if (prog->state == STATE_NPC_CHOOSE)
+    disp_choose_npc_action(prog);
   else if (prog->state == STATE_GAME)
     {
       /* GAMEPLAY ELEMENT */

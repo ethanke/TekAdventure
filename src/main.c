@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Wed Apr 13 04:04:38 2016 Gaëtan Léandre
+** Last update Wed Apr 13 07:11:51 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -36,6 +36,9 @@ int			init_prog(t_prog *prog, char *str)
     return (ERROR);
   if ((prog->player->inv_open_sprite =
        load_image("ressources/sprites/inventory_full.png", &prog->ptr_list)) == NULL)
+    return (ERROR);
+  if ((prog->npc_choose =
+       load_image("ressources/sprites/npc_choose.png", &prog->ptr_list)) == NULL)
     return (ERROR);
   if ((prog->player->hotbar_sprite =
        load_image("ressources/sprites/hotbar.png", &prog->ptr_list)) == NULL)

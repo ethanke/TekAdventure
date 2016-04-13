@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 00:11:13 2016 Gaëtan Léandre
-** Last update Wed Apr 13 06:23:21 2016 Victor Sousa
+** Last update Wed Apr 13 07:10:28 2016 Victor Sousa
 */
 
 #ifndef			PROG_H_
@@ -48,6 +48,7 @@ typedef	struct		s_prog
 
   t_texture		*lion_img;
   t_texture		*fight_img;
+  t_texture		*npc_choose;
   t_texture		*exchange_sprite;
 
   t_map_click		current_click;
