@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Thu Apr  7 03:01:13 2016 victor sousa
-** Last update Wed Apr 13 18:58:19 2016 Gaëtan Léandre
+** Last update Wed Apr 13 19:29:40 2016 Gaëtan Léandre
 */
 
 #ifndef 		DISP_H_
@@ -23,8 +23,7 @@ void			disp_item_info(t_prog *prog, t_item *item,
 				       t_bunny_position *pos);
 void			disp_selected_hotbar_inv_item(t_prog *prog);
 void			disp_selected_full_inv_item(t_prog *prog);
-void			disp_ground(t_scene *scene, t_bunny_pixelarray *pix,
-				    float percent, int disp);
+void			disp_ground(t_prog *prog, int disp);
 void			disp_npc_exchange(t_prog *prog, t_npc *npc);
 void			disp_npc(t_prog *prog, t_npc *npc);
 void			disp_player(t_prog *prog, t_player *player);

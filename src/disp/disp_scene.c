@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 02:56:24 2016 Gaëtan Léandre
-** Last update Wed Apr 13 18:57:16 2016 Gaëtan Léandre
+** Last update Wed Apr 13 19:28:32 2016 Gaëtan Léandre
 */
 
 #include	 	"main.h"
@@ -110,15 +110,16 @@ void			disp_cases(t_scene *scene, t_bunny_pixelarray *pix,
     }
 }
 
-void			disp_ground(t_scene *scene, t_bunny_pixelarray *pix,
-				    float percent, int disp)
+void			disp_ground(t_prog *prog, int disp)
 {
   t_hitbox		place;
 
-  place = create_hitbox(0, WIN_HEIGHT - scene->height,
-			WIN_WIDTH, scene->height);
-  place_image(place, *scene->sol_hitbox, scene->sol, pix);
-  put_grille(scene, &scene->size, percent, pix);
+  place = create_hitbox(0, WIN_HEIGHT - prog->scene->height,
+			WIN_WIDTH, prog->scene->height);
+  disp_background(prog->scene->sky, prog->pix, prog->percent);
+  place_image(place, *prog->scene->sol_hitbox, prog->scene->sol, prog->pix);
+  deplacement(prog->player, prog->scene, prog->pix, prog->percent);
+  put_grille(prog->scene, &prog->scene->size, prog->percent, prog->pix);
   if (disp == 1)
-    disp_cases(scene, pix, percent);
+    disp_cases(prog->scene, prog->pix, prog->percent);
 }
