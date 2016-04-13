@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Tue Apr 12 03:41:45 2016 Gaëtan Léandre
-** Last update Tue Apr 12 03:50:46 2016 Gaëtan Léandre
+** Last update Wed Apr 13 03:02:19 2016 Gaëtan Léandre
 */
 
 #include	 	"main.h"
@@ -56,14 +56,11 @@ int			get_x(float percent, t_grille *grille, int pos,
 t_bunny_position	get_pos(t_scene *scene, float percent,
 				t_bunny_position *mouse_pos)
 {
-  t_hitbox		place;
   t_grille		grille;
   t_bunny_position	pos;
   float			y;
 
-  place = create_hitbox(0, WIN_HEIGHT - scene->height,
-		      WIN_WIDTH, scene->height - 206 / 4);
-  grille = get_grille_param(&place, scene);
+  grille = get_grille_with_place(scene);
   y = get_y(scene, &grille, mouse_pos->y);
   pos.y = (int)y;
   pos.x = get_x(percent, &grille, mouse_pos->x, y);
