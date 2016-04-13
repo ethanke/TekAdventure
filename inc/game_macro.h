@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 15:10:45 2016 Gaëtan Léandre
-** Last update Wed Apr 13 15:12:07 2016 Gaëtan Léandre
+** Last update Wed Apr 13 18:54:25 2016 Gaëtan Léandre
 */
 
 #ifndef			_GAME_MACRO_H_

@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 02:56:24 2016 Gaëtan Léandre
-** Last update Wed Apr 13 15:08:55 2016 Gaëtan Léandre
+** Last update Wed Apr 13 18:57:16 2016 Gaëtan Léandre
 */
 
 #include	 	"main.h"
@@ -115,7 +115,6 @@ void			disp_ground(t_scene *scene, t_bunny_pixelarray *pix,
 {
   t_hitbox		place;
 
-  disp_background(scene->sky, pix, percent);
   place = create_hitbox(0, WIN_HEIGHT - scene->height,
 			WIN_WIDTH, scene->height);
   place_image(place, *scene->sol_hitbox, scene->sol, pix);

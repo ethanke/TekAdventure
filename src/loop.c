@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:58:37 2016 Philippe Lefevre
-** Last update Wed Apr 13 09:11:54 2016 Gaëtan Léandre
+** Last update Wed Apr 13 18:57:54 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -41,8 +41,9 @@ t_bunny_response	mainloop(void *p)
 			    prog->lion_img->height),
 	      prog->lion_img, prog->pix);
   prog->percent = 1 - (float)mouse_pos->x / (float)WIN_WIDTH;
-  disp_ground(prog->scene, prog->pix, prog->percent, prog->player->move.select_move);
+  disp_background(prog->scene->sky, prog->pix, prog->percent);
   deplacement(prog->player, prog->scene, prog->pix, prog->percent);
+  disp_ground(prog->scene, prog->pix, prog->percent, prog->player->move.select_move);
   if (prog->state == STATE_FIGHT)
     start_fight(prog, prog->scene->npc);
   else if (prog->state == STATE_NPC_CHOOSE)

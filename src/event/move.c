@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 04:57:09 2016 Gaëtan Léandre
-** Last update Wed Apr 13 15:08:13 2016 Gaëtan Léandre
+** Last update Wed Apr 13 18:54:01 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -84,6 +84,10 @@ void			make_deplacement(t_player *player)
   y_vec /= norme;
   player->x += x_vec;
   player->y += y_vec;
+/*  player->x = (x_vec < 0 && player->x + x_vec < depla->x) ? depla->x : player->x + x_vec;
+  player->y = (y_vec < 0 && player->y + y_vec < depla->y) ? depla->y : player->y + y_vec;
+  player->x = (x_vec > 0 && player->x + x_vec > depla->x) ? depla->x : player->x + x_vec;
+  player->y = (y_vec > 0 && player->y + y_vec > depla->y) ? depla->y : player->y + y_vec;*/
 }
 
 void			deplacement(t_player *player, t_scene *scene,
