@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 03:51:52 2016 Gaëtan Léandre
-** Last update Wed Apr 13 04:31:14 2016 Gaëtan Léandre
+** Last update Wed Apr 13 04:47:19 2016 Ethan Kerdelhue
 */
 
 #ifndef			PLAYER_H_
@@ -20,6 +20,7 @@ typedef struct		s_caract
   int			critical;
   int			intellect;
   int			armor;
+  int			agility;
 }			t_caract;
 
 typedef struct		s_item
