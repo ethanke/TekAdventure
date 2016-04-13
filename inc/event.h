@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:49:08 2016 Victor Sousa
-** Last update Wed Apr 13 06:23:16 2016 Victor Sousa
+** Last update Wed Apr 13 07:19:49 2016 Gaëtan Léandre
 */
 
 #ifndef			EVENT_H_
@@ -45,5 +45,7 @@ int			get_x(float percent, t_grille *grille, int pos,
 			      float y_pos);
 t_bunny_position	get_pos(t_scene *scene, float percent,
 				t_bunny_position *mouse_pos);
+void			deplacement(t_player *player, t_scene *scene,
+				    t_bunny_pixelarray *pix, float percent);
 
 #endif			/* !EVENT_H_ */

@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 03:51:52 2016 Gaëtan Léandre
-** Last update Wed Apr 13 04:47:19 2016 Ethan Kerdelhue
+** Last update Wed Apr 13 08:51:09 2016 Gaëtan Léandre
 */
 
 #ifndef			PLAYER_H_
@@ -29,6 +29,13 @@ typedef struct		s_item
   int			amount;
   t_object		*object;
 }			t_item;
+
+typedef struct		s_depla
+{
+  int			x;
+  int			y;
+  struct s_depla	*next;
+}			t_depla;
 
 typedef struct		s_move
 {

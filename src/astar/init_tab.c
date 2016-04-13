@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Fri Apr  8 06:25:15 2016 Gaëtan Léandre
-** Last update Wed Apr 13 03:41:04 2016 Gaëtan Léandre
+** Last update Wed Apr 13 08:55:31 2016 Gaëtan Léandre
 */
 
 #include	"astar.h"
@@ -36,7 +36,7 @@ int		init_tab(t_star *star)
   return (0);
 }
 
-void	 	case_is_free(char **obj, t_star *star)
+void	 	case_is_free(t_ground *ground, t_star *star)
 {
   int		i;
   int		j;
@@ -47,7 +47,8 @@ void	 	case_is_free(char **obj, t_star *star)
       j = 0;
       while (j < star->y)
 	{
-	  if (obj[i][j] != 0)
+	  if (ground[i + j * star->x].npc != NULL
+	      || ground[i + j * star->x].decors != NULL)
 	    {
 	      star->ind_list[i][j] = -1;
 	      star->open_list[i][j] = -1;

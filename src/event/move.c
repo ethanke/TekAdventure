@@ -5,19 +5,35 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 04:57:09 2016 Gaëtan Léandre
-** Last update Wed Apr 13 07:05:57 2016 Gaëtan Léandre
+** Last update Wed Apr 13 08:53:54 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
 
+void			make_astar(t_player *player, t_bunny_position *size,
+				    t_bunny_position *to_go, t_ground *ground)
+{
+  t_posi		siz;
+  t_posi		pos;
+  t_posi		end;
+
+  siz.x = size->x;
+  siz.y = size->y;
+  pos.x = (int)player->x;
+  pos.y = (int)player->y;
+  end.x = to_go->x;
+  end.y = to_go->y;
+  player->move.depla = a_star(ground, &siz, &pos, &end);
+}
+
 void			disp_deplacement(t_player *player, t_grille *grille,
-					 t_bunny_pixelarray *pix, int percent)
+					 t_bunny_pixelarray *pix, float percent)
 {
   float			case_x;
   float			coef;
   int			hauteur;
   int			pos_x;
-    int			pos_y;
+  int			pos_y;
   int			pal_prev;
   int			pal_next;
 
@@ -27,12 +43,13 @@ void			disp_deplacement(t_player *player, t_grille *grille,
   case_x = ((float)grille->case_x * coef);
   hauteur = case_x * player->sprite->height
       / player->sprite->width;
-  pos_x = (int)(((float)(grille->coef *
+  pos_x = 10 +(int)(((float)(grille->coef *
 		 (float)((float)grille->grille_y - 1 - player->y))) * percent) +
   ((float)player->x * case_x);
   pal_prev = grille->start_y + 10 + get_pos_y((int)player->y, grille);
   pal_next = grille->start_y + 10 + get_pos_y((int)player->y + 1, grille);
-  pos_y = player->y * (float)(pal_next - pal_prev) + pal_prev - hauteur;
+  pos_y = 20 + (float)((player->y - (int)player->y)
+		* (float)(pal_next - pal_prev)) + pal_prev - hauteur;
   place_image(create_hitbox(pos_x, pos_y, (int)case_x, hauteur),
 	      *player->sprite_hitbox, player->sprite, pix);
 }
@@ -61,7 +78,7 @@ void			make_deplacement(t_player *player)
 }
 
 void			deplacement(t_player *player, t_scene *scene,
-				    t_bunny_pixelarray *pix, int percent)
+				    t_bunny_pixelarray *pix, float percent)
 {
   t_grille		grille;
 

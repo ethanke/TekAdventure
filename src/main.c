@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Wed Apr 13 07:13:57 2016 Gaëtan Léandre
+** Last update Wed Apr 13 08:36:20 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -20,7 +20,7 @@ int			init_prog(t_prog *prog, char *str)
   prog->player->inventory_open = 0;
   prog->player->move.select_move = 0;
   prog->player->move.depla = NULL;
-  prog->player->x = 0;
+  prog->player->x = 14;
   prog->player->y = 0;
   prog->state = STATE_GAME;
   prog->need_init_fight = 1;
