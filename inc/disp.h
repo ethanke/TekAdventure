@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Thu Apr  7 03:01:13 2016 victor sousa
-** Last update Wed Apr 13 19:29:40 2016 Gaëtan Léandre
+** Last update Wed Apr 13 21:49:13 2016 Gaëtan Léandre
 */
 
 #ifndef 		DISP_H_
@@ -29,8 +29,7 @@ void			disp_npc(t_prog *prog, t_npc *npc);
 void			disp_player(t_prog *prog, t_player *player);
 void			disp_choose_npc_action(t_prog *prog);
 int	 		get_highlight(t_prog *prog, t_bunny_position *pos);
-void			set_hitbox_ground(t_scene *scene, t_ptr_list *ptr_list);
-void			put_grille(t_scene *scene, t_bunny_position *grille,
+void			put_grille(t_prog *prog, t_bunny_position *gri,
 				   float percent, t_bunny_pixelarray *pix);
 t_grille		get_grille_param(t_hitbox *place,
 					 t_scene *scene);
