@@ -5,13 +5,22 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Mon Apr 11 03:47:52 2016 Ethan Kerdelhue
+** Last update Wed Apr 13 00:14:50 2016 Ethan Kerdelhue
 */
 
 #ifndef			PLAYER_H_
 # define		PLAYER_H_
 
 # define		SIZE_INVENTORY	48
+
+typedef struct		s_caract
+{
+  int			stamina;
+  int			strength;
+  int			critical;
+  int			intellect;
+  int			armor;
+}			t_caract;
 
 typedef struct		s_item
 {
@@ -25,9 +34,10 @@ typedef struct		s_player
   int			life;
   unsigned int		token;
   char			*name;
-  int			damage_min;
-  int			damage_max;
+  int			damage;
+  int			magic_damage;
   t_texture		*sprite;
+  t_caract		*caract;
   t_hitbox		*sprite_hitbox;
   t_item		*inventory;
   char			inventory_open;
