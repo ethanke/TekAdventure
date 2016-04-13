@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Wed Apr 13 02:24:23 2016 Ethan Kerdelhue
+** Last update Wed Apr 13 05:16:21 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -81,7 +81,7 @@ int			get_player_damage(t_player *player, t_prog *prog)
   return (player_damage);
 }
 
-int 			npc_damage(t_npc *npc)
+int 			npc_damage(t_npc *npc, t_player *player)
 {
   int			damage;
   int			max;
@@ -94,6 +94,11 @@ int 			npc_damage(t_npc *npc)
     {
       damage = damage * 1.5;
       my_putstr("It's critical !\n");
+    }
+  if (((rand() % (100 - 0)) + 0) <= player->caract->agility / 3)
+    {
+      damage = 0;
+      my_putstr("I'm dodge !\n");
     }
   my_puts("Damage : ", damage / 1000, 1);
   return (damage / 1000);
@@ -129,6 +134,7 @@ int			prepare_fight(t_prog *prog, t_npc *npc)
   prog->fight->player->caract = malloc(sizeof(t_caract));
   prog->fight->player->caract->strength = 5;
   prog->fight->player->caract->critical = 20;
+  prog->fight->player->caract->agility = 30;
   prog->fight->player->damage = get_player_damage(prog->fight->player, prog);
   prog->fight->npc->damage = 20; /* A INTEGRER AU PARSING DES NPC */
   return (0);
@@ -149,7 +155,8 @@ int			loop_fight(t_prog *prog)
   my_puts("Round -> ", prog->fight->nb_round, 1);
   if (prog->fight->round_state == 1)
     {
-      prog->fight->npc->life -= npc_damage(prog->fight->npc);
+      prog->fight->npc->life -=
+	  npc_damage(prog->fight->npc, prog->fight->player);
       my_puts("Npc life : ", prog->fight->npc->life, 1);
       prog->fight->nb_round += 1;
       prog->fight->round_state = 2;

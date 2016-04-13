@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr  8 00:59:55 2016 Ethan Kerdelhue
-** Last update Wed Apr 13 04:38:38 2016 Philippe Lefevre
+** Last update Wed Apr 13 05:03:16 2016 Philippe Lefevre
 */
 
 #include	"main.h"
@@ -77,12 +77,6 @@ t_player	*load_player(t_bunny_ini *ini, t_ptr_list **ptr_list)
   player->token = my_getnbr(tmp);
   if ((tmp = (char *)bunny_ini_get_field(ini, "player", "name", 0)) == NULL)
       return (my_puterror_n("No field name in player scope"));
-  if ((tmp = (char *)bunny_ini_get_field(ini, "player", "start_pos", 0)) == NULL)
-    return (my_puterror_n("Error: player or player:start_pos not set"));
-  player->x = my_getnbr(tmp);
-  i = -1;
-  while (tmp[++i] && tmp[i] != ';');
-  player->y = my_getnbr(tmp + i + 1);
   player->name = tmp;
   player->inventory = NULL;
   if ((player->inventory = xmalloc(sizeof(t_item) * (SIZE_INVENTORY + 1), ptr_list)) == NULL)
