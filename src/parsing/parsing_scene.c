@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Mon Apr 11 00:49:13 2016 Gaëtan Léandre
+** Last update Wed Apr 13 02:40:05 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -68,9 +68,11 @@ t_decors		*link_decors(t_decors *decors, t_sprite *sprite)
   return (decors);
 }
 
-t_npc			*link_npc(t_npc *npc, t_sprite *sprite)
+t_npc			*link_npc(t_npc *npc, t_sprite *sprite,
+				  t_object *object)
 {
   t_npc			*tmp_npc;
+  t_object		*tmp_object;
   t_sprite		*tmp_sprite;
 
   tmp_npc = npc;
@@ -82,6 +84,13 @@ t_npc			*link_npc(t_npc *npc, t_sprite *sprite)
 	  if (tmp_sprite->id == tmp_npc->sprite_id)
 	    tmp_npc->texture = tmp_sprite->sprite;
 	  tmp_sprite = tmp_sprite->next;
+	}
+      tmp_object = object;
+      while (tmp_object != NULL)
+	{
+	  if (tmp_object->object_id == tmp_npc->trade->needed->id)
+	    tmp_npc->trade->needed->object = tmp_object;
+	  tmp_object = tmp_object->next;
 	}
       tmp_npc = tmp_npc->next;
     }
@@ -206,7 +215,7 @@ t_scene			*load_scene(t_bunny_ini *ini, t_scene *scene,
   scene->object = link_object(scene->object, scene->sprite);
   scene->player->inventory = link_inventory_item(scene->player->inventory, scene->object);
   scene->decors = link_decors(scene->decors, scene->sprite);
-  scene->npc = link_npc(scene->npc, scene->sprite);
+  scene->npc = link_npc(scene->npc, scene->sprite, scene->object);
   scene = link_ground(ini, scene, ptr_list);
   set_hitbox_ground(scene, (*ptr_list));
   return (scene);
