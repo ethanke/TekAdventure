@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Tue Apr 12 21:12:19 2016 Victor Sousa
+** Last update Wed Apr 13 04:04:38 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -18,6 +18,8 @@ int			init_prog(t_prog *prog, char *str)
   if ((prog->scene = parsing(str, &prog->player, &prog->ptr_list)) == NULL)
     return (ERROR);
   prog->player->inventory_open = 0;
+  prog->player->move.select_move = 0;
+  prog->player->move.depla = NULL;
   prog->state = STATE_GAME;
   prog->need_init_fight = 1;
   if ((prog->font =

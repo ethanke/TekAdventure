@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 03:51:52 2016 Gaëtan Léandre
-** Last update Wed Apr 13 03:59:55 2016 Philippe Lefevre
+** Last update Wed Apr 13 04:04:51 2016 Gaëtan Léandre
 */
 
 #ifndef			PLAYER_H_
@@ -32,7 +32,7 @@ typedef struct		s_item
 typedef struct		s_move
 {
   int			select_move;
-  t_depla		*cases;
+  t_depla		*depla;
 }			t_move;
 
 typedef struct		s_player
