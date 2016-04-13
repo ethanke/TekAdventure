@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Wed Apr 13 07:19:48 2016 Philippe Lefevre
+** Last update Wed Apr 13 07:20:25 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -409,12 +409,6 @@ t_sky			*order_sky(t_sky *sky)
 	}
       else
 	tmp_sky = tmp_sky->next;
-    }
-  tmp_sky = sky;
-  while (tmp_sky != NULL)
-    {
-      printf("%d\n", tmp_sky->distance);
-      tmp_sky = tmp_sky->next;
     }
   return (sky);
 }
