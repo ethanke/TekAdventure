@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Wed Apr  6 21:04:44 2016 victor sousa
-** Last update Wed Apr 13 04:07:09 2016 Gaëtan Léandre
+** Last update Wed Apr 13 04:18:38 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -47,7 +47,7 @@ t_bunny_response	event_key(t_bunny_event_state state,
       else
 	prog->state = STATE_GAME;
     }
-  else if (key == BKS_SPACE)
+  else if (key == BKS_SPACE && state == GO_UP)
     prog->player->move.select_move = prog->player->move.select_move == 1 ? 0 : 1;
   return (GO_ON);
 }

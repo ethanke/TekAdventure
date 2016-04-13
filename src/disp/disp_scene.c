@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 02:56:24 2016 Gaëtan Léandre
-** Last update Wed Apr 13 03:12:06 2016 Gaëtan Léandre
+** Last update Wed Apr 13 04:17:03 2016 Gaëtan Léandre
 */
 
 #include	 	"main.h"
@@ -111,7 +111,7 @@ void			disp_cases(t_scene *scene, t_bunny_pixelarray *pix,
 }
 
 void			disp_ground(t_scene *scene, t_bunny_pixelarray *pix,
-				    float percent)
+				    float percent, int disp)
 {
 /*  t_hitbox		pos;*/
 
@@ -119,5 +119,6 @@ void			disp_ground(t_scene *scene, t_bunny_pixelarray *pix,
 		      pix->clipable.clip_width, scene->height);
   redim_image(&pos, scene->sol, pix);*/
   put_grille(scene, &scene->size, percent, pix);
-  disp_cases(scene, pix, percent);
+  if (disp == 1)
+    disp_cases(scene, pix, percent);
 }
