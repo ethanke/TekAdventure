@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Wed Apr 13 05:10:53 2016 Ethan Kerdelhue
+** Last update Wed Apr 13 05:16:21 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -95,6 +95,11 @@ int 			npc_damage(t_npc *npc, t_player *player)
       damage = damage * 1.5;
       my_putstr("It's critical !\n");
     }
+  if (((rand() % (100 - 0)) + 0) <= player->caract->agility / 3)
+    {
+      damage = 0;
+      my_putstr("I'm dodge !\n");
+    }
   my_puts("Damage : ", damage / 1000, 1);
   return (damage / 1000);
 }
@@ -112,11 +117,6 @@ int 			player_damage(t_player *player)
     {
       damage = damage * 1.5;
       my_putstr("It's critical !\n");
-    }
-  if (((rand() % (100 - 0)) + 0) <= player->caract->agility / 3)
-    {
-      damage = 0;
-      my_putstr("I'm dodge !\n");
     }
   my_puts("Damage : ", damage / 1000, 1);
   return (damage / 1000);
@@ -155,7 +155,8 @@ int			loop_fight(t_prog *prog)
   my_puts("Round -> ", prog->fight->nb_round, 1);
   if (prog->fight->round_state == 1)
     {
-      prog->fight->npc->life -= npc_damage(prog->fight->npc, t_player *player);
+      prog->fight->npc->life -=
+	  npc_damage(prog->fight->npc, prog->fight->player);
       my_puts("Npc life : ", prog->fight->npc->life, 1);
       prog->fight->nb_round += 1;
       prog->fight->round_state = 2;
