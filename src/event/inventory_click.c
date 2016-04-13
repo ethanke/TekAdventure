@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 09:11:28 2016 Victor Sousa
-** Last update Wed Apr 13 23:17:49 2016 Victor Sousa
+** Last update Thu Apr 14 01:53:52 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -70,6 +70,12 @@ void			handle_inventory_click_npc(t_prog *prog)
 		      *prog->current_click.npc->trade->in_stock->object->texture_hitbox,
 		      prog->current_click.npc->trade->in_stock->object->texture, prog->pix);
 	}
+      else if (need_to_move == -3)
+	{
+	  place_image(create_hitbox(click_pos->x, click_pos->y, 36, 30),
+		      *prog->current_click.npc->trade->given->object->texture_hitbox,
+		      prog->current_click.npc->trade->given->object->texture, prog->pix);
+	}
       else
 	{
 	  place_image(create_hitbox(click_pos->x, click_pos->y, 36, 30),
@@ -85,9 +91,11 @@ void			handle_inventory_click_npc(t_prog *prog)
   if (prog->player->inventory[(int)prog->player->inv_selected].id == -1 &&
       need_to_move == -1)
     prog->player->inv_selected = -1;
+  if (need_to_move == -2 && prog->player->inv_selected == -2)
+    prog->player->inv_selected = -1;
   if (need_to_move != -1 && prog->player->inv_selected != -1)
     {
-      if (need_to_move != -2 && prog->player->inv_selected != -2)
+      if (need_to_move >= 0 && prog->player->inv_selected >= 0)
 	{
 	  /* inside hotbar */
 	  if (prog->player->inventory[need_to_move].id ==
@@ -104,19 +112,38 @@ void			handle_inventory_click_npc(t_prog *prog)
 	    my_swap_item(&prog->player->inventory[need_to_move],
 			 &prog->player->inventory[(int)prog->player->inv_selected]);
 	}
+      else if (need_to_move == -3 &&
+	       prog->player->inventory[(int)prog->player->inv_selected].id == -1)
+	{
+	  /* output npc */
+          prog->player->inventory[(int)prog->player->inv_selected].id =
+	  prog->current_click.npc->trade->given->id;
+	  prog->player->inventory[(int)prog->player->inv_selected].amount =
+	  prog->current_click.npc->trade->given->amount;
+	  prog->player->inventory[(int)prog->player->inv_selected].object =
+	  prog->current_click.npc->trade->given->object;
+	  prog->current_click.npc->trade->in_stock->amount -=
+	  prog->current_click.npc->trade->needed->amount;
+	  if (prog->current_click.npc->trade->in_stock->amount <= 0)
+	    {
+	      prog->current_click.npc->trade->in_stock->id = -1;
+	      prog->current_click.npc->trade->in_stock->amount = 0;
+	      prog->current_click.npc->trade->in_stock->object = NULL;
+	    }
+	}
       else
 	{
+	  /* stock npc */
 	  if (prog->player->inv_selected == -2 &&
 	      prog->player->inventory[need_to_move].id ==
 	      prog->current_click.npc->trade->needed->id)
 	    {
-	      /* from player to npc*/
 	      my_swap_item(&prog->player->inventory[need_to_move],
 			   prog->current_click.npc->trade->in_stock);
 	    }
-	  else if (prog->current_click.npc->trade->in_stock->amount > 0)
+	  else if (need_to_move == -2 &&
+		   prog->player->inventory[(int)prog->player->inv_selected].id == -1)
 	    {
-	      /*from npc to _player*/
 	      my_swap_item(&prog->player->inventory[(int)prog->player->inv_selected],
 			   prog->current_click.npc->trade->in_stock);
 	    }
