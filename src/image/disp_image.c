@@ -5,22 +5,22 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:28:22 2016 Gaëtan Léandre
-** Last update Wed Apr 13 01:09:35 2016 Victor Sousa
+** Last update Wed Apr 13 07:45:12 2016 Victor Sousa
 */
 
 #include 		"main.h"
 
-void			fill_image(t_bunny_pixelarray *pix, unsigned int col)
+void			fill_image(t_hitbox box, t_bunny_pixelarray *pix, unsigned int col)
 {
   t_bunny_position	tmp;
   t_color		color;
 
-  tmp.y = 0;
+  tmp.y = box.y;
   color.full = col;
-  while (tmp.y < pix->clipable.clip_height)
+  while (tmp.y < box.y + box.height)
     {
-      tmp.x = 0;
-      while (tmp.x < pix->clipable.clip_width)
+      tmp.x = box.x;
+      while (tmp.x < box.x + box.width)
 	{
 	  tekpixel(pix, &tmp, &color);
 	  tmp.x++;

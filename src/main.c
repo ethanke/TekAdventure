@@ -30,8 +30,6 @@ int			init_prog(t_prog *prog, char *str)
     return (ERROR);
   prog->font->font_size = 50;
   prog->font->font_color.full = 0xFF000000;
-  if ((prog->player->sprite = load_image("ressources/sprites/pnj_1.png", &prog->ptr_list)) == NULL)
-    return (ERROR);
   if ((prog->fight_img = load_image("ressources/sprites/fight.jpg", &prog->ptr_list)) == NULL)
     return (ERROR);
   if ((prog->player->inv_open_sprite =
