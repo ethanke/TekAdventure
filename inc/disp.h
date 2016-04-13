@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Thu Apr  7 03:01:13 2016 victor sousa
-** Last update Wed Apr 13 01:56:59 2016 Gaëtan Léandre
+** Last update Wed Apr 13 02:58:52 2016 Gaëtan Léandre
 */
 
 #ifndef 		DISP_H_
@@ -47,5 +47,8 @@ t_grille		get_grille_param(t_hitbox *place,
 int			calc_x_h(t_grille *grille, t_bunny_position *pos,
 				 float percent, int x);
 void			interact_npc(t_prog *prog, t_npc *npc);
+float			calc_case_x(t_grille *grille, int pos_y,
+				    t_bunny_position *palier, int y);
+t_grille		get_grille_with_place(t_scene *scene);
 
 #endif			/* !DISP_H_ */
