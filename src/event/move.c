@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 04:57:09 2016 Gaëtan Léandre
-** Last update Wed Apr 13 09:15:40 2016 Gaëtan Léandre
+** Last update Wed Apr 13 14:36:43 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -64,6 +64,9 @@ void			disp_deplacement(t_player *player, t_grille *grille,
 void			make_deplacement(t_player *player)
 {
   t_depla		*depla;
+  float			x_vec;
+  float			y_vec;
+  float			norme;
 
   depla = player->move.depla;
   if (depla != NULL && depla->x == player->x && depla->y == player->y)
@@ -74,14 +77,13 @@ void			make_deplacement(t_player *player)
     }
   if (depla == NULL)
     return;
-  if (player->x < depla->x)
-    player->x += 0.1;
-  else if (player->x > depla->x)
-    player->x -= 0.1;
-  if (player->y < depla->y)
-    player->y += 0.1;
-  else if (player->y > depla->y)
-    player->y -= 0.1;
+  x_vec = (float)depla->x - player->x;
+  y_vec = (float)depla->y - player->y;
+  norme = sqrt(x_vec * x_vec + y_vec * y_vec);
+  x_vec /= norme;
+  y_vec /= norme;
+  player->x += x_vec;
+  player->y += y_vec;
 }
 
 void			deplacement(t_player *player, t_scene *scene,

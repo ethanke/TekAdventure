@@ -5,13 +5,13 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Fri Apr  8 04:51:26 2016 Gaëtan Léandre
-** Last update Wed Apr 13 08:54:59 2016 Gaëtan Léandre
+** Last update Wed Apr 13 14:35:31 2016 Gaëtan Léandre
 */
 
 #ifndef			_A_STAR_H_
 # define		_A_STAR_H_
 
-#define			TRAVERS		1
+#define			TRAVERS		0
 
 #include 		"stdlib.h"
 #include 		"math.h"
