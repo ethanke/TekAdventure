@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Wed Apr 13 05:44:24 2016 Victor Sousa
-** Last update Wed Apr 13 11:02:36 2016 Victor Sousa
+** Last update Wed Apr 13 11:14:22 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -30,7 +30,7 @@ int	 		get_highlight(t_prog *prog,
 	break;
       i++;
     }
-  if (i == -1 )
+  if (i == -1)
     return (-1);
   if (m_pos->x >= WIN_WIDTH / 2 + prog->npc_choose->width / 2 -
       prog->npc_choose->width / 3 / 2 - 25 &&

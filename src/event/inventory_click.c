@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 09:11:28 2016 Victor Sousa
-** Last update Wed Apr 13 05:18:34 2016 Victor Sousa
+** Last update Wed Apr 13 11:59:54 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -56,6 +56,11 @@ void			handle_inventory_click_npc(t_prog *prog)
 
   need_to_move = -1;
   click_pos = (t_bunny_position *)bunny_get_mouse_position();
+  if (click_pos->x >= WIN_WIDTH / 2 + prog->exchange_sprite->width / 2 - 30 &&
+      click_pos->x <= WIN_WIDTH / 2 + prog->exchange_sprite->width / 2 &&
+      click_pos->y >= WIN_HEIGHT / 2 - prog->exchange_sprite->height / 2 &&
+      click_pos->y <= WIN_HEIGHT / 2 - prog->exchange_sprite->height / 2 + 30)
+      prog->state = STATE_GAME;
   if (prog->player->inv_selected != -1)
     {
       need_to_move = prog->player->inv_selected;
