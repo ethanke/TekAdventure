@@ -5,12 +5,12 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Wed Apr 13 05:44:24 2016 Victor Sousa
-** Last update Wed Apr 13 10:51:11 2016 Victor Sousa
+** Last update Wed Apr 13 11:02:36 2016 Victor Sousa
 */
 
 #include		"main.h"
 
-static int 		get_highlight(t_prog *prog,
+int	 		get_highlight(t_prog *prog,
 				      t_bunny_position *pos)
 {
   int			i;
@@ -33,13 +33,13 @@ static int 		get_highlight(t_prog *prog,
   if (i == -1 )
     return (-1);
   if (m_pos->x >= WIN_WIDTH / 2 + prog->npc_choose->width / 2 -
-      prog->npc_choose->width / 3 / 2 - 17 &&
+      prog->npc_choose->width / 3 / 2 - 25 &&
       m_pos->x <= WIN_WIDTH / 2 + prog->npc_choose->width / 2 -
       prog->npc_choose->width / 3 / 2 &&
       m_pos->y >= WIN_HEIGHT / 2 - prog->npc_choose->height / 2 +
       prog->npc_choose->height / 3  / 2 &&
       m_pos->y <= WIN_HEIGHT / 2 - prog->npc_choose->height / 2 +
-      prog->npc_choose->height / 3  / 2 + 17)
+      prog->npc_choose->height / 3  / 2 + 25)
     return (-2);
   return (i);
 }
@@ -61,14 +61,12 @@ void			disp_choose_npc_action(t_prog *prog)
 	      create_hitbox(0, 0, prog->npc_choose->width,
 			    prog->npc_choose->height),
 	      prog->npc_choose, prog->pix);
-  hoover = get_highlight(prog, &pos);
-  if (hoover == -2 && bunny_get_mouse_button()[BMB_LEFT] == 1)
-    prog->state = STATE_GAME;
   pos.x += 20;
   pos.y += 20;
   font.font_img = prog->font->font_img;
   font.font_color.full = 0xFF4F4F4F;
   font.font_size = 14;
+  hoover = get_highlight(prog, &pos);
   if (hoover == 0)
     font.font_size += 1;
   tektext("Trade with nnc", &pos, prog->pix, &font);
