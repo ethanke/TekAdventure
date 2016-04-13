@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 00:11:13 2016 Gaëtan Léandre
-** Last update Wed Apr 13 09:06:47 2016 Gaëtan Léandre
+** Last update Wed Apr 13 20:14:36 2016 Ethan Kerdelhue
 */
 
 #ifndef			PROG_H_
@@ -44,12 +44,24 @@ typedef	struct		s_prog
   int			state;
   float			percent;
   struct s_fight	*fight;
+
+  struct s_bar		*life_bar;
+  struct s_bar		*npc_bar;
+  struct s_bar		*action_bar;
+
   char			need_init_fight;
 
-  t_texture		*lion_img;
   t_texture		*fight_img;
   t_texture		*npc_choose;
   t_texture		*exchange_sprite;
+  t_texture		*attack_button;
+  t_texture		*defend_button;
+  t_texture		*magic_button;
+  t_texture		*skip_button;
+  t_texture		*attack_button_hover;
+  t_texture		*defend_button_hover;
+  t_texture		*magic_button_hover;
+  t_texture		*skip_button_hover;
 
   t_map_click		current_click;
 

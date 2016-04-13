@@ -5,7 +5,7 @@
 ## Login   <lefevr_h@epitech.net>
 ##
 ## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
-## Last update Wed Apr 13 18:33:18 2016 Philippe Lefevre
+## Last update Wed Apr 13 21:39:16 2016 Gaëtan Léandre
 ##
 
 NAME		=	tekadventure
@@ -79,9 +79,12 @@ SRC		+=	$(EVENTDIR)/event_key.c			\
 			$(EVENTDIR)/get_click_npc_trade_pos.c	\
 			$(EVENTDIR)/get_grille_pos.c		\
 			$(EVENTDIR)/click_map.c			\
-			$(EVENTDIR)/move.c
+			$(EVENTDIR)/move.c			\
+			$(EVENTDIR)/check_pos.c
 
-SRC		+=	$(FIGHTDIR)/start_fight.c
+SRC		+=	$(FIGHTDIR)/start_fight.c		\
+			$(FIGHTDIR)/draw_fight.c		\
+			$(FIGHTDIR)/update_bar.c		\
 
 SRC		+=	$(NPCDIR)/interact_npc.c
 

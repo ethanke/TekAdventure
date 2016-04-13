@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 14:34:08 2016 Victor Sousa
-** Last update Sat Apr  9 18:52:23 2016 Victor Sousa
+** Last update Wed Apr 13 23:19:59 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -29,7 +29,7 @@ void			disp_selected_hotbar_inv_item(t_prog *prog)
 {
   t_bunny_position	pos;
 
-  if (prog->player->inv_selected == -1 || prog->player->inv_selected > 11)
+  if (prog->player->inv_selected < 0 || prog->player->inv_selected > 11)
     return;
   pos.x = WIN_WIDTH / 2 - (prog->player->hotbar_sprite->width / 2) / 4 + 10;
   pos.y = WIN_HEIGHT - prog->player->hotbar_sprite->height / 4 + 10;

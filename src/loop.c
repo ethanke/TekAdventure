@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:58:37 2016 Philippe Lefevre
-** Last update Wed Apr 13 19:30:09 2016 Gaëtan Léandre
+** Last update Wed Apr 13 23:45:58 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -36,10 +36,6 @@ t_bunny_response	mainloop(void *p)
 
   prog = p;
   mouse_pos = (t_bunny_position *)bunny_get_mouse_position();
-  place_image(create_hitbox(0, 0, WIN_WIDTH, WIN_HEIGHT),
-	      create_hitbox(0, 0, prog->lion_img->width,
-			    prog->lion_img->height),
-	      prog->lion_img, prog->pix);
   prog->percent = 1 - (float)mouse_pos->x / (float)WIN_WIDTH;
   disp_ground(prog, prog->player->move.select_move);
   if (prog->state == STATE_FIGHT)
@@ -53,7 +49,8 @@ t_bunny_response	mainloop(void *p)
   else if (prog->state == STATE_NPC)
     interact_npc(prog, prog->scene->npc->next->next);
 
-  disp_inventory(prog);
+  if (prog->state != STATE_FIGHT)
+    disp_inventory(prog);
   bunny_blit(&prog->win->buffer, &prog->pix->clipable, &prog->blit_pos);
   swap_pix(prog);
   bunny_display(prog->win);

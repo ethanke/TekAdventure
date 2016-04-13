@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Tue Apr 12 03:55:39 2016 Gaëtan Léandre
-** Last update Wed Apr 13 05:38:56 2016 Victor Sousa
+** Last update Wed Apr 13 21:28:36 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -104,12 +104,14 @@ void			get_decors_wnpc(t_ground *ground, t_grille *grille,
 }
 
 
-t_map_click		click_map(t_scene *scene, t_bunny_position *mouse_pos,
+t_map_click		click_map(t_prog *prog, t_bunny_position *mouse_pos,
 				  float percent)
 {
   t_grille		grille;
   t_map_click		click;
+  t_scene		*scene;
 
+  scene = prog->scene;
   click.x = -1;
   click.y = -1;
   click.mouse_pos = mouse_pos;
@@ -121,5 +123,13 @@ t_map_click		click_map(t_scene *scene, t_bunny_position *mouse_pos,
     get_decors_clicked(scene->ground, &grille, &click, percent);
   else
     get_decors_wnpc(scene->ground, &grille, &click, percent);
+  if (is_near((int)prog->player->x, (int)prog->player->y,
+	      click.x, click.y) != 1)
+    {
+      click.x = -1;
+      click.y = -1;
+      click.npc = NULL;
+      click.decors = NULL;
+    }
   return (click);
 }
