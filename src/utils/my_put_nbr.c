@@ -5,18 +5,33 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 17:32:38 2016 Philippe Lefevre
-** Last update Wed Apr 13 10:35:17 2016 Philippe Lefevre
+** Last update Wed Apr 13 18:35:07 2016 Philippe Lefevre
 */
 
 #include		"main.h"
 
-int			my_puterror_nbr(int nb)
+static int		my_char(int fd, char c)
+{
+  return (write(fd, &c, 1));
+}
+
+static int		my_puts(int fd, char *str)
+{
+  int			i;
+
+  i = -1;
+  while (str[++i])
+    my_char(fd, str[i]);
+  return (0);
+}
+
+int			my_put_nbr(int fd, int nb)
 {
   if (nb == -2147483648)
-    return (my_putstr(fd, "-2147483648"));
+    return (my_puts(fd, "-2147483648"));
   else if (nb < 0)
-    nb *= -my_putchar(fd, '-');
+    nb *= -my_char(fd, '-');
   if (nb >= 10)
     my_put_nbr(fd, (nb / 10));
-  return (my_putchar(fd, (nb % 10 + '0')));
+  return (my_char(fd, (nb % 10 + '0')));
 }

@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Thu Apr  7 00:39:08 2016 Ethan Kerdelhue
-** Last update Wed Apr 13 16:39:48 2016 Philippe Lefevre
+** Last update Wed Apr 13 18:28:59 2016 Philippe Lefevre
 */
 
 #include 		"main.h"
@@ -47,7 +47,11 @@ t_sprite		*list_add_sprite(t_sprite *list, int id,
     return (new);
   tmp = list;
   while (tmp->next != NULL)
-    tmp = tmp->next;
+    {
+      if (tmp->id == new->id)
+	return (my_puterror_sprite("Error: sprite:sprite_id already declared\n"));
+      tmp = tmp->next;
+    }
   new->prev = tmp;
   new->next = NULL;
   tmp->next = new;
@@ -57,20 +61,18 @@ t_sprite		*list_add_sprite(t_sprite *list, int id,
 t_sprite		*load_sprite(t_bunny_ini *ini, t_ptr_list **ptr_list)
 {
   t_sprite	*list;
+
   char		*str;
   int		nb_sprite;
   int		i;
 
   if ((str = (char *)bunny_ini_get_field(ini, "sprite", "sprite_count", 0)) == NULL)
-    return (my_puterror_sprite("Error: balise sprite \
-                             or sprite:sprite_count field not found\n"));
+    return (my_puterror_sprite("Error: balise sprite or sprite:sprite_count field not found\n"));
   if ((nb_sprite = my_getnbr(str)) < 0)
     return (my_puterror_sprite("Error: sprite:sprite_id should not be negative\n"));
-    list = NULL;
-      i = -1;
+  list = NULL;
+  i = -1;
   while (++i != nb_sprite)
-    {
-      list = list_add_sprite(list, i, ini, ptr_list);
-    }
+    list = list_add_sprite(list, i, ini, ptr_list);
   return (list);
 }
