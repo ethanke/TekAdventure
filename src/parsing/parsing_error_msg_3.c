@@ -5,25 +5,31 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Wed Apr 13 17:08:10 2016 Philippe Lefevre
+** Last update Wed Apr 13 22:01:54 2016 Philippe Lefevre
 */
 
 #include		"main.h"
 
-t_trade			*my_puterror_trade(char *str)
+t_trade			*my_puterror_trade(char *beg, int id, char *end)
 {
-  t_trade		*ret;
+  t_trade		*tmp;
 
-  write(2, str, my_strlen(str));
-  ret = NULL;
-  return (ret);
+  write(2, beg, my_strlen(beg));
+  if (id > -1)
+    my_put_nbr(2, id);
+  write(2, end, my_strlen(end));
+  tmp = NULL;
+  return (tmp);
 }
 
-t_item			*my_puterror_item(char *str)
+t_item			*my_puterror_item(char *beg, int id, char *end)
 {
-  t_item		*ret;
+  t_item		*tmp;
 
-  write(2, str, my_strlen(str));
-  ret = NULL;
-  return (ret);
+  write(2, beg, my_strlen(beg));
+  if (id > -1)
+    my_put_nbr(2, id);
+  write(2, end, my_strlen(end));
+  tmp = NULL;
+  return (tmp);
 }

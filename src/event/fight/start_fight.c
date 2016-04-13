@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Wed Apr 13 20:13:11 2016 Ethan Kerdelhue
+** Last update Wed Apr 13 21:44:44 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -88,6 +88,7 @@ int 			npc_damage(t_npc *npc, t_player *player)
   int			max;
   int			min;
 
+  (void) player;
   max = npc->damage * 1200;
   min = npc->damage * 800;
   damage = ((rand() % (max - min)) + min);
@@ -100,8 +101,9 @@ int 			npc_damage(t_npc *npc, t_player *player)
   return (damage / 1000);
 }
 
-int 			player_damage(t_player *player)
+int 			player_damage(t_player *player, t_fight *fight, t_prog *prog)
 {
+  t_bunny_position	pos;
   int			damage;
   int			max;
   int			min;
@@ -119,7 +121,15 @@ int 			player_damage(t_player *player)
         damage = 0;
         my_putstr("I'm dodge !\n");
     }
-  my_puts("Damage : ", damage / 1000, 1);
+  pos.x = WIN_WIDTH / 2;
+  pos.y = WIN_HEIGHT / 2;
+  if (fight->font.font_color.argb[ALPHA_CMP] == 255)
+    fight->animate = 0;
+  if (fight->animate == 1)
+    {
+      tektext(my_itoa(damage), &pos, prog->pix, &fight->font);
+      fight->font.font_color.argb[ALPHA_CMP] -= 5;
+    }
   return (damage / 1000);
 }
 
@@ -127,6 +137,10 @@ int			prepare_fight(t_prog *prog, t_npc *npc)
 {
   if ((prog->fight = xmalloc(sizeof(t_fight), &prog->ptr_list)) == NULL)
     return (-1);
+  prog->fight->animate = 0;
+  prog->fight->font.font_img = prog->font->font_img;
+  prog->fight->font.font_size = 14;
+  prog->fight->font.font_color.full = 0x00240CFF;
   prog->life_bar = xmalloc(sizeof(t_bar), &prog->ptr_list);
   prog->npc_bar = xmalloc(sizeof(t_bar), &prog->ptr_list);
   prog->action_bar = xmalloc(sizeof(t_bar), &prog->ptr_list);
@@ -168,7 +182,7 @@ int			loop_fight(t_prog *prog)
   my_puts("Round -> ", prog->fight->nb_round, 1);
   if (prog->fight->round_state == 1)
     {
-      prog->fight->npc->life -= player_damage(prog->fight->player);
+      prog->fight->npc->life -= player_damage(prog->fight->player, prog->fight, prog);
       my_puts("Npc life : ", prog->fight->npc->life, 1);
       prog->fight->nb_round += 1;
       prog->fight->round_state = 2;
