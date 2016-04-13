@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Tue Apr 12 03:55:39 2016 Gaëtan Léandre
-** Last update Wed Apr 13 02:07:44 2016 Gaëtan Léandre
+** Last update Wed Apr 13 03:01:45 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -107,7 +107,6 @@ void			get_decors_wnpc(t_ground *ground, t_grille *grille,
 t_map_click		click_map(t_scene *scene, t_bunny_position *mouse_pos,
 				  float percent)
 {
-  t_hitbox		place;
   t_grille		grille;
   t_map_click		click;
 
@@ -116,9 +115,7 @@ t_map_click		click_map(t_scene *scene, t_bunny_position *mouse_pos,
   click.mouse_pos = mouse_pos;
   click.npc = NULL;
   click.decors = NULL;
-  place = create_hitbox(0, WIN_HEIGHT - scene->height,
-			WIN_WIDTH, scene->height - 206 / 4);
-  grille = get_grille_param(&place, scene);
+  grille = get_grille_with_place(scene);
   get_npc_clicked(scene->ground, &grille, &click, percent);
   if (click.x == -1)
     get_decors_clicked(scene->ground, &grille, &click, percent);

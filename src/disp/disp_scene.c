@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 02:56:24 2016 Gaëtan Léandre
-** Last update Wed Apr 13 02:58:18 2016 Gaëtan Léandre
+** Last update Wed Apr 13 03:12:06 2016 Gaëtan Léandre
 */
 
 #include	 	"main.h"
@@ -35,34 +35,30 @@
     }
 }*/
 
-void			put_grille(t_scene *scene, t_bunny_position *grille,
+void			put_grille(t_scene *scene, t_bunny_position *gri,
 				   float percent, t_bunny_pixelarray *pix)
 {
   t_bunny_position	pos;
   t_hitbox		*tmp;
-  t_ground		*ground;
+  t_ground		*gro;
 
-  ground = scene->ground;
+  gro = scene->ground;
   pos.y = -1;
-  while (++pos.y < grille->y)
+  while (++pos.y < gri->y)
     {
       pos.x = -1;
-      while (++pos.x < grille->x)
+      while (++pos.x < gri->x)
 	{
-	  if (ground[pos.x + pos.y * grille->x].npc != NULL && ground[pos.x + pos.y * grille->x].hitbox_npc != NULL)
-	    {
-	      tmp = ground[pos.x + pos.y * grille->x].hitbox_npc;
-	      place_image(create_hitbox((int)(((float)(scene->coef * (float)(grille->y - pos.y))) * percent) + tmp->x,
-					tmp->y, tmp->width, tmp->height), *ground[pos.x + pos.y * grille->x].npc->texture_hitbox,
-			  ground[pos.x + pos.y * grille->x].npc->texture, pix);
-	    }
-	  if (ground[pos.x + pos.y * grille->x].decors != NULL && ground[pos.x + pos.y * grille->x].hitbox_decors != NULL)
-	    {
-	      tmp = ground[pos.x + pos.y * grille->x].hitbox_decors;
-	      place_image(create_hitbox((int)(((float)(scene->coef * (float)(grille->y - pos.y))) * percent) + tmp->x,
-	                          tmp->y, tmp->width, tmp->height), *ground[pos.x + pos.y * grille->x].decors->texture_hitbox,
-	                    ground[pos.x + pos.y * grille->x].decors->texture, pix);
-	    }
+	  if (gro[pos.x + pos.y * gri->x].npc != NULL &&
+	      (tmp = gro[pos.x + pos.y * gri->x].hitbox_npc) != NULL)
+	      place_image(create_hitbox((int)(((float)(scene->coef * (float)(gri->y - pos.y))) * percent) + tmp->x,
+					tmp->y, tmp->width, tmp->height), *gro[pos.x + pos.y * gri->x].npc->texture_hitbox,
+			  gro[pos.x + pos.y * gri->x].npc->texture, pix);
+	  if (gro[pos.x + pos.y * gri->x].decors != NULL &&
+	      (tmp = gro[pos.x + pos.y * gri->x].hitbox_decors) != NULL)
+		place_image(create_hitbox((int)(((float)(scene->coef * (float)(gri->y - pos.y))) * percent) + tmp->x,
+					  tmp->y, tmp->width, tmp->height), *gro[pos.x + pos.y * gri->x].decors->texture_hitbox,
+			    gro[pos.x + pos.y * gri->x].decors->texture, pix);
 	}
     }
 }
