@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Thu Apr 14 03:07:12 2016 Victor Sousa
+** Last update Thu Apr 14 01:56:59 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -162,15 +162,6 @@ int			prepare_fight(t_prog *prog, t_npc *npc)
   prog->fight->npc->life = 100;
   prog->fight->nb_round = 1;
   prog->fight->round_state = 1;
-  prog->fight_img = load_image("ressources/sprites/fight.jpg", &prog->ptr_list);
-  prog->attack_button = load_image("ressources/sprites/ATTACK.png", &prog->ptr_list);
-  prog->attack_button_hover = load_image("ressources/sprites/ATTACK_HOVER.png", &prog->ptr_list);
-  prog->defend_button = load_image("ressources/sprites/DEFEND.png", &prog->ptr_list);
-  prog->defend_button_hover = load_image("ressources/sprites/DEFEND_HOVER.png", &prog->ptr_list);
-  prog->magic_button = load_image("ressources/sprites/MAGIC.png", &prog->ptr_list);
-  prog->magic_button_hover = load_image("ressources/sprites/MAGIC_HOVER.png", &prog->ptr_list);
-  prog->skip_button = load_image("ressources/sprites/SKIP.png", &prog->ptr_list);
-  prog->skip_button_hover = load_image("ressources/sprites/SKIP_HOVER.png", &prog->ptr_list);
   prog->fight->player->caract = xmalloc(sizeof(t_caract), &prog->ptr_list);
   prog->fight->player->caract->strength = 5;
   prog->fight->player->caract->critical = 20;
