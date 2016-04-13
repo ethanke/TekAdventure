@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Tue Apr 12 20:17:50 2016 Victor Sousa
-** Last update Wed Apr 13 01:11:59 2016 Victor Sousa
+** Last update Wed Apr 13 20:52:26 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -49,11 +49,16 @@ static void 		disp_needed_item(t_prog *prog, t_npc *npc)
   t_bunny_position	pos;
 
   (void)npc;
-  pos.x = WIN_WIDTH / 2 - prog->scene->object->texture->width / 2 - 15;
-  pos.y = WIN_HEIGHT / 2 - prog->scene->object->texture->height / 2 + 90;
-  place_image_transpa(create_hitbox(pos.x, pos.y, 32, 32),
-		      *prog->scene->object->texture_hitbox,
-		      prog->scene->object->texture, prog->pix);
+  pos.x = WIN_WIDTH / 2 - npc->trade->needed->object->texture->width / 2 - 15;
+  pos.y = WIN_HEIGHT / 2 - npc->trade->needed->object->texture->height / 2 + 90;
+  if (npc != NULL && npc->trade->in_stock->amount != 0)
+    place_image(create_hitbox(pos.x, pos.y, 32, 32),
+		 *npc->trade->needed->object->texture_hitbox,
+	 npc->trade->needed->object->texture, prog->pix);
+    else
+	place_image_transpa(create_hitbox(pos.x, pos.y, 32, 32),
+		    *prog->scene->object->texture_hitbox,
+		    prog->scene->object->texture, prog->pix);
   pos.x += 115;
   place_image_transpa(create_hitbox(pos.x, pos.y, 32, 32),
 		      *prog->scene->object->next->texture_hitbox,

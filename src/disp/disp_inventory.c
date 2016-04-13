@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Thu Apr  7 02:58:27 2016 victor sousa
-** Last update Wed Apr 13 03:46:23 2016 Victor Sousa
+** Last update Wed Apr 13 14:01:19 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -61,16 +61,27 @@ static void		disp_floating_item(t_prog *prog,
 					   t_bunny_position *click_pos)
 {
   t_bunny_position	pos;
+
   if (prog->player->inv_selected != -1)
     {
       pos.x = click_pos->x - 20;
       pos.y = click_pos->y - 18;
-      place_image(create_hitbox(pos.x, pos.y, 36, 30),
-		  *prog->player->inventory
-		  [(int)prog->player->inv_selected].object->texture_hitbox,
-		  prog->player->inventory
-		  [(int)prog->player->inv_selected].object->texture,
-		  prog->pix);
+      if (prog->state == STATE_NPC && prog->player->inv_selected == -2)
+	{
+	  place_image(create_hitbox(pos.x, pos.y, 36, 30),
+		      *prog->current_click.npc->trade->needed->object->texture_hitbox,
+		      prog->current_click.npc->trade->needed->object->texture,
+		      prog->pix);
+	}
+      else
+	{
+	  place_image(create_hitbox(pos.x, pos.y, 36, 30),
+		      *prog->player->inventory
+		      [(int)prog->player->inv_selected].object->texture_hitbox,
+		      prog->player->inventory
+		      [(int)prog->player->inv_selected].object->texture,
+		      prog->pix);
+	}
     }
 }
 
