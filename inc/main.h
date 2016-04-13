@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 20:02:40 2016 Philippe Lefevre
-** Last update Mon Apr 11 04:58:58 2016 Ethan Kerdelhue
+** Last update Wed Apr 13 03:39:30 2016 Gaëtan Léandre
 */
 
 #ifndef			MAIN_H_
@@ -21,6 +21,7 @@
 # include		"object.h"
 # include		"decors.h"
 # include		"sprite.h"
+# include		"astar.h"
 # include		"player.h"
 # include		"npc.h"
 # include		"prog.h"

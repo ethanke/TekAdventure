@@ -5,7 +5,7 @@
 ## Login   <lefevr_h@epitech.net>
 ##
 ## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
-## Last update Tue Apr 12 04:04:12 2016 Gaëtan Léandre
+## Last update Wed Apr 13 03:45:56 2016 Gaëtan Léandre
 ##
 
 NAME		=	tekadventure
@@ -24,6 +24,7 @@ NPCDIR		=	$(EVENTDIR)/npc
 UTILSDIR	=	$(SRCDIR)/utils
 IMGDIR		=	$(SRCDIR)/image
 PARSDIR		=	$(SRCDIR)/parsing
+ASTAR		=	$(SRCDIR)/astar
 INCDIR		=	inc
 LIBDIR		=	lib
 
@@ -98,6 +99,12 @@ SRC		+=	$(IMGDIR)/disp_image.c			\
 			$(IMGDIR)/load_image.c			\
 			$(IMGDIR)/tektext.c			\
 			$(IMGDIR)/tekpixel.c
+
+SRC		+=	$(ASTAR)/astar.c			\
+			$(ASTAR)/calculs.c			\
+			$(ASTAR)/go_back.c			\
+			$(ASTAR)/go_to.c			\
+			$(ASTAR)/init_tab.c
 
 OBJ		=	$(SRC:.c=.o)
 

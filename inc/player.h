@@ -1,11 +1,11 @@
 /*
-** player.h for TekAdventure in /home/lefevr_h/Repository/Epitech/Year_1/Infographie/gfx_tekadventure/inc
+** player.h for tekadventure in /Users/leandr_g/Documents/Shared folder/TekAdventure/inc/
 **
-** Made by Philippe Lefevre
-** Login   <lefevr_h@epitech.net>
+** Made by Gaëtan Léandre
+** Login   <leandr_g@epitech.eu>
 **
-** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Wed Apr 13 03:12:10 2016 Philippe Lefevre
+** Started on  Wed Apr 13 03:51:52 2016 Gaëtan Léandre
+** Last update Wed Apr 13 03:52:25 2016 Gaëtan Léandre
 */
 
 #ifndef			PLAYER_H_
@@ -29,6 +29,12 @@ typedef struct		s_item
   t_object		*object;
 }			t_item;
 
+typedef struct		s_move
+{
+  int			select_move;
+  t_depla		*cases;
+}			t_move;
+
 typedef struct		s_player
 {
   int			life;
@@ -36,15 +42,15 @@ typedef struct		s_player
   char			*name;
   int			damage;
   int			magic_damage;
-  t_caract		*caract;
-  int			sprite_id;
   t_texture		*sprite;
+  t_caract		*caract;
   t_hitbox		*sprite_hitbox;
   t_item		*inventory;
   char			inventory_open;
   char			inv_selected;
   t_texture		*inv_open_sprite;
   t_texture		*hotbar_sprite;
+  t_move		move;	
 }			t_player;
 
 void			my_swap_item(t_item *a, t_item *b);
