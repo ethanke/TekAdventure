@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Wed Apr 13 04:59:24 2016 Philippe Lefevre
+** Last update Wed Apr 13 06:04:05 2016 Philippe Lefevre
 */
 
 #ifndef			SCENE_H_
@@ -33,6 +33,16 @@ typedef struct 		s_ground
   t_decors		*decors;
 }			t_ground;
 
+typedef struct		s_sky
+{
+  int			sky_sprite_id;
+  t_texture		*texture;
+  t_hitbox		*hitbox;
+  int			distance;
+  struct s_sky		*prev;
+  struct s_sky		*next;
+}			t_sky;
+
 typedef struct		s_scene
 {
   t_bunny_position	*start_pos;
@@ -48,8 +58,9 @@ typedef struct		s_scene
   t_decors		*decors; /* Ne pas utilser temporaire */
   t_player		*player; /* Ne pas utilser temporaire */
   t_ground		*ground;
-  struct t_scene	*prev;
-  struct t_scene	*next;
+  t_sky			*sky;
+  struct s_scene	*prev;
+  struct s_scene	*next;
 }			t_scene;
 
 #endif			/* !SCENE_H_ */
