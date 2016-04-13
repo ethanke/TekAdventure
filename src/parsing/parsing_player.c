@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr  8 00:59:55 2016 Ethan Kerdelhue
-** Last update Wed Apr 13 03:06:42 2016 Philippe Lefevre
+** Last update Wed Apr 13 03:16:15 2016 Philippe Lefevre
 */
 
 #include	"main.h"
@@ -103,6 +103,9 @@ t_player	*load_player(t_bunny_ini *ini, t_ptr_list **ptr_list)
       player->inventory[slot].amount = my_getnbr(tmp + j + 1);
     }
   player->inv_selected = -1;
+  if ((tmp = (char *)bunny_ini_get_field(ini, "player", "sprite_id", 0)) == NULL)
+      return (my_puterror_n("No field life in player scope"));
+  player->sprite_id = my_getnbr(tmp);
   player->sprite_hitbox = create_player_hitbox(0, ini, ptr_list);
   return (player);
 }

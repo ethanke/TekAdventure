@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Wed Apr 13 00:14:50 2016 Ethan Kerdelhue
+** Last update Wed Apr 13 03:12:10 2016 Philippe Lefevre
 */
 
 #ifndef			PLAYER_H_
@@ -36,8 +36,9 @@ typedef struct		s_player
   char			*name;
   int			damage;
   int			magic_damage;
-  t_texture		*sprite;
   t_caract		*caract;
+  int			sprite_id;
+  t_texture		*sprite;
   t_hitbox		*sprite_hitbox;
   t_item		*inventory;
   char			inventory_open;

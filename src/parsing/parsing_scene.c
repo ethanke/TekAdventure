@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Wed Apr 13 02:56:00 2016 Philippe Lefevre
+** Last update Wed Apr 13 03:22:15 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -95,6 +95,22 @@ t_npc			*link_npc(t_npc *npc, t_sprite *sprite,
       tmp_npc = tmp_npc->next;
     }
   return (npc);
+}
+
+t_player		*link_player(t_player *player, t_sprite *sprite)
+{
+  t_player		*tmp_player;
+  t_sprite		*tmp_sprite;
+
+  tmp_player = player;
+  sprite = sprite;
+  while (tmp_sprite != NULL)
+    {
+      if (tmp_sprite->id == tmp_player->sprite_id)
+	tmp_player->sprite = tmp_sprite->sprite;
+      tmp_sprite = tmp_sprite->next;
+    }
+  return (player);
 }
 
 t_item			*link_inventory_item(t_item *inventory, t_object *object)
