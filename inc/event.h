@@ -5,21 +5,13 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:49:08 2016 Victor Sousa
-** Last update Wed Apr 13 15:11:46 2016 Gaëtan Léandre
+** Last update Wed Apr 13 19:32:18 2016 Ethan Kerdelhue
 */
 
 #ifndef			EVENT_H_
 # define		EVENT_H_
 
 # include		"main.h"
-
-typedef struct		s_fight
-{
-  int			nb_round;
-  char			round_state;
-  t_player		*player;
-  t_npc			*npc;
-}			t_fight;
 
 int			start_fight(t_prog *prog, t_npc *npc);
 t_bunny_response	event_key(t_bunny_event_state state,

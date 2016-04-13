@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 20:02:40 2016 Philippe Lefevre
-** Last update Wed Apr 13 18:20:27 2016 Gaëtan Léandre
+** Last update Wed Apr 13 19:31:58 2016 Ethan Kerdelhue
 */
 
 #ifndef			MAIN_H_
@@ -28,6 +28,7 @@
 # include		"scene.h"
 # include		"astar.h"
 # include		"prog.h"
+# include		"fight.h"
 # include		"event.h"
 # include		"parsing.h"
 # include		"disp.h"
