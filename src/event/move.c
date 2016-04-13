@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 04:57:09 2016 Gaëtan Léandre
-** Last update Wed Apr 13 08:53:54 2016 Gaëtan Léandre
+** Last update Wed Apr 13 09:15:40 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -16,6 +16,7 @@ void			make_astar(t_player *player, t_bunny_position *size,
   t_posi		siz;
   t_posi		pos;
   t_posi		end;
+  t_depla		*depla;
 
   siz.x = size->x;
   siz.y = size->y;
@@ -23,6 +24,12 @@ void			make_astar(t_player *player, t_bunny_position *size,
   pos.y = (int)player->y;
   end.x = to_go->x;
   end.y = to_go->y;
+  while (player->move.depla != NULL)
+    {
+      depla = player->move.depla;
+      player->move.depla = player->move.depla->next;
+      free(depla);
+    }
   player->move.depla = a_star(ground, &siz, &pos, &end);
 }
 
@@ -68,13 +75,13 @@ void			make_deplacement(t_player *player)
   if (depla == NULL)
     return;
   if (player->x < depla->x)
-    player->x += 0.05;
+    player->x += 0.1;
   else if (player->x > depla->x)
-    player->x -= 0.05;
+    player->x -= 0.1;
   if (player->y < depla->y)
-    player->y += 0.05;
+    player->y += 0.1;
   else if (player->y > depla->y)
-    player->y -= 0.05;
+    player->y -= 0.1;
 }
 
 void			deplacement(t_player *player, t_scene *scene,
@@ -85,4 +92,12 @@ void			deplacement(t_player *player, t_scene *scene,
   grille = get_grille_with_place(scene);
   make_deplacement(player);
   disp_deplacement(player, &grille, pix, percent);
+}
+
+void			test_move(t_prog *prog, t_bunny_position *mouse_pos)
+{
+  t_bunny_position	pos;
+
+  pos = get_pos(prog->scene, prog->percent, mouse_pos);
+  make_astar(prog->player, &prog->scene->size, &pos, prog->scene->ground);
 }

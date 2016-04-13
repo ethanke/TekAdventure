@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:10:29 2016 Victor Sousa
-** Last update Wed Apr 13 11:04:40 2016 Victor Sousa
+** Last update Wed Apr 13 09:21:37 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -16,19 +16,22 @@ t_bunny_response        event_click(t_bunny_event_state            state,
 {
   t_prog		*prog;
   t_bunny_position	pos;
+  t_bunny_position	*mouse_pos;
 
   (void)state;
+  mouse_pos = (t_bunny_position *)bunny_get_mouse_position();
   prog = (t_prog *)data;
   if (prog->state == STATE_GAME)
     {
+      if(prog->player->move.select_move == 1)
+	test_move(prog, mouse_pos);
       prog->current_click = click_map(prog->scene,
-				      (t_bunny_position *)
-				      bunny_get_mouse_position(),
+				      mouse_pos,
 				      1 -
-				      (float)bunny_get_mouse_position()->x /
+				      (float)mouse_pos->x /
 				      (float)WIN_WIDTH);
     }
-  if (prog->current_click.npc != NULL)
+  if (prog->current_click.npc != NULL && prog->player->move.select_move != 1)
     prog->state = STATE_NPC_CHOOSE;
   if (button == BMB_LEFT)
     {
