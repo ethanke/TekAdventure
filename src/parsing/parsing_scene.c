@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Wed Apr 13 03:57:20 2016 Philippe Lefevre
+** Last update Wed Apr 13 05:07:17 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -229,6 +229,7 @@ t_scene			*link_ground(t_bunny_ini *ini, t_scene *scene,
   t_sprite		*tmp_sprite;
   t_ground		*ground;
   char			*str;
+  int			i;
 
   ground = NULL;
   if ((str = (char *)bunny_ini_get_field(ini, "scene", "nb_x_case", 0)) == NULL)
@@ -254,6 +255,13 @@ t_scene			*link_ground(t_bunny_ini *ini, t_scene *scene,
 	scene->sol = tmp_sprite->sprite;
       tmp_sprite = tmp_sprite->next;
     }
+  if ((str = (char *)bunny_ini_get_field(ini, "scene", "start_pos", 0)) == NULL)
+    return (my_puterror_s("Error: scene or scene:start_pos not set"));
+  scene->start_pos = xmalloc(sizeof(*scene->start_pos), ptr_list);
+  scene->start_pos->x = my_getnbr(str);
+  i = -1;
+  while (str[++i] && str[i] != ';');
+  scene->start_pos->y = my_getnbr(str + i + 1);
   return (scene);
 }
 
