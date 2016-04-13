@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:49:08 2016 Victor Sousa
-** Last update Wed Apr 13 07:19:49 2016 Gaëtan Léandre
+** Last update Wed Apr 13 15:11:46 2016 Gaëtan Léandre
 */
 
 #ifndef			EVENT_H_
@@ -28,7 +28,6 @@ t_bunny_response	event_key(t_bunny_event_state state,
 t_bunny_response        event_click(t_bunny_event_state state,
 				    t_bunny_mousebutton button,
 				    void                *p);
-
 t_map_click		click_map(t_scene *scene, t_bunny_position *mouse_pos,
 				  float percent);
 
@@ -47,5 +46,8 @@ t_bunny_position	get_pos(t_scene *scene, float percent,
 				t_bunny_position *mouse_pos);
 void			deplacement(t_player *player, t_scene *scene,
 				    t_bunny_pixelarray *pix, float percent);
+void			make_astar(t_player *player, t_bunny_position *size,
+				   t_bunny_position *to_go, t_ground *ground);
+void			test_move(t_prog *prog, t_bunny_position *mouse_pos);
 
 #endif			/* !EVENT_H_ */

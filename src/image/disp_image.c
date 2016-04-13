@@ -5,29 +5,10 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:28:22 2016 Gaëtan Léandre
-** Last update Wed Apr 13 07:45:12 2016 Victor Sousa
+** Last update Wed Apr 13 14:56:24 2016 Gaëtan Léandre
 */
 
 #include 		"main.h"
-
-void			fill_image(t_hitbox box, t_bunny_pixelarray *pix, unsigned int col)
-{
-  t_bunny_position	tmp;
-  t_color		color;
-
-  tmp.y = box.y;
-  color.full = col;
-  while (tmp.y < box.y + box.height)
-    {
-      tmp.x = box.x;
-      while (tmp.x < box.x + box.width)
-	{
-	  tekpixel(pix, &tmp, &color);
-	  tmp.x++;
-	}
-      tmp.y++;
-    }
-}
 
 void			put_image(t_texture *bmp,
 				  t_bunny_pixelarray *pix,

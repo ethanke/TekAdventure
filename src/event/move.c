@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 04:57:09 2016 Gaëtan Léandre
-** Last update Wed Apr 13 08:53:54 2016 Gaëtan Léandre
+** Last update Wed Apr 13 15:08:13 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -16,6 +16,7 @@ void			make_astar(t_player *player, t_bunny_position *size,
   t_posi		siz;
   t_posi		pos;
   t_posi		end;
+  t_depla		*depla;
 
   siz.x = size->x;
   siz.y = size->y;
@@ -23,6 +24,12 @@ void			make_astar(t_player *player, t_bunny_position *size,
   pos.y = (int)player->y;
   end.x = to_go->x;
   end.y = to_go->y;
+  while (player->move.depla != NULL)
+    {
+      depla = player->move.depla;
+      player->move.depla = player->move.depla->next;
+      free(depla);
+    }
   player->move.depla = a_star(ground, &siz, &pos, &end);
 }
 
@@ -57,6 +64,9 @@ void			disp_deplacement(t_player *player, t_grille *grille,
 void			make_deplacement(t_player *player)
 {
   t_depla		*depla;
+  float			x_vec;
+  float			y_vec;
+  float			norme;
 
   depla = player->move.depla;
   if (depla != NULL && depla->x == player->x && depla->y == player->y)
@@ -67,14 +77,13 @@ void			make_deplacement(t_player *player)
     }
   if (depla == NULL)
     return;
-  if (player->x < depla->x)
-    player->x += 0.05;
-  else if (player->x > depla->x)
-    player->x -= 0.05;
-  if (player->y < depla->y)
-    player->y += 0.05;
-  else if (player->y > depla->y)
-    player->y -= 0.05;
+  x_vec = (float)depla->x - player->x;
+  y_vec = (float)depla->y - player->y;
+  norme = sqrt(x_vec * x_vec + y_vec * y_vec);
+  x_vec /= norme;
+  y_vec /= norme;
+  player->x += x_vec;
+  player->y += y_vec;
 }
 
 void			deplacement(t_player *player, t_scene *scene,
@@ -85,4 +94,12 @@ void			deplacement(t_player *player, t_scene *scene,
   grille = get_grille_with_place(scene);
   make_deplacement(player);
   disp_deplacement(player, &grille, pix, percent);
+}
+
+void			test_move(t_prog *prog, t_bunny_position *mouse_pos)
+{
+  t_bunny_position	pos;
+
+  pos = get_pos(prog->scene, prog->percent, mouse_pos);
+  make_astar(prog->player, &prog->scene->size, &pos, prog->scene->ground);
 }
