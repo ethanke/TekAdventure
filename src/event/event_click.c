@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:10:29 2016 Victor Sousa
-** Last update Wed Apr 13 15:07:31 2016 Gaëtan Léandre
+** Last update Wed Apr 13 21:31:34 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -27,10 +27,8 @@ t_bunny_response        event_click(t_bunny_event_state            state,
       if(prog->player->move.select_move == 1)
 	test_move(prog, mouse_pos);
       else
-	prog->current_click = click_map(prog->scene,
-					mouse_pos,
-					1 -
-					(float)mouse_pos->x /
+	prog->current_click = click_map(prog, mouse_pos,
+					1 - (float)mouse_pos->x /
 					(float)WIN_WIDTH);
     }
   if (prog->player->move.select_move != 1 && prog->state == STATE_GAME
