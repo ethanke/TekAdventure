@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Wed Apr 13 03:22:15 2016 Philippe Lefevre
+** Last update Wed Apr 13 03:57:20 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -201,9 +201,32 @@ t_ground		*ground_fill(t_bunny_ini *ini, t_scene *scene)
   return (scene->ground);
 }
 
+t_hitbox		*create_sol_hitbox(int id, t_bunny_ini *ini,
+						 t_ptr_list **ptr_list)
+{
+  t_hitbox		*hitbox;
+  char			*str;
+  int			i;
+
+  if ((hitbox = xmalloc(sizeof(*hitbox), ptr_list)) == NULL)
+    return (NULL);
+  if ((str = (char *)bunny_ini_get_field(ini, "scene", "ground_sprite_hitbox", id)) == NULL)
+    return (NULL);
+  i = -1;
+  hitbox->x = my_getnbr(str);
+  while (str[++i] && str[i] != ';');
+  hitbox->y = my_getnbr(str + i + 1);
+  while (str[++i] && str[i] != ';');
+  hitbox->width = my_getnbr(str + i + 1);
+  while (str[++i] && str[i] != ';');
+  hitbox->height = my_getnbr(str + i + 1);
+  return (hitbox);
+}
+
 t_scene			*link_ground(t_bunny_ini *ini, t_scene *scene,
 				    t_ptr_list **ptr_list)
 {
+  t_sprite		*tmp_sprite;
   t_ground		*ground;
   char			*str;
 
@@ -219,7 +242,18 @@ t_scene			*link_ground(t_bunny_ini *ini, t_scene *scene,
   scene->ground = ground;
   if ((scene->ground = ground_fill(ini, scene)) == NULL)
     return (NULL);
+  if ((str = (char *)bunny_ini_get_field(ini, "scene", "ground_sprite_id", 0)) == NULL)
+    return (my_puterror_s("Error: scene or scene:nb_y_case not set\n"));
+  scene->sol_id = my_getnbr(str);
+  scene->sol_hitbox = create_sol_hitbox(0, ini, ptr_list);
   scene->height = 300;
+  tmp_sprite = scene->sprite;
+  while (tmp_sprite != NULL)
+    {
+      if (tmp_sprite->id == scene->sol_id)
+	scene->sol = tmp_sprite->sprite;
+      tmp_sprite = tmp_sprite->next;
+    }
   return (scene);
 }
 
