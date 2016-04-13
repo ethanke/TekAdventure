@@ -5,11 +5,10 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 18:38:18 2016 Philippe Lefevre
-** Last update Wed Apr  6 17:57:23 2016 Philippe Lefevre
+** Last update Wed Apr 13 08:42:30 2016 Philippe Lefevre
 */
 
 #include		<stdlib.h>
-#include		"my.h"
 
 static int		is_separator(char c, char *separator)
 {

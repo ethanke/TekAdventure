@@ -5,19 +5,10 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Sat Apr  9 05:43:54 2016 Philippe Lefevre
+** Last update Wed Apr 13 17:33:06 2016 Philippe Lefevre
 */
 
 #include		"main.h"
-
-static t_object		*my_puterror_n(char *str)
-{
-  t_object 	*tmp;
-
-  tmp = NULL;
-  write(2, str, my_strlen(str));
-  return (tmp);
-}
 
 t_hitbox		*create_object_hitbox(int id, t_bunny_ini *ini,
 						 t_ptr_list **ptr_list)
@@ -27,9 +18,9 @@ t_hitbox		*create_object_hitbox(int id, t_bunny_ini *ini,
   int			i;
 
   if ((hitbox = xmalloc(sizeof(*hitbox), ptr_list)) == NULL)
-    return (NULL);
-  if ((str = (char *)bunny_ini_get_field(ini, "object", "sprite_hitbox", id)) == NULL)
-    return (NULL);
+    return (my_puterror_hitbox("Error: hitbox:xmalloc failed in create_object_hitbox\n"));
+  if ((str = (char *)bunny_ini_get_field(ini, "object", "object_sprite_hitbox", id)) == NULL)
+    return (my_puterror_hitbox("Error: object:object_sprite_hitbox field not found\n"));
   i = -1;
   hitbox->x = my_getnbr(str);
   while (str[++i] && str[i] != ';');
@@ -49,21 +40,24 @@ t_object		*create_object_node(int id,
   char			*str;
 
   if ((object = xmalloc(sizeof(t_object), ptr_list)) == NULL)
-    return (my_puterror_n("Malloc fail\n"));
+    return (my_puterror_object("Error: object:xmalloc failed in create_object_node\n"));
   if ((str = (char *)bunny_ini_get_field(ini, "object", "object_id", id)) == NULL)
-    return (my_puterror_n("Error: object or object:object_id not set\n"));
-  object->object_id = my_getnbr(str);
-  if ((str = (char *)bunny_ini_get_field(ini, "object", "name", id)) == NULL)
-    return (my_puterror_n("No \"name\" in object scope\n"));
+    return (my_puterror_object("Error: object:object_id field not found\n"));
+  if ((object->object_id = my_getnbr(str)) < 0)
+    return (my_puterror_object("Error: object:object_id should not be negative\n"));
+  if ((str = (char *)bunny_ini_get_field(ini, "object", "object_name", id)) == NULL)
+    return (my_puterror_object("Error: object:object_name field not found\n"));
   if ((object->name = my_strdup(str, ptr_list)) == NULL)
-    return (my_puterror_n("Strdup fail\n"));
-  if ((str = (char *)bunny_ini_get_field(ini, "object", "damage", id)) == NULL)
-    return (my_puterror_n("No \"damage\" found in object scope\n"));
+    return (my_puterror_object("Error: object->name:my_strdup failed in create_object_node\n"));
+  if ((str = (char *)bunny_ini_get_field(ini, "object", "object_damage", id)) == NULL)
+    return (my_puterror_object("Error: object:object_damage field not found\n"));
   object->damage = my_getnbr(str);
-  if ((str = (char *)bunny_ini_get_field(ini, "object", "sprite_id", id)) == NULL)
-    return (my_puterror_n("Error: object or object:sprite_id not set\n"));
-  object->sprite_id = my_getnbr(str);
-  object->texture_hitbox = create_object_hitbox(id, ini, ptr_list);
+  if ((str = (char *)bunny_ini_get_field(ini, "object", "object_sprite_id", id)) == NULL)
+    return (my_puterror_object("Error: object:object_sprite_id field not found\n"));
+  if ((object->sprite_id = my_getnbr(str)) < 0)
+    return (my_puterror_object("Error: object:object_sprite_id should not be negative\n"));
+  if ((object->texture_hitbox = create_object_hitbox(id, ini, ptr_list)) == NULL)
+    return (NULL);
   object->next = NULL;
   object->prev = NULL;
   return (object);
@@ -96,16 +90,17 @@ t_object		*load_object(t_bunny_ini *ini, t_ptr_list **ptr_list)
   int			nb_object;
   int			i;
 
-  i = 0;
-  if ((str = (char *)bunny_ini_get_field(ini, "count", "object_count", 0)) == NULL)
-    return (my_puterror_n("No \"object_count\" in count scope"));
-  nb_object = my_getnbr(str);
+  if ((str = (char *)bunny_ini_get_field(ini, "object", "object_count", 0)) == NULL)
+    return (my_puterror_object("Error: balise object or object:object_count field not found\n"));
+    if ((nb_object = my_getnbr(str)) < 0)
+	return (my_puterror_object("Error: object:object_count \
+				should not be negative\n"));
   list = NULL;
-  while (i != nb_object)
+  i = -1;
+  while (++i != nb_object)
     {
       if ((list = list_add_object(list, i, ini, ptr_list)) == NULL)
-	return (my_puterror_n("Can't add object"));
-      i++;
+	return (my_puterror_object("Can't add object"));
     }
   return (list);
 }
