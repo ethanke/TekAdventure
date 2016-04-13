@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 03:51:52 2016 Gaëtan Léandre
-** Last update Wed Apr 13 03:52:25 2016 Gaëtan Léandre
+** Last update Wed Apr 13 03:59:55 2016 Philippe Lefevre
 */
 
 #ifndef			PLAYER_H_
@@ -42,6 +42,7 @@ typedef struct		s_player
   char			*name;
   int			damage;
   int			magic_damage;
+  int			sprite_id;
   t_texture		*sprite;
   t_caract		*caract;
   t_hitbox		*sprite_hitbox;
@@ -50,7 +51,7 @@ typedef struct		s_player
   char			inv_selected;
   t_texture		*inv_open_sprite;
   t_texture		*hotbar_sprite;
-  t_move		move;	
+  t_move		move;
 }			t_player;
 
 void			my_swap_item(t_item *a, t_item *b);
