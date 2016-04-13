@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Tue Apr 12 20:17:50 2016 Victor Sousa
-** Last update Wed Apr 13 20:52:26 2016 Victor Sousa
+** Last update Wed Apr 13 23:32:06 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -47,22 +47,46 @@ static void		disp_npc_message(t_prog *prog, t_npc *npc)
 static void 		disp_needed_item(t_prog *prog, t_npc *npc)
 {
   t_bunny_position	pos;
+  t_font		font;
 
-  (void)npc;
+  font.font_img = prog->font->font_img;
+  font.font_size = 11;
   pos.x = WIN_WIDTH / 2 - npc->trade->needed->object->texture->width / 2 - 15;
   pos.y = WIN_HEIGHT / 2 - npc->trade->needed->object->texture->height / 2 + 90;
-  if (npc != NULL && npc->trade->in_stock->amount != 0)
-    place_image(create_hitbox(pos.x, pos.y, 32, 32),
-		 *npc->trade->needed->object->texture_hitbox,
-	 npc->trade->needed->object->texture, prog->pix);
+  if (npc != NULL && npc->trade->in_stock->amount > 0)
+    {
+      font.font_color.full = 0xFF050505;
+      place_image(create_hitbox(pos.x, pos.y, 32, 32),
+		  *npc->trade->needed->object->texture_hitbox,
+		  npc->trade->needed->object->texture, prog->pix);
+      pos.y += 3;
+      tektext(my_itoa(npc->trade->in_stock->amount), &pos, prog->pix, &font);
+      pos.y -= 3;
+    }
     else
-	place_image_transpa(create_hitbox(pos.x, pos.y, 32, 32),
-		    *prog->scene->object->texture_hitbox,
-		    prog->scene->object->texture, prog->pix);
+    {
+      font.font_color.full = 0x55050505;
+      place_image_transpa(create_hitbox(pos.x, pos.y, 32, 32),
+			  *prog->scene->object->texture_hitbox,
+			  prog->scene->object->texture, prog->pix);
+      pos.y += 3;
+      tektext(my_itoa(npc->trade->needed->amount), &pos, prog->pix, &font);
+      pos.y -= 3;
+    }
   pos.x += 115;
-  place_image_transpa(create_hitbox(pos.x, pos.y, 32, 32),
-		      *prog->scene->object->next->texture_hitbox,
-		      prog->scene->object->next->texture, prog->pix);
+  if (npc != NULL && npc->trade->in_stock->amount >= npc->trade->needed->amount)
+    {
+      place_image(create_hitbox(pos.x, pos.y, 32, 32),
+		  *npc->trade->given->object->texture_hitbox,
+		  npc->trade->given->object->texture, prog->pix);
+
+    }
+  else
+    {
+      place_image_transpa(create_hitbox(pos.x, pos.y, 32, 32),
+			  *npc->trade->given->object->texture_hitbox,
+			  npc->trade->given->object->texture, prog->pix);
+    }
 }
 
 void			disp_npc_exchange(t_prog *prog, t_npc *npc)
