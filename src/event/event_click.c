@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:10:29 2016 Victor Sousa
-** Last update Wed Apr 13 11:49:39 2016 Victor Sousa
+** Last update Wed Apr 13 15:07:31 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -22,7 +22,7 @@ t_bunny_response        event_click(t_bunny_event_state            state,
   (void)state;
   mouse_pos = (t_bunny_position *)bunny_get_mouse_position();
   prog = (t_prog *)data;
-  if (prog->state == STATE_GAME)
+  if (prog->state == STATE_GAME )
     {
       if(prog->player->move.select_move == 1)
 	test_move(prog, mouse_pos);

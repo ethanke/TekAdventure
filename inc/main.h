@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 20:02:40 2016 Philippe Lefevre
-** Last update Wed Apr 13 08:52:15 2016 Gaëtan Léandre
+** Last update Wed Apr 13 15:13:52 2016 Gaëtan Léandre
 */
 
 #ifndef			MAIN_H_
@@ -15,7 +15,9 @@
 # include		<stdlib.h>
 # include		<time.h>
 # include		<unistd.h>
+# include 		<math.h>
 
+# include		"game_macro.h"
 # include		"utils.h"
 # include		"image.h"
 # include		"object.h"

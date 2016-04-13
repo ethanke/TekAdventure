@@ -5,35 +5,35 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 02:56:24 2016 Gaëtan Léandre
-** Last update Wed Apr 13 04:44:25 2016 Gaëtan Léandre
+** Last update Wed Apr 13 15:08:55 2016 Gaëtan Léandre
 */
 
 #include	 	"main.h"
 
-/*void			disp_background(t_back *first, t_bunny_pixelarray *pix,
+void			disp_background(t_sky *sky, t_bunny_pixelarray *pix,
 					float percent)
 {
-  t_back		*tmp;
+  t_sky		*tmp;
   t_hitbox		pos;
   int			dist_max;
   int			size;
 
-  tmp = first;
-  fill_image(pix, BLACK);
+  tmp = sky;
+  fill_pix(pix, BLACK);
   while (tmp->next != NULL)
     tmp = tmp->next;
-  dist_max = tmp->dist;
+  dist_max = DIST_MAX;
   while (tmp != NULL)
     {
-      size = dist_max - tmp->dist;
-      pos.width = tmp->sprite->width + size;
-      pos.height = tmp->sprite->height;
+      size = dist_max - tmp->distance;
+      pos.width = pix->clipable.clip_width + size;
+      pos.height = pix->clipable.clip_height;
       pos.x = (int)((float)size * percent) - size;
       pos.y = 0;
-      redim_image(&pos, tmp->sprite, pix);
+      redim_image(&pos, tmp->texture, pix);
       tmp = tmp->prev;
     }
-}*/
+}
 
 void			put_grille(t_scene *scene, t_bunny_position *gri,
 				   float percent, t_bunny_pixelarray *pix)
@@ -113,11 +113,9 @@ void			disp_cases(t_scene *scene, t_bunny_pixelarray *pix,
 void			disp_ground(t_scene *scene, t_bunny_pixelarray *pix,
 				    float percent, int disp)
 {
-/*  t_hitbox		pos;*/
   t_hitbox		place;
 
-/*  pos = create_hitbox(0, pix->clipable.clip_height - scene->height,
-		      pix->clipable.clip_width, scene->height);*/
+  disp_background(scene->sky, pix, percent);
   place = create_hitbox(0, WIN_HEIGHT - scene->height,
 			WIN_WIDTH, scene->height);
   place_image(place, *scene->sol_hitbox, scene->sol, pix);
