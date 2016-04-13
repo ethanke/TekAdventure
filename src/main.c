@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Wed Apr 13 20:12:05 2016 Gaëtan Léandre
+** Last update Thu Apr 14 01:54:43 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -46,6 +46,16 @@ int			init_prog(t_prog *prog, char *str)
   if ((prog->exchange_sprite =
        load_image("ressources/sprites/exchange.png", &prog->ptr_list)) == NULL)
     return (ERROR);
+    /* penser vérifié le retour */
+    prog->fight_img = load_image("ressources/sprites/fight.jpg", &prog->ptr_list);
+    prog->attack_button = load_image("ressources/sprites/ATTACK.png", &prog->ptr_list);
+    prog->attack_button_hover = load_image("ressources/sprites/ATTACK_HOVER.png", &prog->ptr_list);
+    prog->defend_button = load_image("ressources/sprites/DEFEND.png", &prog->ptr_list);
+    prog->defend_button_hover = load_image("ressources/sprites/DEFEND_HOVER.png", &prog->ptr_list);
+    prog->magic_button = load_image("ressources/sprites/MAGIC.png", &prog->ptr_list);
+    prog->magic_button_hover = load_image("ressources/sprites/MAGIC_HOVER.png", &prog->ptr_list);
+    prog->skip_button = load_image("ressources/sprites/SKIP.png", &prog->ptr_list);
+    prog->skip_button_hover = load_image("ressources/sprites/SKIP_HOVER.png", &prog->ptr_list);
   return (SUCCESS);
 }
 
