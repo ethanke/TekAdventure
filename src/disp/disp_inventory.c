@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Thu Apr  7 02:58:27 2016 victor sousa
-** Last update Wed Apr 13 00:43:26 2016 Victor Sousa
+** Last update Wed Apr 13 03:46:23 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -26,7 +26,11 @@ static void		disp_top_big_inventory(t_prog *prog,
   float			x;
   int			i;
   t_bunny_position	pos;
+  t_font		font;
 
+  font.font_img = prog->font->font_img;
+  font.font_size = 11;
+  font.font_color.full = 0xFF050505;
   pos.x = _pos->x + 10;
   pos.y = _pos->y + 12;
   x = pos.x;
@@ -44,6 +48,7 @@ static void		disp_top_big_inventory(t_prog *prog,
 	  place_image(create_hitbox(pos.x, pos.y, 36, 30),
 		      *prog->player->inventory[i].object->texture_hitbox,
 		      prog->player->inventory[i].object->texture, prog->pix);
+	  tektext(my_itoa(prog->player->inventory[i].amount), &pos, prog->pix, &font);
 	  if (m_pos->x >= pos.x && m_pos->x <= pos.x + 40.45 &&
 	      m_pos->y >= pos.y && m_pos->y <= pos.y + 36)
 	    disp_item_info(prog, &prog->player->inventory[i], &pos);

@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:49:08 2016 Victor Sousa
-** Last update Tue Apr 12 23:50:34 2016 Gaëtan Léandre
+** Last update Wed Apr 13 03:36:03 2016 Victor Sousa
 */
 
 #ifndef			EVENT_H_
@@ -40,16 +40,17 @@ t_bunny_response        event_click(t_bunny_event_state state,
 				    void                *p);
 
 void			handle_inventory_click(t_prog *prog);
+void			handle_inventory_click_npc(t_prog *prog);
 int			get_click_place_hotbar(t_prog *prog,
 				       t_bunny_position *click_pos);
 int			get_click_place_inventory(t_prog *prog,
 					  t_bunny_position *click_pos);
+int			get_click_place_npc_trade(t_prog *prog,
+						  t_bunny_position *click_pos);
 float			get_y(t_scene *scene, t_grille *grille, int pos);
 int			get_x(float percent, t_grille *grille, int pos,
 			      float y_pos);
 t_bunny_position	get_pos(t_scene *scene, float percent,
 				t_bunny_position *mouse_pos);
-t_map_click		click_map(t_scene *scene, t_bunny_position *mouse_pos,
-				  float percent);
 
 #endif			/* !EVENT_H_ */

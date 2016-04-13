@@ -71,6 +71,7 @@ SRC		+=	$(EVENTDIR)/event_key.c			\
 			$(EVENTDIR)/event_click.c		\
 			$(EVENTDIR)/inventory_click.c		\
 			$(EVENTDIR)/get_click_inventory_pos.c	\
+			$(EVENTDIR)/get_click_npc_trade_pos.c	\
 			$(EVENTDIR)/get_grille_pos.c		\
 			$(EVENTDIR)/click_map.c			\
 
