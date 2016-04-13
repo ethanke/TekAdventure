@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Wed Apr 13 05:07:17 2016 Philippe Lefevre
+** Last update Wed Apr 13 06:50:43 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -26,6 +26,15 @@ static t_ground		*my_puterror_g(char *str)
   write(2, str, my_strlen(str));
   ret = NULL;
   return (ret);
+}
+
+static t_sky		*my_puterror_n(char *str)
+{
+  t_sky 	*tmp;
+
+  tmp = NULL;
+  write(2, str, my_strlen(str));
+  return (tmp);
 }
 
 t_object		*link_object(t_object *object, t_sprite *sprite)
@@ -103,7 +112,7 @@ t_player		*link_player(t_player *player, t_sprite *sprite)
   t_sprite		*tmp_sprite;
 
   tmp_player = player;
-  sprite = sprite;
+  tmp_sprite = sprite;
   while (tmp_sprite != NULL)
     {
       if (tmp_sprite->id == tmp_player->sprite_id)
@@ -265,11 +274,158 @@ t_scene			*link_ground(t_bunny_ini *ini, t_scene *scene,
   return (scene);
 }
 
+t_hitbox		*create_sky_hitbox(int id, t_bunny_ini *ini,
+					   t_ptr_list **ptr_list)
+{
+  t_hitbox		*hitbox;
+  char			*str;
+  int			i;
+
+  if ((hitbox = xmalloc(sizeof(*hitbox), ptr_list)) == NULL)
+    return (NULL);
+  if ((str = (char *)bunny_ini_get_field(ini, "scene", "sky_sprite_hitbox", id)) == NULL)
+    return (NULL);
+  i = -1;
+  hitbox->x = my_getnbr(str);
+  while (str[++i] && str[i] != ';');
+  hitbox->y = my_getnbr(str + i + 1);
+  while (str[++i] && str[i] != ';');
+  hitbox->width = my_getnbr(str + i + 1);
+  while (str[++i] && str[i] != ';');
+  hitbox->height = my_getnbr(str + i + 1);
+  return (hitbox);
+}
+
+t_sky			*create_sky_node(int id, t_bunny_ini *ini,
+					 t_ptr_list **ptr_list)
+{
+  t_sky			*sky;
+  char			*str;
+
+  if ((sky = xmalloc(sizeof(t_sky), ptr_list)) == NULL)
+    return (my_puterror_n("Error: failed malloc sky node\n"));
+  if ((str = (char *)bunny_ini_get_field(ini, "scene", "sky_sprite_id", id)) == NULL)
+    return (my_puterror_n("Error: sky or sky:sky_sprite_id not set\n"));
+  sky->sky_sprite_id = my_getnbr(str);
+  if ((str = (char *)bunny_ini_get_field(ini, "scene", "sky_sprite_distance", id)) == NULL)
+    return (my_puterror_n("Error: sky or sky:sky_sprite_distance not set\n"));
+  sky->distance = my_getnbr(str);
+  sky->hitbox = create_sky_hitbox(id, ini, ptr_list);
+  sky->next = NULL;
+  sky->prev = NULL;
+  return (sky);
+}
+
+t_sky			*list_add_sky(t_sky *list, int id, t_bunny_ini *ini,
+				      t_ptr_list **ptr_list)
+{
+  t_sky			*new;
+  t_sky			*tmp;
+
+  if ((new = create_sky_node(id, ini, ptr_list)) == NULL)
+    return (NULL);
+  if (list == NULL)
+    return (new);
+  tmp = list;
+  while (tmp->next != NULL)
+    tmp = tmp->next;
+  new->prev = tmp;
+  new->next = NULL;
+  tmp->next = new;
+  return (list);
+}
+
+t_sky			*load_sky(t_bunny_ini *ini, t_ptr_list **ptr_list)
+{
+  t_sky			*list;
+  char			*str;
+  int			nb_sky;
+  int			i;
+
+  i = 0;
+  if ((str = (char *)bunny_ini_get_field(ini, "scene", "sky_count", 0)) == NULL)
+    return (my_puterror_n("Error: scene or scene:sky_count not set\n"));
+  nb_sky = my_getnbr(str);
+  list = NULL;
+  while (i != nb_sky)
+    {
+      if ((list = list_add_sky(list, i, ini, ptr_list)) == NULL)
+	return (my_puterror_n("Error: invalid sky_count or previous error"));
+      i++;
+    }
+  return (list);
+}
+
+t_sky			*link_sky(t_sky *sky, t_sprite *sprite)
+{
+  t_sprite		*tmp_sprite;
+  t_sky			*tmp_sky;
+
+  tmp_sprite = sprite;
+  while (tmp_sprite != NULL)
+    {
+      tmp_sky = sky;
+      while (tmp_sky != NULL)
+	{
+	  if (tmp_sky->sky_sprite_id == tmp_sprite->id)
+	    tmp_sky->texture = tmp_sprite->sprite;
+	  tmp_sky = tmp_sky->next;
+	}
+      tmp_sprite = tmp_sprite->next;
+    }
+  return (sky);
+}
+
+t_sky			*order_sky(t_sky *sky)
+{
+  t_sky  		*tmp_sky;
+  t_sky  		*tmp_sky_end;
+  int			id_swap;
+  t_texture		*texture_swap;
+  t_hitbox		*hitbox_swap;
+  int			distance_swap;
+
+  tmp_sky = sky;
+  while (tmp_sky != NULL)
+    tmp_sky = tmp_sky->next;
+  tmp_sky_end = tmp_sky->prev;
+  while (tmp_sky != sky)
+    {
+      if ((tmp_sky->next != NULL)
+	  && (tmp_sky->distance < tmp_sky->prev->distance))
+	{
+	  id_swap = tmp_sky->sky_sprite_id;
+	  tmp_sky->sky_sprite_id = tmp_sky->prev->sky_sprite_id;
+	  tmp_sky->prev->sky_sprite_id = id_swap;
+
+          texture_swap = tmp_sky->texture;
+	  tmp_sky->texture = tmp_sky->prev->texture;
+	  tmp_sky->prev->texture = texture_swap;
+
+          hitbox_swap = tmp_sky->hitbox;
+          tmp_sky->hitbox = tmp_sky->prev->hitbox;
+          tmp_sky->prev->hitbox = hitbox_swap;
+
+          distance_swap = tmp_sky->distance;
+          tmp_sky->distance = tmp_sky->prev->distance;
+          tmp_sky->prev->distance = distance_swap;
+	  tmp_sky = tmp_sky_end;
+	}
+      tmp_sky = tmp_sky->prev;
+    }
+  return (sky);
+}
+
 t_scene			*load_scene(t_bunny_ini *ini, t_scene *scene,
 				    t_ptr_list **ptr_list)
 {
   /* Penser gestion d'erreur id deja existant ou inexistant sur toute les list, sprite objet ... */
   /* Penser verifé taille image, image 25cm, hibox 26cms */
+  scene->sky = load_sky(ini, ptr_list);
+  scene->sky = link_sky(scene->sky, scene->sprite);
+  /*scene->sky = order_sky(scene->sky);
+  printf("je suis la\n");*/
+  scene->player = link_player(scene->player, scene->sprite);
   scene->object = link_object(scene->object, scene->sprite);
   scene->player->inventory = link_inventory_item(scene->player->inventory, scene->object);
   scene->decors = link_decors(scene->decors, scene->sprite);
