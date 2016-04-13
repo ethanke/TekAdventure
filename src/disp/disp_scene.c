@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 02:56:24 2016 Gaëtan Léandre
-** Last update Wed Apr 13 04:17:03 2016 Gaëtan Léandre
+** Last update Wed Apr 13 04:44:25 2016 Gaëtan Léandre
 */
 
 #include	 	"main.h"
@@ -114,10 +114,13 @@ void			disp_ground(t_scene *scene, t_bunny_pixelarray *pix,
 				    float percent, int disp)
 {
 /*  t_hitbox		pos;*/
+  t_hitbox		place;
 
 /*  pos = create_hitbox(0, pix->clipable.clip_height - scene->height,
-		      pix->clipable.clip_width, scene->height);
-  redim_image(&pos, scene->sol, pix);*/
+		      pix->clipable.clip_width, scene->height);*/
+  place = create_hitbox(0, WIN_HEIGHT - scene->height,
+			WIN_WIDTH, scene->height);
+  place_image(place, *scene->sol_hitbox, scene->sol, pix);
   put_grille(scene, &scene->size, percent, pix);
   if (disp == 1)
     disp_cases(scene, pix, percent);
