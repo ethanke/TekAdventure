@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr 13 19:38:24 2016 Ethan Kerdelhue
-** Last update Wed Apr 13 19:46:56 2016 Ethan Kerdelhue
+** Last update Wed Apr 13 23:36:15 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -54,6 +54,39 @@ void			update_bar_npc(t_bar *bar, t_prog *prog)
   tektext(" / ", &pos, prog->pix, &font);
   pos.x += 60;
   tektext(my_itoa(bar->value_default), &pos, prog->pix, &font);
+}
+
+void			percent_bar(t_hitbox size, t_bar *bar, t_prog *prog,
+				    unsigned int color)
+{
+  t_hitbox		rect;
+  t_font		font;
+  char			*str;
+  t_bunny_position	pos;
+
+  redim_image(&size, bar->bar_sprite, prog->pix);
+  rect.x = size.x;
+  rect.y = size.y;
+  rect.width = (float)((float)size.width / (float)bar->value_default)
+      * (float)*bar->value_cur;
+  rect.height = size.height;
+  fill_image(rect, prog->pix, color);
+  pos.y = size.y + size.height / 2 - 6;
+  pos.x = size.x + 5;
+  font.font_img = prog->font->font_img;
+  font.font_size = 14;
+  font.font_color.full = WHITE;
+  if ((str = my_itoa(*bar->value_cur)) == NULL)
+    return;
+  tektext(str, &pos, prog->pix, &font);
+  pos.x += 60;
+  free(str);
+  tektext(" / ", &pos, prog->pix, &font);
+  pos.x += 60;
+  if ((str = my_itoa(bar->value_default)) == NULL)
+    return;
+  tektext(str, &pos, prog->pix, &font);
+  free(str);
 }
 
 void			update_bar_player(t_bar *bar, t_prog *prog)
