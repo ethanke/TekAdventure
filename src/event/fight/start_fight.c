@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Wed Apr 13 23:56:23 2016 Gaëtan Léandre
+** Last update Thu Apr 14 00:42:24 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -151,9 +151,12 @@ int			prepare_fight(t_prog *prog, t_npc *npc)
   prog->life_bar = xmalloc(sizeof(t_bar), &prog->ptr_list);
   prog->npc_bar = xmalloc(sizeof(t_bar), &prog->ptr_list);
   prog->action_bar = xmalloc(sizeof(t_bar), &prog->ptr_list);
-  prog->action_bar->bar_sprite = load_image("ressources/sprites/bar.png", &prog->ptr_list);
-  prog->life_bar->bar_sprite = load_image("ressources/sprites/bar.png", &prog->ptr_list);
-  prog->npc_bar->bar_sprite = load_image("ressources/sprites/bar.png", &prog->ptr_list);
+  prog->action_bar->bar_sprite =
+      load_image("ressources/sprites/bar.png", &prog->ptr_list);
+  prog->life_bar->bar_sprite =
+      load_image("ressources/sprites/bar.png", &prog->ptr_list);
+  prog->npc_bar->bar_sprite =
+      load_image("ressources/sprites/bar.png", &prog->ptr_list);
   prog->fight->player = prog->player;
   prog->fight->npc = npc;
   prog->fight->npc->life = 100;
