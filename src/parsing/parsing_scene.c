@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Wed Apr 13 06:59:36 2016 Philippe Lefevre
+** Last update Wed Apr 13 07:14:31 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -379,7 +379,6 @@ t_sky			*link_sky(t_sky *sky, t_sprite *sprite)
 t_sky			*order_sky(t_sky *sky)
 {
   t_sky  		*tmp_sky;
-  t_sky  		*tmp_sky_end;
   int			id_swap;
   t_texture		*texture_swap;
   t_hitbox		*hitbox_swap;
@@ -387,31 +386,34 @@ t_sky			*order_sky(t_sky *sky)
 
   tmp_sky = sky;
   while (tmp_sky != NULL)
-    tmp_sky = tmp_sky->next;
-  tmp_sky_end = tmp_sky->prev;
-  while (tmp_sky != sky)
     {
       if ((tmp_sky->next != NULL)
-	  && (tmp_sky->distance < tmp_sky->prev->distance))
+	  && (tmp_sky->distance > tmp_sky->next->distance))
 	{
 	  id_swap = tmp_sky->sky_sprite_id;
-	  tmp_sky->sky_sprite_id = tmp_sky->prev->sky_sprite_id;
-	  tmp_sky->prev->sky_sprite_id = id_swap;
+	  tmp_sky->sky_sprite_id = tmp_sky->next->sky_sprite_id;
+	  tmp_sky->next->sky_sprite_id = id_swap;
 
           texture_swap = tmp_sky->texture;
-	  tmp_sky->texture = tmp_sky->prev->texture;
-	  tmp_sky->prev->texture = texture_swap;
+	  tmp_sky->texture = tmp_sky->next->texture;
+	  tmp_sky->next->texture = texture_swap;
 
           hitbox_swap = tmp_sky->hitbox;
-          tmp_sky->hitbox = tmp_sky->prev->hitbox;
-          tmp_sky->prev->hitbox = hitbox_swap;
+          tmp_sky->hitbox = tmp_sky->next->hitbox;
+          tmp_sky->next->hitbox = hitbox_swap;
 
           distance_swap = tmp_sky->distance;
-          tmp_sky->distance = tmp_sky->prev->distance;
-          tmp_sky->prev->distance = distance_swap;
-	  tmp_sky = tmp_sky_end;
+          tmp_sky->distance = tmp_sky->next->distance;
+          tmp_sky->next->distance = distance_swap;
+	  tmp_sky = sky;
 	}
-      tmp_sky = tmp_sky->prev;
+      tmp_sky = tmp_sky->next;
+    }
+  tmp_sky = sky;
+  while (tmp_sky != NULL)
+    {
+      printf("%d\n", tmp_sky->distance);
+      tmp_sky = tmp_sky->next;
     }
   return (sky);
 }
