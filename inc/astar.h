@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Fri Apr  8 04:51:26 2016 Gaëtan Léandre
-** Last update Fri Apr  8 23:28:08 2016 Gaëtan Léandre
+** Last update Wed Apr 13 03:40:32 2016 Gaëtan Léandre
 */
 
 #ifndef			_A_STAR_H_
@@ -44,8 +44,8 @@ typedef struct		s_star
   int			cur_y;
   int			end_x;
   int			end_y;
-  char			**ind_list;
-  char			**open_list;
+  int			**ind_list;
+  int			**open_list;
   t_depla		*depla;
 }			t_star;
 
