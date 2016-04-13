@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:10:29 2016 Victor Sousa
-** Last update Wed Apr 13 06:27:04 2016 Victor Sousa
+** Last update Wed Apr 13 06:35:46 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -23,7 +23,8 @@ t_bunny_response        event_click(t_bunny_event_state            state,
       prog->current_click = click_map(prog->scene,
 				      (t_bunny_position *)
 				      bunny_get_mouse_position(),
-				      1 - (float)bunny_get_mouse_position()->x /
+				      1 -
+				      (float)bunny_get_mouse_position()->x /
 				      (float)WIN_WIDTH);
     }
   if (prog->current_click.npc != NULL)
