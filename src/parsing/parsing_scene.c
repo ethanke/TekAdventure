@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Wed Apr 13 07:14:31 2016 Philippe Lefevre
+** Last update Wed Apr 13 07:19:48 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -407,7 +407,8 @@ t_sky			*order_sky(t_sky *sky)
           tmp_sky->next->distance = distance_swap;
 	  tmp_sky = sky;
 	}
-      tmp_sky = tmp_sky->next;
+      else
+	tmp_sky = tmp_sky->next;
     }
   tmp_sky = sky;
   while (tmp_sky != NULL)
@@ -425,7 +426,7 @@ t_scene			*load_scene(t_bunny_ini *ini, t_scene *scene,
   /* Penser verifé taille image, image 25cm, hibox 26cms */
   scene->sky = load_sky(ini, ptr_list);
   scene->sky = link_sky(scene->sky, scene->sprite);
-  /*scene->sky = order_sky(scene->sky);*/
+  scene->sky = order_sky(scene->sky);
   scene->player = link_player(scene->player, scene->sprite);
   scene->object = link_object(scene->object, scene->sprite);
   scene->player->inventory = link_inventory_item(scene->player->inventory, scene->object);
