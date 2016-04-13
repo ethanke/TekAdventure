@@ -5,7 +5,7 @@
 ## Login   <lefevr_h@epitech.net>
 ##
 ## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
-## Last update Wed Apr 13 14:57:04 2016 Gaëtan Léandre
+## Last update Wed Apr 13 18:33:18 2016 Philippe Lefevre
 ##
 
 NAME		=	tekadventure
@@ -50,7 +50,10 @@ SRC		=	$(SRCDIR)/main.c			\
 			$(SRCDIR)/loop.c			\
 			$(SRCDIR)/end.c
 
-SRC		+=	$(PARSDIR)/parsing.c			\
+SRC		+=	$(PARSDIR)/parsing_error_msg_1.c	\
+			$(PARSDIR)/parsing_error_msg_2.c	\
+			$(PARSDIR)/parsing_error_msg_3.c	\
+			$(PARSDIR)/parsing.c			\
 			$(PARSDIR)/parsing_object.c		\
 			$(PARSDIR)/parsing_decors.c		\
 			$(PARSDIR)/parsing_sprite.c		\
@@ -94,7 +97,8 @@ SRC		+=	$(UTILSDIR)/xmalloc.c			\
 			$(UTILSDIR)/list_create_node.c		\
 			$(UTILSDIR)/list_add_node.c		\
 			$(UTILSDIR)/my_draw_square.c		\
-			$(UTILSDIR)/my_swap.c
+			$(UTILSDIR)/my_swap.c			\
+			$(UTILSDIR)/my_put_nbr.c
 
 SRC		+=	$(IMGDIR)/disp_image.c			\
 			$(IMGDIR)/hitbox_creator.c		\

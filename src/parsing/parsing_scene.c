@@ -5,37 +5,10 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Wed Apr 13 07:20:25 2016 Philippe Lefevre
+** Last update Wed Apr 13 18:10:18 2016 Philippe Lefevre
 */
 
 #include		"main.h"
-
-static t_scene		*my_puterror_s(char *str)
-{
-  t_scene		*ret;
-
-  write(2, str, my_strlen(str));
-  ret = NULL;
-  return (ret);
-}
-
-static t_ground		*my_puterror_g(char *str)
-{
-  t_ground		*ret;
-
-  write(2, str, my_strlen(str));
-  ret = NULL;
-  return (ret);
-}
-
-static t_sky		*my_puterror_n(char *str)
-{
-  t_sky 	*tmp;
-
-  tmp = NULL;
-  write(2, str, my_strlen(str));
-  return (tmp);
-}
 
 t_object		*link_object(t_object *object, t_sprite *sprite)
 {
@@ -159,17 +132,19 @@ t_ground		*ground_fill(t_bunny_ini *ini, t_scene *scene)
     }
   scene->ground[i].npc = NULL;
   scene->ground[i].decors = NULL;
-  if ((str = (char *)bunny_ini_get_field(ini, "count", "scene_npc_count", 0)) == NULL)
-    return (NULL);
-  i = my_getnbr(str);
+  if ((str = (char *)bunny_ini_get_field(ini, "scene", "scene_npc_count", 0)) == NULL)
+    return (my_puterror_ground("Error scene:scene_npc_count field not found\n"));
+  if ((i = my_getnbr(str)) < 0)
+  return (my_puterror_ground("Error scene:scene_npc_count should not be negative\n"));
   j = 0;
   while (j < i)
     {
-      if ((str = (char *)bunny_ini_get_field(ini, "scene", "npc_id", j)) == NULL)
-	return (my_puterror_g("Error: scene or scene:npc_id not set\n"));
-      tab[0] = my_getnbr(str);
-      if ((str = (char *)bunny_ini_get_field(ini, "scene", "npc_pos", j)) == NULL)
-	return (my_puterror_g("Error: scene or scene:npc_pos not set\n"));
+      if ((str = (char *)bunny_ini_get_field(ini, "scene", "scene_npc_id", j)) == NULL)
+	return (my_puterror_ground("Error: scene:scene_npc_id field not found\n"));
+      if ((tab[0] = my_getnbr(str)) < 0)
+	return (my_puterror_ground("Error scene:scene_npc_id should not be negative\n"));
+      if ((str = (char *)bunny_ini_get_field(ini, "scene", "scene_npc_pos", j)) == NULL)
+	return (my_puterror_ground("Error: scene:scene_npc_pos field not found\n"));
       tab[1] = my_getnbr(str);
       k = -1;
       while (str[++k] && str[k] != ';');
@@ -183,17 +158,19 @@ t_ground		*ground_fill(t_bunny_ini *ini, t_scene *scene)
 	}
       j++;
     }
-  if ((str = (char *)bunny_ini_get_field(ini, "count", "scene_decors_count", 0)) == NULL)
-    return (NULL);
-  i = my_getnbr(str);
+  if ((str = (char *)bunny_ini_get_field(ini, "scene", "scene_decors_count", 0)) == NULL)
+    return (my_puterror_ground("Error scene:scene_decors_count field not found\n"));
+  if ((i = my_getnbr(str)) < 0)
+    return (my_puterror_ground("Error scene:scene_decors_count should not be negative\n"));
   j = 0;
   while (j < i)
     {
-      if ((str = (char *)bunny_ini_get_field(ini, "scene", "decors_id", j)) == NULL)
-	return (my_puterror_g("Error: scene or scene:decors_id not set\n"));
-      tab[0] = my_getnbr(str);
-      if ((str = (char *)bunny_ini_get_field(ini, "scene", "decors_pos", j)) == NULL)
-	return (my_puterror_g("Error: scene or scene:decors_pos not set\n"));
+      if ((str = (char *)bunny_ini_get_field(ini, "scene", "scene_decors_id", j)) == NULL)
+	return (my_puterror_ground("Error: scene:scene_decors_id field not found\n"));
+      if ((tab[0] = my_getnbr(str)) < 0)
+	return (my_puterror_ground("Error scene:scene_decors_id should not be negative\n"));
+      if ((str = (char *)bunny_ini_get_field(ini, "scene", "scene_decors_pos", j)) == NULL)
+	return (my_puterror_ground("Error: scene:scene_decors_pos field not found\n"));
       tab[1] = my_getnbr(str);
       k = -1;
       while (str[++k] && str[k] != ';');
@@ -219,8 +196,8 @@ t_hitbox		*create_sol_hitbox(int id, t_bunny_ini *ini,
 
   if ((hitbox = xmalloc(sizeof(*hitbox), ptr_list)) == NULL)
     return (NULL);
-  if ((str = (char *)bunny_ini_get_field(ini, "scene", "ground_sprite_hitbox", id)) == NULL)
-    return (NULL);
+  if ((str = (char *)bunny_ini_get_field(ini, "scene", "scene_ground_sprite_hitbox", id)) == NULL)
+    return (my_puterror_hitbox("Error: scene:scene_ground_sprite_hitbox field not found\n"));
   i = -1;
   hitbox->x = my_getnbr(str);
   while (str[++i] && str[i] != ';');
@@ -241,21 +218,25 @@ t_scene			*link_ground(t_bunny_ini *ini, t_scene *scene,
   int			i;
 
   ground = NULL;
-  if ((str = (char *)bunny_ini_get_field(ini, "scene", "nb_x_case", 0)) == NULL)
-    return (my_puterror_s("Error: scene or scene:nb_x_case not set\n"));
-  scene->size.x = my_getnbr(str);
-  if ((str = (char *)bunny_ini_get_field(ini, "scene", "nb_y_case", 0)) == NULL)
-    return (my_puterror_s("Error: scene or scene:nb_y_case not set\n"));
-  scene->size.y = my_getnbr(str);
+  if ((str = (char *)bunny_ini_get_field(ini, "scene", "scene_nb_x_case", 0)) == NULL)
+    return (my_puterror_scene("Error: scene:scene_nb_x_case field not found\n"));
+  if ((scene->size.x = my_getnbr(str)) < 0)
+    return (my_puterror_scene("Error scene:scene_nb_x_case should not be negative\n"));
+  if ((str = (char *)bunny_ini_get_field(ini, "scene", "scene_nb_y_case", 0)) == NULL)
+    return (my_puterror_scene("Error: scene:scene_nb_y_case field not found\n"));
+  if ((scene->size.y = my_getnbr(str)) < 0)
+    return (my_puterror_scene("Error scene:scene_nb_y_case should not be negative\n"));
   if ((ground = xmalloc((sizeof(*ground) * ((scene->size.x * scene->size.y) + 1)), ptr_list)) == NULL)
-    return (my_puterror_s("Error: Malloc failed ground.c:t_ground\n"));
+    return (my_puterror_scene("Error: scene:xmalloc failed in link_ground\n"));
   scene->ground = ground;
   if ((scene->ground = ground_fill(ini, scene)) == NULL)
     return (NULL);
-  if ((str = (char *)bunny_ini_get_field(ini, "scene", "ground_sprite_id", 0)) == NULL)
-    return (my_puterror_s("Error: scene or scene:nb_y_case not set\n"));
-  scene->sol_id = my_getnbr(str);
-  scene->sol_hitbox = create_sol_hitbox(0, ini, ptr_list);
+  if ((str = (char *)bunny_ini_get_field(ini, "scene", "scene_ground_sprite_id", 0)) == NULL)
+    return (my_puterror_scene("Error: scene:scene_ground_sprite_id field not found\n"));
+  if ((scene->sol_id = my_getnbr(str)) < 0)
+    return (my_puterror_scene("Error scene:scene_ground_sprite_id should not be negative\n"));
+  if ((scene->sol_hitbox = create_sol_hitbox(0, ini, ptr_list)) == NULL)
+    return (NULL);
   scene->height = 300;
   tmp_sprite = scene->sprite;
   while (tmp_sprite != NULL)
@@ -264,9 +245,11 @@ t_scene			*link_ground(t_bunny_ini *ini, t_scene *scene,
 	scene->sol = tmp_sprite->sprite;
       tmp_sprite = tmp_sprite->next;
     }
-  if ((str = (char *)bunny_ini_get_field(ini, "scene", "start_pos", 0)) == NULL)
-    return (my_puterror_s("Error: scene or scene:start_pos not set"));
-  scene->start_pos = xmalloc(sizeof(*scene->start_pos), ptr_list);
+  if ((str = (char *)bunny_ini_get_field(ini, "scene", "scene_start_pos", 0)) == NULL)
+    return (my_puterror_scene("Error: scene:scene_start_pos field not found\n"));
+  if ((scene->start_pos = xmalloc(sizeof(*scene->start_pos), ptr_list)) == NULL)
+    return (my_puterror_scene("Error: scene->start_pos:xmalloc failed in link_ground\n"));
+    /* verif des negative apres str to wordtab de ca sur tous */
   scene->start_pos->x = my_getnbr(str);
   i = -1;
   while (str[++i] && str[i] != ';');
@@ -282,9 +265,9 @@ t_hitbox		*create_sky_hitbox(int id, t_bunny_ini *ini,
   int			i;
 
   if ((hitbox = xmalloc(sizeof(*hitbox), ptr_list)) == NULL)
-    return (NULL);
-  if ((str = (char *)bunny_ini_get_field(ini, "scene", "sky_sprite_hitbox", id)) == NULL)
-    return (NULL);
+    return (my_puterror_hitbox("Error: hitbox:xmalloc failed in create_sky_hitbox\n"));
+  if ((str = (char *)bunny_ini_get_field(ini, "scene", "scene_sky_sprite_hitbox", id)) == NULL)
+    return (my_puterror_hitbox("Error: scene:scene_sky_sprite_hitbox field not found\n"));
   i = -1;
   hitbox->x = my_getnbr(str);
   while (str[++i] && str[i] != ';');
@@ -303,14 +286,17 @@ t_sky			*create_sky_node(int id, t_bunny_ini *ini,
   char			*str;
 
   if ((sky = xmalloc(sizeof(t_sky), ptr_list)) == NULL)
-    return (my_puterror_n("Error: failed malloc sky node\n"));
-  if ((str = (char *)bunny_ini_get_field(ini, "scene", "sky_sprite_id", id)) == NULL)
-    return (my_puterror_n("Error: sky or sky:sky_sprite_id not set\n"));
-  sky->sky_sprite_id = my_getnbr(str);
-  if ((str = (char *)bunny_ini_get_field(ini, "scene", "sky_sprite_distance", id)) == NULL)
-    return (my_puterror_n("Error: sky or sky:sky_sprite_distance not set\n"));
-  sky->distance = my_getnbr(str);
-  sky->hitbox = create_sky_hitbox(id, ini, ptr_list);
+    return (my_puterror_sky("Error: sky:xmalloc failed in create_sky_node\n"));
+  if ((str = (char *)bunny_ini_get_field(ini, "scene", "scene_sky_sprite_id", id)) == NULL)
+    return (my_puterror_sky("Error: scene:scene_sky_sprite_id field not found\n"));
+  if ((sky->sky_sprite_id = my_getnbr(str)) < 0)
+    return (my_puterror_sky("Error scene:sky_sprite_id should not be negative\n"));
+  if ((str = (char *)bunny_ini_get_field(ini, "scene", "scene_sky_sprite_distance", id)) == NULL)
+    return (my_puterror_sky("Error: scene:scene_sky_sprite_distance field not found\n"));
+  if ((sky->distance = my_getnbr(str)) < 0)
+    return (my_puterror_sky("Error scene:scene_sky_sprite_distance should not be negative\n"));
+  if ((sky->hitbox = create_sky_hitbox(id, ini, ptr_list)) == NULL)
+    return (NULL);
   sky->next = NULL;
   sky->prev = NULL;
   return (sky);
@@ -342,16 +328,16 @@ t_sky			*load_sky(t_bunny_ini *ini, t_ptr_list **ptr_list)
   int			nb_sky;
   int			i;
 
-  i = 0;
-  if ((str = (char *)bunny_ini_get_field(ini, "scene", "sky_count", 0)) == NULL)
-    return (my_puterror_n("Error: scene or scene:sky_count not set\n"));
-  nb_sky = my_getnbr(str);
+  if ((str = (char *)bunny_ini_get_field(ini, "scene", "scene_sky_count", 0)) == NULL)
+    return (my_puterror_sky("Error: scene:sky_count field not found\n"));
+  if ((nb_sky = my_getnbr(str)) < 0)
+    return (my_puterror_sky("Error: scene:sky_count should not be negative\n"));
   list = NULL;
-  while (i != nb_sky)
+  i = -1;
+  while (++i != nb_sky)
     {
       if ((list = list_add_sky(list, i, ini, ptr_list)) == NULL)
-	return (my_puterror_n("Error: invalid sky_count or previous error"));
-      i++;
+	return (NULL);
     }
   return (list);
 }
@@ -378,10 +364,10 @@ t_sky			*link_sky(t_sky *sky, t_sprite *sprite)
 
 t_sky			*order_sky(t_sky *sky)
 {
-  t_sky  		*tmp_sky;
-  int			id_swap;
   t_texture		*texture_swap;
   t_hitbox		*hitbox_swap;
+  t_sky  		*tmp_sky;
+  int			id_swap;
   int			distance_swap;
 
   tmp_sky = sky;
@@ -416,9 +402,6 @@ t_sky			*order_sky(t_sky *sky)
 t_scene			*load_scene(t_bunny_ini *ini, t_scene *scene,
 				    t_ptr_list **ptr_list)
 {
-  /* Penser gestion d'erreur id deja existant ou inexistant sur toute les list, sprite objet ... */
-  /* Penser verifé taille image, image 25cm, hibox 26cms */
-  scene->sky = load_sky(ini, ptr_list);
   scene->sky = link_sky(scene->sky, scene->sprite);
   scene->sky = order_sky(scene->sky);
   scene->player = link_player(scene->player, scene->sprite);

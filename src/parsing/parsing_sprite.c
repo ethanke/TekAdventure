@@ -5,19 +5,10 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Thu Apr  7 00:39:08 2016 Ethan Kerdelhue
-** Last update Sat Apr  9 05:41:46 2016 Philippe Lefevre
+** Last update Wed Apr 13 18:28:59 2016 Philippe Lefevre
 */
 
 #include 		"main.h"
-
-static t_sprite		*my_puterror_n(char *str)
-{
-  t_sprite		*tmp;
-
-  tmp = NULL;
-  write(2, str, my_strlen(str));
-  return (tmp);
-}
 
 t_sprite		*create_sprite_node(int id,
 					    t_bunny_ini *ini,
@@ -26,17 +17,18 @@ t_sprite		*create_sprite_node(int id,
   t_sprite		*sprite;
   char			*str;
 
-  if ((sprite = xmalloc(sizeof(t_sprite), ptr_list)) == NULL)
-    return (my_puterror_n("Error: Malloc fail"));
-  if ((str = (char *)bunny_ini_get_field(ini, "sprite", "path", id)) == NULL)
-    return (my_puterror_n("No field path in sprite scope"));
+  if ((sprite = xmalloc(sizeof(*sprite), ptr_list)) == NULL)
+    return (my_puterror_sprite("Error: sprite:xmalloc failed in create_sprite_node\n"));
+  if ((str = (char *)bunny_ini_get_field(ini, "sprite", "sprite_path", id)) == NULL)
+    return (my_puterror_sprite("Error: sprite:sprite_path field not found\n"));
   if ((sprite->path = my_strdup(str, ptr_list)) == NULL)
-    return (my_puterror_n("Strdup fail"));
+    return (my_puterror_sprite("Error: sprite->path:my_strdup failed in create_sprite_node\n"));
   if ((sprite->sprite = load_image(str, ptr_list)) == NULL)
-    return (my_puterror_n("load image fail"));
+    return (my_puterror_sprite("Error: sprite->sprite:load_image failed in create_sprite_node"));
   if ((str = (char *)bunny_ini_get_field(ini, "sprite", "sprite_id", id)) == NULL)
-    return (my_puterror_n("No field sprite_id in sprite scope"));
-  sprite->id = my_getnbr(str);
+    return (my_puterror_sprite("Error: sprite:sprite_id field not found\n"));
+  if ((sprite->id = my_getnbr(str)) < 0)
+    return (my_puterror_sprite("Error: sprite:sprite_id should not be negative\n"));
   sprite->next = NULL;
   sprite->prev = NULL;
   return (sprite);
@@ -55,7 +47,11 @@ t_sprite		*list_add_sprite(t_sprite *list, int id,
     return (new);
   tmp = list;
   while (tmp->next != NULL)
-    tmp = tmp->next;
+    {
+      if (tmp->id == new->id)
+	return (my_puterror_sprite("Error: sprite:sprite_id already declared\n"));
+      tmp = tmp->next;
+    }
   new->prev = tmp;
   new->next = NULL;
   tmp->next = new;
@@ -65,19 +61,18 @@ t_sprite		*list_add_sprite(t_sprite *list, int id,
 t_sprite		*load_sprite(t_bunny_ini *ini, t_ptr_list **ptr_list)
 {
   t_sprite	*list;
+
+  char		*str;
   int		nb_sprite;
   int		i;
 
-  i = 0;
+  if ((str = (char *)bunny_ini_get_field(ini, "sprite", "sprite_count", 0)) == NULL)
+    return (my_puterror_sprite("Error: balise sprite or sprite:sprite_count field not found\n"));
+  if ((nb_sprite = my_getnbr(str)) < 0)
+    return (my_puterror_sprite("Error: sprite:sprite_id should not be negative\n"));
   list = NULL;
-  nb_sprite =
-      my_getnbr((char *)bunny_ini_get_field(ini, "count", "sprite_count", 0));
-  if (nb_sprite == 0)
-    return (my_puterror_n("Error : sprite_count is null"));
-  while (i != nb_sprite)
-    {
-      list = list_add_sprite(list, i, ini, ptr_list);
-      i++;
-    }
+  i = -1;
+  while (++i != nb_sprite)
+    list = list_add_sprite(list, i, ini, ptr_list);
   return (list);
 }
