@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr 13 06:17:45 2016 Ethan Kerdelhue
-** Last update Thu Apr 14 07:15:05 2016 Ethan Kerdelhue
+** Last update Fri Apr 15 00:31:00 2016 Ethan Kerdelhue
 */
 
 #ifndef			FIGHT_H_
@@ -26,7 +26,7 @@
 typedef	struct		s_bar
 {
   t_texture		*bar_sprite;
-  int			*value_cur;
+  int			value_cur;
   int			value_default;
 }			t_bar;
 
@@ -36,6 +36,7 @@ typedef struct		s_fight
   char			round_state;
   int			player_action;
   int			player_action_size;
+  int			round_energy;
   t_player		*player;
   t_npc			*npc;
   t_font		font;
@@ -43,6 +44,8 @@ typedef struct		s_fight
   int			animate_fireball;
   int			last_action;
   t_bar			*bar_action;
+  t_bar			*bar_npc;
+  t_bar			*bar_player;
   t_texture		*fireball;
   t_hitbox		pos;
   t_hitbox		fetch;

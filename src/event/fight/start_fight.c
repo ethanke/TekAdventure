@@ -5,10 +5,10 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Thu Apr 14 23:07:53 2016 Gaëtan Léandre
+** Last update Fri Apr 15 01:17:38 2016 Ethan Kerdelhue
 */
 
-#include		"main.h"
+#include	"main.h"
 
 void	my_putchar(char c)
 {
@@ -101,6 +101,21 @@ int 			npc_damage(t_npc *npc, t_player *player)
       damage = 0;
       my_putstr("I'm dodge !\n");
     }
+  if (player->fight_defense == 1)
+    {
+      player->fight_defense = 0;
+      if (((rand() % (100 - 0)) + 0) <= player->caract->armor / 3)
+	{
+	  my_putstr("I block\n");
+	  damage = 0;
+	}
+      else
+	{
+	  damage = (damage / 1000) - player->caract->armor / 5;
+	  my_puts("I'm resist : ", damage, 1);
+	  return (damage);
+	}
+    }
   my_puts("Damage : ", damage / 1000, 1);
   return (damage / 1000);
 }
@@ -112,19 +127,23 @@ int 			player_damage_magic(t_player *player, t_fight *fight)
   int			max;
   int			min;
 
-  min = player->magic_damage * 1200;
-  max = player->magic_damage * 800;
-  damage = ((rand() % (max - min )) + min);
-  if (((rand() % (100 - 0)) + 0) <= player->caract->critical)
+  if (fight->player_action >= ATTACK_ENERGY)
     {
-      damage = damage * 1.5;
-      my_putstr("It's critical !\n");
+      min = player->magic_damage * 1200;
+      max = player->magic_damage * 800;
+      damage = ((rand() % (max - min )) + min);
+      if (((rand() % (100 - 0)) + 0) <= player->caract->critical)
+	{
+	  damage = damage * 1.5;
+	  my_putstr("It's critical !\n");
+	}
+      pos.x = WIN_WIDTH / 2;
+      pos.y = WIN_HEIGHT / 2;
+      pos = pos;
+      fight->player_action -= MAGIC_ENERGY;
+      return (damage / 1000);
     }
-  pos.x = WIN_WIDTH / 2;
-  pos.y = WIN_HEIGHT / 2;
-  pos = pos;
-  fight->player_action -= MAGIC_ENERGY;
-  return (damage / 1000);
+  return (0);
 }
 
 int 			player_damage(t_player *player, t_fight *fight)
@@ -134,41 +153,43 @@ int 			player_damage(t_player *player, t_fight *fight)
   int			max;
   int			min;
 
-  min = player->damage * 1200;
-  max = player->damage * 800;
-  damage = ((rand() % (max - min )) + min);
-  if (((rand() % (100 - 0)) + 0) <= player->caract->critical)
+  if (fight->player_action >= ATTACK_ENERGY)
     {
-      damage = damage * 1.5;
-      my_putstr("It's critical !\n");
+      min = player->damage * 1200;
+      max = player->damage * 800;
+      damage = ((rand() % (max - min )) + min);
+      if (((rand() % (100 - 0)) + 0) <= player->caract->critical)
+	{
+	  damage = damage * 1.5;
+	  my_putstr("It's critical !\n");
+	}
+      pos.x = WIN_WIDTH / 2;
+      pos.y = WIN_HEIGHT / 2;
+      fight->player_action -= ATTACK_ENERGY;
+      return (damage / 1000);
     }
-  pos.x = WIN_WIDTH / 2;
-  pos.y = WIN_HEIGHT / 2;
-  fight->player_action -= ATTACK_ENERGY;
-  return (damage / 1000);
+  return (0);
 }
 
 int			prepare_fight(t_prog *prog, t_npc *npc)
 {
   if ((prog->fight = xmalloc(sizeof(t_fight), &prog->ptr_list)) == NULL)
     return (-1);
+  prog->fight->bar_action = xmalloc(sizeof(t_bar), &prog->ptr_list);
+  prog->fight->bar_action->bar_sprite = load_image("ressources/sprites/bar.png", &prog->ptr_list);
+  prog->fight->bar_npc = xmalloc(sizeof(t_bar), &prog->ptr_list);
+  prog->fight->bar_npc->bar_sprite = load_image("ressources/sprites/bar.png", &prog->ptr_list);
+  prog->fight->bar_player = xmalloc(sizeof(t_bar), &prog->ptr_list);
+  prog->fight->bar_player->bar_sprite = load_image("ressources/sprites/bar.png", &prog->ptr_list);
   prog->fight->animate = 0;
   prog->fight->last_action = -1;
   prog->fight->font.font_img = prog->font->font_img;
   prog->fight->font.font_size = 14;
   prog->fight->font.font_color.full = WHITE;
-  prog->life_bar = xmalloc(sizeof(t_bar), &prog->ptr_list);
-  prog->npc_bar = xmalloc(sizeof(t_bar), &prog->ptr_list);
-  prog->action_bar = xmalloc(sizeof(t_bar), &prog->ptr_list);
-  prog->action_bar->bar_sprite =
-      load_image("ressources/sprites/bar.png", &prog->ptr_list);
-  prog->life_bar->bar_sprite =
-      load_image("ressources/sprites/bar.png", &prog->ptr_list);
-  prog->npc_bar->bar_sprite =
-      load_image("ressources/sprites/bar.png", &prog->ptr_list);
   prog->fight->fireball = load_image("ressources/sprites/fireballsprite.png", &prog->ptr_list);
   prog->fight->player = prog->player;
   prog->fight->npc = npc;
+  printf("life : %d\n", prog->fight->player->life);
   prog->fight->player_action = 100;
   prog->fight->npc->life = 100;
   prog->fight->nb_round = 1;
@@ -177,16 +198,13 @@ int			prepare_fight(t_prog *prog, t_npc *npc)
   prog->fight->player->caract->strength = 5;
   prog->fight->player->caract->critical = 20;
   prog->fight->player->caract->agility = 30;
+  prog->fight->player->caract->armor = 50;
   prog->fight->player->caract->intellect = 8;
+  prog->fight->round_energy = ROUND_ENERGY;
   prog->fight->player->damage = get_player_damage(prog->fight->player, prog);
   prog->fight->player->magic_damage = get_player_magic_damage(prog->fight->player, prog);
+  prog->fight->player->fight_defense = 0;
   prog->fight->npc->damage = 20;
-  prog->life_bar->value_cur = &prog->fight->player->life;
-  prog->life_bar->value_default = prog->fight->player->life;
-  prog->npc_bar->value_cur = &prog->fight->npc->life;
-  prog->npc_bar->value_default = prog->fight->npc->life;
-  prog->action_bar->value_cur = &prog->fight->player_action;
-  prog->action_bar->value_default = prog->fight->player_action;
   prog->fight->pos.x = 0;
   prog->fight->pos.y = WIN_HEIGHT / 2;
   prog->fight->pos.height = prog->fight->fireball->height;
@@ -195,6 +213,12 @@ int			prepare_fight(t_prog *prog, t_npc *npc)
   prog->fight->fetch.y = 0;
   prog->fight->fetch.height = prog->fight->fireball->height;
   prog->fight->fetch.width = 83;
+  prog->fight->bar_action->value_cur = prog->fight->player_action;
+  prog->fight->bar_action->value_default = prog->fight->player_action;
+  prog->fight->bar_npc->value_cur = prog->fight->npc->life;
+  prog->fight->bar_npc->value_default = prog->fight->npc->life;
+  prog->fight->bar_player->value_cur = prog->fight->player->life;
+  prog->fight->bar_player->value_default = prog->fight->player->life;
   return (0);
 }
 
@@ -243,12 +267,17 @@ int			loop_fight(t_prog *prog)
 	}
       if (prog->fight->last_action != -1)
 	{
-
 	  printf("button pressed : %d\n", action_button);
 	  if (prog->fight->last_action == ATTACK)
 	    prog->fight->npc->life -= player_damage(prog->fight->player, prog->fight);
 	  if (prog->fight->last_action == DEFEND)
-	    printf("Vous vous defendez\n");
+	    {
+	      if (prog->fight->player_action >= DEFEND_ENERGY)
+		{
+		  prog->fight->player->fight_defense = 1;
+		  prog->fight->player_action -= DEFEND_ENERGY;
+		}
+	    }
 	  if (prog->fight->last_action == MAGIC)
 	    {
 	      printf("Magic shot !\n");
@@ -264,7 +293,7 @@ int			loop_fight(t_prog *prog)
     }
   if (prog->fight->round_state == 2)
     {
-      prog->fight->player += ROUND_ENERGY;
+      prog->fight->player_action = prog->fight->round_energy;
       prog->fight->player->life -= npc_damage(prog->fight->npc, prog->player);
       printf("prog->player->life %d\n", prog->player->life);
       my_puts("Player life : ", prog->fight->player->life, 1);

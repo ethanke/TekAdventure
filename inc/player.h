@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 03:51:52 2016 Gaëtan Léandre
-** Last update Thu Apr 14 17:58:25 2016 Victor Sousa
+** Last update Fri Apr 15 01:22:38 2016 Ethan Kerdelhue
 */
 
 #ifndef			PLAYER_H_
@@ -59,6 +59,7 @@ typedef struct		s_player
   t_item		*inventory;
   char			inventory_open;
   char			inv_selected;
+  char			fight_defense;
   t_texture		*inv_open_sprite;
   t_texture		*hotbar_sprite;
   t_move		move;
