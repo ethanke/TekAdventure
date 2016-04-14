@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Thu Apr 14 05:59:32 2016 Victor Sousa
-** Last update Fri Apr 15 00:20:53 2016 Victor Sousa
+** Last update Fri Apr 15 01:19:24 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -43,12 +43,13 @@ void			interact_decors(t_prog *prog)
   int			place;
   t_font		font;
   t_bunny_position	f_pos;
+  char			*str;
 
   font.font_img = prog->font->font_img;
-  font.font_size = 25;
+  font.font_size = 20;
   font.font_color.full = 0xFF050505;
   f_pos.x = WIN_WIDTH / 2;
-  f_pos.y = WIN_HEIGHT - 200;
+  f_pos.y = WIN_HEIGHT - 100;
   if (prog->player->item_selected != -1 &&
 
       prog->player->inventory[prog->player->item_selected].id != -1)
@@ -84,16 +85,28 @@ void			interact_decors(t_prog *prog)
 		       prog->current_click.decors->decors_breakable->life);
 	    }
 	  else
-	    printf("Wrong tools\n");
+	    {
+	      str = malloc(my_strlen(fint_obj_by_id(prog->scene->object,
+						    prog->current_click.decors->decors_breakable->breakable_by)->name) + 10);
+	      str = my_strcpy(str, "Wrong tools");
+	      str = my_strcat(str,
+			      fint_obj_by_id(prog->scene->object,
+					     prog->current_click.decors->decors_breakable->breakable_by)->name);
+	      tektextcenter("Wrong tools",
+			    &f_pos, prog->pix, &font);
+	    }
 	}
       else
-	printf("Can't break this\n");
+	{
+	  tektextcenter("Can't break this! too strong",
+			&f_pos, prog->pix, &font);
+	}
       prog->player->item_selected = -1;
       prog->state = STATE_GAME;
     }
   else
     {
-      tektext("Pick the item to use in your hotbar!",
-	      &f_pos, prog->pix, &font);
+      tektextcenter("Pick the item to use\nin your hotbar!",
+		    &f_pos, prog->pix, &font);
     }
 }
