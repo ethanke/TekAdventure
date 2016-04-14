@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr 13 19:36:12 2016 Ethan Kerdelhue
-** Last update Thu Apr 14 06:06:04 2016 Ethan Kerdelhue
+** Last update Thu Apr 14 07:17:28 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -53,7 +53,8 @@ void			draw_fight(t_prog *prog)
   put_image(prog->npc_bar->bar_sprite, prog->pix, &bar3);
   prog->fight->bar_action->bar_sprite = prog->action_bar->bar_sprite;
   prog->fight->bar_action->value_cur = &prog->fight->player_action;
-  prog->fight->bar_action->value_default = prog->fight->player_action;
+  prog->fight->player_action_size = 100;
+  prog->fight->bar_action->value_default = prog->fight->player_action_size;
   size.x = (WIN_WIDTH / 2) - prog->action_bar->bar_sprite->width / 2;
   size.y = WIN_HEIGHT - prog->action_bar->bar_sprite->height + 5;
   size.width = prog->action_bar->bar_sprite->width;

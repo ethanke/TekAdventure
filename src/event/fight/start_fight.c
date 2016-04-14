@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Thu Apr 14 07:00:46 2016 Ethan Kerdelhue
+** Last update Thu Apr 14 07:14:03 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -203,7 +203,7 @@ int			anime_fireball(t_prog *prog)
 {
   if (prog->fight->fetch.x < prog->fight->fireball->width + 83)
     {
-      prog->fight->fetch.x += 83;
+      prog->fight->fetch.x += 80;
       place_image(prog->fight->pos, prog->fight->fetch, prog->fight->fireball, prog->pix);
       return (1);
     }

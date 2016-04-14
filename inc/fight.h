@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr 13 06:17:45 2016 Ethan Kerdelhue
-** Last update Thu Apr 14 06:38:53 2016 Ethan Kerdelhue
+** Last update Thu Apr 14 07:15:05 2016 Ethan Kerdelhue
 */
 
 #ifndef			FIGHT_H_
@@ -35,6 +35,7 @@ typedef struct		s_fight
   int			nb_round;
   char			round_state;
   int			player_action;
+  int			player_action_size;
   t_player		*player;
   t_npc			*npc;
   t_font		font;
