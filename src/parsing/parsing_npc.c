@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr  8 02:30:51 2016 Ethan Kerdelhue
-** Last update Wed Apr 13 22:16:26 2016 Philippe Lefevre
+** Last update Thu Apr 14 02:47:52 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -62,11 +62,11 @@ t_trade			*get_trade(char *str, t_ptr_list **ptr_list, int id)
     return (my_puterror_trade("Error: npc:npc_trade field ", id, " given amount should not be negative\n"));
   if ((trade->in_stock = xmalloc(sizeof(trade->in_stock), ptr_list)) == NULL)
     return (my_puterror_trade("Error: trade->in_stock:xmalloc ", -1, "failed in get_trade\n"));
-  trade->in_stock->id = -1;
-  trade->in_stock->amount = 0;
   if ((trade->in_stock->object = xmalloc(sizeof(t_object), ptr_list)) == NULL)
     return (my_puterror_trade("Error: trade->in_stock->object:xmalloc ", -1, "failed in get_trade\n"));
-    trade->in_stock->object = NULL;
+  trade->in_stock->id = -1;
+  trade->in_stock->amount = 0;
+  trade->in_stock->object = NULL;
   return (trade);
 }
 
@@ -95,8 +95,8 @@ t_hitbox		*create_npc_hitbox(int id, t_bunny_ini *ini,
 t_npc			*create_npc_node(int id, t_bunny_ini *ini,
 					 t_ptr_list **ptr_list)
 {
-  t_npc		*npc;
-  char		*str;
+  t_npc			*npc;
+  char			*str;
 
   if ((npc = xmalloc(sizeof(t_npc), ptr_list)) == NULL)
       return (my_puterror_npc("Error: npc:xmalloc ", -1, "failed in create_npc_node\n"));
@@ -113,11 +113,11 @@ t_npc			*create_npc_node(int id, t_bunny_ini *ini,
   if ((npc->text = my_strdup(str, ptr_list)) == NULL)
     return (my_puterror_npc("Error: npc->text:my_strdup ", -1, "failed in create_npc_node\n"));
   if ((str = (char *)bunny_ini_get_field(ini, "npc", "npc_trade", id)) == NULL)
-	    return (my_puterror_npc("Error: npc:npc_trade field ", id, " not found\n"));
+    return (my_puterror_npc("Error: npc:npc_trade field ", id, " not found\n"));
   if ((npc->trade = get_trade(str, ptr_list, id)) == NULL)
     return (NULL);
   if ((npc->texture_hitbox = create_npc_hitbox(id, ini, ptr_list)) == NULL)
-		return (NULL);
+    return (NULL);
   if ((str = (char *)bunny_ini_get_field(ini, "npc", "npc_sprite_id", id)) == NULL)
     return (my_puterror_npc("Error: npc:npc_sprite_id field ", id, " not found\n"));
   if ((npc->sprite_id = my_getnbr(str)) < 0)
@@ -127,11 +127,11 @@ t_npc			*create_npc_node(int id, t_bunny_ini *ini,
   return (npc);
 }
 
-t_npc		*list_add_npc(t_npc *list, int id, t_bunny_ini *ini,
+t_npc			*list_add_npc(t_npc *list, int id, t_bunny_ini *ini,
 			      t_ptr_list **ptr_list)
 {
-  t_npc		*new;
-  t_npc		*npc;
+  t_npc			*new;
+  t_npc			*npc;
 
   if ((new = create_npc_node(id, ini, ptr_list)) == NULL)
     return (my_puterror_npc("Error: new:xmalloc failed ", -1, "in list_add_npc\n"));
@@ -147,12 +147,12 @@ t_npc		*list_add_npc(t_npc *list, int id, t_bunny_ini *ini,
   return (list);
 }
 
-t_npc		*load_npc(t_bunny_ini *ini, t_ptr_list **ptr_list)
+t_npc			*load_npc(t_bunny_ini *ini, t_ptr_list **ptr_list)
 {
-  t_npc		*list;
-  char		*str;
-  int		nb_npc;
-  int		i;
+  t_npc			*list;
+  char			*str;
+  int			nb_npc;
+  int			i;
 
   if ((str = (char *)bunny_ini_get_field(ini, "npc", "npc_count", 0)) == NULL)
     return (my_puterror_npc("Error: balise npc or npc:npc_count field ", 1,  " not found\n"));
