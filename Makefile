@@ -5,7 +5,7 @@
 ## Login   <lefevr_h@epitech.net>
 ##
 ## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
-## Last update Thu Apr 14 03:04:36 2016 Philippe Lefevre
+## Last update Thu Apr 14 05:45:03 2016 Gaëtan Léandre
 ##
 
 NAME		=	tekadventure
@@ -116,7 +116,8 @@ SRC		+=	$(IMGDIR)/disp_image.c			\
 			$(IMGDIR)/load_image.c			\
 			$(IMGDIR)/tektext.c			\
 			$(IMGDIR)/tekpixel.c			\
-			$(IMGDIR)/fill_image.c
+			$(IMGDIR)/fill_image.c			\
+			$(IMGDIR)/teknbr.c
 
 SRC		+=	$(ASTAR)/astar.c			\
 			$(ASTAR)/calculs.c			\
