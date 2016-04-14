@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Thu Apr 14 05:01:45 2016 Gaëtan Léandre
+** Last update Thu Apr 14 05:59:32 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -169,6 +169,7 @@ int			prepare_fight(t_prog *prog, t_npc *npc)
       load_image("ressources/sprites/bar.png", &prog->ptr_list);
   prog->fight->player = prog->player;
   prog->fight->npc = npc;
+  prog->fight->player_action = 100;
   prog->fight->npc->life = 100;
   prog->fight->nb_round = 1;
   prog->fight->round_state = 1;
