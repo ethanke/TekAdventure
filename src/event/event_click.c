@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:10:29 2016 Victor Sousa
-** Last update Thu Apr 14 03:40:13 2016 Gaëtan Léandre
+** Last update Thu Apr 14 14:49:07 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -54,6 +54,8 @@ t_bunny_response        event_click(t_bunny_event_state            state,
 	    prog->state = STATE_NPC;
 	  else if (npc_choose == 1)
 	    prog->state = STATE_FIGHT;
+	  else if (npc_choose == 2)
+	    prog->state = STATE_DECOR_CHOOSE;
 	}
     }
   return (GO_ON);

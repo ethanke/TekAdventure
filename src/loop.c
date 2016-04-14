@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:58:37 2016 Philippe Lefevre
-** Last update Thu Apr 14 04:29:35 2016 Victor Sousa
+** Last update Thu Apr 14 15:26:31 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -42,13 +42,14 @@ t_bunny_response	mainloop(void *p)
     start_fight(prog, prog->scene->npc);
   else if (prog->state == STATE_NPC_CHOOSE)
     disp_choose_npc_action(prog);
+  else if (prog->state == STATE_DECOR_CHOOSE)
+    interact_decors(prog);
   else if (prog->state == STATE_GAME)
     {
       /* GAMEPLAY ELEMENT */
     }
   else if (prog->state == STATE_NPC)
     interact_npc(prog, prog->scene->npc->next->next);
-
   if (prog->state != STATE_FIGHT)
     disp_inventory(prog);
   bunny_blit(&prog->win->buffer, &prog->pix->clipable, &prog->blit_pos);
