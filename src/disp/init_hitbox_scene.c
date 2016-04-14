@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Mon Apr 11 00:14:36 2016 Gaëtan Léandre
-** Last update Tue Apr 12 01:36:32 2016 Gaëtan Léandre
+** Last update Thu Apr 14 03:46:30 2016 Gaëtan Léandre
 */
 #include		"main.h"
 
@@ -61,17 +61,14 @@ t_hitbox		*set_decors_hitbox(t_grille *grille, t_decors *npc,
   return (result);
 }
 
-void			set_hitbox_ground(t_scene *scene, t_ptr_list *ptr_list)
+int			set_hitbox_ground(t_scene *scene, t_ptr_list *ptr_list)
 {
   t_grille		grille;
-  t_hitbox		place;
   t_bunny_position	pos;
 
-  place = create_hitbox(0, WIN_HEIGHT - scene->height,
-			WIN_WIDTH, scene->height - 206 / 4);
-  grille = get_grille_param(&place, scene);
-  pos.y = 0;
-  while (pos.y < scene->size.y)
+  grille = get_grille_with_place(scene);
+  pos.y = -1;
+  while (++pos.y < scene->size.y)
     {
       pos.x = -1;
       while (++pos.x < scene->size.x)
@@ -85,7 +82,10 @@ void			set_hitbox_ground(t_scene *scene, t_ptr_list *ptr_list)
 			      scene->ground[pos.x + pos.y
 			      * scene->size.x].decors,
 			      &pos, ptr_list);
+	  if (scene->ground[pos.x + pos.y * scene->size.x].hitbox_decors == NULL
+	      || scene->ground[pos.x + pos.y * scene->size.x].hitbox_npc == 0)
+	    return (-1);
 	}
-      pos.y++;
     }
+  return (0);
 }
