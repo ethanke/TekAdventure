@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr 13 19:36:12 2016 Ethan Kerdelhue
-** Last update Thu Apr 14 03:07:38 2016 Ethan Kerdelhue
+** Last update Thu Apr 14 05:58:44 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -22,6 +22,9 @@ void			draw_fight(t_prog *prog)
   t_bunny_position	bar2;
   t_bunny_position	bar3;
 
+  printf("%d\n", prog->player->life);
+  printf("%d\n", prog->fight->npc->life);
+  printf("%d\n", prog->fight->player_action);
   prog->fight->bar_action = xmalloc(sizeof(t_bar), &prog->ptr_list);
   player_pos.x = prog->fight->player->sprite->width / 2;
   player_pos.y = WIN_HEIGHT / 2 - (prog->fight->player->sprite->height / 2);
@@ -58,5 +61,4 @@ void			draw_fight(t_prog *prog)
   size.y = WIN_HEIGHT - prog->action_bar->bar_sprite->height + 5;
   size.width = prog->action_bar->bar_sprite->width;
   size.height = prog->action_bar->bar_sprite->height;
-  percent_bar(size, prog->fight->bar_action, prog, YELLOW);
 }
