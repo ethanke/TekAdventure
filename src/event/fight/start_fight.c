@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Thu Apr 14 02:54:55 2016 Victor Sousa
+** Last update Thu Apr 14 03:07:12 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -197,7 +197,7 @@ int			loop_fight(t_prog *prog)
   my_puts("Round -> ", prog->fight->nb_round, 1);
   if (prog->fight->round_state == 1)
     {
-      if (prog->fight->animate == 0)
+      /*if (prog->fight->animate == 0)
 	{
 	  prog->fight->font.font_color.argb[ALPHA_CMP] = 0;
 	  prog->fight->animate = 1;
@@ -207,10 +207,16 @@ int			loop_fight(t_prog *prog)
       if (prog->fight->animate == 1)
 	prog->fight->font.font_color.argb[ALPHA_CMP] += 5;
       tektext(my_itoa(player_damage(prog->fight->player, prog->fight, prog)), &pos, prog->pix, &prog->fight->font);
-      prog->fight->nb_round += 1;
+      prog->fight->nb_round += 1;*/
 
       if ((action_button = catch_button(prog)) != -1)
 	printf("button pressed : %d\n", action_button);
+      if (action_button == ATTACK)
+	printf("Vous attaquez\n");
+      if (action_button == DEFEND)
+	printf("Vous vous defendez\n");
+      if (action_button == MAGIC)
+	printf("Vous attaquez magiquement\n");
       if (action_button == SKIP)
 	prog->fight->round_state = 2;
     }
