@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Fri Apr 15 00:46:50 2016 Gaëtan Léandre
-** Last update Fri Apr 15 00:57:20 2016 Gaëtan Léandre
+** Last update Fri Apr 15 01:15:27 2016 Gaëtan Léandre
 */
 
 #include	"main.h"
@@ -26,12 +26,14 @@ static int	count_space(const char *str, int font_size, int i)
 static int	count_line(const char *str, int font_size)
 {
   int		i;
+  int		line;
 
-  i = 0;
-  while (str[i])
+  i = -1;
+  line = 0;
+  while (str[++i])
     if (str[i] == '\n')
-	i++;
-  return (((font_size + font_size / 4) * i) / 2);
+	line++;
+  return (((font_size + font_size / 4) * line) / 2);
 }
 
 void		tektextcenter(const char *str,
