@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Thu Apr 14 06:02:58 2016 Gaëtan Léandre
+** Last update Thu Apr 14 06:41:31 2016 Gaëtan Léandre
 */
 
 #ifndef			SCENE_H_
@@ -30,6 +30,7 @@ typedef struct		s_gate
   int			id;
   char			*name;
   int			sprite_id;
+  struct s_scene	*scene;
   t_texture		*texture;
   t_hitbox		*texture_hitbox;
   struct s_gate		*prev;

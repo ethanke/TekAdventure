@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr 14 05:07:56 2016 Gaëtan Léandre
-** Last update Thu Apr 14 05:08:25 2016 Gaëtan Léandre
+** Last update Thu Apr 14 06:48:58 2016 Gaëtan Léandre
 */
 
 #include	"main.h"
@@ -32,8 +32,8 @@ void		teknbr(int nb, const t_bunny_position *pos,
   while (len-- > 1)
     {
       pix.x = pos->x + j * font->font_size + (font->font_size / 4) * j;
-      tekchar(out, font, &pix, nb / 10  + '0');
-      nb %= 10;
+      tekchar(out, font, &pix, nb / pow(10, len)  + '0');
+      nb %= (int)pow(10, len);
       j++;
     }
   pix.x = pos->x + j * font->font_size + (font->font_size / 4) * j;

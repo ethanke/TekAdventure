@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 02:56:24 2016 Gaëtan Léandre
-** Last update Thu Apr 14 06:05:08 2016 Gaëtan Léandre
+** Last update Thu Apr 14 06:40:36 2016 Gaëtan Léandre
 */
 
 #include	 	"main.h"
@@ -132,4 +132,5 @@ void			disp_ground(t_prog *prog, int disp)
   put_grille(prog, &prog->scene->size, prog->percent, prog->pix);
   if (disp == 1)
     disp_cases(prog->scene, prog->pix, prog->percent);
+  on_gate(prog);
 }
