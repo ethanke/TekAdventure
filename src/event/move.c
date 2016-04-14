@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 04:57:09 2016 Gaëtan Léandre
-** Last update Wed Apr 13 18:54:01 2016 Gaëtan Léandre
+** Last update Wed Apr 13 21:52:15 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -96,7 +96,6 @@ void			deplacement(t_player *player, t_scene *scene,
   t_grille		grille;
 
   grille = get_grille_with_place(scene);
-  make_deplacement(player);
   disp_deplacement(player, &grille, pix, percent);
 }
 

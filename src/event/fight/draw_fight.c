@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr 13 19:36:12 2016 Ethan Kerdelhue
-** Last update Wed Apr 13 19:46:37 2016 Ethan Kerdelhue
+** Last update Wed Apr 13 22:24:23 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -37,7 +37,7 @@ void			draw_fight(t_prog *prog)
   bar2.x =  WIN_WIDTH - 20 - prog->npc_bar->bar_sprite->width;
   bar2.y = 100;
   bar3.x = (WIN_WIDTH / 2) - (prog->life_bar->bar_sprite->width / 2);
-  bar3.y = 400;
+  bar3.y = WIN_HEIGHT / 2;
   put_image(prog->fight_img, prog->pix, &prog->blit_pos);
   put_image(prog->player->sprite, prog->pix, &player_pos);
   put_image(prog->attack_button, prog->pix, &attack);
@@ -46,8 +46,8 @@ void			draw_fight(t_prog *prog)
   put_image(prog->skip_button, prog->pix, &skip);
   put_image(prog->life_bar->bar_sprite, prog->pix, &bar1);
   put_image(prog->npc_bar->bar_sprite, prog->pix, &bar2);
-  put_image(prog->npc_bar->bar_sprite, prog->pix, &bar3);
   update_bar_player(prog->life_bar, prog);
   update_bar_npc(prog->npc_bar, prog);
   update_bar_action(prog->action_bar, prog);
+  put_image(prog->npc_bar->bar_sprite, prog->pix, &bar3);
 }

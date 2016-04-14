@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Tue Apr 12 03:55:39 2016 Gaëtan Léandre
-** Last update Wed Apr 13 21:28:36 2016 Gaëtan Léandre
+** Last update Wed Apr 13 22:22:46 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -13,7 +13,7 @@
 int			in_hitbox(t_hitbox *hitbox, t_bunny_position *pos)
 {
   if (pos->x > hitbox->x && pos->x < hitbox->x + hitbox->width
-      && pos->y > hitbox->y && pos->y < hitbox->height + pos->y)
+      && pos->y > hitbox->y && pos->y < hitbox->y + hitbox->height)
     return (1);
   return (0);
 }

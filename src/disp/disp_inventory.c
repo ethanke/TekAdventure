@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Thu Apr  7 02:58:27 2016 victor sousa
-** Last update Wed Apr 13 14:01:19 2016 Victor Sousa
+** Last update Thu Apr 14 01:30:01 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -71,6 +71,13 @@ static void		disp_floating_item(t_prog *prog,
 	  place_image(create_hitbox(pos.x, pos.y, 36, 30),
 		      *prog->current_click.npc->trade->needed->object->texture_hitbox,
 		      prog->current_click.npc->trade->needed->object->texture,
+		      prog->pix);
+	}
+      else if (prog->state == STATE_NPC && prog->player->inv_selected == -3)
+	{
+	  place_image(create_hitbox(pos.x, pos.y, 36, 30),
+		      *prog->current_click.npc->trade->given->object->texture_hitbox,
+		      prog->current_click.npc->trade->given->object->texture,
 		      prog->pix);
 	}
       else

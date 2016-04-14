@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:58:37 2016 Philippe Lefevre
-** Last update Wed Apr 13 20:12:54 2016 Gaëtan Léandre
+** Last update Wed Apr 13 23:45:58 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -49,7 +49,8 @@ t_bunny_response	mainloop(void *p)
   else if (prog->state == STATE_NPC)
     interact_npc(prog, prog->scene->npc->next->next);
 
-  disp_inventory(prog);
+  if (prog->state != STATE_FIGHT)
+    disp_inventory(prog);
   bunny_blit(&prog->win->buffer, &prog->pix->clipable, &prog->blit_pos);
   swap_pix(prog);
   bunny_display(prog->win);

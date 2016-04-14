@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:49:08 2016 Victor Sousa
-** Last update Wed Apr 13 21:30:20 2016 Gaëtan Léandre
+** Last update Wed Apr 13 22:24:51 2016 Gaëtan Léandre
 */
 
 #ifndef			EVENT_H_
@@ -43,5 +43,6 @@ void			make_astar(t_player *player, t_bunny_position *size,
 void			test_move(t_prog *prog, t_bunny_position *mouse_pos);
 int			is_near(int x_player, int y_player,
 				int x_case, int y_case);
+void			make_deplacement(t_player *player);
 
 #endif			/* !EVENT_H_ */
