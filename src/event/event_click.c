@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:10:29 2016 Victor Sousa
-** Last update Thu Apr 14 21:56:59 2016 Victor Sousa
+** Last update Fri Apr 15 00:22:23 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -33,7 +33,10 @@ t_bunny_response        event_click(t_bunny_event_state            state,
     }
   if (prog->player->move.select_move != 1 && prog->state == STATE_GAME &&
       (prog->current_click.npc != NULL || prog->current_click.decors != NULL))
-    prog->state = STATE_NPC_CHOOSE;
+    {
+      prog->state = STATE_NPC_CHOOSE;
+      prog->player->inventory_open = 0;
+    }
   if (button == BMB_LEFT)
     {
       if (state == GO_UP && prog->state == STATE_FIGHT)

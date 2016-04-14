@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Wed Apr  6 21:04:44 2016 victor sousa
-** Last update Wed Apr 13 04:18:38 2016 Gaëtan Léandre
+** Last update Fri Apr 15 00:30:40 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -17,8 +17,20 @@ t_bunny_response	event_key(t_bunny_event_state state,
   t_prog		*prog;
 
   prog = data;
-  if (key == BKS_ESCAPE)
-    return (EXIT_ON_SUCCESS);
+  if (key == BKS_ESCAPE && state == GO_UP)
+    {
+      if (prog->state == STATE_NPC ||
+	  prog->state == STATE_NPC_CHOOSE ||
+	  prog->state == STATE_DECOR_CHOOSE ||
+	  prog->player->inventory_open == 1)
+	{
+	  prog->state = STATE_GAME;
+	  prog->player->inventory_open = 0;
+	  return (GO_ON);
+	}
+      else
+	return (EXIT_ON_SUCCESS);
+    }
   if (prog->state == STATE_GAME && key == BKS_E && state == GO_DOWN)
     {
       if (prog->player->inventory_open == 0)
