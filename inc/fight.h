@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr 13 06:17:45 2016 Ethan Kerdelhue
-** Last update Wed Apr 13 20:28:55 2016 Ethan Kerdelhue
+** Last update Thu Apr 14 02:55:21 2016 Victor Sousa
 */
 
 #ifndef			FIGHT_H_
@@ -42,5 +42,6 @@ void			draw_fight(t_prog *prog);
 void			update_bar_npc(t_bar *bar, t_prog *prog);
 void			update_bar_player(t_bar *bar, t_prog *prog);
 void			update_bar_action(t_bar *bar, t_prog *prog);
+int			catch_button(t_prog *prog);
 
 #endif

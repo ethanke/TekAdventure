@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Thu Apr 14 00:42:24 2016 Ethan Kerdelhue
+** Last update Thu Apr 14 02:54:55 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -189,6 +189,7 @@ int			prepare_fight(t_prog *prog, t_npc *npc)
 int			loop_fight(t_prog *prog)
 {
   t_bunny_position	pos;
+  int			action_button;
 
   pos.x = WIN_WIDTH / 2;
   pos.y = (WIN_HEIGHT / 2) + 80;
@@ -208,7 +209,10 @@ int			loop_fight(t_prog *prog)
       tektext(my_itoa(player_damage(prog->fight->player, prog->fight, prog)), &pos, prog->pix, &prog->fight->font);
       prog->fight->nb_round += 1;
 
-      prog->fight->round_state = 2;
+      if ((action_button = catch_button(prog)) != -1)
+	printf("button pressed : %d\n", action_button);
+      if (action_button == SKIP)
+	prog->fight->round_state = 2;
     }
   if (prog->fight->round_state == 2)
     {
@@ -221,13 +225,13 @@ int			loop_fight(t_prog *prog)
     {
       my_puts("npc win\n", 0, 0);
       prog->state = STATE_GAME;
-      prog->need_init_fight = 0;
+      prog->need_init_fight = 1;
     }
   if  (prog->fight->npc->life <= 0)
     {
       my_puts("player win\n", 0, 0);
       prog->state = STATE_GAME;
-      prog->need_init_fight = 0;
+      prog->need_init_fight = 1;
       prog->scene->ground[prog->current_click.x + prog->current_click.y
       * prog->scene->size.x].npc = NULL;
     }
