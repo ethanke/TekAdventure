@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Tue Feb 23 10:27:21 2016 sousa_v
-** Last update Mon Apr 11 08:14:41 2016 Victor Sousa
+** Last update Thu Apr 14 04:55:47 2016 Gaëtan Léandre
 */
 
 #include	"main.h"
@@ -116,4 +116,34 @@ void		tektext(const char *str,
 	  j++;
 	}
     }
+}
+
+void		teknbr(int nb, const t_bunny_position *pos,
+		       t_bunny_pixelarray *out,
+		       t_font *font)
+{
+  int			i;
+  int			j;
+  t_bunny_position	pix;
+  int			len;
+
+  i = nb;
+  len = 0;
+  while (i > 0)
+    {
+      i /= 10;
+      len++;
+    }
+  pix.y = pos->y;
+  i = 0;
+  j = 0;
+  while (len-- > 1)
+    {
+      pix.x = pos->x + j * font->font_size + (font->font_size / 4) * j;
+      tekchar(out, font, &pix, nb / 10  + '0');
+      nb %= 10;
+      j++;
+    }
+  pix.x = pos->x + j * font->font_size + (font->font_size / 4) * j;
+  tekchar(out, font, &pix, nb  + '0');
 }

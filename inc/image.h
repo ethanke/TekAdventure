@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:41:06 2016 Gaëtan Léandre
-** Last update Wed Apr 13 14:57:43 2016 Gaëtan Léandre
+** Last update Thu Apr 14 04:50:58 2016 Gaëtan Léandre
 */
 
 #ifndef			_IMAGE_H_
@@ -72,6 +72,9 @@ void			tektext(const char *str,
 				const t_bunny_position *pos,
 				t_bunny_pixelarray *out,
 				t_font *font);
+void			teknbr(int nb, const t_bunny_position *pos,
+			       t_bunny_pixelarray *out,
+			       t_font *font);
 
 
 #endif			/*_IMAGE_H_*/

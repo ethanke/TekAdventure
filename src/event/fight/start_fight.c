@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Thu Apr 14 03:08:59 2016 Ethan Kerdelhue
+** Last update Thu Apr 14 05:01:45 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -207,7 +207,7 @@ int			loop_fight(t_prog *prog)
       my_puts("Npc life : ", prog->fight->npc->life, 1);
       if (prog->fight->animate == 1)
 	prog->fight->font.font_color.argb[ALPHA_CMP] += 5;
-      tektext(my_itoa(player_damage(prog->fight->player, prog->fight, prog)), &pos, prog->pix, &prog->fight->font);
+      teknbr(player_damage(prog->fight->player, prog->fight, prog), &pos, prog->pix, &prog->fight->font);
       prog->fight->nb_round += 1;*/
 
       if (prog->fight->last_action != -1)

@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr 13 19:38:24 2016 Ethan Kerdelhue
-** Last update Thu Apr 14 03:11:27 2016 Ethan Kerdelhue
+** Last update Thu Apr 14 05:04:21 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -26,11 +26,11 @@ void			update_bar_action(t_bar *bar, t_prog *prog)
   font.font_img = prog->font->font_img;
   font.font_size = 14;
   font.font_color.full = WHITE;
-  tektext(my_itoa(*bar->value_cur), &pos, prog->pix, &font);
+  teknbr(*bar->value_cur, &pos, prog->pix, &font);
   pos.x += 60;
   tektext(" / ", &pos, prog->pix, &font);
   pos.x += 60;
-  tektext(my_itoa(bar->value_default), &pos, prog->pix, &font);
+  teknbr(bar->value_default, &pos, prog->pix, &font);
 }
 
 void			update_bar_npc(t_bar *bar, t_prog *prog)
@@ -49,11 +49,11 @@ void			update_bar_npc(t_bar *bar, t_prog *prog)
   font.font_img = prog->font->font_img;
   font.font_size = 14;
   font.font_color.full = WHITE;
-  tektext(my_itoa(*bar->value_cur), &pos, prog->pix, &font);
+  teknbr(*bar->value_cur, &pos, prog->pix, &font);
   pos.x += 60;
   tektext(" / ", &pos, prog->pix, &font);
   pos.x += 60;
-  tektext(my_itoa(bar->value_default), &pos, prog->pix, &font);
+  teknbr(bar->value_default, &pos, prog->pix, &font);
 }
 
 void			percent_bar(t_hitbox size, t_bar *bar, t_prog *prog,
@@ -61,7 +61,6 @@ void			percent_bar(t_hitbox size, t_bar *bar, t_prog *prog,
 {
   t_hitbox		rect;
   t_font		font;
-  char			*str;
   t_bunny_position	pos;
 
   redim_image(&size, bar->bar_sprite, prog->pix);
@@ -76,17 +75,11 @@ void			percent_bar(t_hitbox size, t_bar *bar, t_prog *prog,
   font.font_img = prog->font->font_img;
   font.font_size = 14;
   font.font_color.full = BLACK;
-  if ((str = my_itoa(*bar->value_cur)) == NULL)
-    return;
-  tektext(str, &pos, prog->pix, &font);
+  teknbr(*bar->value_cur, &pos, prog->pix, &font);
   pos.x += 60;
-  free(str);
   tektext(" / ", &pos, prog->pix, &font);
   pos.x += 60;
-  if ((str = my_itoa(bar->value_default)) == NULL)
-    return;
-  tektext(str, &pos, prog->pix, &font);
-  free(str);
+  teknbr(bar->value_default, &pos, prog->pix, &font);
 }
 
 void			update_bar_player(t_bar *bar, t_prog *prog)
@@ -105,9 +98,9 @@ void			update_bar_player(t_bar *bar, t_prog *prog)
   font.font_img = prog->font->font_img;
   font.font_size = 14;
   font.font_color.full = WHITE;
-  tektext(my_itoa(*bar->value_cur), &pos, prog->pix, &font);
+  teknbr(*bar->value_cur, &pos, prog->pix, &font);
   pos.x += 60;
   tektext(" / ", &pos, prog->pix, &font);
   pos.x += 60;
-  tektext(my_itoa(bar->value_default), &pos, prog->pix, &font);
+  teknbr(bar->value_default, &pos, prog->pix, &font);
 }

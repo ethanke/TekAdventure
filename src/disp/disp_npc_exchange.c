@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Tue Apr 12 20:17:50 2016 Victor Sousa
-** Last update Thu Apr 14 04:35:44 2016 Gaëtan Léandre
+** Last update Thu Apr 14 05:00:20 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -48,7 +48,6 @@ static void 		disp_needed_item(t_prog *prog, t_npc *npc)
 {
   t_bunny_position	pos;
   t_font		font;
-  char			*str;
 
   font.font_img = prog->font->font_img;
   font.font_size = 11;
@@ -61,10 +60,7 @@ static void 		disp_needed_item(t_prog *prog, t_npc *npc)
 		  *npc->trade->needed->object->texture_hitbox,
 		  npc->trade->needed->object->texture, prog->pix);
       pos.y += 3;
-      if ((str = my_itoa(npc->trade->in_stock->amount)) == NULL)
-	return;
-      tektext(str, &pos, prog->pix, &font);
-      free(str);
+      teknbr(npc->trade->in_stock->amount, &pos, prog->pix, &font);
       pos.y -= 3;
     }
     else
@@ -74,10 +70,7 @@ static void 		disp_needed_item(t_prog *prog, t_npc *npc)
 			  *prog->scene->object->texture_hitbox,
 			  prog->scene->object->texture, prog->pix);
       pos.y += 3;
-      if ((str = my_itoa(npc->trade->needed->amount)) == NULL)
-	return;
-      tektext(str, &pos, prog->pix, &font);
-      free(str);
+      teknbr(npc->trade->needed->amount, &pos, prog->pix, &font);
       pos.y -= 3;
     }
   pos.x += 115;
@@ -88,10 +81,7 @@ static void 		disp_needed_item(t_prog *prog, t_npc *npc)
 		  *npc->trade->given->object->texture_hitbox,
 		  npc->trade->given->object->texture, prog->pix);
       pos.y += 3;
-      if ((str = my_itoa(npc->trade->given->amount)) == NULL)
-	return;
-      tektext(str, &pos, prog->pix, &font);
-      free(str);
+      teknbr(npc->trade->given->amount, &pos, prog->pix, &font);
       pos.y -= 3;
     }
   else
@@ -101,7 +91,7 @@ static void 		disp_needed_item(t_prog *prog, t_npc *npc)
 			  *npc->trade->given->object->texture_hitbox,
 			  npc->trade->given->object->texture, prog->pix);
       pos.y += 3;
-      tektext(my_itoa(npc->trade->given->amount), &pos, prog->pix, &font);
+      teknbr(npc->trade->given->amount, &pos, prog->pix, &font);
       pos.y -= 3;
     }
 }
