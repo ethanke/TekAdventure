@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr 13 19:38:24 2016 Ethan Kerdelhue
-** Last update Wed Apr 13 23:36:15 2016 Gaëtan Léandre
+** Last update Thu Apr 14 03:11:27 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -75,7 +75,7 @@ void			percent_bar(t_hitbox size, t_bar *bar, t_prog *prog,
   pos.x = size.x + 5;
   font.font_img = prog->font->font_img;
   font.font_size = 14;
-  font.font_color.full = WHITE;
+  font.font_color.full = BLACK;
   if ((str = my_itoa(*bar->value_cur)) == NULL)
     return;
   tektext(str, &pos, prog->pix, &font);

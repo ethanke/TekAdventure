@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Thu Apr 14 04:37:21 2016 Victor Sousa
+** Last update Thu Apr 14 03:08:59 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -97,11 +97,38 @@ int 			npc_damage(t_npc *npc, t_player *player)
       damage = damage * 1.5;
       my_putstr("It's critical !\n");
     }
+  if (((rand() % (100 - 0)) + 0) <= player->caract->agility / 3)
+    {
+      damage = 0;
+      my_putstr("I'm dodge !\n");
+    }
   my_puts("Damage : ", damage / 1000, 1);
   return (damage / 1000);
 }
 
-int 			player_damage(t_player *player, t_fight *fight, t_prog *prog)
+int 			player_damage_magic(t_player *player, t_fight *fight)
+{
+  t_bunny_position	pos;
+  int			damage;
+  int			max;
+  int			min;
+
+  min = player->magic_damage * 1200;
+  max = player->magic_damage * 800;
+  damage = ((rand() % (max - min )) + min);
+  if (((rand() % (100 - 0)) + 0) <= player->caract->critical)
+    {
+      damage = damage * 1.5;
+      my_putstr("It's critical !\n");
+    }
+  pos.x = WIN_WIDTH / 2;
+  pos.y = WIN_HEIGHT / 2;
+  pos = pos;
+  (void) fight;
+  return (damage / 1000);
+}
+
+int 			player_damage(t_player *player, t_fight *fight)
 {
   t_bunny_position	pos;
   int			damage;
@@ -116,27 +143,9 @@ int 			player_damage(t_player *player, t_fight *fight, t_prog *prog)
       damage = damage * 1.5;
       my_putstr("It's critical !\n");
     }
-  if (((rand() % (100 - 0)) + 0) <= player->caract->agility / 3)
-    {
-        damage = 0;
-        my_putstr("I'm dodge !\n");
-    }
   pos.x = WIN_WIDTH / 2;
   pos.y = WIN_HEIGHT / 2;
-  (void) pos;
-  (void) fight;
- /* if (fight->font.font_color.argb[ALPHA_CMP] == 255)
-    fight->animate = 0;
-  if (fight->animate == 1)
-    {
-      tektext(my_itoa(damage), &pos, prog->pix, &fight->font);
-      fight->font.font_color.argb[ALPHA_CMP] -= 5;
-    }
-  if (fight->font.font_color.argb[ALPHA_CMP] == 0)
-    {
-      tektext(my_itoa(damage), &pos, prog->pix, &fight->font);
-      fight->font.font_color.argb[ALPHA_CMP] += 5;
-    } */
+  fight->player_action -= ATTACK;
   return (damage / 1000);
 }
 
@@ -205,11 +214,11 @@ int			loop_fight(t_prog *prog)
 	{
 	  printf("button pressed : %d\n", action_button);
 	  if (prog->fight->last_action == ATTACK)
-	    printf("Vous attaquez\n");
+	    prog->fight->npc->life -= player_damage(prog->fight->player, prog->fight);
 	  if (prog->fight->last_action == DEFEND)
 	    printf("Vous vous defendez\n");
 	  if (prog->fight->last_action == MAGIC)
-	    printf("Vous attaquez magiquement\n");
+	    prog->fight->npc->life -= player_damage_magic(prog->fight->player, prog->fight);
 	  if (prog->fight->last_action == SKIP)
 	    prog->fight->round_state = 2;
 	  prog->fight->last_action = -1;

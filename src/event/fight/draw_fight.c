@@ -5,13 +5,14 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr 13 19:36:12 2016 Ethan Kerdelhue
-** Last update Thu Apr 14 00:57:08 2016 Ethan Kerdelhue
+** Last update Thu Apr 14 03:07:38 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
 
 void			draw_fight(t_prog *prog)
 {
+  t_hitbox		size;
   t_bunny_position	player_pos;
   t_bunny_position	attack;
   t_bunny_position	defend;
@@ -21,6 +22,7 @@ void			draw_fight(t_prog *prog)
   t_bunny_position	bar2;
   t_bunny_position	bar3;
 
+  prog->fight->bar_action = xmalloc(sizeof(t_bar), &prog->ptr_list);
   player_pos.x = prog->fight->player->sprite->width / 2;
   player_pos.y = WIN_HEIGHT / 2 - (prog->fight->player->sprite->height / 2);
   skip.x = WIN_WIDTH / 2 + 1 * prog->attack_button->width;
@@ -49,4 +51,12 @@ void			draw_fight(t_prog *prog)
   update_bar_npc(prog->npc_bar, prog);
   update_bar_action(prog->action_bar, prog);
   put_image(prog->npc_bar->bar_sprite, prog->pix, &bar3);
+  prog->fight->bar_action->bar_sprite = prog->action_bar->bar_sprite;
+  prog->fight->bar_action->value_cur = &prog->fight->player_action;
+  prog->fight->bar_action->value_default = prog->fight->player_action;
+  size.x = (WIN_WIDTH / 2) - prog->action_bar->bar_sprite->width / 2;
+  size.y = WIN_HEIGHT - prog->action_bar->bar_sprite->height + 5;
+  size.width = prog->action_bar->bar_sprite->width;
+  size.height = prog->action_bar->bar_sprite->height;
+  percent_bar(size, prog->fight->bar_action, prog, YELLOW);
 }
