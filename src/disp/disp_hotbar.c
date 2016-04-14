@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 08:30:39 2016 Victor Sousa
-** Last update Wed Apr 13 19:32:56 2016 Ethan Kerdelhue
+** Last update Thu Apr 14 04:27:05 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -25,6 +25,7 @@ void			disp_hotbar(t_prog *prog, t_bunny_position *m_pos)
   t_bunny_position	pos;
   int			i;
   t_font		font;
+  char			*str;
 
   font.font_img = prog->font->font_img;
   font.font_size = 11;
@@ -44,7 +45,10 @@ void			disp_hotbar(t_prog *prog, t_bunny_position *m_pos)
 	  place_image(create_hitbox(pos.x, pos.y, 36, 30),
 		      *prog->player->inventory[i].object->texture_hitbox,
 		      prog->player->inventory[i].object->texture, prog->pix);
-	  tektext(my_itoa(prog->player->inventory[i].amount), &pos, prog->pix, &font);
+	  if ((str = my_itoa(prog->player->inventory[i].amount)) == NULL)
+	    return;
+	  tektext(str, &pos, prog->pix, &font);
+	  free(str);
 	  if (m_pos->x >= pos.x && m_pos->x <= pos.x + 40.45 &&
 	      m_pos->y >= pos.y && m_pos->y <= pos.y + 36)
 	    disp_item_info(prog, &prog->player->inventory[i], &pos);

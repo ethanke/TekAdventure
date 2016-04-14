@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Mon Apr 11 07:57:01 2016 Victor Sousa
-** Last update Mon Apr 11 07:58:12 2016 Victor Sousa
+** Last update Thu Apr 14 04:18:31 2016 Gaëtan Léandre
 */
 
 #include	"main.h"
@@ -24,7 +24,7 @@ char		*my_itoa(int nb)
       len++;
     }
   if ((str = malloc(sizeof(char) * (len + 1))) == NULL)
-    return (0);
+    return (NULL);
   str[len] = '\0';
   while (len--)
     {

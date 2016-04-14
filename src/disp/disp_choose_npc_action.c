@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Wed Apr 13 05:44:24 2016 Victor Sousa
-** Last update Thu Apr 14 04:04:42 2016 Gaëtan Léandre
+** Last update Thu Apr 14 04:31:22 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -31,10 +31,7 @@ int	 		get_highlight(t_prog *prog,
       i++;
     }
   if (i == -1)
-    {
-      free(m_pos);
-      return (-1);
-    }
+    return (-1);
   if (m_pos->x >= WIN_WIDTH / 2 + prog->npc_choose->width / 2 -
       prog->npc_choose->width / 3 / 2 - 25 &&
       m_pos->x <= WIN_WIDTH / 2 + prog->npc_choose->width / 2 -
@@ -43,11 +40,7 @@ int	 		get_highlight(t_prog *prog,
       prog->npc_choose->height / 3  / 2 &&
       m_pos->y <= WIN_HEIGHT / 2 - prog->npc_choose->height / 2 +
       prog->npc_choose->height / 3  / 2 + 25)
-    {
-      free(m_pos);
-      return (-2);
-    }
-  free(m_pos);
+    return (-2);
   return (i);
 }
 
@@ -76,7 +69,7 @@ void			disp_choose_npc_action(t_prog *prog)
   hoover = get_highlight(prog, &pos);
   if (hoover == 0)
     font.font_size += 1;
-  tektext("Trade with nnc", &pos, prog->pix, &font);
+  tektext("Trade with npc", &pos, prog->pix, &font);
   if (hoover == 0)
     font.font_size -= 1;
   pos.y += 40;
