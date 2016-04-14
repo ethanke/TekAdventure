@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 00:11:13 2016 Gaëtan Léandre
-** Last update Thu Apr 14 06:20:32 2016 Victor Sousa
+** Last update Fri Apr 15 01:17:05 2016 Ethan Kerdelhue
 */
 
 #ifndef			PROG_H_
@@ -45,10 +45,6 @@ typedef	struct		s_prog
   int			state;
   float			percent;
   struct s_fight	*fight;
-
-  struct s_bar		*life_bar;
-  struct s_bar		*npc_bar;
-  struct s_bar		*action_bar;
 
   char			need_init_fight;
 
