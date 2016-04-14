@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 00:11:13 2016 Gaëtan Léandre
-** Last update Wed Apr 13 20:14:36 2016 Ethan Kerdelhue
+** Last update Thu Apr 14 06:20:32 2016 Victor Sousa
 */
 
 #ifndef			PROG_H_
@@ -18,6 +18,7 @@
 # define		STATE_NPC		2
 # define		STATE_FIGHT		3
 # define		STATE_NPC_CHOOSE	4
+# define		STATE_DECOR_CHOOSE	5
 #endif			/*!PROG_STATE_*/
 
 typedef struct		s_map_click
