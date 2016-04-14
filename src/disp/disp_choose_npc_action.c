@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Wed Apr 13 05:44:24 2016 Victor Sousa
-** Last update Wed Apr 13 11:14:22 2016 Victor Sousa
+** Last update Thu Apr 14 04:04:42 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -31,7 +31,10 @@ int	 		get_highlight(t_prog *prog,
       i++;
     }
   if (i == -1)
-    return (-1);
+    {
+      free(m_pos);
+      return (-1);
+    }
   if (m_pos->x >= WIN_WIDTH / 2 + prog->npc_choose->width / 2 -
       prog->npc_choose->width / 3 / 2 - 25 &&
       m_pos->x <= WIN_WIDTH / 2 + prog->npc_choose->width / 2 -
@@ -40,7 +43,11 @@ int	 		get_highlight(t_prog *prog,
       prog->npc_choose->height / 3  / 2 &&
       m_pos->y <= WIN_HEIGHT / 2 - prog->npc_choose->height / 2 +
       prog->npc_choose->height / 3  / 2 + 25)
-    return (-2);
+    {
+      free(m_pos);
+      return (-2);
+    }
+  free(m_pos);
   return (i);
 }
 

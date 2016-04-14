@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Mon Apr 11 00:14:36 2016 Gaëtan Léandre
-** Last update Thu Apr 14 03:46:30 2016 Gaëtan Léandre
+** Last update Thu Apr 14 04:14:19 2016 Gaëtan Léandre
 */
 #include		"main.h"
 
@@ -73,18 +73,22 @@ int			set_hitbox_ground(t_scene *scene, t_ptr_list *ptr_list)
       pos.x = -1;
       while (++pos.x < scene->size.x)
 	{
-	  scene->ground[pos.x + pos.y * scene->size.x].hitbox_npc
-	  = set_npc_hitbox(&grille,
-			   scene->ground[pos.x + pos.y * scene->size.x].npc,
-			   &pos, ptr_list);
-	  scene->ground[pos.x + pos.y * scene->size.x].hitbox_decors
-	  = set_decors_hitbox(&grille,
-			      scene->ground[pos.x + pos.y
-			      * scene->size.x].decors,
-			      &pos, ptr_list);
-	  if (scene->ground[pos.x + pos.y * scene->size.x].hitbox_decors == NULL
-	      || scene->ground[pos.x + pos.y * scene->size.x].hitbox_npc == 0)
-	    return (-1);
+	  if (scene->ground[pos.x + pos.y * scene->size.x].npc != NULL
+	      || scene->ground[pos.x + pos.y * scene->size.x].decors != NULL)
+	    {
+	      scene->ground[pos.x + pos.y * scene->size.x].hitbox_npc
+	      = set_npc_hitbox(&grille,
+			       scene->ground[pos.x + pos.y * scene->size.x].npc,
+			       &pos, ptr_list);
+	      scene->ground[pos.x + pos.y * scene->size.x].hitbox_decors
+	      = set_decors_hitbox(&grille,
+				  scene->ground[pos.x + pos.y
+				  * scene->size.x].decors,
+				  &pos, ptr_list);
+	      if (scene->ground[pos.x + pos.y * scene->size.x].hitbox_decors == NULL
+		  && scene->ground[pos.x + pos.y * scene->size.x].hitbox_npc == 0)
+		return (-1);
+	    }
 	}
     }
   return (0);
