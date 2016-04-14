@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Thu Apr 14 05:59:32 2016 Victor Sousa
-** Last update Thu Apr 14 21:45:20 2016 Victor Sousa
+** Last update Fri Apr 15 00:20:53 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -41,6 +41,14 @@ static t_object		*fint_obj_by_id(t_object *head, int id)
 void			interact_decors(t_prog *prog)
 {
   int			place;
+  t_font		font;
+  t_bunny_position	f_pos;
+
+  font.font_img = prog->font->font_img;
+  font.font_size = 25;
+  font.font_color.full = 0xFF050505;
+  f_pos.x = WIN_WIDTH / 2;
+  f_pos.y = WIN_HEIGHT - 200;
   if (prog->player->item_selected != -1 &&
 
       prog->player->inventory[prog->player->item_selected].id != -1)
@@ -85,6 +93,7 @@ void			interact_decors(t_prog *prog)
     }
   else
     {
-      printf("select item in hotbar\n");
+      tektext("Pick the item to use in your hotbar!",
+	      &f_pos, prog->pix, &font);
     }
 }
