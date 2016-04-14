@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Thu Apr 14 22:53:02 2016 Ethan Kerdelhue
+** Last update Thu Apr 14 23:07:53 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -88,7 +88,6 @@ int 			npc_damage(t_npc *npc, t_player *player)
   int			max;
   int			min;
 
-  printf("1 %p\n", player);
   max = npc->damage * 1200;
   min = npc->damage * 800;
   damage = ((rand() % (max - min)) + min);
@@ -237,7 +236,6 @@ int			loop_fight(t_prog *prog)
 	prog->fight->font.font_color.argb[ALPHA_CMP] += 5;
       teknbr(player_damage(prog->fight->player, prog->fight, prog), &pos, prog->pix, &prog->fight->font);
       prog->fight->nb_round += 1;*/
-      printf("2 %p\n", prog->fight->player);
       if (prog->fight->animate_fireball == 1)
         {
           puts("lol");
@@ -268,6 +266,7 @@ int			loop_fight(t_prog *prog)
     {
       prog->fight->player += ROUND_ENERGY;
       prog->fight->player->life -= npc_damage(prog->fight->npc, prog->player);
+      printf("prog->player->life %d\n", prog->player->life);
       my_puts("Player life : ", prog->fight->player->life, 1);
       prog->fight->round_state = 1;
     }
