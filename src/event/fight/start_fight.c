@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Thu Apr 14 01:56:59 2016 Philippe Lefevre
+** Last update Thu Apr 14 04:37:21 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -145,6 +145,7 @@ int			prepare_fight(t_prog *prog, t_npc *npc)
   if ((prog->fight = xmalloc(sizeof(t_fight), &prog->ptr_list)) == NULL)
     return (-1);
   prog->fight->animate = 0;
+  prog->fight->last_action = -1;
   prog->fight->font.font_img = prog->font->font_img;
   prog->fight->font.font_size = 14;
   prog->fight->font.font_color.full = WHITE;
@@ -179,13 +180,13 @@ int			prepare_fight(t_prog *prog, t_npc *npc)
 
 int			loop_fight(t_prog *prog)
 {
-  t_bunny_position	pos;
+  /*t_bunny_position	pos;*/
   int			action_button;
 
-  pos.x = WIN_WIDTH / 2;
-  pos.y = (WIN_HEIGHT / 2) + 80;
+  /*pos.x = WIN_WIDTH / 2;
+  pos.y = (WIN_HEIGHT / 2) + 80;*/
   draw_fight(prog);
-  my_puts("Round -> ", prog->fight->nb_round, 1);
+  /*my_puts("Round -> ", prog->fight->nb_round, 1);*/
   if (prog->fight->round_state == 1)
     {
       /*if (prog->fight->animate == 0)
@@ -200,16 +201,19 @@ int			loop_fight(t_prog *prog)
       tektext(my_itoa(player_damage(prog->fight->player, prog->fight, prog)), &pos, prog->pix, &prog->fight->font);
       prog->fight->nb_round += 1;*/
 
-      if ((action_button = catch_button(prog)) != -1)
-	printf("button pressed : %d\n", action_button);
-      if (action_button == ATTACK)
-	printf("Vous attaquez\n");
-      if (action_button == DEFEND)
-	printf("Vous vous defendez\n");
-      if (action_button == MAGIC)
-	printf("Vous attaquez magiquement\n");
-      if (action_button == SKIP)
-	prog->fight->round_state = 2;
+      if (prog->fight->last_action != -1)
+	{
+	  printf("button pressed : %d\n", action_button);
+	  if (prog->fight->last_action == ATTACK)
+	    printf("Vous attaquez\n");
+	  if (prog->fight->last_action == DEFEND)
+	    printf("Vous vous defendez\n");
+	  if (prog->fight->last_action == MAGIC)
+	    printf("Vous attaquez magiquement\n");
+	  if (prog->fight->last_action == SKIP)
+	    prog->fight->round_state = 2;
+	  prog->fight->last_action = -1;
+	}
     }
   if (prog->fight->round_state == 2)
     {

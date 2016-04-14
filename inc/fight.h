@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr 13 06:17:45 2016 Ethan Kerdelhue
-** Last update Thu Apr 14 02:55:21 2016 Victor Sousa
+** Last update Thu Apr 14 04:03:03 2016 Victor Sousa
 */
 
 #ifndef			FIGHT_H_
@@ -36,6 +36,7 @@ typedef struct		s_fight
   t_npc			*npc;
   t_font		font;
   int			animate;
+  int			last_action;
 }			t_fight;
 
 void			draw_fight(t_prog *prog);

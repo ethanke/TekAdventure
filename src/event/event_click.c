@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:10:29 2016 Victor Sousa
-** Last update Wed Apr 13 21:39:21 2016 Gaëtan Léandre
+** Last update Thu Apr 14 04:36:56 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -36,6 +36,8 @@ t_bunny_response        event_click(t_bunny_event_state            state,
     prog->state = STATE_NPC_CHOOSE;
   if (button == BMB_LEFT)
     {
+      if (state == GO_UP && prog->state == STATE_FIGHT)
+	catch_button(prog);
       if (prog->state == STATE_GAME)
 	handle_inventory_click(prog);
       else if (prog->state == STATE_NPC)
