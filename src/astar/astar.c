@@ -36,7 +36,7 @@ t_depla		*a_star(t_ground *ground, t_posi *size, t_posi *pos, t_posi *end)
   cont = 1;
   if (init_tab(&star) == -1)
     return (NULL);
-  case_is_free(ground, &star);
+  case_is_free(ground, &star, end);
   star.open_list[pos->x][pos->y] = -1;
   star.ind_list[pos->x][pos->y] = 1;
   while ((star.cur_x != star.end_x || star.cur_y != star.end_y) && cont != -1)

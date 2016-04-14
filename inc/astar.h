@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Fri Apr  8 04:51:26 2016 Gaëtan Léandre
-** Last update Wed Apr 13 15:14:10 2016 Gaëtan Léandre
+** Last update Thu Apr 14 06:13:04 2016 Gaëtan Léandre
 */
 
 #ifndef			_A_STAR_H_
@@ -41,7 +41,8 @@ typedef struct		s_star
 
 int			add_in_depla(t_star *star, int x, int y);
 int			init_tab(t_star *star);
-void	 		case_is_free(t_ground *ground, t_star *star);
+void	 		case_is_free(t_ground *ground, t_star *star,
+				     t_posi *end);
 int			calculDistance(int xA, int xB, int yA, int yB);
 int			calcul_indice(t_star *star, int x, int y);
 void			set_coef(t_star *star, int x, int y);
