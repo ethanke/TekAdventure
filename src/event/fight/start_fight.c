@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Thu Apr 14 05:59:32 2016 Ethan Kerdelhue
+** Last update Thu Apr 14 06:55:22 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -124,7 +124,7 @@ int 			player_damage_magic(t_player *player, t_fight *fight)
   pos.x = WIN_WIDTH / 2;
   pos.y = WIN_HEIGHT / 2;
   pos = pos;
-  (void) fight;
+  fight->player_action -= MAGIC_ENERGY;
   return (damage / 1000);
 }
 
@@ -145,7 +145,7 @@ int 			player_damage(t_player *player, t_fight *fight)
     }
   pos.x = WIN_WIDTH / 2;
   pos.y = WIN_HEIGHT / 2;
-  fight->player_action -= ATTACK;
+  fight->player_action -= ATTACK_ENERGY;
   return (damage / 1000);
 }
 
@@ -167,6 +167,7 @@ int			prepare_fight(t_prog *prog, t_npc *npc)
       load_image("ressources/sprites/bar.png", &prog->ptr_list);
   prog->npc_bar->bar_sprite =
       load_image("ressources/sprites/bar.png", &prog->ptr_list);
+  prog->fight->fireball = load_image("ressources/sprites/fireballsprite.png", &prog->ptr_list);
   prog->fight->player = prog->player;
   prog->fight->npc = npc;
   prog->fight->player_action = 100;
@@ -177,7 +178,9 @@ int			prepare_fight(t_prog *prog, t_npc *npc)
   prog->fight->player->caract->strength = 5;
   prog->fight->player->caract->critical = 20;
   prog->fight->player->caract->agility = 30;
+  prog->fight->player->caract->intellect = 8;
   prog->fight->player->damage = get_player_damage(prog->fight->player, prog);
+  prog->fight->player->magic_damage = get_player_magic_damage(prog->fight->player, prog);
   prog->fight->npc->damage = 20;
   prog->life_bar->value_cur = &prog->fight->player->life;
   prog->life_bar->value_default = prog->fight->player->life;
@@ -185,6 +188,28 @@ int			prepare_fight(t_prog *prog, t_npc *npc)
   prog->npc_bar->value_default = prog->fight->npc->life;
   prog->action_bar->value_cur = &prog->fight->player_action;
   prog->action_bar->value_default = prog->fight->player_action;
+  prog->fight->pos.x = 0;
+  prog->fight->pos.y = WIN_HEIGHT / 2;
+  prog->fight->pos.height = prog->fight->fireball->height;
+  prog->fight->pos.width = 83;
+  prog->fight->fetch.x = 0;
+  prog->fight->fetch.y = 0;
+  prog->fight->fetch.height = prog->fight->fireball->height;
+  prog->fight->fetch.width = 83;
+  return (0);
+}
+
+int			anime_fireball(t_prog *prog)
+{
+  if (prog->fight->fetch.x < prog->fight->fireball->width + 83)
+    {
+      prog->fight->fetch.x += 83;
+      prog->fight->pos.x += 3;
+      place_image(prog->fight->pos, prog->fight->fetch, prog->fight->fireball, prog->pix);
+      return (1);
+    }
+  else
+    prog->fight->fetch.x = 0;
   return (0);
 }
 
@@ -210,16 +235,25 @@ int			loop_fight(t_prog *prog)
 	prog->fight->font.font_color.argb[ALPHA_CMP] += 5;
       teknbr(player_damage(prog->fight->player, prog->fight, prog), &pos, prog->pix, &prog->fight->font);
       prog->fight->nb_round += 1;*/
-
+      if (prog->fight->animate_fireball == 1)
+        {
+          puts("lol");
+          prog->fight->animate_fireball = anime_fireball(prog);
+	}
       if (prog->fight->last_action != -1)
 	{
+
 	  printf("button pressed : %d\n", action_button);
 	  if (prog->fight->last_action == ATTACK)
 	    prog->fight->npc->life -= player_damage(prog->fight->player, prog->fight);
 	  if (prog->fight->last_action == DEFEND)
 	    printf("Vous vous defendez\n");
 	  if (prog->fight->last_action == MAGIC)
-	    prog->fight->npc->life -= player_damage_magic(prog->fight->player, prog->fight);
+	    {
+	      printf("Magic shot !\n");
+	      prog->fight->animate_fireball = 1;
+	      prog->fight->npc->life -= player_damage_magic(prog->fight->player, prog->fight);
+	    }
 	  if (prog->fight->last_action == SKIP)
 	    prog->fight->round_state = 2;
 	  prog->fight->last_action = -1;
@@ -227,6 +261,7 @@ int			loop_fight(t_prog *prog)
     }
   if (prog->fight->round_state == 2)
     {
+      prog->fight->player += ROUND_ENERGY;
       prog->fight->player->life -=
 	  npc_damage(prog->fight->npc, prog->fight->player);
       my_puts("Player life : ", prog->fight->player->life, 1);

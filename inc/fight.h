@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr 13 06:17:45 2016 Ethan Kerdelhue
-** Last update Thu Apr 14 03:09:50 2016 Ethan Kerdelhue
+** Last update Thu Apr 14 06:38:53 2016 Ethan Kerdelhue
 */
 
 #ifndef			FIGHT_H_
@@ -17,6 +17,11 @@
 # define		DEFEND 		1
 # define		MAGIC		2
 # define 		SKIP		3
+
+# define		ROUND_ENERGY	100
+# define		ATTACK_ENERGY	80
+# define		DEFEND_ENERGY	60
+# define		MAGIC_ENERGY 	80
 
 typedef	struct		s_bar
 {
@@ -34,10 +39,15 @@ typedef struct		s_fight
   t_npc			*npc;
   t_font		font;
   int			animate;
+  int			animate_fireball;
   int			last_action;
   t_bar			*bar_action;
+  t_texture		*fireball;
+  t_hitbox		pos;
+  t_hitbox		fetch;
 }			t_fight;
 
+int			anime_fireball(t_prog *prog);
 void			draw_fight(t_prog *prog);
 void			percent_bar(t_hitbox size, t_bar *bar, t_prog *prog,
 				    unsigned int color);
