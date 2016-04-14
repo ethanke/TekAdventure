@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr 14 05:07:56 2016 Gaëtan Léandre
-** Last update Thu Apr 14 06:48:58 2016 Gaëtan Léandre
+** Last update Thu Apr 14 07:18:50 2016 Gaëtan Léandre
 */
 
 #include	"main.h"
@@ -19,6 +19,7 @@ void		teknbr(int nb, const t_bunny_position *pos,
   t_bunny_position	pix;
   int			len;
 
+  nb = nb < 0 ? 0 : nb;
   i = nb;
   len = 0;
   while (i > 0)
