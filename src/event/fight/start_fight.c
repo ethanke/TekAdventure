@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Fri Apr 15 01:17:38 2016 Ethan Kerdelhue
+** Last update Fri Apr 15 01:28:24 2016 Ethan Kerdelhue
 */
 
 #include	"main.h"
@@ -148,7 +148,6 @@ int 			player_damage_magic(t_player *player, t_fight *fight)
 
 int 			player_damage(t_player *player, t_fight *fight)
 {
-  t_bunny_position	pos;
   int			damage;
   int			max;
   int			min;
@@ -163,8 +162,6 @@ int 			player_damage(t_player *player, t_fight *fight)
 	  damage = damage * 1.5;
 	  my_putstr("It's critical !\n");
 	}
-      pos.x = WIN_WIDTH / 2;
-      pos.y = WIN_HEIGHT / 2;
       fight->player_action -= ATTACK_ENERGY;
       return (damage / 1000);
     }
@@ -189,7 +186,6 @@ int			prepare_fight(t_prog *prog, t_npc *npc)
   prog->fight->fireball = load_image("ressources/sprites/fireballsprite.png", &prog->ptr_list);
   prog->fight->player = prog->player;
   prog->fight->npc = npc;
-  printf("life : %d\n", prog->fight->player->life);
   prog->fight->player_action = 100;
   prog->fight->npc->life = 100;
   prog->fight->nb_round = 1;
@@ -240,34 +236,16 @@ int			anime_fireball(t_prog *prog)
 
 int			loop_fight(t_prog *prog)
 {
-  /*t_bunny_position	pos;*/
-  int			action_button;
-
-  /*pos.x = WIN_WIDTH / 2;
-  pos.y = (WIN_HEIGHT / 2) + 80;*/
   draw_fight(prog);
-  /*my_puts("Round -> ", prog->fight->nb_round, 1);*/
   if (prog->fight->round_state == 1)
     {
-      /*if (prog->fight->animate == 0)
-	{
-	  prog->fight->font.font_color.argb[ALPHA_CMP] = 0;
-	  prog->fight->animate = 1;
-	}
-      prog->fight->npc->life -= player_damage(prog->fight->player, prog->fight, prog);
-      my_puts("Npc life : ", prog->fight->npc->life, 1);
-      if (prog->fight->animate == 1)
-	prog->fight->font.font_color.argb[ALPHA_CMP] += 5;
-      teknbr(player_damage(prog->fight->player, prog->fight, prog), &pos, prog->pix, &prog->fight->font);
-      prog->fight->nb_round += 1;*/
+
       if (prog->fight->animate_fireball == 1)
         {
-          puts("lol");
           prog->fight->animate_fireball = anime_fireball(prog);
 	}
       if (prog->fight->last_action != -1)
 	{
-	  printf("button pressed : %d\n", action_button);
 	  if (prog->fight->last_action == ATTACK)
 	    prog->fight->npc->life -= player_damage(prog->fight->player, prog->fight);
 	  if (prog->fight->last_action == DEFEND)
@@ -280,7 +258,6 @@ int			loop_fight(t_prog *prog)
 	    }
 	  if (prog->fight->last_action == MAGIC)
 	    {
-	      printf("Magic shot !\n");
 	      prog->fight->animate_fireball = 1;
 	      prog->fight->npc->life -= player_damage_magic(prog->fight->player, prog->fight);
 	    }
@@ -295,7 +272,6 @@ int			loop_fight(t_prog *prog)
     {
       prog->fight->player_action = prog->fight->round_energy;
       prog->fight->player->life -= npc_damage(prog->fight->npc, prog->player);
-      printf("prog->player->life %d\n", prog->player->life);
       my_puts("Player life : ", prog->fight->player->life, 1);
       prog->fight->round_state = 1;
     }
