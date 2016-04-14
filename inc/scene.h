@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Wed Apr 13 06:04:05 2016 Philippe Lefevre
+** Last update Thu Apr 14 06:02:58 2016 Gaëtan Léandre
 */
 
 #ifndef			SCENE_H_
@@ -25,12 +25,25 @@ typedef struct		s_grille
   int			coef;
 }			t_grille;
 
+typedef struct		s_gate
+{
+  int			id;
+  char			*name;
+  int			sprite_id;
+  t_texture		*texture;
+  t_hitbox		*texture_hitbox;
+  struct s_gate		*prev;
+  struct s_gate		*next;
+}			t_gate;
+
 typedef struct 		s_ground
 {
   t_hitbox		*hitbox_npc;
   t_npc			*npc;
   t_hitbox		*hitbox_decors;
   t_decors		*decors;
+  t_hitbox		*hitbox_gate;
+  t_gate		*gate;
 }			t_ground;
 
 typedef struct		s_sky

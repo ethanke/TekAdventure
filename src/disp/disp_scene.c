@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 02:56:24 2016 Gaëtan Léandre
-** Last update Wed Apr 13 21:58:15 2016 Gaëtan Léandre
+** Last update Thu Apr 14 06:05:08 2016 Gaëtan Léandre
 */
 
 #include	 	"main.h"
@@ -53,6 +53,11 @@ void			put_grille(t_prog *prog, t_bunny_position *gri,
       pos.x = -1;
       while (++pos.x < gri->x)
 	{
+	  if (gro[pos.x + pos.y * gri->x].gate != NULL &&
+	      (tmp = gro[pos.x + pos.y * gri->x].hitbox_gate) != NULL)
+	    place_image(create_hitbox((int)(((float)(coef * (float)(gri->y - pos.y))) * percent) + tmp->x,
+				      tmp->y, tmp->width, tmp->height), *gro[pos.x + pos.y * gri->x].gate->texture_hitbox,
+			gro[pos.x + pos.y * gri->x].gate->texture, pix);
 	  if (gro[pos.x + pos.y * gri->x].npc != NULL &&
 	      (tmp = gro[pos.x + pos.y * gri->x].hitbox_npc) != NULL)
 	      place_image(create_hitbox((int)(((float)(coef * (float)(gri->y - pos.y))) * percent) + tmp->x,
