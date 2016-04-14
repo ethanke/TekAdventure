@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Wed Apr 13 05:44:24 2016 Victor Sousa
-** Last update Thu Apr 14 04:31:22 2016 Gaëtan Léandre
+** Last update Thu Apr 14 23:52:34 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -65,21 +65,21 @@ void			disp_choose_npc_action(t_prog *prog)
   pos.y += 20;
   font.font_img = prog->font->font_img;
   font.font_color.full = 0xFF4F4F4F;
-  font.font_size = 14;
+  font.font_size = 10;
   hoover = get_highlight(prog, &pos);
   if (hoover == 0)
-    font.font_size += 1;
+    font.font_size += 3;
   tektext("Trade with npc", &pos, prog->pix, &font);
   if (hoover == 0)
-    font.font_size -= 1;
+    font.font_size -= 3;
   pos.y += 40;
   if (hoover == 1)
-    font.font_size += 1;
+    font.font_size += 3;
   tektext("Fight with npc", &pos, prog->pix, &font);
   if (hoover == 1)
-    font.font_size -= 1;
+    font.font_size -= 3;
   pos.y += 40;
   if (hoover == 2)
-    font.font_size += 1;
+    font.font_size += 3;
   tektext("Interract", &pos, prog->pix, &font);
 }

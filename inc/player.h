@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 03:51:52 2016 Gaëtan Léandre
-** Last update Wed Apr 13 17:02:10 2016 Philippe Lefevre
+** Last update Thu Apr 14 17:58:25 2016 Victor Sousa
 */
 
 #ifndef			PLAYER_H_
@@ -62,6 +62,7 @@ typedef struct		s_player
   t_texture		*inv_open_sprite;
   t_texture		*hotbar_sprite;
   t_move		move;
+  int			item_selected;
 }			t_player;
 
 void			my_swap_item(t_item *a, t_item *b);

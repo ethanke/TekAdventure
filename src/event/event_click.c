@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:10:29 2016 Victor Sousa
-** Last update Thu Apr 14 14:49:07 2016 Victor Sousa
+** Last update Thu Apr 14 21:56:59 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -42,6 +42,11 @@ t_bunny_response        event_click(t_bunny_event_state            state,
 	handle_inventory_click(prog);
       else if (prog->state == STATE_NPC)
 	handle_inventory_click_npc(prog);
+      else if (prog->state == STATE_DECOR_CHOOSE && state == GO_UP)
+	{
+	  prog->player->item_selected =
+	  get_click_place_hotbar(prog, (t_bunny_position *)bunny_get_mouse_position());
+	}
       else if (prog->state == STATE_NPC_CHOOSE)
 	{
 	  npc_choose_pos.x = WIN_WIDTH / 2 - prog->npc_choose->width / 2 +
@@ -50,11 +55,11 @@ t_bunny_response        event_click(t_bunny_event_state            state,
 	      prog->npc_choose->height / 3  / 2;
 	  if ((npc_choose = get_highlight(prog, &npc_choose_pos)) == -2)
 	    prog->state = STATE_GAME;
-	  else if (npc_choose == 0)
+	  else if (npc_choose == 0 && prog->current_click.npc != NULL)
 	    prog->state = STATE_NPC;
-	  else if (npc_choose == 1)
+	  else if (npc_choose == 1 && prog->current_click.npc != NULL)
 	    prog->state = STATE_FIGHT;
-	  else if (npc_choose == 2)
+	  else if (npc_choose == 2 && prog->current_click.decors != NULL)
 	    prog->state = STATE_DECOR_CHOOSE;
 	}
     }

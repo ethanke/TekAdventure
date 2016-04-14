@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Tue Apr 12 20:17:50 2016 Victor Sousa
-** Last update Thu Apr 14 05:00:20 2016 Gaëtan Léandre
+** Last update Thu Apr 14 23:30:15 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -51,8 +51,8 @@ static void 		disp_needed_item(t_prog *prog, t_npc *npc)
 
   font.font_img = prog->font->font_img;
   font.font_size = 11;
-  pos.x = WIN_WIDTH / 2 - npc->trade->needed->object->texture->width / 2 - 15;
-  pos.y = WIN_HEIGHT / 2 - npc->trade->needed->object->texture->height / 2 + 90;
+  pos.x = WIN_WIDTH / 2 - 115 / 2 - 16; /*npc->trade->needed->object->texture->width / 2 - 15*/;
+  pos.y = WIN_HEIGHT / 2 - 11 + 90;
   if (npc != NULL && npc->trade->in_stock->amount > 0)
     {
       font.font_color.full = 0xFF050505;
@@ -67,8 +67,8 @@ static void 		disp_needed_item(t_prog *prog, t_npc *npc)
     {
       font.font_color.full = 0x55050505;
       place_image_transpa(create_hitbox(pos.x, pos.y, 32, 32),
-			  *prog->scene->object->texture_hitbox,
-			  prog->scene->object->texture, prog->pix);
+			  *npc->trade->needed->object->texture_hitbox,
+			  npc->trade->needed->object->texture, prog->pix);
       pos.y += 3;
       teknbr(npc->trade->needed->amount, &pos, prog->pix, &font);
       pos.y -= 3;

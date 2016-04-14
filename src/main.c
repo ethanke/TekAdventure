@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Thu Apr 14 01:54:43 2016 Philippe Lefevre
+** Last update Thu Apr 14 17:58:49 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -22,6 +22,7 @@ int			init_prog(t_prog *prog, char *str)
   prog->player->move.depla = NULL;
   prog->player->x = 8;
   prog->player->y = 0;
+  prog->player->item_selected = -1;
   prog->state = STATE_GAME;
   prog->need_init_fight = 1;
   if ((prog->font =
