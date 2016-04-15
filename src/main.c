@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Thu Apr 14 17:58:49 2016 Victor Sousa
+** Last update Fri Apr 15 01:46:00 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -22,6 +22,7 @@ int			init_prog(t_prog *prog, char *str)
   prog->player->move.depla = NULL;
   prog->player->x = 8;
   prog->player->y = 0;
+  prog->disp_delay = 0;
   prog->player->item_selected = -1;
   prog->state = STATE_GAME;
   prog->need_init_fight = 1;
@@ -85,7 +86,7 @@ int			main(int ac, char **av, char **env)
   bunny_set_click_response(event_click);
   bunny_set_key_response(event_key);
   bunny_set_loop_main_function(mainloop);
-  if (bunny_loop(prog.win, 60, &prog) == EXIT_ON_ERROR)
+  if (bunny_loop(prog.win, 30, &prog) == EXIT_ON_ERROR)
     return (clean(&prog, ERROR));
   return (clean(&prog, SUCCESS));
 }

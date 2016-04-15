@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Thu Apr 14 05:59:32 2016 Victor Sousa
-** Last update Fri Apr 15 01:19:24 2016 Victor Sousa
+** Last update Fri Apr 15 02:12:35 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -41,17 +41,8 @@ static t_object		*fint_obj_by_id(t_object *head, int id)
 void			interact_decors(t_prog *prog)
 {
   int			place;
-  t_font		font;
-  t_bunny_position	f_pos;
-  char			*str;
 
-  font.font_img = prog->font->font_img;
-  font.font_size = 20;
-  font.font_color.full = 0xFF050505;
-  f_pos.x = WIN_WIDTH / 2;
-  f_pos.y = WIN_HEIGHT - 100;
   if (prog->player->item_selected != -1 &&
-
       prog->player->inventory[prog->player->item_selected].id != -1)
     {
       if (prog->current_click.decors->decors_breakable->is_breakable == 1)
@@ -59,54 +50,87 @@ void			interact_decors(t_prog *prog)
 	  if (prog->player->inventory[prog->player->item_selected].id ==
 	      prog->current_click.decors->decors_breakable->breakable_by)
 	    {
-	      printf("damage applyed\n");
 	      prog->current_click.decors->decors_breakable->life -=
-	      prog->player->inventory[prog->player->item_selected].object->damage          * 10;
+	      prog->player->inventory[prog->player->item_selected].object->damage;
 	      if (prog->current_click.decors->decors_breakable->life <= 0)
 		{
-		  printf("Decors dead\n");
 		  prog->scene->ground[prog->current_click.x + prog->current_click.y
 		  * prog->scene->size.x].decors = NULL;
-                  if ((place = there_is_place_in_inv(prog->player->inventory)) != -1)
-                    {
+		  if ((place = there_is_place_in_inv(prog->player->inventory)) != -1)
+		    {
 		      prog->player->inventory[place].id =
-      		      prog->current_click.decors->decors_breakable->loot[0];
-                      prog->player->inventory[place].amount =
+		      prog->current_click.decors->decors_breakable->loot[0];
+		      prog->player->inventory[place].amount =
 		      prog->current_click.decors->decors_breakable->loot[1];
-                      prog->player->inventory[place].object =
+		      prog->player->inventory[place].object =
 		      fint_obj_by_id(prog->scene->object,
 				     prog->current_click.decors->decors_breakable->loot[0]);
-                    }
-                  else
-                    printf("Out of space in inventory\n");
+		      prog->disp_str =
+		      malloc(my_strlen(my_itoa(prog->player->
+					       inventory[place].amount)) +
+			     my_strlen(prog->player->inventory[place].
+				       object->name) + 8);
+		      prog->disp_str = my_strcpy(prog->disp_str, "You got ");
+		      prog->disp_str =
+		      my_strcat(prog->disp_str, my_itoa(prog->player->
+							inventory[place].
+							amount));
+		      prog->disp_str =
+		      my_strcat(prog->disp_str, prog->player->inventory[place].
+				object->name);
+		      prog->disp_delay = 25;
+		    }
+		  else
+		    {
+		      prog->disp_str = malloc(27);
+		      prog->disp_str =
+		      my_strcpy(prog->disp_str,
+				"Out of space in inventory");
+		      prog->disp_delay = 25;
+		    }
 		}
 	      else
-		printf("decors has now %dlife\n",
-		       prog->current_click.decors->decors_breakable->life);
+		{
+		  prog->disp_str = malloc(my_strlen(my_itoa(prog->current_click.
+							    decors->decors_breakable->life)) + 20);
+		  prog->disp_str = my_strcpy(prog->disp_str, "decors has now ");
+		  prog->disp_str =
+		  my_strcat(prog->disp_str, my_itoa(prog->current_click.
+						    decors->decors_breakable->
+						    life));
+		  prog->disp_str = my_strcat(prog->disp_str, " life");
+		  prog->disp_delay = 25;
+		}
 	    }
 	  else
 	    {
-	      str = malloc(my_strlen(fint_obj_by_id(prog->scene->object,
-						    prog->current_click.decors->decors_breakable->breakable_by)->name) + 10);
-	      str = my_strcpy(str, "Wrong tools");
-	      str = my_strcat(str,
-			      fint_obj_by_id(prog->scene->object,
-					     prog->current_click.decors->decors_breakable->breakable_by)->name);
-	      tektextcenter("Wrong tools",
-			    &f_pos, prog->pix, &font);
+	      prog->disp_str = malloc(my_strlen(fint_obj_by_id(prog->scene->object,
+							       prog->current_click.
+							       decors->decors_breakable->
+							       breakable_by)->name) + 25);
+	      prog->disp_str = my_strcpy(prog->disp_str, "Wrong tools, you need ");
+	      prog->disp_str =
+	      my_strcat(prog->disp_str,
+			fint_obj_by_id(prog->scene->object,
+				       prog->current_click.decors->
+				       decors_breakable->
+				       breakable_by)->name);
+	      prog->disp_delay = 25;
 	    }
 	}
       else
 	{
-	  tektextcenter("Can't break this! too strong",
-			&f_pos, prog->pix, &font);
+	  prog->disp_str = malloc(33);
+	  prog->disp_str = my_strcpy(prog->disp_str, "Can't break this, Too Strong :D");
+	  prog->disp_delay = 25;
 	}
       prog->player->item_selected = -1;
       prog->state = STATE_GAME;
     }
   else
     {
-      tektextcenter("Pick the item to use\nin your hotbar!",
-		    &f_pos, prog->pix, &font);
+      prog->disp_str = malloc(39);
+      prog->disp_str = my_strcpy(prog->disp_str, "Pick the item to use\nin your hotbar!");
+      prog->disp_delay = 25;
     }
 }
