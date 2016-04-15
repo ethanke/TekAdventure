@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Thu Apr  7 03:01:13 2016 victor sousa
-** Last update Fri Apr 15 22:36:51 2016 Gaëtan Léandre
+** Last update Fri Apr 15 23:34:24 2016 Victor Sousa
 */
 
 #ifndef 		DISP_H_
@@ -26,6 +26,7 @@ void			disp_floating_item(t_prog *prog,
 					   t_bunny_position *click_pos);
 void			disp_selected_hotbar_inv_item(t_prog *prog);
 void			disp_selected_full_inv_item(t_prog *prog);
+int			there_is_place_in_inv(t_item *inv);
 void			disp_ground(t_prog *prog, int disp);
 void			disp_npc_exchange(t_prog *prog, t_npc *npc);
 void			disp_npc(t_prog *prog, t_npc *npc);
@@ -33,6 +34,11 @@ void 			disp_needed_item(t_prog *prog, t_npc *npc);
 void			disp_player(t_prog *prog, t_player *player);
 void			disp_choose_npc_action(t_prog *prog);
 void			interact_decors(t_prog *prog);
+void			disp_decord_life_text(t_prog *prog);
+void			disp_need_tools(t_prog *prog);
+void			disp_pick_item(t_prog *prog);
+void			disp_cant_break(t_prog *prog);
+void			disp_out_of_space(t_prog *prog);
 int	 		get_highlight(t_prog *prog, t_bunny_position *pos);
 void			put_grille(t_prog *prog, t_bunny_position *gri,
 				   float percent, t_bunny_pixelarray *pix);
@@ -63,5 +69,6 @@ void			delete_from_text(t_prog *prog, t_text *save);
 void			disp_font(t_prog *prog, t_text *first,
 				  t_bunny_pixelarray *pix);
 t_bunny_position	pos_alea(int x_min, int x_max, int y_min, int y_max);
+t_object		*fint_obj_by_id(t_object *head, int id);
 
 #endif			/* !DISP_H_ */

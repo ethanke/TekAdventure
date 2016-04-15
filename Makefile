@@ -81,6 +81,7 @@ SRC		+=	$(DISPDIR)/disp_hotbar.c		\
 			$(DISPDIR)/disp_npc_interact.c		\
 			$(DISPDIR)/disp_npc_item.c		\
 			$(DISPDIR)/disp_interact_choice.c	\
+			$(DISPDIR)/disp_interact_text.c		\
 			$(DISPDIR)/disp_info_text.c
 
 SRC		+=	$(EVENTDIR)/event_key.c			\
