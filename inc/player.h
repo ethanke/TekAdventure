@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 03:51:52 2016 Gaëtan Léandre
-** Last update Fri Apr 15 01:22:38 2016 Ethan Kerdelhue
+** Last update Thu Apr 14 23:36:01 2016 Kerdelhue Ethan
 */
 
 #ifndef			PLAYER_H_
@@ -67,5 +67,4 @@ typedef struct		s_player
 }			t_player;
 
 void			my_swap_item(t_item *a, t_item *b);
-
 #endif			/* !PLAYER_H_ */
