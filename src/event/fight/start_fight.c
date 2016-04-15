@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Sat Apr 16 00:10:31 2016 Gaëtan Léandre
+** Last update Sat Apr 16 00:37:12 2016 Ethan Kerdelhue
 */
 
 #include	"main.h"
@@ -67,7 +67,7 @@ int			get_player_magic_damage(t_player *player, t_prog *prog)
 {
   int			player_magic_damage;
 
-  player_magic_damage = prog->scene->object->damage *
+  player_magic_damage = 20 * prog->scene->object->damage *
       (1 + player->caract->intellect / 10);
   return (player_magic_damage);
 }
@@ -190,7 +190,7 @@ int			prepare_fight(t_prog *prog, t_npc *npc)
   prog->fight->nb_round = 1;
   prog->fight->round_state = 1;
   prog->fight->player->caract = xmalloc(sizeof(t_caract), &prog->ptr_list);
-  prog->fight->player->caract->strength = 5;
+  prog->fight->player->caract->strength = 12;
   prog->fight->player->caract->critical = 20;
   prog->fight->player->caract->agility = 30;
   prog->fight->player->caract->armor = 50;
