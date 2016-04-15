@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Tue Apr 12 03:55:39 2016 Gaëtan Léandre
-** Last update Wed Apr 13 22:22:46 2016 Gaëtan Léandre
+** Last update Fri Apr 15 08:51:45 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -102,7 +102,6 @@ void			get_decors_wnpc(t_ground *ground, t_grille *grille,
         click->pos.y = item.y;
     }
 }
-
 
 t_map_click		click_map(t_prog *prog, t_bunny_position *mouse_pos,
 				  float percent)

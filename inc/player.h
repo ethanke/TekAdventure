@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 03:51:52 2016 Gaëtan Léandre
-** Last update Thu Apr 14 23:36:01 2016 Kerdelhue Ethan
+** Last update Fri Apr 15 06:25:24 2016 Victor Sousa
 */
 
 #ifndef			PLAYER_H_

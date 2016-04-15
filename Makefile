@@ -95,7 +95,13 @@ SRC		+=	$(FIGHTDIR)/start_fight.c		\
 			$(FIGHTDIR)/update_bar.c		\
 			$(FIGHTDIR)/catch_button.c
 
-SRC		+=	$(NPCDIR)/interact_npc.c
+SRC		+=	$(NPCDIR)/interact_npc.c		\
+			$(NPCDIR)/pull_out_item.c		\
+			$(NPCDIR)/put_in_item.c			\
+			$(NPCDIR)/move_in_hotbar.c		\
+			$(NPCDIR)/draw_folowing_item.c		\
+			$(NPCDIR)/get_click_value.c		\
+			$(NPCDIR)/handle_red_cross.c
 
 SRC		+=	$(UTILSDIR)/xmalloc.c			\
 			$(UTILSDIR)/ptr_list.c			\

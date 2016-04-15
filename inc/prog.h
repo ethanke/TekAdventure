@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 00:11:13 2016 Gaëtan Léandre
-** Last update Fri Apr 15 01:32:19 2016 Victor Sousa
+** Last update Fri Apr 15 05:46:42 2016 Victor Sousa
 */
 
 #ifndef			PROG_H_
@@ -53,6 +53,7 @@ typedef	struct		s_prog
   t_texture		*fight_img;
   t_texture		*npc_choose;
   t_texture		*exchange_sprite;
+  t_texture		*equip_sprite;
   t_texture		*attack_button;
   t_texture		*defend_button;
   t_texture		*magic_button;

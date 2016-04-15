@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Fri Apr 15 04:28:00 2016 Philippe Lefevre
+** Last update Fri Apr 15 08:51:14 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -34,30 +34,48 @@ int			init_prog(t_prog *prog, char *str)
     return (ERROR);
   prog->font->font_size = 50;
   prog->font->font_color.full = 0xFF000000;
-  if ((prog->fight_img = load_image("ressources/sprites/fight.jpg", &prog->ptr_list)) == NULL)
+  if ((prog->fight_img = load_image("ressources/sprites/fight.jpg",
+				    &prog->ptr_list)) == NULL)
     return (ERROR);
   if ((prog->player->inv_open_sprite =
-       load_image("ressources/sprites/inventory_full.png", &prog->ptr_list)) == NULL)
+       load_image("ressources/sprites/inventory_full.png",
+		  &prog->ptr_list)) == NULL)
     return (ERROR);
   if ((prog->npc_choose =
-       load_image("ressources/sprites/npc_choose.png", &prog->ptr_list)) == NULL)
+       load_image("ressources/sprites/npc_choose.png",
+		  &prog->ptr_list)) == NULL)
     return (ERROR);
   if ((prog->player->hotbar_sprite =
-       load_image("ressources/sprites/hotbar.png", &prog->ptr_list)) == NULL)
+       load_image("ressources/sprites/hotbar.png",
+		  &prog->ptr_list)) == NULL)
     return (ERROR);
   if ((prog->exchange_sprite =
-       load_image("ressources/sprites/exchange.png", &prog->ptr_list)) == NULL)
+       load_image("ressources/sprites/exchange.png",
+		  &prog->ptr_list)) == NULL)
     return (ERROR);
-    /* penser vérifié le retour */
-    prog->fight_img = load_image("ressources/sprites/fight.jpg", &prog->ptr_list);
-    prog->attack_button = load_image("ressources/sprites/ATTACK.png", &prog->ptr_list);
-    prog->attack_button_hover = load_image("ressources/sprites/ATTACK_HOVER.png", &prog->ptr_list);
-    prog->defend_button = load_image("ressources/sprites/DEFEND.png", &prog->ptr_list);
-    prog->defend_button_hover = load_image("ressources/sprites/DEFEND_HOVER.png", &prog->ptr_list);
-    prog->magic_button = load_image("ressources/sprites/MAGIC.png", &prog->ptr_list);
-    prog->magic_button_hover = load_image("ressources/sprites/MAGIC_HOVER.png", &prog->ptr_list);
-    prog->skip_button = load_image("ressources/sprites/SKIP.png", &prog->ptr_list);
-    prog->skip_button_hover = load_image("ressources/sprites/SKIP_HOVER.png", &prog->ptr_list);
+  if ((prog->equip_sprite =
+       load_image("ressources/sprites/equip.png",
+		  &prog->ptr_list)) == NULL)
+    return (ERROR);
+  /* penser vérifié le retour */
+  prog->fight_img =
+  load_image("ressources/sprites/fight.jpg", &prog->ptr_list);
+  prog->attack_button =
+  load_image("ressources/sprites/ATTACK.png", &prog->ptr_list);
+  prog->attack_button_hover =
+  load_image("ressources/sprites/ATTACK_HOVER.png", &prog->ptr_list);
+  prog->defend_button =
+  load_image("ressources/sprites/DEFEND.png", &prog->ptr_list);
+  prog->defend_button_hover =
+  load_image("ressources/sprites/DEFEND_HOVER.png", &prog->ptr_list);
+  prog->magic_button =
+  load_image("ressources/sprites/MAGIC.png", &prog->ptr_list);
+  prog->magic_button_hover =
+  load_image("ressources/sprites/MAGIC_HOVER.png", &prog->ptr_list);
+  prog->skip_button =
+  load_image("ressources/sprites/SKIP.png", &prog->ptr_list);
+  prog->skip_button_hover =
+  load_image("ressources/sprites/SKIP_HOVER.png", &prog->ptr_list);
   return (SUCCESS);
 }
 

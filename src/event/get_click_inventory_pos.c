@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:47:01 2016 Victor Sousa
-** Last update Sat Apr  9 21:57:24 2016 Victor Sousa
+** Last update Fri Apr 15 07:12:59 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -24,6 +24,25 @@ int			get_click_place_hotbar(t_prog *prog,
       return ((click_pos->x -
 	       (WIN_WIDTH / 2 - (prog->player->hotbar_sprite->width / 2)
 		/ 4 + 10 )) / 40);
+    }
+  return (-1);
+}
+
+int			get_click_place_equip(t_prog *prog,
+					      t_bunny_position *click_pos)
+{
+  t_bunny_position	size;
+  int			i;
+
+  size.x = WIN_WIDTH / 2 - ((prog->player->inv_open_sprite->width / 4) / 2) -
+      prog->equip_sprite->width + 1;
+  size.y = WIN_HEIGHT / 2 - prog->equip_sprite->height / 2 + 2;
+  i = -1;
+  while (++i < 4)
+    {
+      if (click_pos->x >= size.x && click_pos->x <= size.x + 35 &&
+	  click_pos->y >= size.y + 36 * i && click_pos->y <= size.y + 36 * (i + 1))
+	return (i + 48);
     }
   return (-1);
 }

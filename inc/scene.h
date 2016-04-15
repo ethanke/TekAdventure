@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Thu Apr 14 06:41:31 2016 Gaëtan Léandre
+** Last update Fri Apr 15 08:49:40 2016 Victor Sousa
 */
 
 #ifndef			SCENE_H_
@@ -66,11 +66,11 @@ typedef struct		s_scene
   t_hitbox		*sol_hitbox;
   t_bunny_position	size;
   float			coef;
-  t_sprite		*sprite; /* Ne pas utilser temporaire */
-  t_npc			*npc;	/* Ne pas utilser temporaire */
-  t_object		*object; /* Ne pas utilser temporaire */
-  t_decors		*decors; /* Ne pas utilser temporaire */
-  t_player		*player; /* Ne pas utilser temporaire */
+  t_sprite		*sprite;
+  t_npc			*npc;
+  t_object		*object;
+  t_decors		*decors;
+  t_player		*player;
   t_ground		*ground;
   t_sky			*sky;
   struct s_scene	*prev;

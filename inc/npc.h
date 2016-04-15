@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:24:51 2016 Ethan Kerdelhue
-** Last update Wed Apr 13 05:04:22 2016 Victor Sousa
+** Last update Fri Apr 15 08:43:22 2016 Victor Sousa
 */
 
 #ifndef 		NPC_H_
