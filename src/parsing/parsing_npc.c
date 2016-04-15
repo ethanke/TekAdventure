@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr  8 02:30:51 2016 Ethan Kerdelhue
-** Last update Thu Apr 14 02:47:52 2016 Philippe Lefevre
+** Last update Fri Apr 15 06:09:18 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -48,19 +48,19 @@ t_trade			*get_trade(char *str, t_ptr_list **ptr_list, int id)
 
   if ((trade = xmalloc(sizeof(*trade), ptr_list)) == NULL)
     return (my_puterror_trade("Error: trade:xmalloc ", -1, "failed in get_trade\n"));
-  if ((trade->needed = xmalloc(sizeof(trade->needed), ptr_list)) == NULL)
+  if ((trade->needed = xmalloc(sizeof(t_item), ptr_list)) == NULL)
     return (my_puterror_trade("Error: trade->needed:xmalloc ", -1, "failed in get_trade\n"));
   if ((trade->needed->id = my_getnbr(str)) < 0)
     return (my_puterror_trade("Error: npc:npc_trade field ", id, " needed id should not be negative\n"));
   if ((trade->needed->amount = get_a_player(str)) < 0)
     return (my_puterror_trade("Error: npc:npc_trade field ", id, " needed amount should not be negative\n"));
-  if ((trade->given = xmalloc(sizeof(trade->given), ptr_list)) == NULL)
+  if ((trade->given = xmalloc(sizeof(t_item), ptr_list)) == NULL)
     return (my_puterror_trade("Error: trade->given:xmalloc ", -1, "failed in get_trade\n"));
   if ((trade->given->id = get_i_npc(str)) < 0)
     return (my_puterror_trade("Error: npc:npc_trade field ", id, " given id should not be negative\n"));
   if ((trade->given->amount = get_a_npc(str)) < 0)
     return (my_puterror_trade("Error: npc:npc_trade field ", id, " given amount should not be negative\n"));
-  if ((trade->in_stock = xmalloc(sizeof(trade->in_stock), ptr_list)) == NULL)
+  if ((trade->in_stock = xmalloc(sizeof(t_item), ptr_list)) == NULL)
     return (my_puterror_trade("Error: trade->in_stock:xmalloc ", -1, "failed in get_trade\n"));
   if ((trade->in_stock->object = xmalloc(sizeof(t_object), ptr_list)) == NULL)
     return (my_puterror_trade("Error: trade->in_stock->object:xmalloc ", -1, "failed in get_trade\n"));
