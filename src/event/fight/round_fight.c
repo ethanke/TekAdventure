@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr 15 01:35:20 2016 Ethan Kerdelhue
-** Last update Fri Apr 15 23:08:57 2016 Gaëtan Léandre
+** Last update Sat Apr 16 00:29:10 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -39,12 +39,13 @@ void			npc_round(t_prog *prog)
 {
   prog->fight->player_action = prog->fight->round_energy;
   prog->fight->player->life -= npc_damage(prog->fight->npc, prog->player, prog);
-  my_puts("Player life : ", prog->fight->player->life, 1);
   prog->fight->round_state = 1;
 }
 
 int			loop_fight(t_prog *prog)
 {
+  char			*str;
+
   draw_fight(prog);
   if (prog->fight->round_state == 1)
     player_round(prog);
@@ -52,13 +53,18 @@ int			loop_fight(t_prog *prog)
     npc_round(prog);
   if (prog->player->life <= 0)
     {
-      my_puts("npc win\n", 0, 0);
+      if ((str = malloc(my_strlen(prog->fight->npc->name) + 5)) == NULL)
+	return (-1);
+      str = my_strcpy(str, prog->fight->npc->name);
+      str = my_strcat(str, " win");
+      add_disp_txt(prog, str);
+      free(str);
       prog->state = STATE_GAME;
       prog->need_init_fight = 1;
     }
   if  (prog->fight->npc->life <= 0)
     {
-      my_puts("player win\n", 0, 0);
+      add_disp_txt(prog, "You win");
       prog->state = STATE_GAME;
       prog->need_init_fight = 1;
       prog->scene->ground[prog->current_click.x + prog->current_click.y

@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Fri Apr 15 23:27:24 2016 Gaëtan Léandre
+** Last update Sat Apr 16 00:10:31 2016 Gaëtan Léandre
 */
 
 #include	"main.h"
@@ -94,30 +94,29 @@ int 			npc_damage(t_npc *npc, t_player *player, t_prog *prog)
   if (((rand() % (100 - 0)) + 0) <= 5)
     {
       damage = damage * 1.5;
-      my_putstr("It's critical !\n");
+      event_on_player(prog, 0);
     }
   if (((rand() % (100 - 0)) + 0) <= player->caract->agility / 3)
     {
       damage = 0;
-      my_putstr("I'm dodge !\n");
+      event_on_player(prog, 1);
     }
   if (player->fight_defense == 1)
     {
       player->fight_defense = 0;
       if (((rand() % (100 - 0)) + 0) <= player->caract->armor / 3)
 	{
-	  my_putstr("I block\n");
+	  event_on_player(prog, 2);
 	  damage = 0;
 	}
       else
 	{
 	  damage = (damage / 1000) - player->caract->armor / 5;
-	  my_puts("I'm resist : ", damage, 1);
-	  return (damage);
+	  event_on_player(prog, 3);
+	  return (damage_on_player(prog, damage));
 	}
     }
-  my_puts("Damage : ", damage / 1000, 1);
-  return (damage / 1000);
+  return (damage_on_player(prog, damage / 1000));
 }
 
 int 			player_damage_magic(t_player *player, t_fight *fight, t_prog *prog)
@@ -141,7 +140,7 @@ int 			player_damage_magic(t_player *player, t_fight *fight, t_prog *prog)
       pos.y = WIN_HEIGHT / 2;
       pos = pos;
       fight->player_action -= MAGIC_ENERGY;
-      return (damage / 1000);
+      return (damage_on_npc(prog, damage / 1000));
     }
   return (0);
 }
@@ -163,7 +162,7 @@ int 			player_damage(t_player *player, t_fight *fight, t_prog *prog)
 	  event_on_npc(prog);
 	}
       fight->player_action -= ATTACK_ENERGY;
-      return (damage / 1000);
+      return (damage_on_npc(prog, damage / 1000));
     }
   return (0);
 }
