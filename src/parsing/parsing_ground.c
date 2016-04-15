@@ -5,13 +5,13 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr 14 02:52:33 2016 Philippe Lefevre
-** Last update Fri Apr 15 05:27:46 2016 Philippe Lefevre
+** Last update Sat Apr 16 00:42:59 2016 Philippe Lefevre
 */
 
 #include		"main.h"
 
 t_ground		*ground_fill(t_bunny_ini *ini, t_scene *scene,
-				     t_ptr_list **ptr_list, char *name)
+				     char *name)
 {
   t_npc			*npc;
   t_decors		*decors;

@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Fri Apr 15 22:19:51 2016 Philippe Lefevre
+** Last update Sat Apr 16 00:42:22 2016 Philippe Lefevre
 */
 
 #ifndef			SCENE_H_
@@ -30,6 +30,7 @@ typedef struct		s_gate
   int			id;
   char			*name;
   int			sprite_id;
+  t_bunny_position	*pos;
   struct s_scene	*scene;
   t_texture		*texture;
   t_hitbox		*texture_hitbox;
@@ -60,7 +61,7 @@ typedef struct		s_sky
 typedef struct		s_scene
 {
   t_bunny_position	*start_pos;
-  unsigned int		height;
+  int			height;
   int			sol_id;
   t_texture		*sol;
   t_hitbox		*sol_hitbox;

@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr 14 02:52:33 2016 Philippe Lefevre
-** Last update Fri Apr 15 22:33:00 2016 Philippe Lefevre
+** Last update Sat Apr 16 00:43:30 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -30,7 +30,7 @@ t_scene			*link_ground(t_bunny_ini *ini, t_scene *scene,
   if ((ground = xmalloc((sizeof(*ground) * ((scene->size.x * scene->size.y) + 1)), ptr_list)) == NULL)
     return (my_puterror_scene("Error: ", name, ":xmalloc ", -1, "failed in link_ground\n"));
   scene->ground = ground;
-  if ((scene->ground = ground_fill(ini, scene, ptr_list, name)) == NULL)
+  if ((scene->ground = ground_fill(ini, scene, name)) == NULL)
     return (NULL);
   if ((str = (char *)bunny_ini_get_field(ini, name, "scene_ground_sprite_id", 0)) == NULL)
     return (my_puterror_scene("Error: ", name, ":scene_ground_sprite_id field ", 1, " not found\n"));

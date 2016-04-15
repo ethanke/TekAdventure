@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Fri Apr 15 03:49:43 2016 Philippe Lefevre
+** Last update Sat Apr 16 00:40:25 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -61,7 +61,7 @@ t_scene			*list_add_scene(t_scene *list, char *name,
 }
 
 t_scene			*load_scene(t_bunny_ini *ini, t_scene *stockage,
-				    t_ptr_list **ptr_list, int pos)
+				    t_ptr_list **ptr_list)
 {
   t_scene		*new_list;
   char			**scene_tab;
