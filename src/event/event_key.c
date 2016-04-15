@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Wed Apr  6 21:04:44 2016 victor sousa
-** Last update Fri Apr 15 00:30:40 2016 Victor Sousa
+** Last update Fri Apr 15 22:26:03 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -40,13 +40,6 @@ t_bunny_response	event_key(t_bunny_event_state state,
 	  prog->player->inventory_open = 0;
 	  prog->player->inv_selected = -1;
 	}
-    }
-  if (key == BKS_F && state == GO_UP)
-    {
-      if (prog->state != STATE_FIGHT)
-  	prog->state = STATE_FIGHT;
-      else
-	prog->state = STATE_GAME;
     }
   if (key == BKS_N && state == GO_UP)
     {

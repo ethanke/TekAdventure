@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr 14 02:52:33 2016 Philippe Lefevre
-** Last update Fri Apr 15 03:39:49 2016 Philippe Lefevre
+** Last update Fri Apr 15 22:22:40 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -38,7 +38,7 @@ t_scene			*link_ground(t_bunny_ini *ini, t_scene *scene,
     return (my_puterror_scene("Error ", name, ":scene_ground_sprite_id field ", 1, " should not be negative\n"));
   if ((scene->sol_hitbox = create_sol_hitbox(0, ini, ptr_list, name)) == NULL)
     return (NULL);
-  scene->height = 300;
+  scene->height = 400;
   tmp_sprite = scene->sprite;
   while (tmp_sprite != NULL)
     {

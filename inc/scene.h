@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Fri Apr 15 08:49:40 2016 Victor Sousa
+** Last update Fri Apr 15 22:19:51 2016 Philippe Lefevre
 */
 
 #ifndef			SCENE_H_
