@@ -5,10 +5,44 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Mon Apr 11 07:08:46 2016 Victor Sousa
-** Last update Fri Apr 15 23:44:13 2016 Victor Sousa
+** Last update Sat Apr 16 00:12:21 2016 Victor Sousa
 */
 
 #include		"main.h"
+
+static void		disp_quatity(t_prog *prog, t_font font, t_item *item,
+				     t_bunny_position rect_pos)
+{
+  char			*nbr;
+  char			*str;
+
+  if ((str = malloc(20)) == NULL)
+    return;
+  str = my_strcpy(str, "quantity : ");
+  if ((nbr = my_itoa(item->amount)) == NULL)
+    return;
+  str = my_strcat(str, nbr);
+  tektext(str, &rect_pos, prog->pix, &font);
+  free(str);
+  free(nbr);
+}
+
+static void		disp_damage(t_prog *prog, t_font font, t_item *item,
+				    t_bunny_position rect_pos)
+{
+  char			*nbr;
+  char			*str;
+
+  if ((str = malloc(20)) == NULL)
+    return;
+  str = my_strcpy(str, "damage : ");
+  if ((nbr = my_itoa(item->object->damage)) == NULL)
+    return;
+  str = my_strcat(str, nbr);
+  tektext(str, &rect_pos, prog->pix, &font);
+  free(nbr);
+  free(str);
+}
 
 void			disp_item_info(t_prog *prog, t_item *item,
 				       t_bunny_position *pos)
@@ -16,8 +50,6 @@ void			disp_item_info(t_prog *prog, t_item *item,
   t_bunny_position	rect_pos;
   t_bunny_position	rect_size;
   t_font		font;
-  char			*str;
-  char			*nbr;
 
   rect_pos.x = pos->x - IIS_WIDTH;
   rect_pos.y = pos->y - IIS_HEIGHT;
@@ -31,20 +63,7 @@ void			disp_item_info(t_prog *prog, t_item *item,
   rect_pos.y += 10;
   tektext(item->object->name, &rect_pos, prog->pix, &font);
   rect_pos.y += 15;
-  if ((str = malloc(20)) == NULL)
-    return;
-  str = my_strcpy(str, "quantity : ");
-  if ((nbr = my_itoa(item->amount)) == NULL)
-    return;
-  str = my_strcat(str, nbr);
-  tektext(str, &rect_pos, prog->pix, &font);
-  free(nbr);
+  disp_quatity(prog, font, item, rect_pos);
   rect_pos.y += 15;
-  str = my_strcpy(str, "damage : ");
-  if ((nbr = my_itoa(item->object->damage)) == NULL)
-    return;
-  str = my_strcat(str, nbr);
-  tektext(str, &rect_pos, prog->pix, &font);
-  free(nbr);
-  free(str);
+  disp_damage(prog, font, item, rect_pos);
 }
