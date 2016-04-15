@@ -5,43 +5,50 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:08:59 2016 Philippe Lefevre
-** Last update Wed Apr 13 17:59:39 2016 Philippe Lefevre
+** Last update Fri Apr 15 04:27:01 2016 Philippe Lefevre
 */
 
 #include		"main.h"
 
-static	t_scene		*my_puterror_s(char *str)
-{
-  t_scene		*ret;
-
-  write(2, str, my_strlen(str));
-  ret = NULL;
-  return (ret);
-}
 t_scene			*parsing(const char *file, t_player **player,
 				 t_ptr_list **ptr_list)
 {
   t_bunny_ini		*ini;
+  t_scene		*stockage;
   t_scene		*scene;
 
   ini = bunny_load_ini(file);
-  if ((scene = xmalloc(sizeof(*scene), ptr_list)) == NULL)
-    return (my_puterror_s("Error: xmalloc parsing.c:43\n"));
-  if ((scene->player = load_player(ini, ptr_list)) == NULL)
+  if ((stockage = xmalloc(sizeof(*stockage), ptr_list)) == NULL)
+    return (my_puterror_scene("Error: ", "stockage", ":xmalloc ", -1, "failed\n"));
+  /* Load All ini information */
+  if ((stockage->player = load_player(ini, ptr_list)) == NULL)
     return (NULL);
-  if ((scene->object = load_object(ini, ptr_list)) == NULL)
+  if ((stockage->sprite = load_sprite(ini, ptr_list)) == NULL)
     return (NULL);
-  if ((scene->sprite = load_sprite(ini, ptr_list)) == NULL)
+  if ((stockage->object = load_object(ini, ptr_list)) == NULL)
     return (NULL);
-  if ((scene->decors = load_decors(ini, ptr_list)) == NULL)
+  if ((stockage->decors = load_decors(ini, ptr_list)) == NULL)
     return (NULL);
-  if ((scene->npc = load_npc(ini, ptr_list)) == NULL)
+  if ((stockage->npc = load_npc(ini, ptr_list)) == NULL)
     return (NULL);
-  if ((scene->sky = load_sky(ini, ptr_list)) == NULL)
+
+  /* Link All ptr sprite to texture */
+  if ((stockage->object = link_object(stockage->object, stockage->sprite)) == NULL)
     return (NULL);
-  if ((scene = load_scene(ini, scene, ptr_list)) == NULL)
+  if ((stockage->decors = link_decors(stockage->decors, stockage->sprite)) == NULL)
     return (NULL);
-  (*player) = scene->player;
+  if ((stockage->npc = link_npc(stockage->npc, stockage->sprite, stockage->object)) == NULL)
+    return (NULL);
+  if ((stockage->player = link_player(stockage->player, stockage->sprite)) == NULL)
+    return (NULL);
+
+  /* Link inventory with default ini inventory */
+  if ((stockage->player->inventory = link_inventory_item(stockage->player->inventory,
+							 stockage->object)) == NULL)
+    return (NULL);
+  (*player) = stockage->player;
+  if ((scene = load_scene(ini, stockage, ptr_list, 0)) == NULL)
+    return (NULL);
   bunny_delete_ini(ini);
   return (scene);
 }

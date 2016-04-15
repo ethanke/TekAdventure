@@ -5,16 +5,19 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Wed Apr 13 22:00:09 2016 Philippe Lefevre
+** Last update Fri Apr 15 00:08:35 2016 Philippe Lefevre
 */
 
 #include		"main.h"
 
-t_scene			*my_puterror_scene(char *beg, int id, char *end)
+t_scene			*my_puterror_scene(char *beg, char *name, char *mid,
+					   int id, char *end)
 {
   t_scene		*tmp;
 
   write(2, beg, my_strlen(beg));
+  write(2, name, my_strlen(name));
+  write(2, mid, my_strlen(mid));
   if (id > -1)
     my_put_nbr(2, id);
   write(2, end, my_strlen(end));
@@ -22,11 +25,14 @@ t_scene			*my_puterror_scene(char *beg, int id, char *end)
   return (tmp);
 }
 
-t_ground		*my_puterror_ground(char *beg, int id, char *end)
+t_ground		*my_puterror_ground(char *beg, char *name, char *mid,
+					    int id, char *end)
 {
   t_ground		*tmp;
 
   write(2, beg, my_strlen(beg));
+  write(2, name, my_strlen(name));
+  write(2, mid, my_strlen(mid));
   if (id > -1)
     my_put_nbr(2, id);
   write(2, end, my_strlen(end));
@@ -34,11 +40,14 @@ t_ground		*my_puterror_ground(char *beg, int id, char *end)
   return (tmp);
 }
 
-t_sky			*my_puterror_sky(char *beg, int id, char *end)
+t_sky			*my_puterror_sky(char *beg, char *name, char *mid,
+					    int id, char *end)
 {
-  t_sky 		*tmp;
+  t_sky			*tmp;
 
   write(2, beg, my_strlen(beg));
+  write(2, name, my_strlen(name));
+  write(2, mid, my_strlen(mid));
   if (id > -1)
     my_put_nbr(2, id);
   write(2, end, my_strlen(end));

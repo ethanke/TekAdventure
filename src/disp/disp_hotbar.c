@@ -5,10 +5,10 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 08:30:39 2016 Victor Sousa
-** Last update Thu Apr 14 04:56:24 2016 Gaëtan Léandre
+** Last update Fri Apr 15 03:43:47 2016 Gaëtan Léandre
 */
 
-#include		"main.h"
+#include	 	"main.h"
 
 static void		disp_hotbar_sprite(t_prog *prog, t_bunny_position *pos)
 {
