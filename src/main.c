@@ -68,7 +68,7 @@ int			main(int ac, char **av, char **env)
   if (ac != 2)
     return (my_puterror("Error: Use ")
 	    + my_puterror(av[0]) + my_puterror(" file.ini\n"));
-  set_max_heap_size(500);
+  set_max_heap_size(50);
   if (env[0] == 0)
     return (ERROR);
   if ((prog.win = bunny_start(WIN_WIDTH, WIN_HEIGHT, false, WIN_NAME)) == NULL)
