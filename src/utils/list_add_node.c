@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Tue Mar 29 20:05:23 2016 Philippe Lefevre
-** Last update Thu Apr  7 01:05:20 2016 Philippe Lefevre
+** Last update Fri Apr 15 22:57:27 2016 Ethan Kerdelhue
 */
 
 #include		"my_list.h"
@@ -15,7 +15,8 @@ t_list			*list_add_node(t_list *list, void *data)
   t_list		*new;
   t_list		*tmp;
 
-  new = list_create_node(data);
+  if ((new = list_create_node(data)) != NULL)
+    return (NULL);
   if (list == NULL)
     return (new);
   tmp = list;
