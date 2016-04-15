@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:58:37 2016 Philippe Lefevre
-** Last update Thu Apr 14 22:00:21 2016 Victor Sousa
+** Last update Fri Apr 15 01:44:55 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -33,8 +33,15 @@ t_bunny_response	mainloop(void *p)
 {
   t_prog		*prog;
   t_bunny_position	*mouse_pos;
+  t_font		font;
+  t_bunny_position	f_pos;
 
   prog = p;
+  font.font_img = prog->font->font_img;
+  font.font_size = 20;
+  font.font_color.full = 0xFF050505;
+  f_pos.x = WIN_WIDTH / 2;
+  f_pos.y = WIN_HEIGHT - 100;
   mouse_pos = (t_bunny_position *)bunny_get_mouse_position();
   prog->percent = 1 - (float)mouse_pos->x / (float)WIN_WIDTH;
   disp_ground(prog, prog->player->move.select_move);
@@ -52,6 +59,14 @@ t_bunny_response	mainloop(void *p)
     interact_npc(prog, prog->current_click.npc);
   if (prog->state != STATE_FIGHT)
     disp_inventory(prog);
+  if (prog->disp_delay > 0 && prog->disp_str != NULL)
+    {
+      tektextcenter(prog->disp_str,
+		    &f_pos, prog->pix, &font);
+      prog->disp_delay--;
+      if (prog->disp_delay == 0)
+	free(prog->disp_str);
+    }
   bunny_blit(&prog->win->buffer, &prog->pix->clipable, &prog->blit_pos);
   swap_pix(prog);
   bunny_display(prog->win);

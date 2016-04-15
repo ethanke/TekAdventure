@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 00:11:13 2016 Gaëtan Léandre
-** Last update Fri Apr 15 01:17:05 2016 Ethan Kerdelhue
+** Last update Fri Apr 15 01:32:19 2016 Victor Sousa
 */
 
 #ifndef			PROG_H_
@@ -44,6 +44,8 @@ typedef	struct		s_prog
   t_bunny_position	blit_pos;
   int			state;
   float			percent;
+  int			disp_delay;
+  char			*disp_str;
   struct s_fight	*fight;
 
   char			need_init_fight;
