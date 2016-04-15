@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr 14 03:00:55 2016 Philippe Lefevre
-** Last update Thu Apr 14 03:01:32 2016 Philippe Lefevre
+** Last update Fri Apr 15 22:53:43 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -33,7 +33,7 @@ t_player		*link_player(t_player *player, t_sprite *sprite)
 {
   t_player		*tmp_player;
   t_sprite		*tmp_sprite;
-
+/* verifie que le player ne spawn pas sur une case' deja alloué */
   tmp_player = player;
   tmp_sprite = sprite;
   while (tmp_sprite != NULL)

@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr  8 02:30:51 2016 Ethan Kerdelhue
-** Last update Fri Apr 15 06:09:18 2016 Gaëtan Léandre
+** Last update Fri Apr 15 22:54:09 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -153,7 +153,7 @@ t_npc			*load_npc(t_bunny_ini *ini, t_ptr_list **ptr_list)
   char			*str;
   int			nb_npc;
   int			i;
-
+/* varaible hostilit" */
   if ((str = (char *)bunny_ini_get_field(ini, "npc", "npc_count", 0)) == NULL)
     return (my_puterror_npc("Error: balise npc or npc:npc_count field ", 1,  " not found\n"));
   if ((nb_npc = my_getnbr(str)) < 0)
