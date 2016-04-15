@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:58:37 2016 Philippe Lefevre
-** Last update Fri Apr 15 03:44:39 2016 Gaëtan Léandre
+** Last update Fri Apr 15 04:38:26 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -43,7 +43,8 @@ t_bunny_response	mainloop(void *p)
   f_pos.x = WIN_WIDTH / 2;
   f_pos.y = WIN_HEIGHT - 100;
   mouse_pos = (t_bunny_position *)bunny_get_mouse_position();
-  prog->percent = 1 - (float)mouse_pos->x / (float)WIN_WIDTH;
+  /*prog->percent = 1 - (float)mouse_pos->x / (float)WIN_WIDTH;*/
+      prog->percent = 1 - prog->player->x / (float)prog->scene->size.x;
   disp_ground(prog, prog->player->move.select_move);
   if (prog->state == STATE_FIGHT)
     start_fight(prog, prog->current_click.npc);

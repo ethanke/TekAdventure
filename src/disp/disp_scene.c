@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 02:56:24 2016 Gaëtan Léandre
-** Last update Fri Apr 15 04:30:01 2016 Philippe Lefevre
+** Last update Fri Apr 15 04:39:20 2016 Philippe Lefevre
 */
 
 #include	 	"main.h"
@@ -126,7 +126,7 @@ void			disp_ground(t_prog *prog, int disp)
   place = create_hitbox(0, WIN_HEIGHT - prog->scene->height,
 			WIN_WIDTH, prog->scene->height);
   make_deplacement(prog->player);
-  disp_background(prog->scene->sky, prog->pix, prog->percent);
+  /*disp_background(prog->scene->sky, prog->pix, prog->percent);*/
   place_image(place, *prog->scene->sol_hitbox, prog->scene->sol, prog->pix);
   deplacement(prog->player, prog->scene, prog->pix, prog->percent);
   put_grille(prog, &prog->scene->size, prog->percent, prog->pix);
