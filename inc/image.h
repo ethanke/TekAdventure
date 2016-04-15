@@ -5,18 +5,8 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Fri Apr 15 03:26:21 2016 Gaëtan Léandre
-** Last update Fri Apr 15 03:32:09 2016 Gaëtan Léandre
+** Last update Fri Apr 15 03:34:45 2016 Gaëtan Léandre
 */
-
-/*
- ** image.h for image in /Users/leandr_g/Documents/Shared folder/TekAdventure/inc/
- **
- ** Made by Gaëtan Léandre
- ** Login   <leandr_g@epitech.eu>
- **
- ** Started on  Wed Apr  6 23:41:06 2016 Gaëtan Léandre
- ** Last update Fri Apr 15 03:09:51 2016 Gaëtan Léandre
- */
 
  #ifndef   _IMAGE_H_
  # define  _IMAGE_H_
