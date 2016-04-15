@@ -5,13 +5,13 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 02:56:24 2016 Gaëtan Léandre
-** Last update Fri Apr 15 04:39:20 2016 Philippe Lefevre
+** Last update Fri Apr 15 05:40:28 2016 Gaëtan Léandre
 */
 
 #include	 	"main.h"
 
 void			disp_background(t_sky *sky, t_bunny_pixelarray *pix,
-					float percent)
+					float percent, int height)
 {
   t_sky		*tmp;
   t_hitbox		pos;
@@ -27,7 +27,7 @@ void			disp_background(t_sky *sky, t_bunny_pixelarray *pix,
     {
       size = dist_max - tmp->distance;
       pos.width = pix->clipable.clip_width + size;
-      pos.height = pix->clipable.clip_height;
+      pos.height = pix->clipable.clip_height - height;
       pos.x = (int)((float)size * percent) - size;
       pos.y = 0;
       redim_image(&pos, tmp->texture, pix);
@@ -126,7 +126,7 @@ void			disp_ground(t_prog *prog, int disp)
   place = create_hitbox(0, WIN_HEIGHT - prog->scene->height,
 			WIN_WIDTH, prog->scene->height);
   make_deplacement(prog->player);
-  /*disp_background(prog->scene->sky, prog->pix, prog->percent);*/
+  disp_background(prog->scene->sky, prog->pix, prog->percent, prog->scene->height);
   place_image(place, *prog->scene->sol_hitbox, prog->scene->sol, prog->pix);
   deplacement(prog->player, prog->scene, prog->pix, prog->percent);
   put_grille(prog, &prog->scene->size, prog->percent, prog->pix);
