@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr 13 06:17:45 2016 Ethan Kerdelhue
-** Last update Fri Apr 15 23:10:27 2016 Gaëtan Léandre
+** Last update Sat Apr 16 00:33:16 2016 Victor Sousa
 */
 
 #ifndef			FIGHT_H_
@@ -60,6 +60,11 @@ void			update_bar_player(t_bar *bar, t_prog *prog);
 void			update_bar_action(t_bar *bar, t_prog *prog);
 int			catch_button(t_prog *prog);
 
+void			event_on_npc(t_prog *prog);
+void			event_on_player(t_prog *prog, int chose);
+int			damage_on_npc(t_prog *prog, int dmg);
+int			damage_on_player(t_prog *prog, int dmg);
+void			add_disp_txt(t_prog *prog, char *str);
 int                     loop_fight(t_prog *prog);
 void                    npc_round(t_prog *prog);
 void                    player_round(t_prog *prog);

@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Fri Apr 15 23:19:02 2016 Gaëtan Léandre
+** Last update Sat Apr 16 00:35:34 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -18,6 +18,7 @@ int			init_prog(t_prog *prog, char *str)
   if ((prog->scene = parsing(str, &prog->player, &prog->ptr_list)) == NULL)
     return (ERROR);
   prog->player->inventory_open = 0;
+  prog->player->inv_selected = 1;
   prog->player->move.select_move = 0;
   prog->player->move.depla = NULL;
   prog->player->x = 8;
