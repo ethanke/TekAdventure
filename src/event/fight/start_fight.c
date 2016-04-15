@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Sat Apr 16 00:37:12 2016 Ethan Kerdelhue
+** Last update Sat Apr 16 00:41:27 2016 Ethan Kerdelhue
 */
 
 #include	"main.h"
@@ -189,12 +189,6 @@ int			prepare_fight(t_prog *prog, t_npc *npc)
   prog->fight->npc->life = 100;
   prog->fight->nb_round = 1;
   prog->fight->round_state = 1;
-  prog->fight->player->caract = xmalloc(sizeof(t_caract), &prog->ptr_list);
-  prog->fight->player->caract->strength = 12;
-  prog->fight->player->caract->critical = 20;
-  prog->fight->player->caract->agility = 30;
-  prog->fight->player->caract->armor = 50;
-  prog->fight->player->caract->intellect = 8;
   prog->fight->round_energy = ROUND_ENERGY;
   prog->fight->player->damage = get_player_damage(prog->fight->player, prog);
   prog->fight->player->magic_damage = get_player_magic_damage(prog->fight->player, prog);
