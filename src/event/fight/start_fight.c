@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Fri Apr 15 01:35:16 2016 Ethan Kerdelhue
+** Last update Fri Apr 15 23:27:24 2016 Gaëtan Léandre
 */
 
 #include	"main.h"
@@ -82,7 +82,7 @@ int			get_player_damage(t_player *player, t_prog *prog)
   return (player_damage);
 }
 
-int 			npc_damage(t_npc *npc, t_player *player)
+int 			npc_damage(t_npc *npc, t_player *player, t_prog *prog)
 {
   int			damage;
   int			max;
@@ -120,7 +120,7 @@ int 			npc_damage(t_npc *npc, t_player *player)
   return (damage / 1000);
 }
 
-int 			player_damage_magic(t_player *player, t_fight *fight)
+int 			player_damage_magic(t_player *player, t_fight *fight, t_prog *prog)
 {
   t_bunny_position	pos;
   int			damage;
@@ -135,7 +135,7 @@ int 			player_damage_magic(t_player *player, t_fight *fight)
       if (((rand() % (100 - 0)) + 0) <= player->caract->critical)
 	{
 	  damage = damage * 1.5;
-	  my_putstr("It's critical !\n");
+	  event_on_npc(prog);
 	}
       pos.x = WIN_WIDTH / 2;
       pos.y = WIN_HEIGHT / 2;
@@ -146,7 +146,7 @@ int 			player_damage_magic(t_player *player, t_fight *fight)
   return (0);
 }
 
-int 			player_damage(t_player *player, t_fight *fight)
+int 			player_damage(t_player *player, t_fight *fight, t_prog *prog)
 {
   int			damage;
   int			max;
@@ -160,7 +160,7 @@ int 			player_damage(t_player *player, t_fight *fight)
       if (((rand() % (100 - 0)) + 0) <= player->caract->critical)
 	{
 	  damage = damage * 1.5;
-	  my_putstr("It's critical !\n");
+	  event_on_npc(prog);
 	}
       fight->player_action -= ATTACK_ENERGY;
       return (damage / 1000);

@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Fri Apr 15 08:51:14 2016 Victor Sousa
+** Last update Fri Apr 15 23:19:02 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -76,6 +76,7 @@ int			init_prog(t_prog *prog, char *str)
   load_image("ressources/sprites/SKIP.png", &prog->ptr_list);
   prog->skip_button_hover =
   load_image("ressources/sprites/SKIP_HOVER.png", &prog->ptr_list);
+  prog->text = NULL;
   return (SUCCESS);
 }
 
