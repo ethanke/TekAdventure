@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Tue Apr 12 20:17:50 2016 Victor Sousa
-** Last update Thu Apr 14 23:30:15 2016 Victor Sousa
+** Last update Fri Apr 15 22:02:41 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -42,58 +42,6 @@ static void		disp_npc_message(t_prog *prog, t_npc *npc)
       i++;
     }
   tektext(npc->text, &pos, prog->pix, &font);
-}
-
-static void 		disp_needed_item(t_prog *prog, t_npc *npc)
-{
-  t_bunny_position	pos;
-  t_font		font;
-
-  font.font_img = prog->font->font_img;
-  font.font_size = 11;
-  pos.x = WIN_WIDTH / 2 - 115 / 2 - 16; /*npc->trade->needed->object->texture->width / 2 - 15*/;
-  pos.y = WIN_HEIGHT / 2 - 11 + 90;
-  if (npc != NULL && npc->trade->in_stock->amount > 0)
-    {
-      font.font_color.full = 0xFF050505;
-      place_image(create_hitbox(pos.x, pos.y, 32, 32),
-		  *npc->trade->needed->object->texture_hitbox,
-		  npc->trade->needed->object->texture, prog->pix);
-      pos.y += 3;
-      teknbr(npc->trade->in_stock->amount, &pos, prog->pix, &font);
-      pos.y -= 3;
-    }
-    else
-    {
-      font.font_color.full = 0x55050505;
-      place_image_transpa(create_hitbox(pos.x, pos.y, 32, 32),
-			  *npc->trade->needed->object->texture_hitbox,
-			  npc->trade->needed->object->texture, prog->pix);
-      pos.y += 3;
-      teknbr(npc->trade->needed->amount, &pos, prog->pix, &font);
-      pos.y -= 3;
-    }
-  pos.x += 115;
-  if (npc != NULL && npc->trade->in_stock->amount >= npc->trade->needed->amount)
-    {
-      font.font_color.full = 0xFF050505;
-      place_image(create_hitbox(pos.x, pos.y, 32, 32),
-		  *npc->trade->given->object->texture_hitbox,
-		  npc->trade->given->object->texture, prog->pix);
-      pos.y += 3;
-      teknbr(npc->trade->given->amount, &pos, prog->pix, &font);
-      pos.y -= 3;
-    }
-  else
-    {
-      font.font_color.full = 0x55050505;
-      place_image_transpa(create_hitbox(pos.x, pos.y, 32, 32),
-			  *npc->trade->given->object->texture_hitbox,
-			  npc->trade->given->object->texture, prog->pix);
-      pos.y += 3;
-      teknbr(npc->trade->given->amount, &pos, prog->pix, &font);
-      pos.y -= 3;
-    }
 }
 
 void			disp_npc_exchange(t_prog *prog, t_npc *npc)

@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Thu Apr  7 03:01:13 2016 victor sousa
-** Last update Fri Apr 15 05:39:46 2016 Gaëtan Léandre
+** Last update Fri Apr 15 22:03:01 2016 Victor Sousa
 */
 
 #ifndef 		DISP_H_
@@ -26,6 +26,7 @@ void			disp_selected_full_inv_item(t_prog *prog);
 void			disp_ground(t_prog *prog, int disp);
 void			disp_npc_exchange(t_prog *prog, t_npc *npc);
 void			disp_npc(t_prog *prog, t_npc *npc);
+void 			disp_needed_item(t_prog *prog, t_npc *npc);
 void			disp_player(t_prog *prog, t_player *player);
 void			disp_choose_npc_action(t_prog *prog);
 void			interact_decors(t_prog *prog);

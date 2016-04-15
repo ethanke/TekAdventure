@@ -77,6 +77,7 @@ SRC		+=	$(DISPDIR)/disp_hotbar.c		\
 			$(DISPDIR)/disp_choose_npc_action.c	\
 			$(DISPDIR)/disp_npc_exchange.c		\
 			$(DISPDIR)/disp_npc_interact.c		\
+			$(DISPDIR)/disp_npc_item.c		\
 			$(DISPDIR)/disp_interact_choice.c
 
 SRC		+=	$(EVENTDIR)/event_key.c			\
