@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr 13 06:17:45 2016 Ethan Kerdelhue
-** Last update Thu Apr 14 23:35:49 2016 Kerdelhue Ethan
+** Last update Fri Apr 15 22:43:01 2016 Gaëtan Léandre
 */
 
 #ifndef			FIGHT_H_
@@ -63,4 +63,8 @@ int			catch_button(t_prog *prog);
 int                     loop_fight(t_prog *prog);
 void                    npc_round(t_prog *prog);
 void                    player_round(t_prog *prog);
+int 			npc_damage(t_npc *npc, t_player *player);
+int 			player_damage_magic(t_player *player, t_fight *fight);
+int 			player_damage(t_player *player, t_fight *fight);
+
 #endif

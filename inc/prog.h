@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 00:11:13 2016 Gaëtan Léandre
-** Last update Fri Apr 15 05:46:42 2016 Victor Sousa
+** Last update Fri Apr 15 22:35:25 2016 Gaëtan Léandre
 */
 
 #ifndef			PROG_H_
@@ -20,6 +20,17 @@
 # define		STATE_NPC_CHOOSE	4
 # define		STATE_DECOR_CHOOSE	5
 #endif			/*!PROG_STATE_*/
+
+typedef struct		s_text
+{
+  int			turn;
+  int 			nbr;
+  char			*msg;
+  t_font		font;
+  t_bunny_position	pos;
+  struct s_text		*next;
+  struct s_text		*prev;
+}			t_text;
 
 typedef struct		s_map_click
 {
@@ -40,6 +51,7 @@ typedef	struct		s_prog
   t_bunny_pixelarray	*pix1;
   t_bunny_pixelarray	*pix2;
   t_font		*font;
+  t_text		*text;
   t_ptr_list		*ptr_list;
   t_bunny_position	blit_pos;
   int			state;
