@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Mon Apr 11 07:08:46 2016 Victor Sousa
-** Last update Thu Apr 14 04:15:00 2016 Gaëtan Léandre
+** Last update Fri Apr 15 23:44:13 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -31,7 +31,8 @@ void			disp_item_info(t_prog *prog, t_item *item,
   rect_pos.y += 10;
   tektext(item->object->name, &rect_pos, prog->pix, &font);
   rect_pos.y += 15;
-  str = malloc(20);
+  if ((str = malloc(20)) == NULL)
+    return;
   str = my_strcpy(str, "quantity : ");
   if ((nbr = my_itoa(item->amount)) == NULL)
     return;

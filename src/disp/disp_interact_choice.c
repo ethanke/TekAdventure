@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Thu Apr 14 05:59:32 2016 Victor Sousa
-** Last update Fri Apr 15 23:34:12 2016 Victor Sousa
+** Last update Fri Apr 15 23:58:24 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -66,7 +66,7 @@ void			get_dropped_item(t_prog *prog, int place)
 
 void			try_to_break(t_prog *prog)
 {
-  int			place;
+  int			i_p;
 
   if (prog->player->inventory[prog->player->item_selected].id ==
       prog->current_click.decors->decors_breakable->breakable_by)
@@ -77,10 +77,14 @@ void			try_to_break(t_prog *prog)
 	{
 	  prog->scene->ground[prog->current_click.x + prog->current_click.y
 	  * prog->scene->size.x].decors = NULL;
-	  if ((place = there_is_place_in_inv(prog->player->inventory)) != -1)
-	    get_dropped_item(prog, place);
-	  else
-	    disp_out_of_space(prog);
+	  if (prog->current_click.decors->decors_breakable->loot[0] != -1 &&
+	      prog->current_click.decors->decors_breakable->loot[1] != -1)
+	    {
+	      if ((i_p = there_is_place_in_inv(prog->player->inventory)) != -1)
+		get_dropped_item(prog, i_p);
+	      else
+		disp_out_of_space(prog);
+	    }
 	}
             else
 	disp_decord_life_text(prog);
