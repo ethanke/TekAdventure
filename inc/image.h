@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:41:06 2016 Gaëtan Léandre
-** Last update Thu Apr 14 04:50:58 2016 Gaëtan Léandre
+** Last update Fri Apr 15 03:09:51 2016 Gaëtan Léandre
 */
 
 #ifndef			_IMAGE_H_
@@ -27,6 +27,14 @@ typedef struct          s_hitbox
   int                   width;
   int                   height;
 }                       t_hitbox;
+
+typedef struct          s_anim
+{
+  int			pos;
+  int			max;
+  t_texture		*texture;
+  t_hitbox		*hitbox;
+}                       t_anim;
 
 typedef struct		s_font
 {
