@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Fri Apr 15 06:58:45 2016 Gaëtan Léandre
-** Last update Fri Apr 15 23:57:46 2016 Gaëtan Léandre
+** Last update Sat Apr 16 00:36:41 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -28,7 +28,7 @@ t_text			*create_text(t_bunny_position pos, char *text,
     {
       while (text[++i])
 	result->msg[i] = text[i];
-      result->msg[++i] = '\0';
+      result->msg[i] = '\0';
     }
   result->nbr = nbr;
   result->font.font_size = 18;

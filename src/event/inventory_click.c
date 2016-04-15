@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 09:11:28 2016 Victor Sousa
-** Last update Fri Apr 15 08:42:16 2016 Victor Sousa
+** Last update Sat Apr 16 00:47:10 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -29,7 +29,7 @@ void			handle_inventory_click(t_prog *prog)
     prog->player->inv_selected = get_click_place_inventory(prog, click_pos);
   if (prog->player->inv_selected == -1 && prog->player->inventory_open == 1)
     prog->player->inv_selected = get_click_place_equip(prog, click_pos);
-  if (prog->player->inv_selected != 1 &&
+  if (prog->player->inv_selected != -1 &&
       prog->player->inventory[(int)prog->player->inv_selected].id == -1 &&
       need_to_move == -1)
     prog->player->inv_selected = -1;
