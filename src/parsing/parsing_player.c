@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr  8 00:59:55 2016 Ethan Kerdelhue
-** Last update Fri Apr 15 06:31:47 2016 Victor Sousa
+** Last update Sat Apr 16 01:03:57 2016 Philippe Lefevre
 */
 
 #include	"main.h"
@@ -122,7 +122,7 @@ t_player		*load_player(t_bunny_ini *ini, t_ptr_list **ptr_list)
   if ((player->life = my_getnbr(tmp)) < 0)
       return (my_puterror_player("Error: player:player_life ", -1, "should not be negative\n"));
   if ((tmp = (char *)bunny_ini_get_field(ini, "player", "player_token", 0)) == NULL)
-      return (my_puterror_player("Error: player:player_token f", -1, "ield not found\n"));
+      return (my_puterror_player("Error: player:player_token ", -1, "field not found\n"));
   if ((player->token = my_getnbr(tmp)) < 0)
       return (my_puterror_player("Error: player:player_token ", -1, "should not be negative\n"));
   if ((tmp = (char *)bunny_ini_get_field(ini, "player", "player_name", 0)) == NULL)
