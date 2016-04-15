@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Thu Apr  7 03:01:13 2016 victor sousa
-** Last update Fri Apr 15 22:03:01 2016 Victor Sousa
+** Last update Fri Apr 15 22:28:03 2016 Victor Sousa
 */
 
 #ifndef 		DISP_H_
@@ -19,8 +19,11 @@
 
 void			disp_hotbar(t_prog *prog, t_bunny_position *m_pos);
 void			disp_inventory(t_prog *prog);
+void			disp_equip(t_prog *prog, t_bunny_position *m_pos);
 void			disp_item_info(t_prog *prog, t_item *item,
 				       t_bunny_position *pos);
+void			disp_floating_item(t_prog *prog,
+					   t_bunny_position *click_pos);
 void			disp_selected_hotbar_inv_item(t_prog *prog);
 void			disp_selected_full_inv_item(t_prog *prog);
 void			disp_ground(t_prog *prog, int disp);

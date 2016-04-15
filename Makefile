@@ -69,8 +69,10 @@ SRC		+=	$(PARSDIR)/parsing_error_msg_1.c	\
 
 SRC		+=	$(DISPDIR)/disp_hotbar.c		\
 			$(DISPDIR)/disp_inventory.c		\
+			$(DISPDIR)/disp_equipement.c		\
 			$(DISPDIR)/disp_selected_inv_item.c	\
 			$(DISPDIR)/disp_item_info.c		\
+			$(DISPDIR)/disp_floating_item.c		\
 			$(DISPDIR)/disp_scene.c			\
 			$(DISPDIR)/init_hitbox_scene.c		\
 			$(DISPDIR)/disp_utils.c			\
