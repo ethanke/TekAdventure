@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr 13 19:36:12 2016 Ethan Kerdelhue
-** Last update Fri Apr 15 01:33:59 2016 Ethan Kerdelhue
+** Last update Sat Apr 16 01:28:28 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -51,7 +51,9 @@ void			draw_fight(t_prog *prog)
   size3.y = 100;
   size3.width = size.width;
   size3.height = size.height;
-  prog->fight->bar_action->value_cur = prog->fight->player_action;
+  prog->fight->bar_action->value_cur = prog->fight->player_action + prog->fight->bonus_action;
+  prog->fight->bar_action->value_default =
+      prog->fight->round_energy + prog->fight->bonus_action;
   prog->fight->bar_player->value_cur = prog->fight->player->life;
   prog->fight->bar_npc->value_cur = prog->fight->npc->life;
   percent_bar(size, prog->fight->bar_action, prog, YELLOW);

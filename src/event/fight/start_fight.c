@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Sat Apr 16 00:41:27 2016 Ethan Kerdelhue
+** Last update Sat Apr 16 01:25:24 2016 Ethan Kerdelhue
 */
 
 #include	"main.h"
@@ -67,8 +67,8 @@ int			get_player_magic_damage(t_player *player, t_prog *prog)
 {
   int			player_magic_damage;
 
-  player_magic_damage = 20 * prog->scene->object->damage *
-      (1 + player->caract->intellect / 10);
+  (void)prog;
+  player_magic_damage = 5 + (1 + player->caract->intellect / 2);
   return (player_magic_damage);
 }
 
@@ -76,9 +76,8 @@ int			get_player_damage(t_player *player, t_prog *prog)
 {
   int			player_damage;
 
-  (void) prog;
-  player_damage = 20 *
-      (1 + player->caract->strength / 10);
+  (void)prog;
+  player_damage = 5 + (1 + player->caract->intellect / 2);
   return (player_damage);
 }
 
@@ -100,12 +99,14 @@ int 			npc_damage(t_npc *npc, t_player *player, t_prog *prog)
     {
       damage = 0;
       event_on_player(prog, 1);
+      prog->fight->bonus_action += 20;
     }
   if (player->fight_defense == 1)
     {
       player->fight_defense = 0;
       if (((rand() % (100 - 0)) + 0) <= player->caract->armor / 3)
 	{
+	  prog->fight->bonus_action += 20;
 	  event_on_player(prog, 2);
 	  damage = 0;
 	}
@@ -135,6 +136,7 @@ int 			player_damage_magic(t_player *player, t_fight *fight, t_prog *prog)
 	{
 	  damage = damage * 1.5;
 	  event_on_npc(prog);
+	  prog->fight->bonus_action += 20;
 	}
       pos.x = WIN_WIDTH / 2;
       pos.y = WIN_HEIGHT / 2;
@@ -160,6 +162,7 @@ int 			player_damage(t_player *player, t_fight *fight, t_prog *prog)
 	{
 	  damage = damage * 1.5;
 	  event_on_npc(prog);
+	  prog->fight->bonus_action += 20;
 	}
       fight->player_action -= ATTACK_ENERGY;
       return (damage_on_npc(prog, damage / 1000));
@@ -186,6 +189,7 @@ int			prepare_fight(t_prog *prog, t_npc *npc)
   prog->fight->player = prog->player;
   prog->fight->npc = npc;
   prog->fight->player_action = 100;
+  prog->fight->bonus_action = 0;
   prog->fight->npc->life = 100;
   prog->fight->nb_round = 1;
   prog->fight->round_state = 1;
