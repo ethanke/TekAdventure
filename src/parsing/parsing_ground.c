@@ -5,12 +5,13 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr 14 02:52:33 2016 Philippe Lefevre
-** Last update Thu Apr 14 03:00:29 2016 Philippe Lefevre
+** Last update Fri Apr 15 00:38:06 2016 Philippe Lefevre
 */
 
 #include		"main.h"
 
-t_ground		*ground_fill(t_bunny_ini *ini, t_scene *scene)
+t_ground		*ground_fill(t_bunny_ini *ini, t_scene *scene,
+				     t_ptr_list **ptr_list, char *name)
 {
   t_npc			*npc;
   t_decors		*decors;
@@ -28,19 +29,19 @@ t_ground		*ground_fill(t_bunny_ini *ini, t_scene *scene)
     }
   scene->ground[i].npc = NULL;
   scene->ground[i].decors = NULL;
-  if ((str = (char *)bunny_ini_get_field(ini, "scene", "scene_npc_count", 0)) == NULL)
-    return (my_puterror_ground("Error scene:scene_npc_count field ", -1, "not found\n"));
+  if ((str = (char *)bunny_ini_get_field(ini, name, "scene_npc_count", 0)) == NULL)
+    return (my_puterror_ground("Error ", name, ":scene_npc_count field ", -1, "not found\n"));
   if ((i = my_getnbr(str)) < 0)
-  return (my_puterror_ground("Error scene:scene_npc_count ", -1, "should not be negative\n"));
+    return (my_puterror_ground("Error ", name, ":scene_npc_count ", -1, "should not be negative\n"));
   j = 0;
   while (j < i)
     {
-      if ((str = (char *)bunny_ini_get_field(ini, "scene", "scene_npc_id", j)) == NULL)
-	return (my_puterror_ground("Error: scene:scene_npc_id field ", -1, "not found\n"));
+      if ((str = (char *)bunny_ini_get_field(ini, name, "scene_npc_id", j)) == NULL)
+	return (my_puterror_ground("Error: ", name, ":scene_npc_id field ", -1, "not found\n"));
       if ((tab[0] = my_getnbr(str)) < 0)
-	return (my_puterror_ground("Error scene:scene_npc_id field ", j, " should not be negative\n"));
-      if ((str = (char *)bunny_ini_get_field(ini, "scene", "scene_npc_pos", j)) == NULL)
-	return (my_puterror_ground("Error: scene:scene_npc_pos field ", j, " not found\n"));
+	return (my_puterror_ground("Error ", name, ":scene_npc_id field ", j, " should not be negative\n"));
+      if ((str = (char *)bunny_ini_get_field(ini, name, "scene_npc_pos", j)) == NULL)
+	return (my_puterror_ground("Error: ", name, ":scene_npc_pos field ", j, " not found\n"));
       tab[1] = my_getnbr(str);
       k = -1;
       while (str[++k] && str[k] != ';');
@@ -54,19 +55,19 @@ t_ground		*ground_fill(t_bunny_ini *ini, t_scene *scene)
 	}
       j++;
     }
-  if ((str = (char *)bunny_ini_get_field(ini, "scene", "scene_decors_count", 0)) == NULL)
-    return (my_puterror_ground("Error scene:scene_decors_count field ", -1, "not found\n"));
+  if ((str = (char *)bunny_ini_get_field(ini, name, "scene_decors_count", 0)) == NULL)
+    return (my_puterror_ground("Error ", name, ":scene_decors_count field ", -1, "not found\n"));
   if ((i = my_getnbr(str)) < 0)
-    return (my_puterror_ground("Error scene:scene_decors_count ", -1, "should not be negative\n"));
+    return (my_puterror_ground("Error ", name, ":scene_decors_count ", -1, "should not be negative\n"));
   j = 0;
   while (j < i)
     {
-      if ((str = (char *)bunny_ini_get_field(ini, "scene", "scene_decors_id", j)) == NULL)
-	return (my_puterror_ground("Error: scene:scene_decors_id field ", j, " not found\n"));
+      if ((str = (char *)bunny_ini_get_field(ini, name, "scene_decors_id", j)) == NULL)
+	return (my_puterror_ground("Error: ", name, ":scene_decors_id field ", j, " not found\n"));
       if ((tab[0] = my_getnbr(str)) < 0)
-	return (my_puterror_ground("Error scene:scene_decors_id field ", j, " should not be negative\n"));
-      if ((str = (char *)bunny_ini_get_field(ini, "scene", "scene_decors_pos", j)) == NULL)
-	return (my_puterror_ground("Error: scene:scene_decors_pos field ", j, " not found\n"));
+	return (my_puterror_ground("Error ", name, ":scene_decors_id field ", j, " should not be negative\n"));
+      if ((str = (char *)bunny_ini_get_field(ini, name, "scene_decors_pos", j)) == NULL)
+	return (my_puterror_ground("Error: ", name, ":scene_decors_pos field ", j, " not found\n"));
       tab[1] = my_getnbr(str);
       k = -1;
       while (str[++k] && str[k] != ';');
@@ -84,7 +85,8 @@ t_ground		*ground_fill(t_bunny_ini *ini, t_scene *scene)
 }
 
 t_hitbox		*create_sol_hitbox(int id, t_bunny_ini *ini,
-						 t_ptr_list **ptr_list)
+					   t_ptr_list **ptr_list,
+					   char *name)
 {
   t_hitbox		*hitbox;
   char			*str;
@@ -92,8 +94,11 @@ t_hitbox		*create_sol_hitbox(int id, t_bunny_ini *ini,
 
   if ((hitbox = xmalloc(sizeof(*hitbox), ptr_list)) == NULL)
     return (NULL);
-  if ((str = (char *)bunny_ini_get_field(ini, "scene", "scene_ground_sprite_hitbox", id)) == NULL)
-    return (my_puterror_hitbox("Error: scene:scene_ground_sprite_hitbox field ", id, " not found\n"));
+  if ((str = (char *)bunny_ini_get_field(ini, name, "scene_ground_sprite_hitbox", id)) == NULL)
+    {
+      my_puterror_hitbox("Error: ", -1, name);
+      return (my_puterror_hitbox(":scene_ground_sprite_hitbox field ", id, " not found\n"));
+    }
   i = -1;
   hitbox->x = my_getnbr(str);
   while (str[++i] && str[i] != ';');

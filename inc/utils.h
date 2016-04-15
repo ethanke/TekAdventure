@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Wed Apr  6 23:08:25 2016 victor sousa
-** Last update Thu Apr 14 04:50:41 2016 Gaëtan Léandre
+** Last update Fri Apr 15 03:46:20 2016 Philippe Lefevre
 */
 
 #ifndef                 UTILS_H_
@@ -30,6 +30,7 @@ char			*my_strcpy(char *dest, char *src);
 char			*my_strcat(char *dest, char *src);
 char			*my_itoa(int nb);
 int			my_put_nbr(int fd, int nb);
+int			my_strcmp(char *s1, char *s2);
 
 /* COMMON GRAPH */
 void			my_draw_square(t_bunny_pixelarray *pix,
