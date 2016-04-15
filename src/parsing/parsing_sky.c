@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr 14 02:52:33 2016 Philippe Lefevre
-** Last update Fri Apr 15 03:47:23 2016 Philippe Lefevre
+** Last update Fri Apr 15 22:47:39 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -22,7 +22,7 @@ t_hitbox		*create_sky_hitbox(int id, t_bunny_ini *ini,
   if ((str = (char *)bunny_ini_get_field(ini, name, "scene_sky_sprite_hitbox", id)) == NULL)
     {
       my_puterror_hitbox("Error: ", -1, name);
-      return (my_puterror_hitbox(" scene:scene_sky_sprite_hitbox field ", id, " not found\n"));
+      return (my_puterror_hitbox(":scene_sky_sprite_hitbox field ", id, " not found\n"));
     }
   i = -1;
   hitbox->x = my_getnbr(str);

@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Mon Apr 11 07:04:37 2016 Victor Sousa
-** Last update Mon Apr 11 07:04:46 2016 Victor Sousa
+** Last update Fri Apr 15 23:20:12 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -17,7 +17,7 @@ char		*my_strcat(char *dest, char *src)
 
   len = my_strlen(dest);
   i = 0;
-  while(src[i])
+  while (src[i])
     {
       dest[len + i] = src[i];
       i = i + 1;
