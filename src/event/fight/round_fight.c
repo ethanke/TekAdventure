@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr 15 01:35:20 2016 Ethan Kerdelhue
-** Last update Sat Apr 16 00:29:10 2016 Gaëtan Léandre
+** Last update Sat Apr 16 00:53:08 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -64,7 +64,12 @@ int			loop_fight(t_prog *prog)
     }
   if  (prog->fight->npc->life <= 0)
     {
-      add_disp_txt(prog, "You win");
+      if ((str = malloc(my_strlen(prog->player->name) + 5)) == NULL)
+	return (-1);
+      str = my_strcpy(str, prog->player->name);
+      str = my_strcat(str, " win");
+      add_disp_txt(prog, str);
+      free(str);
       prog->state = STATE_GAME;
       prog->need_init_fight = 1;
       prog->scene->ground[prog->current_click.x + prog->current_click.y
