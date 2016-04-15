@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Thu Apr  7 03:01:13 2016 victor sousa
-** Last update Fri Apr 15 22:28:03 2016 Victor Sousa
+** Last update Fri Apr 15 22:36:51 2016 Gaëtan Léandre
 */
 
 #ifndef 		DISP_H_
@@ -56,5 +56,12 @@ float			calc_case_x(t_grille *grille, int pos_y,
 t_grille		get_grille_with_place(t_scene *scene);
 void			disp_background(t_sky *sky, t_bunny_pixelarray *pix,
 					float percent, int height);
+t_text			*create_text(t_bunny_position pos, char *text,
+				     int nbr, unsigned int color);
+void			add_text(t_prog *prog, t_text *text);
+void			delete_from_text(t_prog *prog, t_text *save);
+void			disp_font(t_prog *prog, t_text *first,
+				  t_bunny_pixelarray *pix);
+t_bunny_position	pos_alea(int x_min, int x_max, int y_min, int y_max);
 
 #endif			/* !DISP_H_ */
