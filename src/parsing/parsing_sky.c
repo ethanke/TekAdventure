@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr 14 02:52:33 2016 Philippe Lefevre
-** Last update Fri Apr 15 22:47:39 2016 Philippe Lefevre
+** Last update Sat Apr 16 09:25:37 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -18,11 +18,15 @@ t_hitbox		*create_sky_hitbox(int id, t_bunny_ini *ini,
   int			i;
 
   if ((hitbox = xmalloc(sizeof(*hitbox), ptr_list)) == NULL)
-    return (my_puterror_hitbox("Error: hitbox:xmalloc ", -1, "failed in create_sky_hitbox\n"));
-  if ((str = (char *)bunny_ini_get_field(ini, name, "scene_sky_sprite_hitbox", id)) == NULL)
+    return (my_puterror_hitbox("Error: hitbox:xmalloc ",
+			       -1, "failed in create_sky_hitbox\n"));
+  if ((str = (char *)bunny_ini_get_field(ini, name,
+					 "scene_sky_sprite_hitbox",
+					 id)) == NULL)
     {
       my_puterror_hitbox("Error: ", -1, name);
-      return (my_puterror_hitbox(":scene_sky_sprite_hitbox field ", id, " not found\n"));
+      return (my_puterror_hitbox(":scene_sky_sprite_hitbox field ",
+				 id, " not found\n"));
     }
   i = -1;
   hitbox->x = my_getnbr(str);
@@ -42,15 +46,25 @@ t_sky			*create_sky_node(int id, t_bunny_ini *ini,
   char			*str;
 
   if ((sky = xmalloc(sizeof(t_sky), ptr_list)) == NULL)
-    return (my_puterror_sky("Error: ", "sky", ":xmalloc ", -1, "failed in create_sky_node\n"));
-  if ((str = (char *)bunny_ini_get_field(ini, name, "scene_sky_sprite_id", id)) == NULL)
-    return (my_puterror_sky("Error: ", name, ":scene_sky_sprite_id field ", id, " not found\n"));
+    return (my_puterror_sky("Error: ", "sky", ":xmalloc ",
+			    -1, "failed in create_sky_node\n"));
+  if ((str = (char *)bunny_ini_get_field(ini, name,
+					 "scene_sky_sprite_id", id)) == NULL)
+    return (my_puterror_sky("Error: ", name,
+			    ":scene_sky_sprite_id field ", id,
+			    " not found\n"));
   if ((sky->sky_sprite_id = my_getnbr(str)) < 0)
-    return (my_puterror_sky("Error ", name, "sky_sprite_id field ", id, " should not be negative\n"));
-  if ((str = (char *)bunny_ini_get_field(ini, name, "scene_sky_sprite_distance", id)) == NULL)
-    return (my_puterror_sky("Error: ", name, ":scene_sky_sprite_distance field ", id, " not found\n"));
+    return (my_puterror_sky("Error ", name, "sky_sprite_id field ",
+			    id, " should not be negative\n"));
+  if ((str = (char *)bunny_ini_get_field(ini, name,
+					 "scene_sky_sprite_distance",
+					 id)) == NULL)
+    return (my_puterror_sky("Error: ", name,
+			    ":scene_sky_sprite_distance field ",
+			    id, " not found\n"));
   if ((sky->distance = my_getnbr(str)) < 0)
-    return (my_puterror_sky("Error ", name, "scene_sky_sprite_distance field ", id, " should not be negative\n"));
+    return (my_puterror_sky("Error ", name, "scene_sky_sprite_distance field ",
+			    id, " should not be negative\n"));
   if ((sky->hitbox = create_sky_hitbox(id, ini, ptr_list, name)) == NULL)
     return (NULL);
   sky->next = NULL;
@@ -58,7 +72,8 @@ t_sky			*create_sky_node(int id, t_bunny_ini *ini,
   return (sky);
 }
 
-t_sky			*list_add_sky(int id, t_sky *list, char *name, t_bunny_ini *ini,
+t_sky			*list_add_sky(int id, t_sky *list, char *name,
+				      t_bunny_ini *ini,
 				      t_ptr_list **ptr_list)
 {
   t_sky			*new;
@@ -77,17 +92,21 @@ t_sky			*list_add_sky(int id, t_sky *list, char *name, t_bunny_ini *ini,
   return (list);
 }
 
-t_sky			*load_sky( char *name, t_bunny_ini *ini, t_ptr_list **ptr_list)
+t_sky			*load_sky( char *name, t_bunny_ini *ini,
+				   t_ptr_list **ptr_list)
 {
   t_sky			*list;
   char			*str;
   int			nb_sky;
   int			i;
 
-  if ((str = (char *)bunny_ini_get_field(ini, name, "scene_sky_count", 0)) == NULL)
-    return (my_puterror_sky("Error: balise scene or ", name, ":scene_sky_count ", -1, "field not found\n"));
+  if ((str = (char *)bunny_ini_get_field(ini, name,
+					 "scene_sky_count", 0)) == NULL)
+    return (my_puterror_sky("Error: balise scene or ", name,
+			    ":scene_sky_count ", -1, "field not found\n"));
   if ((nb_sky = my_getnbr(str)) < 0)
-    return (my_puterror_sky("Error: ", name, ":sky_count ", -1, "should not be negative\n"));
+    return (my_puterror_sky("Error: ", name, ":sky_count ",
+			    -1, "should not be negative\n"));
   list = NULL;
   i = -1;
   while (++i != nb_sky)

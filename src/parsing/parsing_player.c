@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Sat Apr 16 06:51:47 2016 Philippe Lefevre
-** Last update Sat Apr 16 08:53:12 2016 Philippe Lefevre
+** Last update Sat Apr 16 09:33:03 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -108,26 +108,54 @@ t_hitbox		*create_player_hitbox(int id, t_bunny_ini *ini,
 			       "failed in create_player_hitbox\n"));
   if ((hitbox = player_hitbox_x(id, ini, "player", hitbox)) == NULL)
     return (NULL);
-    if ((hitbox = player_hitbox_y(id, ini, "player", hitbox)) == NULL)
+  if ((hitbox = player_hitbox_y(id, ini, "player", hitbox)) == NULL)
     return (NULL);
   if ((hitbox = player_hitbox_width(id, ini, "player", hitbox)) == NULL)
     return (NULL);
   if ((hitbox = player_hitbox_height(id, ini, "player", hitbox)) == NULL)
-      return (NULL);
-    return (hitbox);
+    return (NULL);
+  return (hitbox);
 }
 
 char			*fill_inventory_slot(char *tmp, t_bunny_ini *ini,
 					     int i)
 {
-    if ((tmp = (char *)bunny_ini_get_field(ini, "player",
-		"player_inventory_item", i)) == NULL)
-      {
-	my_puterror_item("Error: player:player_inventory_item ", -1,
-			 "field not found\n");
-	return (NULL);
-      }
-return (tmp);
+  if ((tmp = (char *)bunny_ini_get_field(ini, "player",
+					 "player_inventory_slot",
+					 i)) == NULL)
+    {
+      my_puterror_item("Error: player:player_inventory_slot ", -1,
+		       "field not found\n");
+      return (NULL);
+    }
+  return (tmp);
+}
+
+char			*fill_inventory_item(char *tmp, t_bunny_ini *ini,
+					     int i)
+{
+  if ((tmp = (char *)bunny_ini_get_field(ini, "player",
+					 "player_inventory_item", i)) == NULL)
+    {
+      my_puterror_item("Error: player:player_inventory_item ", -1,
+		       "field not found\n");
+      return (NULL);
+    }
+  return (tmp);
+}
+
+char			*fill_inventory_amount(char *tmp, t_bunny_ini *ini,
+					       int i)
+{
+  if ((tmp = (char *)bunny_ini_get_field(ini, "player",
+					 "player_inventory_amount",
+					 i)) == NULL)
+    {
+      my_puterror_item("Error: player:player_inventory_amount ", -1,
+		       "field not found\n");
+      return (NULL);
+    }
+  return (tmp);
 }
 
 t_item			*fill_inventory(int i, int inventory_count,
@@ -138,25 +166,19 @@ t_item			*fill_inventory(int i, int inventory_count,
 
   while (++i < inventory_count)
     {
-      if ((tmp = (char *)bunny_ini_get_field(ini, "player",
-					     "player_inventory_slot",
-					     i)) == NULL)
-	return (my_puterror_item("Error: player:player_inventory_slot ", -1,
-				 "field not found\n"));
+      if ((tmp = fill_inventory_slot(tmp, ini, i)) == NULL)
+      	return (NULL);
       if (((slot = my_getnbr(tmp)) < 0) || (slot > SIZE_INVENTORY))
 	return (my_puterror_item("Error: player:player_inventory field ", i,
 				 " should not be negative or greater than \
 the size of the inventory"));
-	    if ((tmp = fill_inventory_slot(tmp, ini, i)) == NULL)
-	      return (NULL);
+      if ((tmp = fill_inventory_item(tmp, ini, i)) == NULL)
+	return (NULL);
       if ((inventory[slot].id = my_getnbr(tmp)) < 0)
 	return (my_puterror_item("Error: player:player_inventory_count field ",
 				 i, " object id should not be negative"));
-      if ((tmp = (char *)bunny_ini_get_field(ini, "player",
-					     "player_inventory_amount",
-					     i)) == NULL)
-	return (my_puterror_item("Error: player:player_inventory_amount ", -1,
-				 "field not found\n"));
+      if ((tmp = fill_inventory_amount(tmp, ini, i)) == NULL)
+	return (NULL);
       if ((inventory[slot].amount = my_getnbr(tmp)) < 0)
 	return (my_puterror_item("Error: player:player_inventory_count field ",
 				 i, " object amount should not be negative"));
@@ -213,10 +235,10 @@ t_item			*load_player_equiped(t_item *equiped, t_bunny_ini *ini,
   return (equiped);
 }
 
-t_player		*load_player(t_bunny_ini *ini, t_ptr_list **ptr_list)
+t_player		*load_player_init(t_ptr_list **ptr_list, char *tmp,
+					  t_bunny_ini *ini)
 {
   t_player		*player;
-  char			*tmp;
 
   player = NULL;
   if ((player = xmalloc(sizeof(t_player), ptr_list)) == NULL)
@@ -236,6 +258,17 @@ t_player		*load_player(t_bunny_ini *ini, t_ptr_list **ptr_list)
   if ((player->name = my_strdup(tmp, ptr_list)) == NULL)
     return (my_puterror_player("Error: player->name:my_strdup ",
 			       -1, "failed in load_player\n"));
+  return (player);
+}
+
+t_player		*load_player(t_bunny_ini *ini, t_ptr_list **ptr_list)
+{
+  t_player		*player;
+  char			*tmp;
+
+  tmp = NULL;
+  if ((player = load_player_init(ptr_list, tmp, ini)) == NULL)
+    return (NULL);
   if ((player->inventory = load_player_inventory(player->inventory,
 						 ini, ptr_list, tmp)) == NULL)
     return (NULL);

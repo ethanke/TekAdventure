@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:49:05 2016 Victor Sousa
-** Last update Sat Apr 16 09:06:59 2016 Victor Sousa
+** Last update Sat Apr 16 09:39:36 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -17,25 +17,25 @@ void			put_prompt(void)
 
 int			treat_cmd(int ac, char **av, t_ini *ini)
 {
-  /* try exit */
   if (ac == 1 && my_strcmp(av[0], "exit") == 0)
     return (-1);
-
-  /* try load ini */
   if (ac == 3 && my_strcmp(av[0], "load") == 0
       && my_strcmp(av[1], "ini") == 0)
     {
       if (load_ini(av[2], ini) == -1)
 	return (-1);
     }
-
-  /* try close ini */
+  if (ac == 3 && my_strcmp(av[0], "write") == 0
+      && my_strcmp(av[1], "ini") == 0)
+    {
+      if (write_ini(av[2], ini) == -1)
+	return (-1);
+    }
   if (ac == 2 && my_strcmp(av[0], "close") == 0
       && my_strcmp(av[1], "ini") == 0)
     close_ini(ini);
 
-  /* try aff */
-  if (ac > 1 && my_strcmp(av[0], "aff") == 0)
+  if (ac >= 1 && my_strcmp(av[0], "aff") == 0)
     aff_stuff(ac, av, ini);
   return (0);
 }

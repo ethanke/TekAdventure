@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Fri Apr 15 22:44:02 2016 Philippe Lefevre
-** Last update Sat Apr 16 07:32:46 2016 Philippe Lefevre
+** Last update Sat Apr 16 09:54:31 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -116,7 +116,6 @@ t_hitbox		*create_gate_hitbox(int id, t_bunny_ini *ini,
     return (NULL);
   return (hitbox);
 }
-
 
 t_gate			*create_gate_node_init(int id, t_bunny_ini *ini,
 					       t_ptr_list **ptr_list,

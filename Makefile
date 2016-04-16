@@ -27,6 +27,7 @@ PARSDIR		=	$(SRCDIR)/parsing
 ASTAR		=	$(SRCDIR)/astar
 EDITDIR		=	$(SRCDIR)/edit
 PRTFDIR		=	$(EDITDIR)/my_printf
+WRITEDIR	=	$(EDITDIR)/write
 
 INCDIR		=	inc
 LIBDIR		=	lib
@@ -59,6 +60,10 @@ SRC		+=	$(EDITDIR)/start_shell.c		\
 			$(EDITDIR)/load_ini.c			\
 			$(EDITDIR)/aff_stuff.c			\
 			$(EDITDIR)/free_shell.c
+
+SRC		+=	$(WRITEDIR)/write_ini.c			\
+			$(WRITEDIR)/write_player.c		\
+			$(WRITEDIR)/write_sprite.c
 
 SRC		+=	$(PRTFDIR)/my_disp_unprintable.c	\
 			$(PRTFDIR)/my_printf.c			\
