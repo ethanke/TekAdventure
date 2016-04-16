@@ -5,20 +5,21 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:49:05 2016 Victor Sousa
-** Last update Sat Apr 16 05:58:35 2016 Victor Sousa
+** Last update Sat Apr 16 07:20:25 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
 
-int			adventure_shell(void)
+void			start_shell()
 {
-  
-  return (1);
-}
+  char			*cmd;
+  char			**tab;
 
-void			start_shell(int ac, char **av)
-{
-  (void)ac;
-  (void)av;
-  while (adventure_shell());
+  while ((cmd = get_next_line(0)) != NULL)
+    {
+      tab = str_to_wordtab(cmd, " \t");
+
+      free_tab(tab);
+      free(cmd);
+    }
 }

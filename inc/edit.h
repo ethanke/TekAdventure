@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:51:56 2016 Victor Sousa
-** Last update Sat Apr 16 07:16:57 2016 Victor Sousa
+** Last update Sat Apr 16 07:21:36 2016 Gaëtan Léandre
 */
 
 #ifndef			EDIT_H_
@@ -19,6 +19,8 @@ typedef struct		s_ini
   t_scene		*scene;
 }			t_ini;
 
-void			start_shell(int ac, char **av);
+void			start_shell();
+void			free_tab(char **tab);
+char			**str_to_wordtab(char *str, char *separate);
 
 #endif			/* !EDIT_H_ */
