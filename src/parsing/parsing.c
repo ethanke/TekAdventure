@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:08:59 2016 Philippe Lefevre
-** Last update Sat Apr 16 19:29:53 2016 Philippe Lefevre
+** Last update Sat Apr 16 21:27:23 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -80,7 +80,9 @@ t_scene			*parsing(const char *file, t_player **player,
   t_scene		*stockage;
   t_scene		*scene;
 
-  ini = bunny_load_ini(file);
+  if ((ini = bunny_load_ini(file)) == NULL)
+    return (my_puterror_scene("Error: ", "", (char *)file,
+			      -1, ":No such file or directory\n"));
   if ((stockage = xmalloc(sizeof(*stockage), ptr_list)) == NULL)
     return (my_puterror_scene("Error: ", "stockage",
 			      ":xmalloc ", -1, "failed\n"));
