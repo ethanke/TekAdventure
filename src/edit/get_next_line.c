@@ -5,14 +5,14 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Mon Jan  4 15:56:23 2016 Gaëtan Léandre
-** Last update Sat Apr 16 19:38:38 2016 Ethan Kerdelhue
+** Last update Sat Apr  9 04:09:42 2016 Gaëtan Léandre
 */
 
-#include "get_next_line.h"
+#include 		"get_next_line.h"
 
-int	my_strlen_back(char *str)
+int			my_strlen_back(char *str)
 {
-  int	i;
+  int			i;
 
   i = 0;
   while (str[i] != '\0' && str[i] != '\n')
@@ -20,12 +20,12 @@ int	my_strlen_back(char *str)
   return (i);
 }
 
-char	*withnt_back(char *stock)
+char			*withnt_back(char *stock)
 {
-  int	i;
-  int	j;
-  int	size;
-  char	*new;
+  int			i;
+  int			j;
+  int			size;
+  char			*new;
 
   size = 0;
   while (stock[size])
@@ -46,15 +46,15 @@ char	*withnt_back(char *stock)
   return (new);
 }
 
-int	add_end(t_text *text, char *stock)
+int			add_end(t_text *text, char *stock)
 {
-  int	i;
-  int	j;
-  int	size;
-  char	*new;
+  int			i;
+  int			j;
+  int			size;
+  char			*new;
 
   size = my_strlen_back(text->result) + my_strlen_back(stock);
-  i = 0;
+  i = -1;
   j = 0;
   if (size == 0)
     new = text->result;
@@ -75,12 +75,12 @@ int	add_end(t_text *text, char *stock)
   return (0);
 }
 
-char	*get_next_line(const int fd)
+char			*get_next_line(const int fd)
 {
-  char		iread[READ_SIZE + 1];
-  static char	*stock = NULL;
-  t_text	text;
-  int		beread;
+  char			iread[READ_SIZE + 1];
+  static char		*stock = NULL;
+  t_text		text;
+  int			beread;
 
   text.i = 0;
   beread = 1;
