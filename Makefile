@@ -5,7 +5,7 @@
 ## Login   <lefevr_h@epitech.net>
 ##
 ## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
-## Last update Sat Apr 16 01:25:45 2016 Kerdelhue Ethan
+## Last update Sat Apr 16 07:32:05 2016 Gaëtan Léandre
 ##
 
 NAME		=	tekadventure
@@ -55,7 +55,8 @@ SRC		=	$(SRCDIR)/main.c			\
 
 SRC		+=	$(EDITDIR)/start_shell.c		\
 			$(EDITDIR)/get_next_line.c		\
-			$(EDITDIR)/str_to_wordtab.c
+			$(EDITDIR)/str_to_wordtab.c		\
+			$(EDITDIR)/free_shell.c
 
 SRC		+=	$(PRTFDIR)/my_disp_unprintable.c	\
 			$(PRTFDIR)/my_printf.c			\
