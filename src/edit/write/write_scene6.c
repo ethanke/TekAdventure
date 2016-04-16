@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 21:35:08 2016 Gaëtan Léandre
-** Last update Sat Apr 16 22:57:26 2016 Gaëtan Léandre
+** Last update Sat Apr 16 23:08:08 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -116,5 +116,4 @@ void			write_sprite_sky(t_sky *sky, int fd)
   write_sky_hitbox_y(sky, fd, i);
   write_sky_hitbox_w(sky, fd, i);
   write_sky_hitbox_h(sky, fd, i);
-  my_printf(fd, "\n\n");
 }
