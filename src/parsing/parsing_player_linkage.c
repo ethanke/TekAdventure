@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr 14 03:00:55 2016 Philippe Lefevre
-** Last update Fri Apr 15 22:53:43 2016 Philippe Lefevre
+** Last update Sat Apr 16 08:13:59 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -16,6 +16,7 @@ t_item			*link_inventory_item(t_item *inventory, t_object *object)
  int			i;
 
   i = -1;
+  /* verifie que les item id dans linventaire existe */
   while (++i != SIZE_INVENTORY)
     {
       tmp_object = object;

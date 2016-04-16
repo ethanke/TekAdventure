@@ -5,55 +5,129 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Sat Apr 16 06:51:47 2016 Philippe Lefevre
-** Last update Sat Apr 16 07:15:32 2016 Philippe Lefevre
+** Last update Sat Apr 16 08:17:30 2016 Philippe Lefevre
 */
-#include	"main.h"
+#include		"main.h"
 
-int		get_item_id(char *str, int *id, int *amount)
+t_hitbox		*player_hitbox_x(int id, t_bunny_ini *ini, char *name,
+				       t_hitbox *hitbox)
 {
-  int            i;
-
-  (*id) = -1;
-  (*amount) = -1;
-  if (str != NULL)
-    {
-      (*id) = my_getnbr(str);
-      i = -1;
-      while (str[++i] && str[i] != ';');
-      (*amount) = my_getnbr(str + i + 1);
-    }
-  return (0);
-}
-
-t_hitbox		*create_player_hitbox(int id, t_bunny_ini *ini,
-						 t_ptr_list **ptr_list)
-{
-  t_hitbox		*hitbox;
   char			*str;
-  int			i;
 
-  if ((hitbox = xmalloc(sizeof(*hitbox), ptr_list)) == NULL)
-    return (my_puterror_hitbox("Error: object:xmalloc ", -1, "failed in create_object_node\n"));
-  if ((str = (char *)bunny_ini_get_field(ini, "player", "player_sprite_hitbox", id)) == NULL)
-    return (my_puterror_hitbox("Error: player:player_sprite_hitbox field ", id, " not found\n"));
-  i = -1;
-  hitbox->x = my_getnbr(str);
-  while (str[++i] && str[i] != ';');
-  hitbox->y = my_getnbr(str + i + 1);
-  while (str[++i] && str[i] != ';');
-  hitbox->width = my_getnbr(str + i + 1);
-  while (str[++i] && str[i] != ';');
-  hitbox->height = my_getnbr(str + i + 1);
+  if ((str = (char *)bunny_ini_get_field(ini, name,
+	      "player_sprite_hitbox_x", id))
+      == NULL)
+    {
+      my_puterror_hitbox("Error: ", -1, name);
+      return (my_puterror_hitbox(":player_sprite_hitbox_x field ",
+				 id, " not found\n"));
+    }
+  if ((hitbox->x = my_getnbr(str)) < 0)
+    {
+      my_puterror_hitbox("Error: ", -1, name);
+      return (my_puterror_hitbox(":player_sprite_hitbox_x field ", id,
+				 " should not be negative and only number\n"));
+    }
   return (hitbox);
 }
 
+t_hitbox		*player_hitbox_y(int id, t_bunny_ini *ini, char *name,
+					 t_hitbox *hitbox)
+{
+  char			*str;
+
+  if ((str = (char *)bunny_ini_get_field(ini, name,
+					 "player_sprite_hitbox_y", id))
+      == NULL)
+    {
+      my_puterror_hitbox("Error: ", -1, name);
+      return (my_puterror_hitbox(":player_sprite_hitbox_y field ",
+				 id, " not found\n"));
+    }
+  if ((hitbox->y = my_getnbr(str)) < 0)
+    {
+      my_puterror_hitbox("Error: ", -1, name);
+      return (my_puterror_hitbox(":player_sprite_hitbox_y field ", id,
+				 " should not be negative and only number\n"));
+    }
+  return (hitbox);
+}
+
+t_hitbox		*player_hitbox_width(int id, t_bunny_ini *ini,
+					     char *name, t_hitbox *hitbox)
+{
+  char			*str;
+
+  if ((str = (char *)bunny_ini_get_field(ini, name,
+					 "player_sprite_hitbox_width", id))
+      == NULL)
+    {
+      my_puterror_hitbox("Error: ", -1, name);
+      return (my_puterror_hitbox(":player_sprite_hitbox_width field ",
+				 id, " not found\n"));
+    }
+  if ((hitbox->width = my_getnbr(str)) < 0)
+    {
+      my_puterror_hitbox("Error: ", -1, name);
+      return (my_puterror_hitbox(":player_sprite_hitbox_width field ", id,
+				 " should not be negative and only number\n"));
+    }
+  return (hitbox);
+}
+
+t_hitbox		*player_hitbox_height(int id, t_bunny_ini *ini,
+					    char *name, t_hitbox *hitbox)
+{
+  char		*str;
+
+  if ((str = (char *)bunny_ini_get_field(ini, name,
+					 "player_sprite_hitbox_height", id))
+      == NULL)
+    {
+      my_puterror_hitbox("Error: ", -1, name);
+      return (my_puterror_hitbox(":player_sprite_hitbox_height field ",
+				 id, " not found\n"));
+    }
+  if ((hitbox->height = my_getnbr(str)) < 0)
+    {
+      my_puterror_hitbox("Error: ", -1, name);
+      return (my_puterror_hitbox(":player_sprite_hitbox_height field ", id,
+				 " should not be negative and only number\n"));
+    }
+  return (hitbox);
+}
+
+t_hitbox		*create_player_hitbox(int id, t_bunny_ini *ini,
+					    t_ptr_list **ptr_list)
+{
+  t_hitbox		*hitbox;
+
+  if ((hitbox = xmalloc(sizeof(*hitbox), ptr_list)) == NULL)
+    return (my_puterror_hitbox("Error: hitbox:xmalloc ", -1,
+			       "failed in create_player_hitbox\n"));
+  if ((hitbox = player_hitbox_x(id, ini, "player", hitbox)) == NULL)
+    return (NULL);
+  if ((hitbox = player_hitbox_y(id, ini, "player", hitbox)) == NULL)
+    return (NULL);
+  if ((hitbox = player_hitbox_width(id, ini, "player", hitbox)) == NULL)
+    return (NULL);
+  if ((hitbox = player_hitbox_height(id, ini, "player", hitbox)) == NULL)
+    return (NULL);
+  return (hitbox);
+}
+/*
+t_item			*fill_inventory()
+{
+
+
+}
+*/
 t_item			*load_player_inventory(t_item *inventory, t_bunny_ini *ini,
 					       t_ptr_list **ptr_list, char *tmp)
 {
   int			inventory_count;
   int			slot;
   int			i;
-  int			j;
 
   inventory = NULL;
   if ((inventory = xmalloc(sizeof(t_item)
@@ -74,17 +148,18 @@ t_item			*load_player_inventory(t_item *inventory, t_bunny_ini *ini,
       i = -1;
       while (++i < inventory_count)
 	{
-	  if ((tmp = (char *)bunny_ini_get_field(ini, "player", "player_inventory", i)) == NULL)
-	    return (my_puterror_item("Error: player:player_inventory ", -1, "field not found\n"));
-	  j = -1;
-	  if (((slot = my_getnbr(tmp)) < 0) || (slot > SIZE_INVENTORY))
-	    return (my_puterror_item("Error: player:player_inventory field ", i, " should not be negative or greater than the size of the inventory"));
-	  while (tmp[++j] && tmp[j] != ';');
-	  if ((inventory[slot].id = my_getnbr(tmp + j + 1)) < 0)
-	    return (my_puterror_item("Error: player:player_inventory_count field ", i, " object id should not be negative"));
-	  while (tmp[++j] && tmp[j] != ';');
-	  if ((inventory[slot].amount = my_getnbr(tmp + j + 1)) < 0)
-	    return (my_puterror_item("Error: player:player_inventory_count field ", i, " object amount should not be negative"));
+	    if ((tmp = (char *)bunny_ini_get_field(ini, "player", "player_inventory_slot", i)) == NULL)
+	      return (my_puterror_item("Error: player:player_inventory_slot ", -1, "field not found\n"));
+	    if (((slot = my_getnbr(tmp)) < 0) || (slot > SIZE_INVENTORY))
+	      return (my_puterror_item("Error: player:player_inventory field ", i, " should not be negative or greater than the size of the inventory"));
+	    if ((tmp = (char *)bunny_ini_get_field(ini, "player", "player_inventory_item", i)) == NULL)
+	      return (my_puterror_item("Error: player:player_inventory_item ", -1, "field not found\n"));
+	    if ((inventory[slot].id = my_getnbr(tmp)) < 0)
+	      return (my_puterror_item("Error: player:player_inventory_count field ", i, " object id should not be negative"));
+	    if ((tmp = (char *)bunny_ini_get_field(ini, "player", "player_inventory_amount", i)) == NULL)
+	      return (my_puterror_item("Error: player:player_inventory_amount ", -1, "field not found\n"));
+	    if ((inventory[slot].amount = my_getnbr(tmp)) < 0)
+	      return (my_puterror_item("Error: player:player_inventory_count field ", i, " object amount should not be negative"));
 	}
     }
   return (inventory);
