@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 02:56:24 2016 Gaëtan Léandre
-** Last update Sat Apr 16 02:10:34 2016 Gaëtan Léandre
+** Last update Sat Apr 16 04:36:48 2016 Gaëtan Léandre
 */
 
 #include	 	"main.h"
@@ -73,8 +73,12 @@ void			put_grille(t_prog *prog, t_grille *gri,
 unsigned int		chose_color(int x, int y, int size_x, t_ground *ground)
 {
   t_color		color;
-  if (ground[x + y * size_x].npc == NULL && ground[x + y * size_x].decors == NULL)
+  if (ground[x + y * size_x].npc == NULL
+      && ground[x + y * size_x].decors == NULL
+      && ground[x + y * size_x].gate == NULL)
     color.full = WHITE;
+  else if (ground[x + y * size_x].gate != NULL)
+    color.full = GREEN;
   else
     color.full = RED;
   color.argb[3] = 100;
