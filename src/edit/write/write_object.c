@@ -5,12 +5,14 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 08:44:31 2016 Gaëtan Léandre
-** Last update Sat Apr 16 10:10:09 2016 Gaëtan Léandre
+** Last update Sat Apr 16 10:19:24 2016 Victor Sousa
 */
+
+#include		"main.h"
 
 void			write_object_damage(t_object *object, int fd, int size)
 {
-  t_sprite		*tmp;
+  t_object		*tmp;
   int			i;
 
   i = 0;
@@ -29,7 +31,7 @@ void			write_object_damage(t_object *object, int fd, int size)
 
 void			write_object_name(t_object *object, int fd, int size)
 {
-  t_sprite		*tmp;
+  t_object		*tmp;
   int			i;
 
   i = 0;
@@ -48,7 +50,7 @@ void			write_object_name(t_object *object, int fd, int size)
 
 void			write_object_id(t_object *object, int fd, int size)
 {
-  t_sprite		*tmp;
+  t_object		*tmp;
   int			i;
 
   i = 0;
@@ -76,7 +78,7 @@ void			write_object_launch(t_object *object, int fd, int size)
   write_object_sprite_hit_w(object, fd, size);
   write_object_sprite_hit_h(object, fd, size);
   write_object_equip(object, fd, size);
-  write_object_slot(object, fd, size);
+  write_object_equip_slot(object, fd, size);
   write_object_stamina(object, fd, size);
   write_object_strength(object, fd, size);
   write_object_critical(object, fd, size);
@@ -87,7 +89,7 @@ void			write_object_launch(t_object *object, int fd, int size)
 
 void			write_object(t_object *object, int fd)
 {
-  t_sprite		*tmp;
+  t_object		*tmp;
   int			i;
 
   i = 0;
@@ -98,6 +100,6 @@ void			write_object(t_object *object, int fd)
       i++;
     }
   my_printf(fd, "[object]\nobject_count=\"%d\"\n", i);
-  write_object_launch(object, fd, size);
+  write_object_launch(object, fd, i);
   my_printf(fd, "\n\n");
 }

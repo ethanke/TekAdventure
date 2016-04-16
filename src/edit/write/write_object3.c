@@ -5,13 +5,15 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 09:48:17 2016 Gaëtan Léandre
-** Last update Sat Apr 16 10:07:34 2016 Gaëtan Léandre
+** Last update Sat Apr 16 10:17:46 2016 Victor Sousa
 */
+
+#include		"main.h"
 
 void			write_object_critical(t_object *object, int fd,
 					      int size)
 {
-  t_sprite		*tmp;
+  t_object		*tmp;
   int			i;
 
   i = 0;
@@ -31,7 +33,7 @@ void			write_object_critical(t_object *object, int fd,
 void			write_object_strength(t_object *object, int fd,
 					      int size)
 {
-  t_sprite		*tmp;
+  t_object		*tmp;
   int			i;
 
   i = 0;
@@ -51,7 +53,7 @@ void			write_object_strength(t_object *object, int fd,
 void			write_object_stamina(t_object *object, int fd,
 					     int size)
 {
-  t_sprite		*tmp;
+  t_object		*tmp;
   int			i;
 
   i = 0;
@@ -71,7 +73,7 @@ void			write_object_stamina(t_object *object, int fd,
 void			write_object_equip_slot(t_object *object, int fd,
 						int size)
 {
-  t_sprite		*tmp;
+  t_object		*tmp;
   int			i;
 
   i = 0;
@@ -91,7 +93,7 @@ void			write_object_equip_slot(t_object *object, int fd,
 void			write_object_equip(t_object *object, int fd,
 					   int size)
 {
-  t_sprite		*tmp;
+  t_object		*tmp;
   int			i;
 
   i = 0;

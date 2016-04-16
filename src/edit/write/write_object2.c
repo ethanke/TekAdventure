@@ -5,13 +5,15 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 09:38:30 2016 Gaëtan Léandre
-** Last update Sat Apr 16 09:42:49 2016 Gaëtan Léandre
+** Last update Sat Apr 16 10:17:36 2016 Victor Sousa
 */
+
+#include		"main.h"
 
 void			write_object_sprite_hit_w(t_object *object, int fd,
 						  int size)
 {
-  t_sprite		*tmp;
+  t_object		*tmp;
   int			i;
 
   i = 0;
@@ -31,7 +33,7 @@ void			write_object_sprite_hit_w(t_object *object, int fd,
 void			write_object_sprite_hit_h(t_object *object, int fd,
 						  int size)
 {
-  t_sprite		*tmp;
+  t_object		*tmp;
   int			i;
 
   i = 0;
@@ -51,7 +53,7 @@ void			write_object_sprite_hit_h(t_object *object, int fd,
 void			write_object_sprite_hit_y(t_object *object, int fd,
 						  int size)
 {
-  t_sprite		*tmp;
+  t_object		*tmp;
   int			i;
 
   i = 0;
@@ -71,7 +73,7 @@ void			write_object_sprite_hit_y(t_object *object, int fd,
 void			write_object_sprite_hit_x(t_object *object, int fd,
 						  int size)
 {
-  t_sprite		*tmp;
+  t_object		*tmp;
   int			i;
 
   i = 0;
@@ -91,7 +93,7 @@ void			write_object_sprite_hit_x(t_object *object, int fd,
 void			write_object_sprite_id(t_object *object, int fd,
 					       int size)
 {
-  t_sprite		*tmp;
+  t_object		*tmp;
   int			i;
 
   i = 0;

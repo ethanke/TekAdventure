@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 09:07:37 2016 Victor Sousa
-** Last update Sat Apr 16 09:38:03 2016 Victor Sousa
+** Last update Sat Apr 16 10:20:38 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -14,6 +14,7 @@ void			aff_all(int fd, t_ini *ini)
 {
   write_sprite(ini->scene->sprite, fd);
   write_player(ini->player, fd);
+  write_object(ini->scene->object, fd);
 }
 
 void			aff_stuff(int ac, char **av, t_ini *ini)
@@ -30,4 +31,6 @@ void			aff_stuff(int ac, char **av, t_ini *ini)
     write_player(ini->player, 1);
   if (ac == 2 && my_strcmp(av[1], "sprite") == 0)
     write_sprite(ini->scene->sprite, 1);
+  if (ac == 2 && my_strcmp(av[1], "object") == 0)
+    write_object(ini->scene->object, 1);
 }

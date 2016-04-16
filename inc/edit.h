@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:51:56 2016 Victor Sousa
-** Last update Sat Apr 16 09:43:43 2016 Victor Sousa
+** Last update Sat Apr 16 10:29:51 2016 Victor Sousa
 */
 
 #ifndef			EDIT_H_
@@ -30,6 +30,33 @@ void			aff_all(int fd, t_ini *ini);
 int			write_ini(char *path, t_ini *ini);
 void			write_player(t_player *player, int fd);
 void			write_sprite(t_sprite *sprite, int fd);
+void			write_object(t_object *object, int fd);
+void			write_object_sprite_hit_w(t_object *object, int fd,
+						  int size);
+void			write_object_sprite_hit_h(t_object *object, int fd,
+						  int size);
+void			write_object_sprite_hit_y(t_object *object, int fd,
+						  int size);
+void			write_object_sprite_hit_x(t_object *object, int fd,
+						  int size);
+void			write_object_sprite_id(t_object *object, int fd,
+					       int size);
+void			write_object_critical(t_object *object, int fd,
+					      int size);
+void			write_object_strength(t_object *object, int fd,
+					      int size);
+void			write_object_stamina(t_object *object, int fd,
+					     int size);
+void			write_object_agility(t_object *object, int fd,
+					     int size);
+void			write_object_armor(t_object *object, int fd,
+					   int size);
+void			write_object_intellect(t_object *object, int fd,
+					       int size);
+void			write_object_equip_slot(t_object *object, int fd,
+						int size);
+void			write_object_equip(t_object *object, int fd,
+					   int size);
 
 char			*get_next_line(const int fd);
 void			start_shell();

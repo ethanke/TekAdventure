@@ -63,7 +63,11 @@ SRC		+=	$(EDITDIR)/start_shell.c		\
 
 SRC		+=	$(WRITEDIR)/write_ini.c			\
 			$(WRITEDIR)/write_player.c		\
-			$(WRITEDIR)/write_sprite.c
+			$(WRITEDIR)/write_sprite.c		\
+			$(WRITEDIR)/write_object.c		\
+			$(WRITEDIR)/write_object2.c		\
+			$(WRITEDIR)/write_object3.c		\
+			$(WRITEDIR)/write_object4.c
 
 SRC		+=	$(PRTFDIR)/my_disp_unprintable.c	\
 			$(PRTFDIR)/my_printf.c			\
