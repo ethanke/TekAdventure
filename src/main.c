@@ -127,9 +127,9 @@ int			main(int ac, char **av, char **env)
 {
   t_prog		prog;
 
+  set_max_heap_size(50);
   if (pars_arg(ac, av))
     return (ERROR);
-  set_max_heap_size(50);
   if (env[0] == 0)
     return (ERROR);
   if ((prog.win = bunny_start(WIN_WIDTH, WIN_HEIGHT, false, WIN_NAME)) == NULL)
