@@ -36,7 +36,7 @@ LIBDIR		=	lib
 RM		=	rm -f
 
 CC		=	gcc
-CFLAGS		=	-W -Wall -Wextra -g3 -ggdb	\
+CFLAGS		=	-W -Wall -Wextra -g3 -ggdb 		\
 			-ansi -pedantic				\
 			-I/home/${USER}/.froot/include		\
 			-I$(INCDIR)
@@ -77,7 +77,8 @@ SRC		+=	$(WRITEDIR)/write_ini.c			\
 			$(WRITEDIR)/write_npc2.c		\
 			$(WRITEDIR)/write_npc3.c		\
 
-SRC		+=	$(ADDDIR)/add_object.c
+SRC		+=	$(ADDDIR)/add_object.c			\
+			$(ADDDIR)/get_obj_id.c
 
 SRC		+=	$(PRTFDIR)/my_disp_unprintable.c	\
 			$(PRTFDIR)/my_printf.c			\
