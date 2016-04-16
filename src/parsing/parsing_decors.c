@@ -5,20 +5,138 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Sat Apr 16 10:02:20 2016 Philippe Lefevre
+** Last update Sun Apr 17 01:12:25 2016 Philippe Lefevre
 */
 
 #include		"main.h"
 
-int 			fill_loot_table(char *str, int tab[2])
+t_breakable		*fill_loot_table(t_breakable *breakable, int id,
+					 t_bunny_ini *ini)
 {
-  int			i;
+  char			*str;
 
-  tab[0] = my_getnbr(str);
-  i = -1;
-  while (str[++i] && str[i] != ';');
-  tab[1] = my_getnbr(str + i + 1);
-  return (0);
+  if ((str = (char *)bunny_ini_get_field(ini, "decors",
+                                        "decors_loot_id", id)) == NULL)
+    return (my_puterror_breakable("Error: decors:decors_loot_id field ",
+                                 id, " not found\n"));
+    if ((breakable->loot[0] = my_getnbr(str)) < 0)
+    return (my_puterror_breakable("Error: decors:decors_loot_id field ",
+                                 id, " should not be negative\n"));
+  if ((str = (char *)bunny_ini_get_field(ini, "decors",
+	      "decors_loot_amount", id)) == NULL)
+      return (my_puterror_breakable("Error: decors:decors_loot_amount field ",
+				    id, " not found\n"));
+      if ((breakable->loot[1] = my_getnbr(str)) < 0)
+      return (my_puterror_breakable("Error: decors:decors_loot_id field ",
+                                   id, " should not be negative\n"));
+  return (breakable);
+}
+
+t_hitbox		*decors_hitbox_x(int id, t_bunny_ini *ini, char *name,
+					 t_hitbox *hitbox)
+{
+  char			*str;
+
+  if ((str = (char *)bunny_ini_get_field(ini, name,
+					 "decors_sprite_hitbox_x", id))
+      == NULL)
+    {
+      my_puterror_hitbox("Error: ", -1, name);
+      return (my_puterror_hitbox(":decors_sprite_hitbox_x field ",
+				 id, " not found\n"));
+    }
+  if ((hitbox->x = my_getnbr(str)) < 0)
+    {
+      my_puterror_hitbox("Error: ", -1, name);
+      return (my_puterror_hitbox(":decors_sprite_hitbox_x field ", id,
+				 " should not be negative and only number\n"));
+    }
+  return (hitbox);
+}
+
+t_hitbox		*decors_hitbox_y(int id, t_bunny_ini *ini, char *name,
+					 t_hitbox *hitbox)
+{
+  char			*str;
+
+  if ((str = (char *)bunny_ini_get_field(ini, name,
+					 "decors_sprite_hitbox_y", id))
+      == NULL)
+    {
+      my_puterror_hitbox("Error: ", -1, name);
+      return (my_puterror_hitbox(":decors_sprite_hitbox_y field ",
+				 id, " not found\n"));
+    }
+  if ((hitbox->y = my_getnbr(str)) < 0)
+    {
+      my_puterror_hitbox("Error: ", -1, name);
+      return (my_puterror_hitbox(":decors_sprite_hitbox_y field ", id,
+				 " should not be negative and only number\n"));
+    }
+  return (hitbox);
+}
+
+t_hitbox		*decors_hitbox_width(int id, t_bunny_ini *ini,
+					     char *name, t_hitbox *hitbox)
+{
+  char			*str;
+
+  if ((str = (char *)bunny_ini_get_field(ini, name,
+					 "decors_sprite_hitbox_width", id))
+      == NULL)
+    {
+      my_puterror_hitbox("Error: ", -1, name);
+      return (my_puterror_hitbox(":decors_sprite_hitbox_width field ",
+				 id, " not found\n"));
+    }
+  if ((hitbox->width = my_getnbr(str)) < 0)
+    {
+      my_puterror_hitbox("Error: ", -1, name);
+      return (my_puterror_hitbox(":decors_sprite_hitbox_width field ", id,
+				 " should not be negative and only number\n"));
+    }
+  return (hitbox);
+}
+
+t_hitbox		*decors_hitbox_height(int id, t_bunny_ini *ini,
+					      char *name, t_hitbox *hitbox)
+{
+  char		*str;
+
+  if ((str = (char *)bunny_ini_get_field(ini, name,
+					 "decors_sprite_hitbox_height", id))
+      == NULL)
+    {
+      my_puterror_hitbox("Error: ", -1, name);
+      return (my_puterror_hitbox(":decors_sprite_hitbox_height field ",
+				 id, " not found\n"));
+    }
+  if ((hitbox->height = my_getnbr(str)) < 0)
+    {
+      my_puterror_hitbox("Error: ", -1, name);
+      return (my_puterror_hitbox(":decors_sprite_hitbox_height field ", id,
+				 " should not be negative and only number\n"));
+    }
+  return (hitbox);
+}
+
+t_hitbox		*create_decors_hitbox(int id, t_bunny_ini *ini,
+					      t_ptr_list **ptr_list)
+{
+  t_hitbox		*hitbox;
+
+  if ((hitbox = xmalloc(sizeof(*hitbox), ptr_list)) == NULL)
+    return (my_puterror_hitbox("Error: hitbox:xmalloc ", -1,
+			       "failed in create_decors_hitbox\n"));
+  if ((hitbox = decors_hitbox_x(id, ini, "decors", hitbox)) == NULL)
+    return (NULL);
+  if ((hitbox = decors_hitbox_y(id, ini, "decors", hitbox)) == NULL)
+    return (NULL);
+  if ((hitbox = decors_hitbox_width(id, ini, "decors", hitbox)) == NULL)
+    return (NULL);
+  if ((hitbox = decors_hitbox_height(id, ini, "decors", hitbox)) == NULL)
+    return (NULL);
+  return (hitbox);
 }
 
 t_breakable		*create_decors_breakable(int id, t_bunny_ini *ini,
@@ -63,37 +181,9 @@ t_breakable		*create_decors_breakable(int id, t_bunny_ini *ini,
   if ((breakable->lootable != 0) && (breakable->lootable != 1))
     return (my_puterror_breakable("Error: decors:decors_is_lootable field ",
 				  id, " format 0 or 1\n"));
-  if ((str = (char *)bunny_ini_get_field(ini, "decors",
-					 "decors_loot", id)) == NULL)
-    return (my_puterror_breakable("Error: decors:decors_loot field ",
-				  id, " not found\n"));
-  fill_loot_table(str, breakable->loot);
+  if ((breakable = fill_loot_table(breakable, id, ini)) == NULL)
+      return (NULL);
   return (breakable);
-}
-
-t_hitbox		*create_decors_hitbox(int id, t_bunny_ini *ini,
-					      t_ptr_list **ptr_list)
-{
-  t_hitbox		*hitbox;
-  char			*str;
-  int			i;
-
-  if ((hitbox = xmalloc(sizeof(*hitbox), ptr_list)) == NULL)
-    return (my_puterror_hitbox("Error: hitbox:xmalloc ", -1,
-			       "failed in create_decors_hitbox\n"));
-  if ((str = (char *)bunny_ini_get_field(ini, "decors",
-					 "decors_sprite_hitbox", id)) == NULL)
-    return (my_puterror_hitbox("Error: decors:decors_sprite_hitbox field ",
-			       id, " not found\n"));
-  i = -1;
-  hitbox->x = my_getnbr(str);
-  while (str[++i] && str[i] != ';');
-  hitbox->y = my_getnbr(str + i + 1);
-  while (str[++i] && str[i] != ';');
-  hitbox->width = my_getnbr(str + i + 1);
-  while (str[++i] && str[i] != ';');
-  hitbox->height = my_getnbr(str + i + 1);
-  return (hitbox);
 }
 
 t_decors		*create_decors_node(int id, t_bunny_ini *ini,
