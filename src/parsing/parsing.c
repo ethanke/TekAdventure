@@ -5,10 +5,36 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:08:59 2016 Philippe Lefevre
-** Last update Sat Apr 16 00:41:25 2016 Philippe Lefevre
+** Last update Sat Apr 16 06:16:51 2016 Philippe Lefevre
 */
 
 #include		"main.h"
+
+t_scene			*link_ptr_gate(t_scene *scene)
+{
+  t_scene		*tmp_scene;
+  t_scene		*scene_finder;
+  t_gate		*gate;
+
+  tmp_scene = scene;
+  while (tmp_scene != NULL)
+    {
+      gate = tmp_scene->ground->gate;
+      while (gate != NULL)
+	{
+	  scene_finder = scene;
+	  while (scene_finder != NULL)
+	    {
+	      if (!(my_strcmp(scene_finder->name, gate->name)))
+		tmp_scene->ground->gate->scene = scene_finder;
+	      scene_finder = scene_finder->next;
+	    }
+	  gate = gate->next;
+	}
+      tmp_scene = tmp_scene->next;
+    }
+  return (scene);
+}
 
 t_scene			*parsing(const char *file, t_player **player,
 				 t_ptr_list **ptr_list)
@@ -49,6 +75,7 @@ t_scene			*parsing(const char *file, t_player **player,
   (*player) = stockage->player;
   if ((scene = load_scene(ini, stockage, ptr_list)) == NULL)
     return (NULL);
+  scene = link_ptr_gate(scene);
   bunny_delete_ini(ini);
   return (scene);
 }
