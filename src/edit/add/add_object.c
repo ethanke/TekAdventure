@@ -5,13 +5,27 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 19:48:52 2016 Victor Sousa
-** Last update Sun Apr 17 01:09:54 2016 Victor Sousa
+** Last update Sun Apr 17 01:45:07 2016 Victor Sousa
 */
 
 #include		"main.h"
 
+t_object		*list_add_new_object(t_object *list, t_object *new)
+{
+  t_object		*tmp;
+
+  tmp = list;
+  while (tmp->next != NULL)
+    tmp = tmp->next;
+  new->prev = tmp;
+  new->next = NULL;
+  tmp->next = new;
+  return (list);
+}
+
 void			add_object(t_ini *ini)
 {
+  char			*str;
   t_object		*obj;
 
   if ((obj = xmalloc(sizeof(t_object), &ini->ptr_list)) == NULL)
@@ -61,10 +75,13 @@ void			add_object(t_ini *ini)
   obj->texture_hitbox->x = get_x_pos_sprite(ini, obj->sprite_id);
   my_printf(1, "y : ");
   obj->texture_hitbox->y = get_y_pos_sprite(ini, obj->sprite_id);
-
+  my_printf(1, "\nwidth in the sprite : ");
+  obj->texture_hitbox->width = get_x_pos_sprite(ini, obj->sprite_id);
+  my_printf(1, "height in the sprite : ");
+  obj->texture_hitbox->height = get_y_pos_sprite(ini, obj->sprite_id);
 
   /* recap */
-  my_printf(1, "\n\nid: %d\n", obj->object_id);
+  my_printf(1, "\n\nHere is your item\nid: %d\n", obj->object_id);
   my_printf(1, "name: %s\n", obj->name);
   my_printf(1, "damage: %d\n", obj->damage);
   my_printf(1, "is equipable: %d\n", obj->is_equipable);
@@ -76,4 +93,25 @@ void			add_object(t_ini *ini)
   my_printf(1, "equipable armor: %d\n", obj->caract->armor);
   my_printf(1, "equipable agility: %d\n", obj->caract->agility);
   my_printf(1, "sprite id: %d\n", obj->sprite_id);
+  my_printf(1, "sprite pos x: %d\n", obj->texture_hitbox->x);
+  my_printf(1, "sprite pos y: %d\n", obj->texture_hitbox->y);
+  my_printf(1, "sprite width: %d\n", obj->texture_hitbox->width);
+  my_printf(1, "sprite height: %d\n", obj->texture_hitbox->height);
+
+  my_printf(1, "So do you want to add it in ini?  (yes or no)\n");
+  if ((str = get_next_line(0)) == NULL)
+    return;
+  while (my_strcmp(str, "yes") != 0 && my_strcmp(str, "no") != 0)
+    {
+      my_printf(1, "yes or no\n");
+      free(str);
+      if ((str = get_next_line(0)) == NULL)
+	return;
+    }
+  if (my_strcmp(str, "yes") == 0)
+    {
+      list_add_new_object(ini->scene->object, obj);
+      my_printf(1, "Object added in your ini file :D\nYou can write it using");
+      my_printf(1, " 'write ini path_to_file.ini'\n\n");
+    }
 }
