@@ -5,18 +5,10 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Tue Apr 12 03:55:39 2016 Gaëtan Léandre
-** Last update Sat Apr 16 01:28:24 2016 Gaëtan Léandre
+** Last update Sat Apr 16 05:09:09 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
-
-int			in_hitbox(t_hitbox *hitbox, t_bunny_position *pos)
-{
-  if (pos->x > hitbox->x && pos->x < hitbox->x + hitbox->width
-      && pos->y > hitbox->y && pos->y < hitbox->y + hitbox->height)
-    return (1);
-  return (0);
-}
 
 void			get_npc_clicked(t_ground *ground, t_grille *grille,
 					t_map_click *click, float percent)
