@@ -5,37 +5,22 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sat Apr 16 08:26:18 2016 Ethan Kerdelhue
-** Last update Sat Apr 16 08:26:31 2016 Ethan Kerdelhue
+** Last update Sat Apr 16 09:07:46 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
-
-void			set_magic(t_prog *prog, t_bunny_position *magic)
-{
-  magic->x = WIN_WIDTH / 2 + 0 * prog->defend_button->width;
-  magic->y = 600;
-}
-
-void			set_defend(t_prog *prog, t_bunny_position *defend)
-{
-  defend->x = WIN_WIDTH / 2 - 1 * prog->defend_button->width;
-  defend->y = 600;
-}
-
-void			set_attack(t_prog *prog, t_bunny_position *attack)
-{
-  attack->x = WIN_WIDTH / 2 - 2 * prog->skip_button->width;
-  attack->y = 600;
-}
 
 void			set_val(t_prog *prog,
 				t_bunny_position *attack,
 				t_bunny_position *defend,
 				t_bunny_position *magic)
 {
-  set_magic(prog, magic);
-  set_defend(prog, defend);
-  set_attack(prog, attack);
+  magic->x = WIN_WIDTH / 2 - 2 * prog->skip_button->width;
+  magic->y = 600;
+  defend->x = WIN_WIDTH / 2 - 1 * prog->defend_button->width;
+  defend->y = 600;
+  attack->x = WIN_WIDTH / 2 + 0 * prog->defend_button->width;
+  attack->y = 600;
 }
 
 void			set_size(t_prog *prog,
