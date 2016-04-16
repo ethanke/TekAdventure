@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 02:56:24 2016 Gaëtan Léandre
-** Last update Sat Apr 16 04:36:48 2016 Gaëtan Léandre
+** Last update Sat Apr 16 19:19:48 2016 Ethan Kerdelhue
 */
 
 #include	 	"main.h"
@@ -66,57 +66,6 @@ void			put_grille(t_prog *prog, t_grille *gri,
 		place_image(create_hitbox(calc_x_h(gri, &pos, percent, tmp->x),
 					  tmp->y, tmp->width, tmp->height), *gro[pos.x + pos.y * gri->grille_x].decors->texture_hitbox,
 			    gro[pos.x + pos.y * gri->grille_x].decors->texture, pix);
-	}
-    }
-}
-
-unsigned int		chose_color(int x, int y, int size_x, t_ground *ground)
-{
-  t_color		color;
-  if (ground[x + y * size_x].npc == NULL
-      && ground[x + y * size_x].decors == NULL
-      && ground[x + y * size_x].gate == NULL)
-    color.full = WHITE;
-  else if (ground[x + y * size_x].gate != NULL)
-    color.full = GREEN;
-  else
-    color.full = RED;
-  color.argb[3] = 100;
-  return (color.full);
-}
-
-void			disp_cases(t_scene *scene, t_bunny_pixelarray *pix,
-				   float percent)
-{
-  t_grille		grille;
-  t_bunny_position	pos;
-  t_bunny_position	palier;
-  t_bunny_position	tmp;
-  float			case_x;
-  t_color		color;
-
-  tmp.y = 0;
-  grille = get_grille_with_place(scene);
-  pos.y = grille.start_y + 10 - 1;
-  palier.x = pos.y;
-  palier.y =  grille.start_y + 10 + get_pos_y(tmp.y, &grille);
-  while (++pos.y < grille.start_y + grille.height + 2)
-    {
-      if (pos.y > palier.y)
-	{
-	  palier.x = palier.y;
-	  palier.y =  grille.start_y + 10 + get_pos_y(++(tmp.y), &grille);
-	}
-      case_x = calc_case_x(&grille, pos.y, &palier, tmp.y);
-      pos.x = ((float)((float)WIN_WIDTH - 30 - (float)case_x
-		* ((float)grille.grille_x)) * percent + 10);
-      tmp.x = -1;
-      while (tmp.y >= 1 && ++(tmp.x) < case_x * (float)((grille.grille_x)))
-	{
-	  color.full = chose_color(tmp.x / case_x, tmp.y - 1,
-				   grille.grille_x, scene->ground);
-	  tektranspa(pix, &pos, &color);
-	  pos.x++;
 	}
     }
 }

@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Thu Apr  7 03:01:13 2016 victor sousa
-** Last update Sat Apr 16 07:19:01 2016 Victor Sousa
+** Last update Sat Apr 16 19:20:17 2016 Ethan Kerdelhue
 */
 
 #ifndef 		DISP_H_
@@ -96,5 +96,14 @@ void			disp_font(t_prog *prog, t_text *first,
 				  t_bunny_pixelarray *pix);
 t_bunny_position	pos_alea(int x_min, int x_max, int y_min, int y_max);
 t_object		*fint_obj_by_id(t_object *head, int id);
+void			norm_triste(t_bunny_position *palier,
+				    t_bunny_position *tmp,
+				    t_grille *grille);
+unsigned int		chose_color(int x,
+				    int y,
+				    int size_x,
+				    t_ground *ground);
+void			disp_cases(t_scene *scene, t_bunny_pixelarray *pix,
+				   float percent);
 
 #endif			/* !DISP_H_ */
