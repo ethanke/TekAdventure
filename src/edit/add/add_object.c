@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 19:48:52 2016 Victor Sousa
-** Last update Sat Apr 16 21:38:01 2016 Victor Sousa
+** Last update Sat Apr 16 21:44:46 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -26,10 +26,15 @@ void			add_object(t_ini *ini)
   obj->damage = my_getnbr(get_next_line(0));
   if ((obj->is_equipable = get_obj_equipable(ini)) == -1)
     return;
+  if (obj->is_equipable == 0)
+    obj->slot = 0;
+  else
+    obj->slot = get_obj_equip_slot();
 
   /* recap */
   my_printf(1, "\n\nid: %d\n", obj->object_id);
   my_printf(1, "name: %s\n", obj->name);
   my_printf(1, "name: %d\n", obj->damage);
   my_printf(1, "equipable: %d\n", obj->is_equipable);
+  my_printf(1, "equipable slot: %d\n", obj->slot);
 }
