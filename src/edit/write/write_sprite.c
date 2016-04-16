@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 07:45:43 2016 Gaëtan Léandre
-** Last update Sat Apr 16 08:11:57 2016 Gaëtan Léandre
+** Last update Sat Apr 16 08:29:17 2016 Gaëtan Léandre
 */
 
 #include 		"main.h"
@@ -58,7 +58,7 @@ int			write_sprite(t_sprite *sprite, int fd)
       tmp = tmp->next;
       i++;
     }
-  my_printf(fd, "[sprite]\nsprite_count=%d\n", i);
+  my_printf(fd, "[sprite]\nsprite_count=\"%d\"\n", i);
   write_sprite_id(sprite, fd, i);
   write_sprite_path(sprite, fd, i);
   my_printf(fd, "\n\n");
