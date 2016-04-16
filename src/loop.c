@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:58:37 2016 Philippe Lefevre
-** Last update Sat Apr 16 00:57:11 2016 Gaëtan Léandre
+** Last update Sat Apr 16 04:16:01 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -65,6 +65,8 @@ t_bunny_response	mainloop(void *p)
       if (prog->disp_delay == 0)
 	free(prog->disp_str);
     }
+  if (prog->state == STATE_GAME_OVER)
+    disp_game_over(prog);
   disp_font(prog, prog->text, prog->pix);
   bunny_blit(&prog->win->buffer, &prog->pix->clipable, &prog->blit_pos);
   swap_pix(prog);

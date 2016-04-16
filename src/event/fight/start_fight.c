@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Sat Apr 16 02:48:06 2016 Gaëtan Léandre
+** Last update Sat Apr 16 04:50:12 2016 Ethan Kerdelhue
 */
 
 #include	"main.h"
@@ -59,7 +59,7 @@ int			get_life_player(t_player *player)
 {
   int			life_player;
 
-  life_player = player->caract->stamina * 10 + 100;
+  life_player = player->caract->stamina * 2 + player->life;
   return (life_player);
 }
 

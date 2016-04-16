@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Sat Apr 16 02:25:41 2016 Victor Sousa
+** Last update Sat Apr 16 04:45:40 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -31,6 +31,7 @@ int			init_prog(t_prog *prog, char *str)
   prog->player->caract->agility = 50;
   prog->player->caract->armor = 50;
   prog->player->caract->intellect = 50;
+  prog->player->life = 100;
   prog->disp_delay = 0;
   prog->player->item_selected = -1;
   prog->state = STATE_GAME;
@@ -67,6 +68,12 @@ int			init_prog(t_prog *prog, char *str)
 		  &prog->ptr_list)) == NULL)
     return (ERROR);
   /* penser vérifié le retour */
+  prog->game_over_img =
+  load_image("ressources/sprites/gameover.png", &prog->ptr_list);
+  prog->over_quit =
+  load_image("ressources/sprites/over_quit.png", &prog->ptr_list);
+  prog->over_continue =
+  load_image("ressources/sprites/over_continue.png", &prog->ptr_list);
   prog->fight_img =
   load_image("ressources/sprites/fight.jpg", &prog->ptr_list);
   prog->attack_button =
