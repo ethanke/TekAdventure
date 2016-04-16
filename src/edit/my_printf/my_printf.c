@@ -5,14 +5,15 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Thu Nov 12 12:27:44 2015 Gaëtan Léandre
-** Last update Sat Apr 16 06:35:38 2016 Gaëtan Léandre
+** Last update Sat Apr 16 06:42:30 2016 Gaëtan Léandre
 */
 
 #include 		"main.h"
 
 t_fonct			*init_struct(t_fonct *tab)
 {
-  tab = xmalloc(11 * sizeof(t_fonct));
+  if ((tab = malloc(11 * sizeof(t_fonct))) == NULL)
+    return (NULL);
   tab[0].flag = 'c';
   (tab[0].f) = va_my_putchar;
   tab[1].flag = 's';
