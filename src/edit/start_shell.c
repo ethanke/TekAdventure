@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:49:05 2016 Victor Sousa
-** Last update Sat Apr 16 08:08:25 2016 Victor Sousa
+** Last update Sat Apr 16 09:06:59 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -17,13 +17,26 @@ void			put_prompt(void)
 
 int			treat_cmd(int ac, char **av, t_ini *ini)
 {
-  (void)ini;
-  if (ac == 3 && my_strcmp(av[0], "load") == 0 && my_strcmp(av[1], "ini") == 0)
+  /* try exit */
+  if (ac == 1 && my_strcmp(av[0], "exit") == 0)
+    return (-1);
+
+  /* try load ini */
+  if (ac == 3 && my_strcmp(av[0], "load") == 0
+      && my_strcmp(av[1], "ini") == 0)
     {
       if (load_ini(av[2], ini) == -1)
 	return (-1);
-      my_printf(1, "player name: %s", ini->player->name);
     }
+
+  /* try close ini */
+  if (ac == 2 && my_strcmp(av[0], "close") == 0
+      && my_strcmp(av[1], "ini") == 0)
+    close_ini(ini);
+
+  /* try aff */
+  if (ac > 1 && my_strcmp(av[0], "aff") == 0)
+    aff_stuff(ac, av, ini);
   return (0);
 }
 
@@ -33,6 +46,7 @@ void			start_shell()
   char			**tab;
   t_ini			ini;
 
+  ini.has_been_loaded = 0;
   put_prompt();
   while ((cmd = get_next_line(0)) != NULL)
     {
