@@ -28,6 +28,7 @@ ASTAR		=	$(SRCDIR)/astar
 EDITDIR		=	$(SRCDIR)/edit
 PRTFDIR		=	$(EDITDIR)/my_printf
 WRITEDIR	=	$(EDITDIR)/write
+ADDDIR		=	$(EDITDIR)/add
 
 INCDIR		=	inc
 LIBDIR		=	lib
@@ -75,6 +76,8 @@ SRC		+=	$(WRITEDIR)/write_ini.c			\
 			$(WRITEDIR)/write_npc.c			\
 			$(WRITEDIR)/write_npc2.c		\
 			$(WRITEDIR)/write_npc3.c		\
+
+SRC		+=	$(ADDDIR)/add_object.c
 
 SRC		+=	$(PRTFDIR)/my_disp_unprintable.c	\
 			$(PRTFDIR)/my_printf.c			\
