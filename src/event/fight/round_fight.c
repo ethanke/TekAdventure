@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr 15 01:35:20 2016 Ethan Kerdelhue
-** Last update Sat Apr 16 03:52:31 2016 Ethan Kerdelhue
+** Last update Sat Apr 16 09:19:39 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -48,32 +48,40 @@ void			npc_round(t_prog *prog)
   prog->fight->bonus_action = 0;
 }
 
-int			loop_fight(t_prog *prog)
+void			apply_round(t_prog *prog)
 {
-  char			*str;
-
   draw_fight(prog);
   if (prog->fight->round_state == 1)
     player_round(prog);
   if (prog->fight->round_state == 2)
     npc_round(prog);
+}
+
+void			player_loose(t_prog *prog, char *str)
+{
+  str = my_strcat(my_strcpy(str, prog->fight->npc->name), " win");
+  add_disp_txt(prog, str);
+  free(str);
+  prog->state = STATE_GAME_OVER;
+  prog->need_init_fight = 1;
+}
+
+int			loop_fight(t_prog *prog)
+{
+  char			*str;
+
+  apply_round(prog);
   if (prog->player->life <= 0)
     {
       if ((str = malloc(my_strlen(prog->fight->npc->name) + 5)) == NULL)
 	return (-1);
-      str = my_strcpy(str, prog->fight->npc->name);
-      str = my_strcat(str, " win");
-      add_disp_txt(prog, str);
-      free(str);
-      prog->state = STATE_GAME_OVER;
-      prog->need_init_fight = 1;
+      player_loose(prog, str);
     }
   if  (prog->fight->npc->life <= 0)
     {
       if ((str = malloc(my_strlen(prog->player->name) + 5)) == NULL)
 	return (-1);
-      str = my_strcpy(str, prog->player->name);
-      str = my_strcat(str, " win");
+      str = my_strcat(my_strcpy(str, prog->player->name), " win");
       add_disp_txt(prog, str);
       free(str);
       prog->state = STATE_GAME;
