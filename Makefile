@@ -7,7 +7,7 @@
 ## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
 ## Last update Sat Apr 16 00:20:50 2016 Philippe Lefevre
 ##
- 
+
 NAME		=	tekadventure
 
 ECHO		=	/bin/echo -e
