@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:10:29 2016 Victor Sousa
-** Last update Fri Apr 15 00:22:23 2016 Victor Sousa
+** Last update Sat Apr 16 05:25:46 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -22,6 +22,10 @@ t_bunny_response        event_click(t_bunny_event_state            state,
   (void)state;
   mouse_pos = (t_bunny_position *)bunny_get_mouse_position();
   prog = (t_prog *)data;
+  if (prog->state == STATE_GAME_OVER)
+    {
+      return (check_game_over_button(prog, mouse_pos));
+    }
   if (prog->state == STATE_GAME )
     {
       if(prog->player->move.select_move == 1)
