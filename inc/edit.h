@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:51:56 2016 Victor Sousa
-** Last update Sat Apr 16 10:29:51 2016 Victor Sousa
+** Last update Sat Apr 16 19:13:53 2016 Victor Sousa
 */
 
 #ifndef			EDIT_H_
@@ -31,6 +31,7 @@ int			write_ini(char *path, t_ini *ini);
 void			write_player(t_player *player, int fd);
 void			write_sprite(t_sprite *sprite, int fd);
 void			write_object(t_object *object, int fd);
+void			write_decors(t_decors *decors, int fd);
 void			write_object_sprite_hit_w(t_object *object, int fd,
 						  int size);
 void			write_object_sprite_hit_h(t_object *object, int fd,
