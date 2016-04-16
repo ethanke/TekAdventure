@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:49:08 2016 Victor Sousa
-** Last update Fri Apr 15 08:44:36 2016 Victor Sousa
+** Last update Sat Apr 16 05:32:16 2016 Victor Sousa
 */
 
 #ifndef			EVENT_H_
@@ -56,5 +56,7 @@ int			is_near(int x_player, int y_player,
 				int x_case, int y_case);
 void			make_deplacement(t_player *player);
 void			on_gate(t_prog *prog);
+t_bunny_response	check_game_over_button(t_prog *prog,
+					       t_bunny_position *m_pos);
 
 #endif			/* !EVENT_H_ */
