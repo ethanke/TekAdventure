@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:51:56 2016 Victor Sousa
-** Last update Sat Apr 16 19:43:36 2016 Victor Sousa
+** Last update Sat Apr 16 19:52:43 2016 Victor Sousa
 */
 
 #ifndef			EDIT_H_
@@ -26,6 +26,9 @@ void			close_ini(t_ini *ini);
 void			aff_stuff(int ac, char **av, t_ini *ini);
 void			aff_all(int fd, t_ini *ini);
 void			add_stuff(int ac, char **av, t_ini *ini);
+
+/* add */
+void			add_object(t_ini *ini);
 
 /* write */
 int			write_ini(char *path, t_ini *ini);
