@@ -5,7 +5,7 @@
 ## Login   <lefevr_h@epitech.net>
 ##
 ## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
-## Last update Sat Apr 16 05:16:46 2016 Philippe Lefevre
+## Last update Sat Apr 16 01:25:45 2016 Kerdelhue Ethan
 ##
 
 NAME		=	tekadventure
@@ -103,7 +103,13 @@ SRC		+=	$(EVENTDIR)/event_key.c			\
 			$(EVENTDIR)/get_grille_pos.c		\
 			$(EVENTDIR)/click_map.c			\
 			$(EVENTDIR)/move.c			\
-			$(EVENTDIR)/check_pos.c
+			$(EVENTDIR)/check_pos.c			\
+			$(EVENTDIR)/pull_item_in_inventory.c	\
+			$(EVENTDIR)/pull_out_equip.c		\
+			$(EVENTDIR)/put_in_equip.c		\
+			$(EVENTDIR)/stack_item.c		\
+			$(EVENTDIR)/where_to_swap.c		\
+			$(EVENTDIR)/is_valid_equip.c		\
 
 SRC		+=	$(FIGHTDIR)/start_fight.c		\
 			$(FIGHTDIR)/round_fight.c		\

@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 09:11:28 2016 Victor Sousa
-** Last update Sat Apr 16 05:00:32 2016 Victor Sousa
+** Last update Sat Apr 16 06:48:00 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -34,102 +34,7 @@ void			handle_inventory_click(t_prog *prog)
       need_to_move == -1)
     prog->player->inv_selected = -1;
   if (need_to_move != -1 && prog->player->inv_selected != -1)
-    {
-      if (prog->player->inv_selected >= 48 && need_to_move < 48)
-	{
-      	  if (prog->player->inventory[need_to_move].object->is_equipable == 1 &&
-      	      prog->player->inventory[need_to_move].object->slot ==
-      	      prog->player->inv_selected - 48 &&
-      	      prog->player->inventory[(int)prog->player->inv_selected].amount
-      	      < 1)
-      	    {
-      	      prog->player->inventory[(int)prog->player->inv_selected].id =
-      	      prog->player->inventory[need_to_move].id;
-      	      if (prog->player->inventory[(int)prog->player->inv_selected].
-      		  amount == 0)
-      		{
-      		  prog->player->inventory[(int)prog->player->inv_selected].
-      		  amount++;
-      		}
-      	      else
-      		{
-      		  prog->player->inventory[(int)prog->player->inv_selected].
-      		  amount = 1;
-      		}
-      	      prog->player->inventory[need_to_move].amount--;
-      	      prog->player->inventory[(int)prog->player->inv_selected].object =
-      	      prog->player->inventory[need_to_move].object;
-      	      prog->player->caract->stamina +=
-      	      prog->player->inventory[need_to_move].object->caract->stamina;
-	      prog->player->life +=
-	      prog->player->inventory[need_to_move].object->caract->stamina * 2;
-      	      prog->player->caract->strength +=
-      	      prog->player->inventory[need_to_move].object->caract->strength;
-      	      prog->player->caract->critical +=
-      	      prog->player->inventory[need_to_move].object->caract->critical;
-      	      prog->player->caract->intellect +=
-      	      prog->player->inventory[need_to_move].object->caract->intellect;
-      	      prog->player->caract->armor +=
-      	      prog->player->inventory[need_to_move].object->caract->armor;
-      	      prog->player->caract->agility +=
-      	      prog->player->inventory[need_to_move].object->caract->agility;
-      	      if (prog->player->inventory[need_to_move].amount == 0)
-      		{
-      		  prog->player->inventory[need_to_move].id = -1;
-      		  prog->player->inventory[need_to_move].object = NULL;
-      		}
-      	    }
-	}
-      else if (prog->player->inv_selected < 48 && need_to_move >= 48)
-      	{
-	  if (prog->player->inventory[(int)prog->player->inv_selected].id == -1)
-	    {
-	      prog->player->inventory[(int)prog->player->inv_selected].id =
-	      prog->player->inventory[need_to_move].id;
-	      prog->player->inventory[(int)prog->player->inv_selected].amount =
-	      prog->player->inventory[need_to_move].amount;
-	      prog->player->inventory[(int)prog->player->inv_selected].object =
-	      prog->player->inventory[need_to_move].object;
-	      prog->player->caract->stamina -=
-	      prog->player->inventory[need_to_move].object->caract->stamina;
-              prog->player->life -=
-              prog->player->inventory[need_to_move].object->caract->stamina * 2;
-	      prog->player->caract->strength -=
-	      prog->player->inventory[need_to_move].object->caract->strength;
-	      prog->player->caract->critical -=
-	      prog->player->inventory[need_to_move].object->caract->critical;
-	      prog->player->caract->intellect -=
-	      prog->player->inventory[need_to_move].object->caract->intellect;
-	      prog->player->caract->armor -=
-	      prog->player->inventory[need_to_move].object->caract->armor;
-	      prog->player->caract->agility -=
-	      prog->player->inventory[need_to_move].object->caract->agility;
-	      prog->player->inventory[need_to_move].id = -1;
-	      prog->player->inventory[need_to_move].amount = 0;
-	      prog->player->inventory[need_to_move].object = NULL;
-	    }
-      	}
-      else if (prog->player->inventory[need_to_move].id ==
-	       prog->player->inventory[(int)prog->player->inv_selected].id &&
-	       need_to_move != prog->player->inv_selected)
-	{
-	  prog->player->inventory[(int)prog->player->inv_selected].amount +=
-	  prog->player->inventory[need_to_move].amount;
-	  prog->player->inventory[need_to_move].id = -1;
-	  prog->player->inventory[need_to_move].amount = 0;
-	  prog->player->inventory[need_to_move].object = NULL;
-	}
-      else
-	{
-	  if (prog->player->inv_selected < 48 && need_to_move < 48)
-	    {
-	      my_swap_item(&prog->player->inventory[need_to_move],
-			   &prog->player->inventory[(int)prog->player->
-			   inv_selected]);
-	    }
-	}
-      prog->player->inv_selected = -1;
-    }
+    prog->player->inv_selected = where_to_swap(prog, need_to_move) - 1;
 }
 
 void			handle_inventory_click_npc(t_prog *prog)

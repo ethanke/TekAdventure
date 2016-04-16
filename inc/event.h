@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:49:08 2016 Victor Sousa
-** Last update Sat Apr 16 05:32:16 2016 Victor Sousa
+** Last update Sat Apr 16 06:38:42 2016 Ethan Kerdelhue
 */
 
 #ifndef			EVENT_H_
@@ -58,5 +58,11 @@ void			make_deplacement(t_player *player);
 void			on_gate(t_prog *prog);
 t_bunny_response	check_game_over_button(t_prog *prog,
 					       t_bunny_position *m_pos);
+void			is_valid_equip(t_prog *prog, int need_to_move);
+void			stack_item(t_prog *prog, int need_to_move);
+int			where_to_swap(t_prog *prog, int need_to_move);
+void			put_in_equip(t_prog *prog, int need_to_move);
+void			put_item_in_inventory(t_prog *prog, int need_to_move);
+void			pull_out_equip(t_prog *prog, int need_to_move);
 
 #endif			/* !EVENT_H_ */
