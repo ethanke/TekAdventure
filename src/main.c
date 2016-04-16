@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Sat Apr 16 06:36:05 2016 Victor Sousa
+** Last update Sat Apr 16 20:38:26 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -17,27 +17,10 @@ int			init_prog(t_prog *prog, char *str)
   prog->ptr_list = NULL;
   if ((prog->scene = parsing(str, &prog->player, &prog->ptr_list)) == NULL)
     return (ERROR);
-  prog->player->inventory_open = 0;
-  prog->player->inv_selected = -1;
-  prog->player->move.select_move = 0;
-  prog->player->move.depla = NULL;
-  prog->player->x = 8;
-  prog->player->y = 0;
-  if ((prog->player->caract = xmalloc(sizeof(t_caract), &prog->ptr_list)) == NULL)
-    return (0);
-  prog->player->caract->stamina = 50;
-  prog->player->caract->strength = 50;
-  prog->player->caract->critical = 50;
-  prog->player->caract->agility = 50;
-  prog->player->caract->armor = 50;
-  prog->player->caract->intellect = 50;
-  prog->player->life = prog->player->caract->stamina * 2 + prog->player->life;
   prog->disp_delay = 0;
-  prog->player->item_selected = -1;
   prog->state = STATE_MENU;
   prog->need_init_fight = 1;
-  if ((prog->font =
-       xmalloc(sizeof(t_font), &prog->ptr_list)) == NULL)
+  if ((prog->font = xmalloc(sizeof(t_font), &prog->ptr_list)) == NULL)
     return (ERROR);
   if ((prog->font->font_img =
        load_image("ressources/sprites/font1.png", &prog->ptr_list)) == NULL)
@@ -47,16 +30,8 @@ int			init_prog(t_prog *prog, char *str)
   if ((prog->fight_img = load_image("ressources/sprites/fight.jpg",
 				    &prog->ptr_list)) == NULL)
     return (ERROR);
-  if ((prog->player->inv_open_sprite =
-       load_image("ressources/sprites/inventory_full.png",
-		  &prog->ptr_list)) == NULL)
-    return (ERROR);
   if ((prog->npc_choose =
        load_image("ressources/sprites/npc_choose.png",
-		  &prog->ptr_list)) == NULL)
-    return (ERROR);
-  if ((prog->player->hotbar_sprite =
-       load_image("ressources/sprites/hotbar.png",
 		  &prog->ptr_list)) == NULL)
     return (ERROR);
   if ((prog->exchange_sprite =
@@ -71,67 +46,88 @@ int			init_prog(t_prog *prog, char *str)
   prog->menu_bg_pos.x = 50;
   prog->menu_bg_pos.y = 0;
   prog->menu_dir = 0;
-  prog->menu_bg =
-  load_image("ressources/sprites/menubg.png", &prog->ptr_list);
-  prog->menu_text =
-  load_image("ressources/sprites/textmenu.png", &prog->ptr_list);
-  prog->game_over_img =
-  load_image("ressources/sprites/gameover.png", &prog->ptr_list);
-  prog->game_over_img =
-  load_image("ressources/sprites/gameover.png", &prog->ptr_list);
-  prog->over_quit =
-  load_image("ressources/sprites/over_quit.png", &prog->ptr_list);
-  prog->over_continue =
-  load_image("ressources/sprites/over_continue.png", &prog->ptr_list);
-  prog->fight_img =
-  load_image("ressources/sprites/fight.jpg", &prog->ptr_list);
-  prog->attack_button =
-  load_image("ressources/sprites/ATTACK.png", &prog->ptr_list);
-  prog->attack_button_hover =
-  load_image("ressources/sprites/ATTACK_HOVER.png", &prog->ptr_list);
-  prog->defend_button =
-  load_image("ressources/sprites/DEFEND.png", &prog->ptr_list);
-  prog->defend_button_hover =
-  load_image("ressources/sprites/DEFEND_HOVER.png", &prog->ptr_list);
-  prog->magic_button =
-  load_image("ressources/sprites/MAGIC.png", &prog->ptr_list);
-  prog->magic_button_hover =
-  load_image("ressources/sprites/MAGIC_HOVER.png", &prog->ptr_list);
-  prog->skip_button =
-  load_image("ressources/sprites/SKIP.png", &prog->ptr_list);
-  prog->skip_button_hover =
-  load_image("ressources/sprites/SKIP_HOVER.png", &prog->ptr_list);
+  if ((prog->menu_bg =
+       load_image("ressources/sprites/menubg.png", &prog->ptr_list)) == NULL)
+    return (ERROR);
+  if ((prog->menu_text =
+       load_image("ressources/sprites/textmenu.png", &prog->ptr_list)) == NULL)
+    return (ERROR);
+  if ((prog->game_over_img =
+       load_image("ressources/sprites/gameover.png", &prog->ptr_list)) == NULL)
+  return (ERROR);
+  if ((prog->game_over_img =
+       load_image("ressources/sprites/gameover.png", &prog->ptr_list)) == NULL)
+    return (ERROR);
+  if ((prog->over_quit =
+       load_image("ressources/sprites/over_quit.png", &prog->ptr_list)) == NULL)
+    return (ERROR);
+  if ((prog->over_continue =
+       load_image("ressources/sprites/over_continue.png", &prog->ptr_list)) == NULL)
+    return (ERROR);
+  if ((prog->fight_img =
+       load_image("ressources/sprites/fight.jpg", &prog->ptr_list)) == NULL)
+    return (ERROR);
+  if ((prog->attack_button =
+       load_image("ressources/sprites/ATTACK.png", &prog->ptr_list)) == NULL)
+    return (ERROR);
+  if ((prog->attack_button_hover =
+       load_image("ressources/sprites/ATTACK_HOVER.png", &prog->ptr_list)) == NULL)
+    return (ERROR);
+  if ((prog->defend_button =
+       load_image("ressources/sprites/DEFEND.png", &prog->ptr_list)) == NULL)
+    return (ERROR);
+  if ((prog->defend_button_hover =
+       load_image("ressources/sprites/DEFEND_HOVER.png", &prog->ptr_list)) == NULL)
+    return (ERROR);
+  if ((prog->magic_button =
+       load_image("ressources/sprites/MAGIC.png", &prog->ptr_list)) == NULL)
+    return (ERROR);
+  if ((prog->magic_button_hover =
+       load_image("ressources/sprites/MAGIC_HOVER.png", &prog->ptr_list)) == NULL)
+    return (ERROR);
+  if ((prog->skip_button =
+       load_image("ressources/sprites/SKIP.png", &prog->ptr_list)) == NULL)
+    return (ERROR);
+  if ((prog->skip_button_hover =
+       load_image("ressources/sprites/SKIP_HOVER.png", &prog->ptr_list)) == NULL)
+    return (ERROR);
   prog->text = NULL;
   return (SUCCESS);
 }
 
-int			need_shell(int ac, char **av)
+int			pars_arg(int ac, char **av)
 {
-  int			i;
+  int			len;
 
-  i = -1;
-  while (++i < ac)
+  if (ac > 2)
+    return (my_puterror(av[0]) + my_puterror(": too many argument\n"));
+  else if (ac == 2)
     {
-      if (my_strcmp("--shell", av[i]) == 0)
-	return (1);
+      len = my_getnbr(av[1]);
+      if (!(my_strcmp("--shell", av[1])))
+	{
+	  start_shell(ac, av);
+          return (0);
+	}
+      else if (!(my_strcmp("--credit", av[1])))
+	return (write(1, "	TekAdventure\n", 14)
+		+ write(1, "Leadre Gaetan - Sousa Victor - ", 31)
+		+ write (1, "Philippe Lefvre - Ethan Kerdelhue\n", 34));
+      else if ((len < 5) || !(my_strcmp((av[1] - 4), ".ini")))
+	return (0);
     }
-  return (0);
+  return (my_puterror(av[0]) + my_puterror(": [ARG]\n")
+	  + my_puterror("	--shell		launch editor\n")
+	  + my_puterror("	exemple.ini	ini file game\n")
+	  + my_puterror("	--credit	display (c) credit\n"));
 }
 
 int			main(int ac, char **av, char **env)
 {
   t_prog		prog;
 
-  if (ac != 2)
-    {
-      return (my_puterror("Error: Use ")
-	      + my_puterror(av[0]) + my_puterror(" file.ini\n"));
-    }
-  if (need_shell(ac, av) == 1)
-    {
-      start_shell(ac, av);
-      return (EXIT_ON_SUCCESS);
-    }
+  if (pars_arg(ac, av))
+    return (ERROR);
   set_max_heap_size(50);
   if (env[0] == 0)
     return (ERROR);

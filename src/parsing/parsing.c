@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:08:59 2016 Philippe Lefevre
-** Last update Sat Apr 16 09:20:45 2016 Philippe Lefevre
+** Last update Sat Apr 16 19:29:53 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -57,6 +57,22 @@ t_scene			*parsing_link_all(t_scene *stockage)
   return (stockage);
 }
 
+t_scene			*parsing_load_all(t_bunny_ini *ini, t_scene *stockage,
+					  t_ptr_list **ptr_list)
+{
+  if ((stockage->player = load_player(ini, ptr_list)) == NULL)
+    return (NULL);
+  if ((stockage->sprite = load_sprite(ini, ptr_list)) == NULL)
+    return (NULL);
+  if ((stockage->object = load_object(ini, ptr_list)) == NULL)
+    return (NULL);
+  if ((stockage->decors = load_decors(ini, ptr_list)) == NULL)
+    return (NULL);
+  if ((stockage->npc = load_npc(ini, ptr_list)) == NULL)
+    return (NULL);
+  return (stockage);
+}
+
 t_scene			*parsing(const char *file, t_player **player,
 				 t_ptr_list **ptr_list)
 {
@@ -68,21 +84,16 @@ t_scene			*parsing(const char *file, t_player **player,
   if ((stockage = xmalloc(sizeof(*stockage), ptr_list)) == NULL)
     return (my_puterror_scene("Error: ", "stockage",
 			      ":xmalloc ", -1, "failed\n"));
-  if ((stockage->player = load_player(ini, ptr_list)) == NULL)
+    if ((stockage = parsing_load_all(ini, stockage, ptr_list)) == NULL)
+      return (NULL);
+    if ((stockage = parsing_link_all(stockage)) == NULL)
+      return (NULL);
+    if ((scene = load_scene(ini, stockage, ptr_list)) == NULL)
     return (NULL);
-  if ((stockage->sprite = load_sprite(ini, ptr_list)) == NULL)
-    return (NULL);
-  if ((stockage->object = load_object(ini, ptr_list)) == NULL)
-    return (NULL);
-  if ((stockage->decors = load_decors(ini, ptr_list)) == NULL)
-    return (NULL);
-  if ((stockage->npc = load_npc(ini, ptr_list)) == NULL)
-    return (NULL);
-  if ((stockage = parsing_link_all(stockage)) == NULL)
-    return (NULL);
-  (*player) = stockage->player;
-  if ((scene = load_scene(ini, stockage, ptr_list)) == NULL)
-    return (NULL);
+    scene->player->x = scene->start_pos->x;
+    scene->player->y = scene->start_pos->y;
+    (*player) = stockage->player;
   bunny_delete_ini(ini);
+    /* start pos proteted zone */
   return (link_ptr_gate(scene));
 }

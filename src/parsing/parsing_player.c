@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Sat Apr 16 06:51:47 2016 Philippe Lefevre
-** Last update Sat Apr 16 09:33:03 2016 Philippe Lefevre
+** Last update Sat Apr 16 21:01:56 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -236,14 +236,11 @@ t_item			*load_player_equiped(t_item *equiped, t_bunny_ini *ini,
 }
 
 t_player		*load_player_init(t_ptr_list **ptr_list, char *tmp,
-					  t_bunny_ini *ini)
+					  t_bunny_ini *ini, t_player *player)
 {
-  t_player		*player;
-
-  player = NULL;
   if ((player = xmalloc(sizeof(t_player), ptr_list)) == NULL)
     return (my_puterror_player("Error: player:xmalloc ", -1,
-			       "failed in load_player\n"));
+			       "failed in load_player_init\n"));
   if ((tmp = (char *)bunny_ini_get_field(ini, "player",
 					 "player_life", 0)) == NULL)
     return (my_puterror_player("Error: balise player or player:life ",
@@ -257,7 +254,34 @@ t_player		*load_player_init(t_ptr_list **ptr_list, char *tmp,
 			       -1, "field not found\n"));
   if ((player->name = my_strdup(tmp, ptr_list)) == NULL)
     return (my_puterror_player("Error: player->name:my_strdup ",
-			       -1, "failed in load_player\n"));
+			       -1, "failed in load_player_init\n"));
+  if ((player->inv_open_sprite =
+       load_image(T_INVENTORY, ptr_list)) == NULL)
+    return (my_puterror_player("Error: player:inv_open_sprite \
+			       failed load_image ", -1, T_INVENTORY));
+  if ((player->hotbar_sprite = load_image(T_HOTBAR, ptr_list)) == NULL)
+    return (my_puterror_player("Error: player:inv_open_sprite \
+				 failed load_image ", -1, T_HOTBAR));
+  return (player);
+}
+
+t_player		*load_player_setting(t_player *player,
+					     t_ptr_list **ptr_list)
+{
+  if ((player->caract = xmalloc(sizeof(t_caract), ptr_list)) == NULL)
+    return (NULL);
+  player->caract->stamina = 0;
+  player->caract->strength = 0;
+  player->caract->critical = 0;
+  player->caract->agility = 0;
+  player->caract->armor = 0;
+  player->caract->intellect = 0;
+  player->inventory_open = 0;
+  player->inv_selected = -1;
+  player->item_selected = -1;
+  player->move.select_move = 0;
+  player->move.depla = NULL;
+  player->life = player->caract->stamina * 2 + player->life;
   return (player);
 }
 
@@ -266,16 +290,14 @@ t_player		*load_player(t_bunny_ini *ini, t_ptr_list **ptr_list)
   t_player		*player;
   char			*tmp;
 
-  tmp = NULL;
-  if ((player = load_player_init(ptr_list, tmp, ini)) == NULL)
+  if ((player = load_player_init(ptr_list, NULL, ini, NULL)) == NULL)
     return (NULL);
   if ((player->inventory = load_player_inventory(player->inventory,
-						 ini, ptr_list, tmp)) == NULL)
+						 ini, ptr_list, NULL)) == NULL)
     return (NULL);
   if ((player->inventory = load_player_equiped(player->inventory,
-					       ini, ptr_list, tmp)) == NULL)
+					       ini, ptr_list, NULL)) == NULL)
     return (NULL);
-  player->inv_selected = -1;
   if ((tmp = (char *)bunny_ini_get_field(ini, "player",
 					 "player_sprite_id", 0)) == NULL)
     return (my_puterror_player("Error: player:player_sprite_id ",
@@ -285,5 +307,8 @@ t_player		*load_player(t_bunny_ini *ini, t_ptr_list **ptr_list)
 			       -1, "should not be negative\n"));
   if ((player->sprite_hitbox = create_player_hitbox(0, ini, ptr_list)) == NULL)
     return (NULL);
+  if ((player = load_player_setting(player, ptr_list)) == NULL)
+    return (my_puterror_player("Error: player:xmalloc ", -1,
+			       "failed in load_player_setting\n"));
   return (player);
 }

@@ -5,13 +5,19 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 03:51:52 2016 Gaëtan Léandre
-** Last update Sat Apr 16 05:59:27 2016 Philippe Lefevre
+** Last update Sat Apr 16 19:48:40 2016 Philippe Lefevre
 */
 
 #ifndef			PLAYER_H_
 # define		PLAYER_H_
 
 # define		SIZE_INVENTORY	48
+# ifndef		PLAYER_DEFAULT_TEXTURE_H_
+#  define		PLAYER_DEFAULT_TEXTURE_H_
+#  define		T_INVENTORY	 "ressources/sprites/inventory_full.png"
+#  define		T_HOTBAR	"ressources/sprites/hotbar.png"
+
+# endif			/* !PLAYER_DEFAULT_TEXTURE_H_ */
 
 typedef struct		s_caract
 {
