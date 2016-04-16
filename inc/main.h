@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 20:02:40 2016 Philippe Lefevre
-** Last update Sat Apr 16 05:52:25 2016 Victor Sousa
+** Last update Sat Apr 16 07:38:10 2016 Gaëtan Léandre
 */
 
 #ifndef			MAIN_H_
