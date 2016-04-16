@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 19:48:52 2016 Victor Sousa
-** Last update Sat Apr 16 23:23:35 2016 Victor Sousa
+** Last update Sat Apr 16 23:46:33 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -48,6 +48,9 @@ void			add_object(t_ini *ini)
       my_printf(1, "Give agility to your object : ");
       obj->caract->agility = my_getnbr_free(get_next_line(0));
     }
+  my_printf(1, "\nChoose a sprite id for your object : ");
+  get_existing_sprite(ini);
+
 
   /* recap */
   my_printf(1, "\n\nid: %d\n", obj->object_id);
@@ -61,4 +64,5 @@ void			add_object(t_ini *ini)
   my_printf(1, "equipable intellect: %d\n", obj->caract->intellect);
   my_printf(1, "equipable armor: %d\n", obj->caract->armor);
   my_printf(1, "equipable agility: %d\n", obj->caract->agility);
+  my_printf(1, "sprite id: %d\n", obj->sprite_id);
 }
