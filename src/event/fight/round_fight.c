@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr 15 01:35:20 2016 Ethan Kerdelhue
-** Last update Sat Apr 16 01:30:03 2016 Ethan Kerdelhue
+** Last update Sat Apr 16 02:45:45 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -14,13 +14,13 @@ void			player_round(t_prog *prog)
 {
   if (prog->fight->last_action != -1)
     {
-      prog->fight->bonus_action = 0;
       if (prog->fight->last_action == ATTACK)
 	prog->fight->npc->life -= player_damage(prog->fight->player, prog->fight, prog);
       if (prog->fight->last_action == DEFEND)
 	{
 	  if (prog->fight->player_action >= DEFEND_ENERGY)
 	    {
+	      prog->fight->bonus_action += 20;
 	      prog->fight->player->fight_defense = 1;
 	      prog->fight->player_action -= DEFEND_ENERGY;
 	    }
@@ -41,6 +41,11 @@ void			npc_round(t_prog *prog)
   prog->fight->player_action = prog->fight->round_energy + prog->fight->bonus_action;
   prog->fight->player->life -= npc_damage(prog->fight->npc, prog->player, prog);
   prog->fight->round_state = 1;
+  prog->fight->bar_action->value_cur = prog->fight->round_energy + prog->fight->bonus_action;
+  prog->fight->bar_action->value_default =
+  prog->fight->bar_action->value_cur;
+  prog->fight->player_action = prog->fight->bar_action->value_default;
+  prog->fight->bonus_action = 0;
 }
 
 int			loop_fight(t_prog *prog)

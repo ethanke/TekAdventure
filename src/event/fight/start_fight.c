@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Sat Apr 16 01:25:24 2016 Ethan Kerdelhue
+** Last update Sat Apr 16 02:48:06 2016 Gaëtan Léandre
 */
 
 #include	"main.h"
@@ -99,7 +99,6 @@ int 			npc_damage(t_npc *npc, t_player *player, t_prog *prog)
     {
       damage = 0;
       event_on_player(prog, 1);
-      prog->fight->bonus_action += 20;
     }
   if (player->fight_defense == 1)
     {
@@ -136,7 +135,6 @@ int 			player_damage_magic(t_player *player, t_fight *fight, t_prog *prog)
 	{
 	  damage = damage * 1.5;
 	  event_on_npc(prog);
-	  prog->fight->bonus_action += 20;
 	}
       pos.x = WIN_WIDTH / 2;
       pos.y = WIN_HEIGHT / 2;
@@ -162,7 +160,6 @@ int 			player_damage(t_player *player, t_fight *fight, t_prog *prog)
 	{
 	  damage = damage * 1.5;
 	  event_on_npc(prog);
-	  prog->fight->bonus_action += 20;
 	}
       fight->player_action -= ATTACK_ENERGY;
       return (damage_on_npc(prog, damage / 1000));
