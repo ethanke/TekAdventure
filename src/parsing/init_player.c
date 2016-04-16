@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sun Apr 17 00:45:34 2016 Gaëtan Léandre
-** Last update Sun Apr 17 01:02:35 2016 Gaëtan Léandre
+** Last update Sun Apr 17 01:15:56 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -32,5 +32,5 @@ void			init_player(t_prog *prog)
   player->left.pos = 0;
   player->left.max = 2;
   player->left.texture = player->sprite;
-  player->left.hitbox = create_hitbox(0, 93, 33, 31);
+  player->left.hitbox = create_hitbox(0, 92, 33, 31);
 }
