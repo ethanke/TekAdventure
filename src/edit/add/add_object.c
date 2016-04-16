@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 19:48:52 2016 Victor Sousa
-** Last update Sat Apr 16 21:27:13 2016 Victor Sousa
+** Last update Sat Apr 16 21:38:01 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -24,9 +24,12 @@ void			add_object(t_ini *ini)
     return;
   my_printf(1, "Give damage to your object : ");
   obj->damage = my_getnbr(get_next_line(0));
+  if ((obj->is_equipable = get_obj_equipable(ini)) == -1)
+    return;
 
   /* recap */
-  my_printf(1, "id: %d\n", obj->object_id);
-  my_printf(1, "name: %f\n", obj->name);
-  my_printf(1, "name: %d\n", obj->name);
+  my_printf(1, "\n\nid: %d\n", obj->object_id);
+  my_printf(1, "name: %s\n", obj->name);
+  my_printf(1, "name: %d\n", obj->damage);
+  my_printf(1, "equipable: %d\n", obj->is_equipable);
 }

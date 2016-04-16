@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:51:56 2016 Victor Sousa
-** Last update Sat Apr 16 21:17:59 2016 Victor Sousa
+** Last update Sat Apr 16 21:38:44 2016 Victor Sousa
 */
 
 #ifndef			EDIT_H_
@@ -31,6 +31,8 @@ void			add_stuff(int ac, char **av, t_ini *ini);
 void			add_object(t_ini *ini);
 int			get_obj_id(t_ini *ini);
 char			*get_obj_name(t_ini *ini);
+int			get_obj_equipable(t_ini *ini);
+int			get_obj_equip_slot();
 
 /* write */
 int			write_ini(char *path, t_ini *ini);
