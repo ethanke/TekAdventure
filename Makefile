@@ -5,7 +5,7 @@
 ## Login   <lefevr_h@epitech.net>
 ##
 ## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
-## Last update Sat Apr 16 23:12:54 2016 Gaëtan Léandre
+## Last update Sun Apr 17 01:04:23 2016 Gaëtan Léandre
 ##
 
 NAME		=	tekadventure
@@ -120,7 +120,8 @@ SRC		+=	$(PARSDIR)/parsing_error_msg_1.c	\
 			$(PARSDIR)/parsing_sky_linkage.c	\
 			$(PARSDIR)/parsing_gate.c		\
 			$(PARSDIR)/parsing_gate_linkage.c	\
-			$(PARSDIR)/parsing_sky.c
+			$(PARSDIR)/parsing_sky.c		\
+			$(PARSDIR)/init_player.c
 
 SRC		+=	$(DISPDIR)/disp_hotbar.c		\
 			$(DISPDIR)/disp_inventory.c		\

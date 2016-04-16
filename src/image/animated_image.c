@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Fri Apr 15 03:06:55 2016 Gaëtan Léandre
-** Last update Fri Apr 15 03:21:32 2016 Gaëtan Léandre
+** Last update Sun Apr 17 00:49:33 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -15,9 +15,9 @@ void			animated_image(t_anim *anim, t_hitbox hitbox,
 {
   t_hitbox		actual;
 
-  actual = create_hitbox(anim->hitbox->x + (anim->hitbox->width * anim->pos),
-			 anim->hitbox->y, anim->hitbox->width,
-			 anim->hitbox->height);
+  actual = create_hitbox(anim->hitbox.x + (anim->hitbox.width * anim->pos),
+			 anim->hitbox.y, anim->hitbox.width,
+			 anim->hitbox.height);
   place_image(hitbox, actual, anim->texture, pix);
   anim->pos = (anim->pos >= anim->max - 2
 	       || actual.width + actual.x >= anim->texture->width) ?

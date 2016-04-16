@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Sat Apr 16 23:42:41 2016 Gaëtan Léandre
+** Last update Sun Apr 17 01:12:11 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -144,9 +144,10 @@ int			main(int ac, char **av, char **env)
   prog.pix_id = 0;
   if (init_prog(&prog, av[1]) == ERROR)
     return (clean(&prog, ERROR));
-      prog.player->move.depla = NULL;
-      prog.player->x_vec = 0;
-      prog.player->x_vec = 0;
+  prog.player->move.depla = NULL;
+  prog.player->x_vec = 0;
+  prog.player->x_vec = 0;
+  init_player(&prog);
   bunny_set_click_response(event_click);
   bunny_set_key_response(event_key);
   bunny_set_loop_main_function(mainloop);

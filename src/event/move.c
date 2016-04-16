@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 04:57:09 2016 Gaëtan Léandre
-** Last update Sun Apr 17 00:25:15 2016 Gaëtan Léandre
+** Last update Sun Apr 17 01:06:26 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -66,8 +66,7 @@ void			disp_deplacement(t_player *player,
   pal_next = grille->start_y + 10 + get_pos_y((int)player->y + 1, grille);
   pos_y = 20 + (float)((player->y - (int)player->y)
 		* (float)(pal_next - pal_prev)) + pal_prev - hauteur;
-  place_image(create_hitbox(pos_x, pos_y, (int)case_x, hauteur),
-	      *player->sprite_hitbox, player->sprite, pix);
+  animated_image(&player->left, create_hitbox(pos_x, pos_y, (int)case_x, hauteur), pix);
 }
 
 void			make_deplacement(t_player *player)
