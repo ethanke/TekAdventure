@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Sat Apr 16 07:35:33 2016 Philippe Lefevre
-** Last update Sat Apr 16 09:26:50 2016 Philippe Lefevre
+** Last update Sat Apr 16 21:09:50 2016 Philippe Lefevre
 */
 
 #include 		"main.h"
@@ -28,7 +28,7 @@ t_sprite		*create_sprite_node(int id,
 			       "failed in create_sprite_node\n"));
   if ((sprite->sprite = load_image(str, ptr_list)) == NULL)
     return (my_puterror_sprite("Error: sprite->sprite:load_image ", -1,
-			       "failed in create_sprite_node"));
+			       str));
   if ((str = (char *)bunny_ini_get_field(ini, "sprite", "sprite_id", id))
       == NULL)
     return (my_puterror_sprite("Error: sprite:sprite_id field \n", id,

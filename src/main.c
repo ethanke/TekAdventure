@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Sat Apr 16 20:38:26 2016 Philippe Lefevre
+** Last update Sat Apr 16 21:11:37 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -113,13 +113,13 @@ int			pars_arg(int ac, char **av)
 	return (write(1, "	TekAdventure\n", 14)
 		+ write(1, "Leadre Gaetan - Sousa Victor - ", 31)
 		+ write (1, "Philippe Lefvre - Ethan Kerdelhue\n", 34));
-      else if ((len < 5) || !(my_strcmp((av[1] - 4), ".ini")))
-	return (0);
+ /*     else if ((len < 5) || !(my_strcmp((av[1] - 5), ".ini")))
+	return (0);*/
     }
   return (my_puterror(av[0]) + my_puterror(": [ARG]\n")
 	  + my_puterror("	--shell		launch editor\n")
 	  + my_puterror("	exemple.ini	ini file game\n")
-	  + my_puterror("	--credit	display (c) credit\n"));
+	  + my_puterror("	--credit	display (c) credit\n") - 1);
 }
 
 int			main(int ac, char **av, char **env)
