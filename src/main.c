@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Sat Apr 16 04:59:11 2016 Victor Sousa
+** Last update Sat Apr 16 05:55:03 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -96,13 +96,33 @@ int			init_prog(t_prog *prog, char *str)
   return (SUCCESS);
 }
 
+int			need_shell(int ac, char **av)
+{
+  int			i;
+
+  i = -1;
+  while (++i < ac)
+    {
+      if (my_strcmp("--shell", av[i]) == 0)
+	return (1);
+    }
+  return (0);
+}
+
 int			main(int ac, char **av, char **env)
 {
   t_prog		prog;
 
   if (ac != 2)
-    return (my_puterror("Error: Use ")
-	    + my_puterror(av[0]) + my_puterror(" file.ini\n"));
+    {
+      return (my_puterror("Error: Use ")
+	      + my_puterror(av[0]) + my_puterror(" file.ini\n"));
+    }
+  if (need_shell(ac, av) == 1)
+    {
+      start_shell(ac, av);
+      return (EXIT_ON_SUCCESS);
+    }
   set_max_heap_size(50);
   if (env[0] == 0)
     return (ERROR);

@@ -25,6 +25,8 @@ UTILSDIR	=	$(SRCDIR)/utils
 IMGDIR		=	$(SRCDIR)/image
 PARSDIR		=	$(SRCDIR)/parsing
 ASTAR		=	$(SRCDIR)/astar
+EDITDIR		=	$(SRCDIR)/edit
+
 INCDIR		=	inc
 LIBDIR		=	lib
 
@@ -49,6 +51,9 @@ LDFLAGS		=	-L/home/${USER}/.froot/lib		\
 SRC		=	$(SRCDIR)/main.c			\
 			$(SRCDIR)/loop.c			\
 			$(SRCDIR)/end.c
+
+SRC		+=	$(EDITDIR)/start_shell.c		\
+			$(EDITDIR)/get_next_line.c
 
 SRC		+=	$(PARSDIR)/parsing_error_msg_1.c	\
 			$(PARSDIR)/parsing_error_msg_2.c	\

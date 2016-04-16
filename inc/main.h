@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 20:02:40 2016 Philippe Lefevre
-** Last update Wed Apr 13 19:31:58 2016 Ethan Kerdelhue
+** Last update Sat Apr 16 05:52:25 2016 Victor Sousa
 */
 
 #ifndef			MAIN_H_
@@ -32,6 +32,7 @@
 # include		"event.h"
 # include		"parsing.h"
 # include		"disp.h"
+# include		"edit.h"
 
 # ifndef		WIN_SETTING
 #  define		WIN_SETTING
