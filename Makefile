@@ -88,7 +88,8 @@ SRC		+=	$(ADDDIR)/add_object.c			\
 			$(ADDDIR)/get_obj_name.c		\
 			$(ADDDIR)/get_obj_equipable.c		\
 			$(ADDDIR)/get_obj_equip_slot.c		\
-			$(ADDDIR)/get_existing_sprite.c
+			$(ADDDIR)/get_existing_sprite.c		\
+			$(ADDDIR)/get_sprite_hitbox_pos_x.c
 
 SRC		+=	$(PRTFDIR)/my_disp_unprintable.c	\
 			$(PRTFDIR)/my_printf.c			\

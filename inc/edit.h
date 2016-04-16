@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:51:56 2016 Victor Sousa
-** Last update Sun Apr 17 00:00:42 2016 Victor Sousa
+** Last update Sun Apr 17 00:43:51 2016 Victor Sousa
 */
 
 #ifndef			EDIT_H_
@@ -36,6 +36,7 @@ char			*get_obj_name(t_ini *ini);
 int			get_obj_equipable(t_ini *ini);
 int			get_obj_equip_slot();
 int			get_existing_sprite(t_ini *ini);
+int			get_x_pos_sprite(t_ini *ini, int id);
 
 /* write */
 int			write_ini(char *path, t_ini *ini);
