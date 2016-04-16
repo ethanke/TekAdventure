@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:58:37 2016 Philippe Lefevre
-** Last update Fri Apr 15 23:17:28 2016 Gaëtan Léandre
+** Last update Sat Apr 16 00:57:11 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -32,7 +32,6 @@ void                    swap_pix(t_prog *prog)
 t_bunny_response	mainloop(void *p)
 {
   t_prog		*prog;
-  t_bunny_position	*mouse_pos;
   t_font		font;
   t_bunny_position	f_pos;
 
@@ -42,9 +41,7 @@ t_bunny_response	mainloop(void *p)
   font.font_color.full = 0xFF050505;
   f_pos.x = WIN_WIDTH / 2;
   f_pos.y = WIN_HEIGHT - 100;
-  mouse_pos = (t_bunny_position *)bunny_get_mouse_position();
-  /*prog->percent = 1 - (float)mouse_pos->x / (float)WIN_WIDTH;*/
-      prog->percent = 1 - prog->player->x / (float)prog->scene->size.x;
+  prog->percent = 1 - prog->player->x / (float)prog->scene->size.x;
   disp_ground(prog, prog->player->move.select_move);
   if (prog->state == STATE_FIGHT)
     start_fight(prog, prog->current_click.npc);

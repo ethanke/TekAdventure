@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 02:56:24 2016 Gaëtan Léandre
-** Last update Fri Apr 15 05:40:28 2016 Gaëtan Léandre
+** Last update Sat Apr 16 02:10:34 2016 Gaëtan Léandre
 */
 
 #include	 	"main.h"
@@ -35,39 +35,37 @@ void			disp_background(t_sky *sky, t_bunny_pixelarray *pix,
     }
 }
 
-void			put_grille(t_prog *prog, t_bunny_position *gri,
+void			put_grille(t_prog *prog, t_grille *gri,
 				   float percent, t_bunny_pixelarray *pix)
 {
   t_bunny_position	pos;
   t_hitbox		*tmp;
   t_ground		*gro;
-  float			coef;
 
   gro = prog->scene->ground;
-  coef = prog->scene->coef;
   pos.y = -1;
-  while (++pos.y < gri->y)
+  while (++pos.y < gri->grille_y - 1)
     {
       if ((int)prog->player->y == pos.y)
 	deplacement(prog->player, prog->scene, prog->pix, prog->percent);
       pos.x = -1;
-      while (++pos.x < gri->x)
+      while (++pos.x < gri->grille_x)
 	{
-	  if (gro[pos.x + pos.y * gri->x].gate != NULL &&
-	      (tmp = gro[pos.x + pos.y * gri->x].hitbox_gate) != NULL)
-	    place_image(create_hitbox((int)(((float)(coef * (float)(gri->y - pos.y))) * percent) + tmp->x,
-				      tmp->y, tmp->width, tmp->height), *gro[pos.x + pos.y * gri->x].gate->texture_hitbox,
-			gro[pos.x + pos.y * gri->x].gate->texture, pix);
-	  if (gro[pos.x + pos.y * gri->x].npc != NULL &&
-	      (tmp = gro[pos.x + pos.y * gri->x].hitbox_npc) != NULL)
-	      place_image(create_hitbox((int)(((float)(coef * (float)(gri->y - pos.y))) * percent) + tmp->x,
-					tmp->y, tmp->width, tmp->height), *gro[pos.x + pos.y * gri->x].npc->texture_hitbox,
-			  gro[pos.x + pos.y * gri->x].npc->texture, pix);
-	  if (gro[pos.x + pos.y * gri->x].decors != NULL &&
-	      (tmp = gro[pos.x + pos.y * gri->x].hitbox_decors) != NULL)
-		place_image(create_hitbox((int)(((float)(coef * (float)(gri->y - pos.y))) * percent) + tmp->x,
-					  tmp->y, tmp->width, tmp->height), *gro[pos.x + pos.y * gri->x].decors->texture_hitbox,
-			    gro[pos.x + pos.y * gri->x].decors->texture, pix);
+	  if (gro[pos.x + pos.y * gri->grille_x].gate != NULL &&
+	      (tmp = gro[pos.x + pos.y * gri->grille_x].hitbox_gate) != NULL)
+	    place_image(create_hitbox(calc_x_h(gri, &pos, percent, tmp->x),
+				      tmp->y, tmp->width, tmp->height), *gro[pos.x + pos.y * gri->grille_x].gate->texture_hitbox,
+			gro[pos.x + pos.y * gri->grille_x].gate->texture, pix);
+	  if (gro[pos.x + pos.y * gri->grille_x].npc != NULL &&
+	      (tmp = gro[pos.x + pos.y * gri->grille_x].hitbox_npc) != NULL)
+	      place_image(create_hitbox(calc_x_h(gri, &pos, percent, tmp->x),
+					tmp->y, tmp->width, tmp->height), *gro[pos.x + pos.y * gri->grille_x].npc->texture_hitbox,
+			  gro[pos.x + pos.y * gri->grille_x].npc->texture, pix);
+	  if (gro[pos.x + pos.y * gri->grille_x].decors != NULL &&
+	      (tmp = gro[pos.x + pos.y * gri->grille_x].hitbox_decors) != NULL)
+		place_image(create_hitbox(calc_x_h(gri, &pos, percent, tmp->x),
+					  tmp->y, tmp->width, tmp->height), *gro[pos.x + pos.y * gri->grille_x].decors->texture_hitbox,
+			    gro[pos.x + pos.y * gri->grille_x].decors->texture, pix);
 	}
     }
 }
@@ -122,14 +120,17 @@ void			disp_cases(t_scene *scene, t_bunny_pixelarray *pix,
 void			disp_ground(t_prog *prog, int disp)
 {
   t_hitbox		place;
+  t_grille		grille;
 
+  grille = get_grille_with_place(prog->scene);
   place = create_hitbox(0, WIN_HEIGHT - prog->scene->height,
 			WIN_WIDTH, prog->scene->height);
   make_deplacement(prog->player);
   disp_background(prog->scene->sky, prog->pix, prog->percent, prog->scene->height);
   place_image(place, *prog->scene->sol_hitbox, prog->scene->sol, prog->pix);
   deplacement(prog->player, prog->scene, prog->pix, prog->percent);
-  put_grille(prog, &prog->scene->size, prog->percent, prog->pix);
+  prog->scene->coef = (float)(EQUART *  2) / (float)prog->scene->size.y;
+  put_grille(prog, &grille, prog->percent, prog->pix);
   if (disp == 1)
     disp_cases(prog->scene, prog->pix, prog->percent);
   on_gate(prog);

@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Mon Apr 11 00:51:48 2016 Gaëtan Léandre
-** Last update Wed Apr 13 04:37:56 2016 Gaëtan Léandre
+** Last update Sat Apr 16 02:07:32 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -51,7 +51,7 @@ int			calc_x_h(t_grille *grille, t_bunny_position *pos,
   int			result;
 
   result = (int)(((float)(grille->coef *
-		  (float)(grille->grille_y  - pos->y - 1))) * percent) + x;
+		  (float)((grille->grille_y - 1) - pos->y))) * percent) + x;
   return (result);
 }
 
