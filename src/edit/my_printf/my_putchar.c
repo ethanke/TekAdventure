@@ -5,10 +5,10 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Tue Oct  6 10:35:20 2015 Gaëtan Léandre
-** Last update Mon Mar  7 03:25:54 2016 Victor Sousa
+** Last update Sat Apr 16 06:00:51 2016 Gaëtan Léandre
 */
 
-#include "corewar.h"
+#include "main.h"
 
 void	my_putchar(char c)
 {

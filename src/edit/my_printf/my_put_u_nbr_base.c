@@ -5,10 +5,10 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Mon Oct  5 13:31:52 2015 Gaëtan Léandre
-** Last update Mon Mar  7 03:28:31 2016 Victor Sousa
+** Last update Sat Apr 16 06:00:43 2016 Gaëtan Léandre
 */
 
-#include "corewar.h"
+#include "main.h"
 
 unsigned int	power_u(unsigned int nbr, int pow)
 {

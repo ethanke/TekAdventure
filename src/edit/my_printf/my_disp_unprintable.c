@@ -5,10 +5,10 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Thu Nov 12 14:59:18 2015 Gaëtan Léandre
-** Last update Mon Mar  7 03:24:45 2016 Victor Sousa
+** Last update Sat Apr 16 06:00:18 2016 Gaëtan Léandre
 */
 
-#include "corewar.h"
+#include "main.h"
 
 void	disp_unprintable(char *str)
 {

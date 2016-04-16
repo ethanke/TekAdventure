@@ -5,10 +5,10 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Fri Nov 13 10:51:48 2015 Gaëtan Léandre
-** Last update Mon Mar  7 03:25:14 2016 Victor Sousa
+** Last update Sat Apr 16 06:00:26 2016 Gaëtan Léandre
 */
 
-#include "corewar.h"
+#include "main.h"
 
 void	va_my_putchar(va_list ap)
 {

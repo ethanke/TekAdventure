@@ -5,10 +5,10 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Thu Nov 12 12:27:44 2015 Gaëtan Léandre
-** Last update Tue Mar 15 17:53:11 2016 Victor Sousa
+** Last update Sat Apr 16 06:00:13 2016 Gaëtan Léandre
 */
 
-#include "corewar.h"
+#include "main.h"
 
 t_fonct	*init_struct(t_fonct *tab)
 {

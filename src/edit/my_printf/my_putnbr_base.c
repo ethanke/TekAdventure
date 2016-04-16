@@ -5,10 +5,10 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Mon Oct  5 13:31:52 2015 Gaëtan Léandre
-** Last update Mon Mar  7 03:26:05 2016 Victor Sousa
+** Last update Sat Apr 16 06:01:03 2016 Gaëtan Léandre
 */
 
-#include "corewar.h"
+#include "main.h"
 
 int	my_strlen(char *base)
 {

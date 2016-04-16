@@ -5,10 +5,10 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Wed Sep 30 12:45:43 2015 Gaëtan Léandre
-** Last update Mon Mar  7 03:25:48 2016 Victor Sousa
+** Last update Sat Apr 16 06:00:47 2016 Gaëtan Léandre
 */
 
-#include "corewar.h"
+#include "main.h"
 
 void	my_put_unbr(unsigned int nbr)
 {

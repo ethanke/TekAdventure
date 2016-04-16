@@ -5,10 +5,10 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Fri Nov 13 19:27:27 2015 Gaëtan Léandre
-** Last update Mon Mar  7 03:26:50 2016 Victor Sousa
+** Last update Sat Apr 16 06:00:21 2016 Gaëtan Léandre
 */
 
-#include "corewar.h"
+#include "main.h"
 
 void	color(int i)
 {

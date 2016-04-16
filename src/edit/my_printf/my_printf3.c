@@ -5,10 +5,10 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Fri Nov 13 10:52:38 2015 Gaëtan Léandre
-** Last update Mon Mar  7 03:25:20 2016 Victor Sousa
+** Last update Sat Apr 16 06:00:35 2016 Gaëtan Léandre
 */
 
-#include "corewar.h"
+#include "main.h"
 
 void	va_my_octal(va_list ap)
 {
