@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Sat Apr 16 06:51:47 2016 Philippe Lefevre
-** Last update Sat Apr 16 09:13:03 2016 Philippe Lefevre
+** Last update Sat Apr 16 09:14:19 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -238,7 +238,6 @@ t_player		*load_player_init(t_ptr_list **ptr_list, char *tmp,
 					  t_bunny_ini *ini)
 {
   t_player		*player;
-  char			*tmp;
 
   player = NULL;
   if ((player = xmalloc(sizeof(t_player), ptr_list)) == NULL)
@@ -258,7 +257,7 @@ t_player		*load_player_init(t_ptr_list **ptr_list, char *tmp,
   if ((player->name = my_strdup(tmp, ptr_list)) == NULL)
     return (my_puterror_player("Error: player->name:my_strdup ",
 			       -1, "failed in load_player\n"));
-  return (player):
+  return (player);
 }
 
 t_player		*load_player(t_bunny_ini *ini, t_ptr_list **ptr_list)
