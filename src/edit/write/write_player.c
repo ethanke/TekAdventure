@@ -5,12 +5,12 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 08:11:18 2016 Gaëtan Léandre
-** Last update Sat Apr 16 08:40:44 2016 Gaëtan Léandre
+** Last update Sat Apr 16 09:27:42 2016 Victor Sousa
 */
 
 #include 		"main.h"
 
-int			write_player_amount(t_player *player, int fd, int size)
+void			write_player_amount(t_player *player, int fd, int size)
 {
   int			i;
   int			pos;
@@ -34,7 +34,7 @@ int			write_player_amount(t_player *player, int fd, int size)
     }
 }
 
-int			write_player_item(t_player *player, int fd, int size)
+void			write_player_item(t_player *player, int fd, int size)
 {
   int			i;
   int			pos;
@@ -58,7 +58,7 @@ int			write_player_item(t_player *player, int fd, int size)
     }
 }
 
-int			write_player_slot(t_player *player, int fd, int size)
+void			write_player_slot(t_player *player, int fd, int size)
 {
   int			i;
   int			pos;
@@ -82,7 +82,7 @@ int			write_player_slot(t_player *player, int fd, int size)
     }
 }
 
-int			write_player(t_player *player, int fd)
+void			write_player(t_player *player, int fd)
 {
   int			i;
   int			size;
@@ -96,10 +96,10 @@ int			write_player(t_player *player, int fd)
 	size++;
       i++;
     }
-  my_printf(fd, "player_inventory_count=\"%d\"\n", player->name);
-  write_player_slot(player, fd, i);
-  write_player_item(player, fd, i);
-  write_player_amount(player, fd, i);
+  my_printf(fd, "player_inventory_count=\"%d\"\n", size);
+  write_player_slot(player, fd, size);
+  write_player_item(player, fd, size);
+  write_player_amount(player, fd, size);
   my_printf(fd, "player_sprite_id=\"%d\"\n", player->sprite_id);
   my_printf(fd, "\n\n");
 }

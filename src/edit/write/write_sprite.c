@@ -5,17 +5,18 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 07:45:43 2016 Gaëtan Léandre
-** Last update Sat Apr 16 09:11:12 2016 Gaëtan Léandre
+** Last update Sat Apr 16 09:31:48 2016 Victor Sousa
 */
 
 #include 		"main.h"
 
-int			write_sprite_id(t_sprite *sprite, int fd, int size)
+void			write_sprite_id(t_sprite *sprite, int fd, int size)
 {
   t_sprite		*tmp;
   int			i;
 
   i = 0;
+  tmp = sprite;
   my_printf(fd, "sprite_id=");
   while (tmp != NULL)
     {
@@ -28,12 +29,13 @@ int			write_sprite_id(t_sprite *sprite, int fd, int size)
     }
 }
 
-int			write_sprite_path(t_sprite *sprite, int fd, int size)
+void			write_sprite_path(t_sprite *sprite, int fd, int size)
 {
   t_sprite		*tmp;
   int			i;
 
   i = 0;
+  tmp = sprite;
   my_printf(fd, "sprite_path=");
   while (tmp != NULL)
     {
@@ -46,7 +48,7 @@ int			write_sprite_path(t_sprite *sprite, int fd, int size)
     }
 }
 
-int			write_sprite(t_sprite *sprite, int fd)
+void			write_sprite(t_sprite *sprite, int fd)
 {
   t_sprite		*tmp;
   int			i;
