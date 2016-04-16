@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Sat Apr 16 00:40:25 2016 Philippe Lefevre
+** Last update Sat Apr 16 05:14:04 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -29,9 +29,11 @@ t_scene			*create_scene_node(char *name, t_bunny_ini *ini,
   if ((scene->sky = link_sky(scene->sky, scene->sprite)) == NULL)
     return (NULL);
 
-  /* code here */
-
   if ((scene = link_ground(ini, scene, ptr_list, name)) == NULL)
+    return (NULL);
+  if ((scene->ground->gate = load_gate(name, ini, ptr_list)) == NULL)
+    return (NULL);
+  if ((scene->ground->gate = link_gate(scene->ground->gate, scene->sprite)) == NULL)
     return (NULL);
   if (set_hitbox_ground(scene, (*ptr_list)))
     return (NULL);

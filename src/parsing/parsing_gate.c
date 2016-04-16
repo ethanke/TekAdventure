@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Fri Apr 15 22:44:02 2016 Philippe Lefevre
-** Last update Sat Apr 16 00:37:39 2016 Philippe Lefevre
+** Last update Sat Apr 16 05:03:57 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -81,11 +81,11 @@ t_gate			*create_gate_node(int id, t_bunny_ini *ini,
 
   if ((str = (char *)bunny_ini_get_field(ini, name, "scene_gate_pos_x", id)) == NULL)
     return (my_puterror_gate("Error: ", name, ":scene_gate_pos_x field ", id, " not found\n"));
-  if ((gate->pos->x = my_getnbr(str)) < 0)
+  if ((gate->pos.x = my_getnbr(str)) < 0)
     return (my_puterror_gate("Error: ", name, ":scene_gate_pos_x ", id, "should not be negative\n"));
   if ((str = (char *)bunny_ini_get_field(ini, name, "scene_gate_pos_y", id)) == NULL)
     return (my_puterror_gate("Error: ", name, ":scene_gate_pos_y field ", id, " not found\n"));
-  if ((gate->pos->y = my_getnbr(str)) < 0)
+  if ((gate->pos.y = my_getnbr(str)) < 0)
     return (my_puterror_gate("Error: ", name, ":scene_gate_pos_y ", id, "should not be negative\n"));
 
 
@@ -115,7 +115,8 @@ t_gate			*list_add_gate(int id, t_gate *list, char *name, t_bunny_ini *ini,
   return (list);
 }
 
-t_gate			*load_gate( char *name, t_bunny_ini *ini, t_ptr_list **ptr_list)
+t_gate			*load_gate(char *name, t_bunny_ini *ini,
+				   t_ptr_list **ptr_list)
 {
   t_gate		*list;
   char			*str;

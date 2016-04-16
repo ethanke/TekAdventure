@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Sat Apr 16 00:43:12 2016 Philippe Lefevre
+** Last update Sat Apr 16 04:52:44 2016 Philippe Lefevre
 */
 
 #ifndef			PARSING_H_
@@ -36,6 +36,8 @@ t_scene			*load_scene(t_bunny_ini *ini, t_scene *scene,
 				    t_ptr_list **ptr_list);
 t_sky			*load_sky(char *name, t_bunny_ini *ini,
 				  t_ptr_list **ptr_list);
+t_gate			*load_gate(char *name, t_bunny_ini *ini,
+				   t_ptr_list **ptr_list);
 t_object		*load_object(t_bunny_ini *ini, t_ptr_list **ptr_list);
 t_sprite		*load_sprite(t_bunny_ini *ini, t_ptr_list **ptr_list);
 t_player		*load_player(t_bunny_ini *ini, t_ptr_list **ptr_list);
@@ -44,6 +46,7 @@ t_object		*link_object(t_object *object, t_sprite *sprite);
 t_decors		*link_decors(t_decors *decors, t_sprite *sprite);
 t_npc			*link_npc(t_npc *npc, t_sprite *sprite,
 				  t_object *object);
+t_gate			*link_gate(t_gate *gate, t_sprite *sprite);
 t_scene			*link_ground(t_bunny_ini *ini, t_scene *scene,
 				     t_ptr_list **ptr_list, char *name);
 t_item			*link_inventory_item(t_item *inventory, t_object *object);
