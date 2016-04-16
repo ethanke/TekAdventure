@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 19:43:02 2016 Gaëtan Léandre
-** Last update Sat Apr 16 21:48:57 2016 Gaëtan Léandre
+** Last update Sat Apr 16 22:43:50 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -93,11 +93,6 @@ void			write_scene(t_scene *scene, int fd)
     }
   my_printf(fd, "[scene]\nscene_count=\"%d\"\n", i);
   write_scene_name(scene, fd, i);
-  tmp = scene;
-  while (tmp != NULL)
-    {
-      write_particular_scene(scene, fd);
-      tmp = tmp->next;
-    }
+  write_particular_scene(scene, fd);  
   my_printf(fd, "\n\n");
 }
