@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:49:08 2016 Victor Sousa
-** Last update Sat Apr 16 07:50:39 2016 Ethan Kerdelhue
+** Last update Sat Apr 16 18:50:37 2016 Gaëtan Léandre
 */
 
 #ifndef			EVENT_H_
@@ -72,5 +72,29 @@ void			set_click_decors(t_map_click *click,
 				  t_ground *ground,
 				  t_bunny_position pos,
 				  t_grille *gril);
+void			write_decors_id(t_decors *decors, int fd, int size);
+void			write_decors_name(t_decors *decors, int fd, int size);
+void			write_decors_sprite_id(t_decors *decors, int fd,
+					       int size);
+void			write_decors_spite_hitbox_x(t_decors *decors, int fd,
+						    int size);
+void			write_decors_spite_hitbox_y(t_decors *decors, int fd,
+						    int size);
+void			write_decors_spite_hitbox_w(t_decors *decors, int fd,
+						    int size);
+void			write_decors_spite_hitbox_h(t_decors *decors, int fd,
+						    int size);
+void			write_decors_brecabl(t_decors *decors, int fd,
+					     int size);
+void			write_decors_brecabl_life(t_decors *decors, int fd,
+						  int size);
+void			write_decors_brecabl_break(t_decors *decors, int fd,
+						   int size);
+void			write_decors_brecabl_lootable(t_decors *decors, int fd,
+						      int size);
+void			write_decors_loot_id(t_decors *decors, int fd,
+					     int size);
+void			write_decors_loot_amount(t_decors *decors, int fd,
+						 int size);
 
 #endif			/* !EVENT_H_ */

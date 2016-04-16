@@ -5,7 +5,7 @@
 ## Login   <lefevr_h@epitech.net>
 ##
 ## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
-## Last update Sat Apr 16 02:27:39 2016 Kerdelhue Ethan
+## Last update Sat Apr 16 18:54:15 2016 Gaëtan Léandre
 ##
 
 NAME		=	tekadventure
@@ -67,7 +67,10 @@ SRC		+=	$(WRITEDIR)/write_ini.c			\
 			$(WRITEDIR)/write_object.c		\
 			$(WRITEDIR)/write_object2.c		\
 			$(WRITEDIR)/write_object3.c		\
-			$(WRITEDIR)/write_object4.c
+			$(WRITEDIR)/write_object4.c		\
+			$(WRITEDIR)/write_decors.c		\
+			$(WRITEDIR)/write_decors2.c		\
+			$(WRITEDIR)/write_decors3.c		\
 
 SRC		+=	$(PRTFDIR)/my_disp_unprintable.c	\
 			$(PRTFDIR)/my_printf.c			\
