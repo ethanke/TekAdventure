@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 09:07:37 2016 Victor Sousa
-** Last update Sat Apr 16 19:44:41 2016 Victor Sousa
+** Last update Sat Apr 16 20:21:30 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -21,7 +21,6 @@ void			aff_all(int fd, t_ini *ini)
 
 void			aff_stuff(int ac, char **av, t_ini *ini)
 {
-  /* try aff player */
   if (ini->has_been_loaded == 0)
     {
       my_printf(1, "No ini file load. Use \"load ini path_to_file.ini\"\n");

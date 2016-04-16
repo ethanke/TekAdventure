@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 19:20:47 2016 Victor Sousa
-** Last update Sat Apr 16 19:51:47 2016 Victor Sousa
+** Last update Sat Apr 16 20:21:38 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -46,6 +46,11 @@ void			add_all(t_ini *ini)
 
 void			add_stuff(int ac, char **av, t_ini *ini)
 {
+  if (ini->has_been_loaded == 0)
+    {
+      my_printf(1, "No ini file load. Use \"load ini path_to_file.ini\"\n");
+      return;
+    }
   if (ac == 1)
     add_all(ini);
   if (ac == 2 && my_strcmp(av[1], "player") == 0)
