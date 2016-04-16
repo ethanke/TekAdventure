@@ -5,33 +5,115 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Sat Apr 16 09:39:36 2016 Philippe Lefevre
+** Last update Sun Apr 17 00:51:01 2016 Philippe Lefevre
 */
 
 #include		"main.h"
+
+t_hitbox		*object_hitbox_x(int id, t_bunny_ini *ini, char *name,
+					 t_hitbox *hitbox)
+{
+  char			*str;
+
+  if ((str = (char *)bunny_ini_get_field(ini, name,
+					 "object_sprite_hitbox_x", id))
+      == NULL)
+    {
+      my_puterror_hitbox("Error: ", -1, name);
+      return (my_puterror_hitbox(":object_sprite_hitbox_x field ",
+				 id, " not found\n"));
+    }
+  if ((hitbox->x = my_getnbr(str)) < 0)
+    {
+      my_puterror_hitbox("Error: ", -1, name);
+      return (my_puterror_hitbox(":object_sprite_hitbox_x field ", id,
+				 " should not be negative and only number\n"));
+    }
+  return (hitbox);
+}
+
+t_hitbox		*object_hitbox_y(int id, t_bunny_ini *ini, char *name,
+					 t_hitbox *hitbox)
+{
+  char			*str;
+
+  if ((str = (char *)bunny_ini_get_field(ini, name,
+					 "object_sprite_hitbox_y", id))
+      == NULL)
+    {
+      my_puterror_hitbox("Error: ", -1, name);
+      return (my_puterror_hitbox(":object_sprite_hitbox_y field ",
+				 id, " not found\n"));
+    }
+  if ((hitbox->y = my_getnbr(str)) < 0)
+    {
+      my_puterror_hitbox("Error: ", -1, name);
+      return (my_puterror_hitbox(":object_sprite_hitbox_y field ", id,
+				 " should not be negative and only number\n"));
+    }
+  return (hitbox);
+}
+
+t_hitbox		*object_hitbox_width(int id, t_bunny_ini *ini,
+					     char *name, t_hitbox *hitbox)
+{
+  char			*str;
+
+  if ((str = (char *)bunny_ini_get_field(ini, name,
+					 "object_sprite_hitbox_width", id))
+      == NULL)
+    {
+      my_puterror_hitbox("Error: ", -1, name);
+      return (my_puterror_hitbox(":object_sprite_hitbox_width field ",
+				 id, " not found\n"));
+    }
+  if ((hitbox->width = my_getnbr(str)) < 0)
+    {
+      my_puterror_hitbox("Error: ", -1, name);
+      return (my_puterror_hitbox(":object_sprite_hitbox_width field ", id,
+				 " should not be negative and only number\n"));
+    }
+  return (hitbox);
+}
+
+t_hitbox		*object_hitbox_height(int id, t_bunny_ini *ini,
+					      char *name, t_hitbox *hitbox)
+{
+  char		*str;
+
+  if ((str = (char *)bunny_ini_get_field(ini, name,
+					 "object_sprite_hitbox_height", id))
+      == NULL)
+    {
+      my_puterror_hitbox("Error: ", -1, name);
+      return (my_puterror_hitbox(":object_sprite_hitbox_height field ",
+				 id, " not found\n"));
+    }
+  if ((hitbox->height = my_getnbr(str)) < 0)
+    {
+      my_puterror_hitbox("Error: ", -1, name);
+      return (my_puterror_hitbox(":object_sprite_hitbox_height field ", id,
+				 " should not be negative and only number\n"));
+    }
+  return (hitbox);
+}
 
 t_hitbox		*create_object_hitbox(int id, t_bunny_ini *ini,
 					      t_ptr_list **ptr_list)
 {
   t_hitbox		*hitbox;
-  char			*str;
-  int			i;
 
   if ((hitbox = xmalloc(sizeof(*hitbox), ptr_list)) == NULL)
     return (my_puterror_hitbox("Error: hitbox:xmalloc ", -1,
 			       "failed in create_object_hitbox\n"));
-  if ((str = (char *)bunny_ini_get_field(ini, "object", "object_sprite_hitbox",
-					 id)) == NULL)
-    return (my_puterror_hitbox("Error: object:object_sprite_hitbox field ",
-			       id, " not found\n"));
-  i = -1;
-  hitbox->x = my_getnbr(str);
-  while (str[++i] && str[i] != ';');
-  hitbox->y = my_getnbr(str + i + 1);
-  while (str[++i] && str[i] != ';');
-  hitbox->width = my_getnbr(str + i + 1);
-  while (str[++i] && str[i] != ';');
-  hitbox->height = my_getnbr(str + i + 1);
+  if ((hitbox = object_hitbox_x(id, ini, "object", hitbox)) == NULL)
+    return (NULL);
+  if ((hitbox = object_hitbox_y(id, ini, "object", hitbox)) == NULL)
+    return (NULL);
+  if ((hitbox = object_hitbox_width(id, ini, "object", hitbox)) == NULL)
+    return (NULL);
+  if ((hitbox = object_hitbox_height(id, ini, "object", hitbox)) == NULL)
+    return (NULL);
   return (hitbox);
 }
 

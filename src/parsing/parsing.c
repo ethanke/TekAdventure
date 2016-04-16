@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:08:59 2016 Philippe Lefevre
-** Last update Sat Apr 16 21:27:23 2016 Philippe Lefevre
+** Last update Sun Apr 17 00:43:05 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -73,6 +73,45 @@ t_scene			*parsing_load_all(t_bunny_ini *ini, t_scene *stockage,
   return (stockage);
 }
 
+/*int			parsing_check_spawn_zone(t_scene *scene)
+{
+  int			x;
+  int			y;
+  int			i;
+  t_scene		*tmp_scene;
+
+  tmp_scene = scene;
+  while (tmp_scene != NULL)
+    {
+      i = -1;
+      y = -1;
+      printf("==[%d]==[%d]==\n", scene->size.x, scene->size.y);
+      while (++y < scene->size.y)
+	{
+	  x = -1;
+	  while (++x < scene->size.x)
+	    {
+	      i = x + (y * scene->size.x);
+	      if (((scene->ground[i].npc != NULL)
+		   || (scene->ground[i].decors != NULL))
+		  && (scene->ground[i].gate != NULL))
+		{
+		  printf("(%s)\n", "conflict double set object\n");
+		  return (-1);
+		}
+	      else if ((scene->ground[i].gate != NULL)
+		       && (scene->start_pos->x == x)
+		       && (scene->start_pos->y == y))
+		{
+		  return (-1);
+	      printf("i [%d]	x [%d]	y [%d]\n", i, x, y);
+	    }
+	  tmp_scene = tmp_scene->next;
+	}
+    }
+ rfeturn (0);
+}*/
+
 t_scene			*parsing(const char *file, t_player **player,
 				 t_ptr_list **ptr_list)
 {
@@ -96,6 +135,8 @@ t_scene			*parsing(const char *file, t_player **player,
     scene->player->y = scene->start_pos->y;
     (*player) = stockage->player;
   bunny_delete_ini(ini);
+/*  if (parsing_check_spawn_zone(scene))
+    return (NULL);*/
     /* start pos proteted zone */
   return (link_ptr_gate(scene));
 }
