@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:49:08 2016 Victor Sousa
-** Last update Sat Apr 16 06:38:42 2016 Ethan Kerdelhue
+** Last update Sat Apr 16 07:50:39 2016 Ethan Kerdelhue
 */
 
 #ifndef			EVENT_H_
@@ -64,5 +64,13 @@ int			where_to_swap(t_prog *prog, int need_to_move);
 void			put_in_equip(t_prog *prog, int need_to_move);
 void			put_item_in_inventory(t_prog *prog, int need_to_move);
 void			pull_out_equip(t_prog *prog, int need_to_move);
+void			set_click_npc(t_map_click *click,
+				  t_ground *ground,
+				  t_bunny_position pos,
+				  t_grille *grille);
+void			set_click_decors(t_map_click *click,
+				  t_ground *ground,
+				  t_bunny_position pos,
+				  t_grille *gril);
 
 #endif			/* !EVENT_H_ */

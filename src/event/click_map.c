@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Tue Apr 12 03:55:39 2016 Gaëtan Léandre
-** Last update Sat Apr 16 05:09:09 2016 Gaëtan Léandre
+** Last update Sat Apr 16 07:49:23 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -30,11 +30,9 @@ void			get_npc_clicked(t_ground *ground, t_grille *grille,
 				   tmp->y, tmp->width, tmp->height);
 	      if (in_hitbox(&item, click->mouse_pos) == 1)
 		{
-		  click->x = pos.x;
-		  click->y = pos.y;
 		  click->pos.x = item.x;
 		  click->pos.y = item.y;
-		  click->npc = ground[pos.x + pos.y * grille->grille_x].npc;
+		  set_click_npc(click, ground, pos, grille);
 		  return;
 		}
 	    }
@@ -62,11 +60,9 @@ void			get_decors_clicked(t_ground *ground, t_grille *gril,
 				   tmp->y, tmp->width, tmp->height);
 	      if (in_hitbox(&item, click->mouse_pos) == 1)
 		{
-		  click->x = pos.x;
-		  click->y = pos.y;
-                  click->pos.x = item.x;
-                  click->pos.y = item.y;
-		  click->decors = ground[pos.x + pos.y * gril->grille_x].decors;
+		  click->pos.x = item.x;
+		  click->pos.y = item.y;
+		  set_click_decors(click, ground, pos, gril);
 		  return;
 		}
 	    }
