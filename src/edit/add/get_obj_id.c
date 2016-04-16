@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 20:21:50 2016 Victor Sousa
-** Last update Sat Apr 16 20:22:12 2016 Victor Sousa
+** Last update Sat Apr 16 21:05:16 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -38,7 +38,7 @@ int			object_id_is_taken(t_ini *ini, int id)
   return (0);
 }
 
-int			get_id(t_ini *ini)
+int			get_obj_id(t_ini *ini)
 {
   char			*str;
   int			id;
@@ -56,7 +56,7 @@ int			get_id(t_ini *ini)
     {
       my_printf(1, "Id already taken by object : %s\n",
 		look_for_obj_name(ini, id));
-      return (get_id(ini));
+      return (get_obj_id(ini));
     }
   return (id);
 }

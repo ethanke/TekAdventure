@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:49:05 2016 Victor Sousa
-** Last update Sat Apr 16 20:07:27 2016 Victor Sousa
+** Last update Sat Apr 16 21:10:05 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -23,13 +23,13 @@ int			treat_cmd(int ac, char **av, t_ini *ini)
       && my_strcmp(av[1], "ini") == 0)
     {
       if (load_ini(av[2], ini) == -1)
-	return (-1);
+	my_printf(1, "load ini failed\n\n");
     }
   if (ac == 3 && my_strcmp(av[0], "write") == 0
       && my_strcmp(av[1], "ini") == 0)
     {
       if (write_ini(av[2], ini) == -1)
-	return (-1);
+	my_printf(1, "write ini failed\n\n");
     }
   if (ac == 2 && my_strcmp(av[0], "close") == 0
       && my_strcmp(av[1], "ini") == 0)
