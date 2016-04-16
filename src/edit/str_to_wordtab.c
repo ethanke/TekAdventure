@@ -5,81 +5,77 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr  9 01:06:04 2016 Gaëtan Léandre
-** Last update Sat Apr  9 04:12:12 2016 Gaëtan Léandre
+** Last update Sat Apr 16 19:46:13 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
 
-int			is_separate(char c, char *str)
+char		check(char c, char *delim)
 {
-  int			i;
+  int		i;
 
-  i = 0;
-  while (str[i])
-    {
-      if (str[i] == c)
-	return (1);
-      i++;
-    }
-  return (0);
+  i = -1;
+  while (delim[++i])
+    if (delim[i] == c)
+      return (0);
+  return (c);
 }
 
-char			*size_word(char *str, char *separate, int *i)
+int		countchars(char *str, char *delim)
 {
-  char			*result;
-  int			size;
-  int			j;
+  int		i;
 
-  size = 0;
-  j = *i;
-  while (str[j] && is_separate(str[j], separate) == 0)
-    {
-      size++;
-      j++;
-    }
-  if ((result = malloc(sizeof(char) * (size + 1))) == NULL)
-    return (NULL);
-  j = 0;
-  while (str[*i] && is_separate(str[*i], separate) == 0)
-    {
-      result[j] = str[*i];
-      j++;
-      (*i)++;
-    }
-  result[j] = '\0';
-  return (result);
+  i = 0;
+  while (check(str[i], delim))
+    i++;
+  return (i + 1);
 }
 
-char			**str_to_wordtab(char *str, char *separate)
+int		countwords(char *str, char *delim)
 {
-  char			**tab;
-  int			words;
-  int			i;
+  int		i;
+  int		count;
 
-  words = 0;
   i = 0;
+  count = 1;
+  while (str[i] != '\0')
+  {
+    if (!check(str[i], delim))
+      {
+	count++;
+	while (str[i] && !check(str[i], delim))
+	  i++;
+      }
+      if (str[i])
+        i++;
+   }
+   return (count + 1);
+}
+
+char		**str_to_wordtab(char *str, char *delim)
+{
+  int		i;
+  int		j;
+  int		k;
+  char		**tab;
+
+  i = 0;
+  j = -1;
+  if ((tab = malloc(countwords(str, delim) * sizeof(char *))) == NULL)
+      return (NULL);
+  while (str[i] && !check(str[i], delim))
+    i++;
   while (str[i])
     {
-      if (i - 1 < 0 || (is_separate(str[i], separate) == 1
-			&& is_separate(str[i - 1], separate) == 0))
-	words++;
-      i++;
-    }
-  if (words == 0 || (tab = malloc(sizeof(char *) * (words + 1))) == NULL)
-    return (NULL);
-  i = 0;
-  words = 0;
-  while (str[i])
-    {
-      if (is_separate(str[i], separate) == 0)
-	{
-	  if ((tab[words] = size_word(str, separate, &i)) == NULL)
-	    return (NULL);
-	  words++;
-	}
-      else
+      if ((tab[++j] = malloc(countchars(&str[i], delim))) == NULL)
+	  return (NULL);
+      k = -1;
+      while (check(str[i], delim))
+	tab[j][++k] = str[i++];
+      tab[j][++k] = 0;
+      while (str[i] && !check(str[i], delim))
 	i++;
     }
-  tab[words] = NULL;
+  tab[++j] = NULL;
   return (tab);
 }

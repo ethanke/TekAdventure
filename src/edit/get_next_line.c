@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Mon Jan  4 15:56:23 2016 Gaëtan Léandre
-** Last update Sat Apr 16 07:38:18 2016 Gaëtan Léandre
+** Last update Sat Apr 16 19:38:38 2016 Ethan Kerdelhue
 */
 
 #include "get_next_line.h"
@@ -62,11 +62,8 @@ int	add_end(t_text *text, char *stock)
     {
       if ((new = malloc(size + 1)) == NULL)
 	return (-1);
-      while (text->result[i])
-	{
-	  new[i] = text->result[i];
-	  i++;
-	}
+      while (text->result[++i])
+	new[i] = text->result[i];
       while (stock[j] != '\0' && stock[j] != '\n')
 	new[i++] = stock[j++];
       new[i] = '\0';

@@ -26,7 +26,10 @@ t_depla		*free_star(t_star *star)
   return (star->depla);
 }
 
-t_depla		*a_star(t_ground *ground, t_posi *size, t_posi *pos, t_posi *end)
+t_depla		*a_star(t_ground *ground,
+			t_posi *size,
+			t_posi *pos,
+			t_posi *end)
 {
   t_star	star;
   int		cont;
@@ -49,7 +52,8 @@ t_depla		*a_star(t_ground *ground, t_posi *size, t_posi *pos, t_posi *end)
     return (NULL);
   while (star.cur_x != pos->x || star.cur_y != pos->y)
     {
-    if (best_way(&star) == -1)
-      return (NULL);}
+      if (best_way(&star) == -1)
+	return (NULL);
+    }
   return (free_star(&star));
 }
