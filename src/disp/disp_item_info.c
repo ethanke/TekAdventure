@@ -5,12 +5,12 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Mon Apr 11 07:08:46 2016 Victor Sousa
-** Last update Sat Apr 16 00:12:21 2016 Victor Sousa
+** Last update Sat Apr 16 04:03:03 2016 Victor Sousa
 */
 
 #include		"main.h"
 
-static void		disp_quatity(t_prog *prog, t_font font, t_item *item,
+void			disp_quatity(t_prog *prog, t_font font, t_item *item,
 				     t_bunny_position rect_pos)
 {
   char			*nbr;
@@ -27,7 +27,7 @@ static void		disp_quatity(t_prog *prog, t_font font, t_item *item,
   free(nbr);
 }
 
-static void		disp_damage(t_prog *prog, t_font font, t_item *item,
+void			disp_damage(t_prog *prog, t_font font, t_item *item,
 				    t_bunny_position rect_pos)
 {
   char			*nbr;
@@ -44,8 +44,8 @@ static void		disp_damage(t_prog *prog, t_font font, t_item *item,
   free(str);
 }
 
-void			disp_item_info(t_prog *prog, t_item *item,
-				       t_bunny_position *pos)
+void			disp_simple_item_info(t_prog *prog, t_item *item,
+					      t_bunny_position *pos)
 {
   t_bunny_position	rect_pos;
   t_bunny_position	rect_size;
@@ -66,4 +66,13 @@ void			disp_item_info(t_prog *prog, t_item *item,
   disp_quatity(prog, font, item, rect_pos);
   rect_pos.y += 15;
   disp_damage(prog, font, item, rect_pos);
+}
+
+void			disp_item_info(t_prog *prog, t_item *item,
+				       t_bunny_position *pos)
+{
+  if (item->object->is_equipable == 0)
+    disp_simple_item_info(prog, item, pos);
+  else
+    disp_equip_info(prog, item, pos);
 }

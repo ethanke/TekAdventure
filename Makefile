@@ -73,6 +73,7 @@ SRC		+=	$(DISPDIR)/disp_hotbar.c		\
 			$(DISPDIR)/disp_equipement.c		\
 			$(DISPDIR)/disp_selected_inv_item.c	\
 			$(DISPDIR)/disp_item_info.c		\
+			$(DISPDIR)/disp_equip_info.c		\
 			$(DISPDIR)/disp_floating_item.c		\
 			$(DISPDIR)/disp_scene.c			\
 			$(DISPDIR)/init_hitbox_scene.c		\
