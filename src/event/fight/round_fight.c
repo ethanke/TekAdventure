@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr 15 01:35:20 2016 Ethan Kerdelhue
-** Last update Sat Apr 16 02:45:45 2016 Gaëtan Léandre
+** Last update Sat Apr 16 03:52:31 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -65,7 +65,7 @@ int			loop_fight(t_prog *prog)
       str = my_strcat(str, " win");
       add_disp_txt(prog, str);
       free(str);
-      prog->state = STATE_GAME;
+      prog->state = STATE_GAME_OVER;
       prog->need_init_fight = 1;
     }
   if  (prog->fight->npc->life <= 0)

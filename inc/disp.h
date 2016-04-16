@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Thu Apr  7 03:01:13 2016 victor sousa
-** Last update Sat Apr 16 04:28:01 2016 Victor Sousa
+** Last update Sat Apr 16 04:30:34 2016 Ethan Kerdelhue
 */
 
 #ifndef 		DISP_H_
@@ -23,6 +23,7 @@
 # define		EIS_HEIGHT	(IIS_HEIGHT + 115)
 #endif			/* !EQUIP_INFO_SIZE_ */
 
+void			disp_game_over(t_prog *prog);
 void			disp_hotbar(t_prog *prog, t_bunny_position *m_pos);
 void			disp_inventory(t_prog *prog);
 void			disp_equip(t_prog *prog, t_bunny_position *m_pos);

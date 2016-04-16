@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 09:11:28 2016 Victor Sousa
-** Last update Sat Apr 16 03:23:54 2016 Victor Sousa
+** Last update Sat Apr 16 05:00:32 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -61,6 +61,8 @@ void			handle_inventory_click(t_prog *prog)
       	      prog->player->inventory[need_to_move].object;
       	      prog->player->caract->stamina +=
       	      prog->player->inventory[need_to_move].object->caract->stamina;
+	      prog->player->life +=
+	      prog->player->inventory[need_to_move].object->caract->stamina * 2;
       	      prog->player->caract->strength +=
       	      prog->player->inventory[need_to_move].object->caract->strength;
       	      prog->player->caract->critical +=
@@ -90,6 +92,8 @@ void			handle_inventory_click(t_prog *prog)
 	      prog->player->inventory[need_to_move].object;
 	      prog->player->caract->stamina -=
 	      prog->player->inventory[need_to_move].object->caract->stamina;
+              prog->player->life -=
+              prog->player->inventory[need_to_move].object->caract->stamina * 2;
 	      prog->player->caract->strength -=
 	      prog->player->inventory[need_to_move].object->caract->strength;
 	      prog->player->caract->critical -=

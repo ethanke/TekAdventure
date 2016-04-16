@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 00:11:13 2016 Gaëtan Léandre
-** Last update Fri Apr 15 22:35:25 2016 Gaëtan Léandre
+** Last update Sat Apr 16 04:04:01 2016 Ethan Kerdelhue
 */
 
 #ifndef			PROG_H_
@@ -19,6 +19,7 @@
 # define		STATE_FIGHT		3
 # define		STATE_NPC_CHOOSE	4
 # define		STATE_DECOR_CHOOSE	5
+# define		STATE_GAME_OVER		6
 #endif			/*!PROG_STATE_*/
 
 typedef struct		s_text
@@ -74,6 +75,9 @@ typedef	struct		s_prog
   t_texture		*defend_button_hover;
   t_texture		*magic_button_hover;
   t_texture		*skip_button_hover;
+  t_texture		*game_over_img;
+  t_texture		*over_quit;
+  t_texture		*over_continue;
 
   t_map_click		current_click;
 

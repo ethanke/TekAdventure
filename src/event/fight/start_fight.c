@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Sat Apr 16 02:48:06 2016 Gaëtan Léandre
+** Last update Sat Apr 16 04:55:37 2016 Victor Sousa
 */
 
 #include	"main.h"
@@ -55,14 +55,6 @@ int			my_puts(char *str, int nb, int flag)
   return (0);
 }
 
-int			get_life_player(t_player *player)
-{
-  int			life_player;
-
-  life_player = player->caract->stamina * 10 + 100;
-  return (life_player);
-}
-
 int			get_player_magic_damage(t_player *player, t_prog *prog)
 {
   int			player_magic_damage;
@@ -77,7 +69,7 @@ int			get_player_damage(t_player *player, t_prog *prog)
   int			player_damage;
 
   (void)prog;
-  player_damage = 5 + (1 + player->caract->intellect / 2);
+  player_damage = 5 + (1 + player->caract->strength / 2);
   return (player_damage);
 }
 

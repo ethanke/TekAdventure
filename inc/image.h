@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Fri Apr 15 03:26:21 2016 Gaëtan Léandre
-** Last update Fri Apr 15 03:34:45 2016 Gaëtan Léandre
+** Last update Sat Apr 16 05:09:41 2016 Gaëtan Léandre
 */
 
  #ifndef   _IMAGE_H_
@@ -89,5 +89,6 @@ void			tektextcenter(const char *str,
 				      t_font *font);
 void			animated_image(t_anim *anim, t_hitbox hitbox,
 				       t_bunny_pixelarray *pix);
+int			in_hitbox(t_hitbox *hitbox, t_bunny_position *pos);
 
  #endif   /*_IMAGE_H_*/
