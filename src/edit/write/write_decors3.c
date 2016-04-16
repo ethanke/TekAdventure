@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 18:43:57 2016 Gaëtan Léandre
-** Last update Sat Apr 16 18:54:55 2016 Gaëtan Léandre
+** Last update Sat Apr 16 23:00:08 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -28,6 +28,8 @@ void			write_decors_loot_amount(t_decors *decors, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_decors_loot_id(t_decors *decors, int fd,
@@ -48,6 +50,8 @@ void			write_decors_loot_id(t_decors *decors, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_decors_brecabl_lootable(t_decors *decors, int fd,
@@ -68,6 +72,8 @@ void			write_decors_brecabl_lootable(t_decors *decors, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_decors_brecabl_break(t_decors *decors, int fd,
@@ -88,4 +94,6 @@ void			write_decors_brecabl_break(t_decors *decors, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }

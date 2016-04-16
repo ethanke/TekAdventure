@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 21:35:08 2016 Gaëtan Léandre
-** Last update Sat Apr 16 21:46:05 2016 Gaëtan Léandre
+** Last update Sat Apr 16 22:57:26 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -28,6 +28,8 @@ void			write_sky_hitbox_w(t_sky *sky, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_sky_hitbox_y(t_sky *sky, int fd,
@@ -48,6 +50,8 @@ void			write_sky_hitbox_y(t_sky *sky, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_sky_hitbox_x(t_sky *sky, int fd,
@@ -68,6 +72,8 @@ void			write_sky_hitbox_x(t_sky *sky, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_sky_id(t_sky *sky, int fd,
@@ -88,6 +94,8 @@ void			write_sky_id(t_sky *sky, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_sprite_sky(t_sky *sky, int fd)

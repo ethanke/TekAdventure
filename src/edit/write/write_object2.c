@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 09:38:30 2016 Gaëtan Léandre
-** Last update Sat Apr 16 10:17:36 2016 Victor Sousa
+** Last update Sat Apr 16 22:58:53 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -28,6 +28,8 @@ void			write_object_sprite_hit_w(t_object *object, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_object_sprite_hit_h(t_object *object, int fd,
@@ -48,6 +50,8 @@ void			write_object_sprite_hit_h(t_object *object, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_object_sprite_hit_y(t_object *object, int fd,
@@ -68,6 +72,8 @@ void			write_object_sprite_hit_y(t_object *object, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_object_sprite_hit_x(t_object *object, int fd,
@@ -88,6 +94,8 @@ void			write_object_sprite_hit_x(t_object *object, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_object_sprite_id(t_object *object, int fd,
@@ -108,4 +116,6 @@ void			write_object_sprite_id(t_object *object, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }

@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 21:06:33 2016 Gaëtan Léandre
-** Last update Sat Apr 16 21:48:01 2016 Gaëtan Léandre
+** Last update Sat Apr 16 22:57:10 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -37,6 +37,8 @@ void			write_scene_gate_sprite_hit_h(t_scene *scene, int fd,
 	}
       x++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_scene_gate_sprite_hit_w(t_scene *scene, int fd,
@@ -66,6 +68,8 @@ void			write_scene_gate_sprite_hit_w(t_scene *scene, int fd,
 	}
       x++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_scene_gate_sprite_hit_y(t_scene *scene, int fd,
@@ -95,6 +99,8 @@ void			write_scene_gate_sprite_hit_y(t_scene *scene, int fd,
 	}
       x++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_scene_gate_sprite_hit_x(t_scene *scene, int fd,
@@ -124,4 +130,6 @@ void			write_scene_gate_sprite_hit_x(t_scene *scene, int fd,
 	}
       x++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }

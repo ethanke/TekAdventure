@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 18:32:36 2016 Gaëtan Léandre
-** Last update Sat Apr 16 18:55:50 2016 Gaëtan Léandre
+** Last update Sat Apr 16 23:00:44 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -28,6 +28,8 @@ void			write_decors_spite_hitbox_x(t_decors *decors, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_decors_sprite_id(t_decors *decors, int fd,
@@ -48,6 +50,8 @@ void			write_decors_sprite_id(t_decors *decors, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_decors_name(t_decors *decors, int fd, int size)
@@ -67,6 +71,8 @@ void			write_decors_name(t_decors *decors, int fd, int size)
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_decors_id(t_decors *decors, int fd, int size)
@@ -86,6 +92,8 @@ void			write_decors_id(t_decors *decors, int fd, int size)
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_decors(t_decors *decors, int fd)

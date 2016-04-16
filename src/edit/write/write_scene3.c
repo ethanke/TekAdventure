@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 20:38:05 2016 Gaëtan Léandre
-** Last update Sat Apr 16 22:47:36 2016 Gaëtan Léandre
+** Last update Sat Apr 16 22:56:30 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -37,6 +37,8 @@ void			write_scene_decors_pos_y(t_scene *scene, int fd,
 	}
       x++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_scene_decors_pos_x(t_scene *scene, int fd,
@@ -66,6 +68,8 @@ void			write_scene_decors_pos_x(t_scene *scene, int fd,
 	}
       x++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_scene_decors_id(t_scene *scene, int fd,
@@ -95,6 +99,8 @@ void			write_scene_decors_id(t_scene *scene, int fd,
 	}
       x++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_scene_decors_count(t_scene *scene, int fd)

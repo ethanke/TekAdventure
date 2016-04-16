@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 08:11:18 2016 Gaëtan Léandre
-** Last update Sat Apr 16 09:27:42 2016 Victor Sousa
+** Last update Sat Apr 16 22:57:52 2016 Gaëtan Léandre
 */
 
 #include 		"main.h"
@@ -32,6 +32,8 @@ void			write_player_amount(t_player *player, int fd, int size)
 	}
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_player_item(t_player *player, int fd, int size)
@@ -56,6 +58,8 @@ void			write_player_item(t_player *player, int fd, int size)
 	}
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_player_slot(t_player *player, int fd, int size)
@@ -80,6 +84,8 @@ void			write_player_slot(t_player *player, int fd, int size)
 	}
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_player(t_player *player, int fd)

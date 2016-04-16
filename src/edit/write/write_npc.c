@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 19:02:15 2016 Gaëtan Léandre
-** Last update Sat Apr 16 19:35:32 2016 Gaëtan Léandre
+** Last update Sat Apr 16 22:59:52 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -27,6 +27,8 @@ void			write_npc_trade_needed_id(t_npc *npc, int fd, int size)
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_npc_text(t_npc *npc, int fd, int size)
@@ -46,6 +48,8 @@ void			write_npc_text(t_npc *npc, int fd, int size)
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_npc_name(t_npc *npc, int fd, int size)
@@ -65,6 +69,8 @@ void			write_npc_name(t_npc *npc, int fd, int size)
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_npc_id(t_npc *npc, int fd, int size)
@@ -84,6 +90,8 @@ void			write_npc_id(t_npc *npc, int fd, int size)
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_npc(t_npc *npc, int fd)

@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 08:44:31 2016 Gaëtan Léandre
-** Last update Sat Apr 16 10:19:24 2016 Victor Sousa
+** Last update Sat Apr 16 22:59:06 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -27,6 +27,8 @@ void			write_object_damage(t_object *object, int fd, int size)
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_object_name(t_object *object, int fd, int size)
@@ -46,6 +48,8 @@ void			write_object_name(t_object *object, int fd, int size)
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_object_id(t_object *object, int fd, int size)
@@ -65,6 +69,8 @@ void			write_object_id(t_object *object, int fd, int size)
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_object_launch(t_object *object, int fd, int size)

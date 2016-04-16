@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 09:48:17 2016 Gaëtan Léandre
-** Last update Sat Apr 16 10:17:46 2016 Victor Sousa
+** Last update Sat Apr 16 22:58:27 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -28,6 +28,8 @@ void			write_object_critical(t_object *object, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_object_strength(t_object *object, int fd,
@@ -48,6 +50,8 @@ void			write_object_strength(t_object *object, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_object_stamina(t_object *object, int fd,
@@ -68,6 +72,8 @@ void			write_object_stamina(t_object *object, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_object_equip_slot(t_object *object, int fd,
@@ -88,6 +94,8 @@ void			write_object_equip_slot(t_object *object, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_object_equip(t_object *object, int fd,
@@ -108,4 +116,6 @@ void			write_object_equip(t_object *object, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }

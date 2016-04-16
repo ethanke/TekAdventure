@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 18:40:16 2016 Gaëtan Léandre
-** Last update Sat Apr 16 18:54:50 2016 Gaëtan Léandre
+** Last update Sat Apr 16 23:00:26 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -28,6 +28,8 @@ void			write_decors_brecabl_life(t_decors *decors, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_decors_brecabl(t_decors *decors, int fd,
@@ -48,6 +50,8 @@ void			write_decors_brecabl(t_decors *decors, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_decors_spite_hitbox_h(t_decors *decors, int fd,
@@ -68,6 +72,8 @@ void			write_decors_spite_hitbox_h(t_decors *decors, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_decors_spite_hitbox_w(t_decors *decors, int fd,
@@ -88,6 +94,8 @@ void			write_decors_spite_hitbox_w(t_decors *decors, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_decors_spite_hitbox_y(t_decors *decors, int fd,
@@ -108,4 +116,6 @@ void			write_decors_spite_hitbox_y(t_decors *decors, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }

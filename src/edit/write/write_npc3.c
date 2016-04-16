@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 19:31:52 2016 Gaëtan Léandre
-** Last update Sat Apr 16 19:33:46 2016 Gaëtan Léandre
+** Last update Sat Apr 16 22:59:18 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -28,6 +28,8 @@ void			write_npc_sprite_hitbox_h(t_npc *npc, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_npc_sprite_hitbox_w(t_npc *npc, int fd,
@@ -48,6 +50,8 @@ void			write_npc_sprite_hitbox_w(t_npc *npc, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_npc_sprite_hitbox_y(t_npc *npc, int fd,
@@ -68,4 +72,6 @@ void			write_npc_sprite_hitbox_y(t_npc *npc, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }

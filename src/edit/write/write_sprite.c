@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 07:45:43 2016 Gaëtan Léandre
-** Last update Sat Apr 16 09:31:48 2016 Victor Sousa
+** Last update Sat Apr 16 22:57:39 2016 Gaëtan Léandre
 */
 
 #include 		"main.h"
@@ -27,6 +27,8 @@ void			write_sprite_id(t_sprite *sprite, int fd, int size)
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_sprite_path(t_sprite *sprite, int fd, int size)
@@ -46,6 +48,8 @@ void			write_sprite_path(t_sprite *sprite, int fd, int size)
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_sprite(t_sprite *sprite, int fd)

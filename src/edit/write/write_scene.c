@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 19:43:02 2016 Gaëtan Léandre
-** Last update Sat Apr 16 22:48:26 2016 Gaëtan Léandre
+** Last update Sat Apr 16 22:55:45 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -28,6 +28,8 @@ void			write_sky_hitbox_h(t_sky *sky, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			disp_scene_ground(t_scene *tmp, int fd)
@@ -78,6 +80,8 @@ void			write_scene_name(t_scene *scene, int fd, int size)
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_scene(t_scene *scene, int fd)

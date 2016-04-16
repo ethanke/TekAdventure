@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 10:10:36 2016 Gaëtan Léandre
-** Last update Sat Apr 16 10:25:44 2016 Victor Sousa
+** Last update Sat Apr 16 22:58:03 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -28,6 +28,8 @@ void			write_object_agility(t_object *object, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 void			write_object_armor(t_object *object, int fd,
 					   int size)
@@ -47,6 +49,8 @@ void			write_object_armor(t_object *object, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_object_intellect(t_object *object, int fd,
@@ -67,4 +71,6 @@ void			write_object_intellect(t_object *object, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }

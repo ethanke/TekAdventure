@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 19:17:26 2016 Gaëtan Léandre
-** Last update Sat Apr 16 19:33:50 2016 Gaëtan Léandre
+** Last update Sat Apr 16 22:59:38 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -28,6 +28,8 @@ void			write_npc_sprite_hitbox_x(t_npc *npc, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 
@@ -49,6 +51,8 @@ void			write_npc_sprite_id(t_npc *npc, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_npc_trade_given_amount(t_npc *npc, int fd,
@@ -69,6 +73,8 @@ void			write_npc_trade_given_amount(t_npc *npc, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_npc_trade_given_id(t_npc *npc, int fd,
@@ -89,6 +95,8 @@ void			write_npc_trade_given_id(t_npc *npc, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_npc_trade_needed_ammout(t_npc *npc, int fd,
@@ -109,4 +117,6 @@ void			write_npc_trade_needed_ammout(t_npc *npc, int fd,
       tmp = tmp->next;
       i++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }

@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 20:18:15 2016 Gaëtan Léandre
-** Last update Sat Apr 16 22:46:02 2016 Gaëtan Léandre
+** Last update Sat Apr 16 22:56:11 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -36,6 +36,8 @@ void			write_scene_npc_pos_y(t_scene *scene, int fd, int size)
 	}
       x++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_scene_npc_pos_x(t_scene *scene, int fd, int size)
@@ -64,6 +66,8 @@ void			write_scene_npc_pos_x(t_scene *scene, int fd, int size)
 	}
       x++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_scene_npc_id(t_scene *scene, int fd, int size)
@@ -92,6 +96,8 @@ void			write_scene_npc_id(t_scene *scene, int fd, int size)
 	}
       x++;
     }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
 
 void			write_scene_npc_count(t_scene *scene, int fd)
