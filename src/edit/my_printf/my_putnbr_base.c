@@ -5,15 +5,15 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Mon Oct  5 13:31:52 2015 Gaëtan Léandre
-** Last update Sat Apr 16 06:50:11 2016 Gaëtan Léandre
+** Last update Sat Apr 16 06:50:48 2016 Gaëtan Léandre
 */
 
-#include "main.h"
+#include 		"main.h"
 
-int	power(int nbr, int pow)
+int			power(int nbr, int pow)
 {
-  int	i;
-  int	copy_nbr;
+  int			i;
+  int			copy_nbr;
 
   copy_nbr = nbr;
   i = 1;
@@ -27,9 +27,9 @@ int	power(int nbr, int pow)
   return (nbr);
 }
 
-int	big_pow(int nbr, int base_size)
+int			big_pow(int nbr, int base_size)
 {
-  int	i;
+  int			i;
 
   i = 0;
   while (power(base_size, i) <= nbr)
@@ -38,11 +38,12 @@ int	big_pow(int nbr, int base_size)
   return (i);
 }
 
-void	my_putnbr_base_in(int fd, int nbr, char *base, int taille)
+void			my_putnbr_base_in(int fd, int nbr,
+					  char *base, int taille)
 {
-  int	base_size;
-  int	i;
-  int	puissance;
+  int			base_size;
+  int			i;
+  int			puissance;
 
   if (nbr < 0)
     {
