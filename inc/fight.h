@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr 13 06:17:45 2016 Ethan Kerdelhue
-** Last update Sat Apr 16 01:23:37 2016 Ethan Kerdelhue
+** Last update Sat Apr 16 03:24:48 2016 Ethan Kerdelhue
 */
 
 #ifndef			FIGHT_H_
