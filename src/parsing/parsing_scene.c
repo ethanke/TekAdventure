@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Sat Apr 16 06:19:10 2016 Philippe Lefevre
+** Last update Sat Apr 16 09:28:56 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -16,7 +16,8 @@ t_scene			*create_scene_node(char *name, t_bunny_ini *ini,
   t_scene		*scene;
 
   if ((scene = xmalloc(sizeof(t_scene), ptr_list)) == NULL)
-    return (my_puterror_scene("Error: ", name, ":xmalloc ", -1, "failed in create_scene_node\n"));
+    return (my_puterror_scene("Error: ", name, ":xmalloc ",
+			      -1, "failed in create_scene_node\n"));
   scene->player = stockage->player;
   scene->object = stockage->object;
   scene->sprite = stockage->sprite;
@@ -29,13 +30,15 @@ t_scene			*create_scene_node(char *name, t_bunny_ini *ini,
   if ((scene->sky = link_sky(scene->sky, scene->sprite)) == NULL)
     return (NULL);
   if ((scene->name = my_strdup(name, ptr_list)) == NULL)
-    return (my_puterror_scene("Error: ", name, ":my_strdup ", -1, "failed in create_scene_node\n"));
+    return (my_puterror_scene("Error: ", name, ":my_strdup ",
+			      -1, "failed in create_scene_node\n"));
 
   if ((scene = link_ground(ini, scene, ptr_list, name)) == NULL)
     return (NULL);
   if ((scene->ground->gate = load_gate(name, ini, ptr_list)) == NULL)
     return (NULL);
-  if ((scene->ground->gate = link_gate(scene->ground->gate, scene->sprite)) == NULL)
+  if ((scene->ground->gate = link_gate(scene->ground->gate,
+				       scene->sprite)) == NULL)
     return (NULL);
   if (set_hitbox_ground(scene, (*ptr_list)))
     return (NULL);
@@ -73,17 +76,27 @@ t_scene			*load_scene(t_bunny_ini *ini, t_scene *stockage,
   int			len;
   int			i;
 
-  if ((str = (char *)bunny_ini_get_field(ini, "scene", "scene_count", 0)) == NULL)
-    return (my_puterror_scene("Error: balise scene or ", "scene", ":scene_count ", -1, "field not found, you must obligatorily include this both fields\n"));
+  if ((str = (char *)bunny_ini_get_field(ini, "scene",
+					 "scene_count", 0)) == NULL)
+    return (my_puterror_scene("Error: balise scene or ", "scene",
+			      ":scene_count ", -1,
+			      "field not found, you must \
+obligatorily include this both fields\n"));
   if ((len = my_getnbr(str)) < 0)
-    return (my_puterror_scene("Error: ", "scene", ":scene_count field ", -1, " should not be negative\n"));
+    return (my_puterror_scene("Error: ", "scene",
+			      ":scene_count field ", -1
+			      , " should not be negative\n"));
   if ((scene_tab = xmalloc(sizeof(char *) * (len + 1), ptr_list)) == NULL)
-    return (my_puterror_scene("Error: ", "scene_tab", ":xmalloc ", -1, "failed in load_scene\n"));
+    return (my_puterror_scene("Error: ", "scene_tab",
+			      ":xmalloc ", -1, "failed in load_scene\n"));
   i = -1;
   while (++i < len)
     {
-      if ((str = (char *)bunny_ini_get_field(ini, "scene", "scene_name", i)) == NULL)
-	return (my_puterror_scene("Error: ", "scene", ":scene_name ", i, "field not found, or invalid scene:scene_count\n"));
+      if ((str = (char *)bunny_ini_get_field(ini, "scene",
+					     "scene_name", i)) == NULL)
+	return (my_puterror_scene("Error: ", "scene", ":scene_name ",
+				  i, "field not found, \
+or invalid scene:scene_count\n"));
       scene_tab[i] = my_strdup(str, ptr_list);
     }
   scene_tab[i] = 0;
@@ -91,7 +104,8 @@ t_scene			*load_scene(t_bunny_ini *ini, t_scene *stockage,
   i = -1;
   while (scene_tab[++i])
     {
-      if ((new_list = list_add_scene(new_list, scene_tab[i], ini, stockage, ptr_list)) == NULL)
+      if ((new_list = list_add_scene(new_list, scene_tab[i],
+				     ini, stockage, ptr_list)) == NULL)
 	return (NULL);
     }
   return (new_list);
