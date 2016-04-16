@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Thu Nov 12 14:36:04 2015 Gaëtan Léandre
-** Last update Sat Apr 16 06:39:23 2016 Gaëtan Léandre
+** Last update Sat Apr 16 06:43:39 2016 Gaëtan Léandre
 */
 
 #ifndef		MY_PRINTF_H_
@@ -17,7 +17,7 @@
 typedef struct	s_fonct
 {
   char		flag;
-  void		(*f)(va_list ap);
+  void		(*f)(int fd, va_list ap);
 }		t_fonct;
 
 typedef struct	s_print

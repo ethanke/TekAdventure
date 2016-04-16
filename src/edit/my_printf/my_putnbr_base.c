@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Mon Oct  5 13:31:52 2015 Gaëtan Léandre
-** Last update Sat Apr 16 06:33:19 2016 Gaëtan Léandre
+** Last update Sat Apr 16 06:43:17 2016 Gaëtan Léandre
 */
 
 #include "main.h"
@@ -56,7 +56,7 @@ void	my_putnbr_base_in(int fd, int nbr, char *base, int taille)
 
   if (nbr < 0)
     {
-      my_putchar('-');
+      my_putchar_in(fd, '-');
       nbr = nbr * (-1);
     }
   base_size = my_strlen(base);
