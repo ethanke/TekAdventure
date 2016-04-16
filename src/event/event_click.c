@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:10:29 2016 Victor Sousa
-** Last update Sat Apr 16 08:50:21 2016 Ethan Kerdelhue
+** Last update Sat Apr 16 09:13:45 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -61,7 +61,8 @@ void			bmb_left_on(t_prog *prog, int npc_choose,
   else if (prog->state == STATE_DECOR_CHOOSE && state == GO_UP)
     {
       prog->player->item_selected =
-      get_click_place_hotbar(prog, (t_bunny_position *)bunny_get_mouse_position());
+      get_click_place_hotbar(prog,
+			     (t_bunny_position *)bunny_get_mouse_position());
     }
   else if (prog->state == STATE_NPC_CHOOSE)
     state_npc_chose(prog, npc_choose, &npc_choose_pos);
