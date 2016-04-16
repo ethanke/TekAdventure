@@ -5,7 +5,7 @@
 ## Login   <lefevr_h@epitech.net>
 ##
 ## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
-## Last update Sat Apr 16 02:05:38 2016 Kerdelhue Ethan
+## Last update Sat Apr 16 02:27:39 2016 Kerdelhue Ethan
 ##
 
 NAME		=	tekadventure
@@ -134,6 +134,7 @@ SRC		+=	$(FIGHTDIR)/start_fight.c		\
 			$(FIGHTDIR)/update_bar.c		\
 			$(FIGHTDIR)/catch_button.c		\
 			$(FIGHTDIR)/player_damage.c		\
+			$(FIGHTDIR)/set_func.c			\
 
 SRC		+=	$(NPCDIR)/interact_npc.c		\
 			$(NPCDIR)/pull_out_item.c		\
