@@ -5,38 +5,17 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Sat Apr 16 07:35:33 2016 Philippe Lefevre
-** Last update Sat Apr 16 07:51:31 2016 Philippe Lefevre
+** Last update Sat Apr 16 07:55:34 2016 Philippe Lefevre
 */
 
 
 #include 		"main.h"
-/*
-t_sprite		*create_sprite_node_init(int id,
-						 t_bunny_ini *ini,
-						 t_ptr_list **ptr_list)
-{
-  t_sprite		*sprite;
-  char			*str;
-
-  if ((sprite = xmalloc(sizeof(*sprite), ptr_list)) == NULL)
-    return (my_puterror_sprite("Error: sprite:xmalloc ", -1,
-			       "failed in create_sprite_node\n"));
-  if ((str = (char *)bunny_ini_get_field(ini, "sprite", "sprite_path", id))
-      == NULL)
-    return (my_puterror_sprite("Error: sprite:sprite_path field \n", id,
-			       " not found\n"));
-  if ((sprite->path = my_strdup(str, ptr_list)) == NULL)
-    return (my_puterror_sprite("Error: sprite->path:my_strdup ", -1,
-			       "failed in create_sprite_node\n"));
-  return (sprite);
-}*/
 
 t_sprite		*create_sprite_node(int id,
 					    t_bunny_ini *ini,
-					    t_ptr_list **ptr_list)
+					    t_ptr_list **ptr_list, char *str)
 {
   t_sprite		*sprite;
-  char			*str;
 
   if ((sprite = xmalloc(sizeof(*sprite), ptr_list)) == NULL)
     return (my_puterror_sprite("Error: sprite:xmalloc ", -1,
@@ -87,7 +66,7 @@ t_sprite		*list_add_sprite(t_sprite *list, int id,
   t_sprite		*tmp;
   int			i;
 
-  if ((new = create_sprite_node(id, ini, ptr_list)) == NULL)
+  if ((new = create_sprite_node(id, ini, ptr_list, NULL)) == NULL)
     return (NULL);
   if (list == NULL)
     return (new);
