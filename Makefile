@@ -195,7 +195,8 @@ SRC		+=	$(UTILSDIR)/xmalloc.c			\
 			$(UTILSDIR)/my_swap.c			\
 			$(UTILSDIR)/my_put_nbr.c		\
 			$(UTILSDIR)/my_strcmp.c			\
-			$(UTILSDIR)/my_getnbr_free.c
+			$(UTILSDIR)/my_getnbr_free.c		\
+			$(UTILSDIR)/clear_shell.c
 
 SRC		+=	$(IMGDIR)/disp_image.c			\
 			$(IMGDIR)/hitbox_creator.c		\

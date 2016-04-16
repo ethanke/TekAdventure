@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:49:05 2016 Victor Sousa
-** Last update Sat Apr 16 21:10:05 2016 Victor Sousa
+** Last update Sun Apr 17 00:03:16 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -17,27 +17,46 @@ void			put_prompt(void)
 
 int			treat_cmd(int ac, char **av, t_ini *ini)
 {
+  ini->cmd_found = 0;
+  if (ac == 1 && my_strcmp(av[0], "clear") == 0)
+    {
+      clear_scr();
+      ini->cmd_found = 1;
+    }
   if (ac == 1 && my_strcmp(av[0], "exit") == 0)
     return (-1);
   if (ac == 3 && my_strcmp(av[0], "load") == 0
       && my_strcmp(av[1], "ini") == 0)
     {
+      ini->cmd_found = 1;
       if (load_ini(av[2], ini) == -1)
 	my_printf(1, "load ini failed\n\n");
     }
   if (ac == 3 && my_strcmp(av[0], "write") == 0
       && my_strcmp(av[1], "ini") == 0)
     {
+      ini->cmd_found = 1;
       if (write_ini(av[2], ini) == -1)
 	my_printf(1, "write ini failed\n\n");
     }
   if (ac == 2 && my_strcmp(av[0], "close") == 0
       && my_strcmp(av[1], "ini") == 0)
-    close_ini(ini);
+    {
+      close_ini(ini);
+      ini->cmd_found = 1;
+    }
   if (ac >= 1 && my_strcmp(av[0], "aff") == 0)
-    aff_stuff(ac, av, ini);
+    {
+      aff_stuff(ac, av, ini);
+      ini->cmd_found = 1;
+    }
   if (ac >= 1 && my_strcmp(av[0], "add") == 0)
-    add_stuff(ac, av, ini);
+    {
+      add_stuff(ac, av, ini);
+      ini->cmd_found = 1;
+    }
+  if (ini->cmd_found == 0)
+    my_printf(1, "Command not found\n");
   return (0);
 }
 

@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 19:48:52 2016 Victor Sousa
-** Last update Sat Apr 16 23:46:33 2016 Victor Sousa
+** Last update Sun Apr 17 00:39:21 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -27,7 +27,11 @@ void			add_object(t_ini *ini)
   if ((obj->is_equipable = get_obj_equipable(ini)) == -1)
     return;
   if (obj->is_equipable == 0)
-    obj->slot = 0;
+    {
+      obj->slot = (obj->caract->stamina = (obj->caract->strength = 0));
+      obj->caract->critical = (obj->caract->intellect = 0);
+      obj->caract->armor = (obj->caract->agility = 0);
+    }
   else
     {
       obj->slot = get_obj_equip_slot();
@@ -50,6 +54,10 @@ void			add_object(t_ini *ini)
     }
   my_printf(1, "\nChoose a sprite id for your object : ");
   get_existing_sprite(ini);
+  if ((obj->texture_hitbox = xmalloc(sizeof(t_hitbox),
+				     &ini->ptr_list)) == NULL)
+    return;
+  texture_hitbox->x = get_x_pos_sprite(ini, obj->sprite_id);
 
 
   /* recap */
