@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 19:48:52 2016 Victor Sousa
-** Last update Sun Apr 17 00:44:40 2016 Victor Sousa
+** Last update Sun Apr 17 01:09:54 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -53,11 +53,14 @@ void			add_object(t_ini *ini)
       obj->caract->agility = my_getnbr_free(get_next_line(0));
     }
   my_printf(1, "\nChoose a sprite id for your object : ");
-  get_existing_sprite(ini);
+  obj->sprite_id = get_existing_sprite(ini);
   if ((obj->texture_hitbox = xmalloc(sizeof(t_hitbox),
 				     &ini->ptr_list)) == NULL)
     return;
+  my_printf(1, "\ntop left position in the sprite\nx : ");
   obj->texture_hitbox->x = get_x_pos_sprite(ini, obj->sprite_id);
+  my_printf(1, "y : ");
+  obj->texture_hitbox->y = get_y_pos_sprite(ini, obj->sprite_id);
 
 
   /* recap */
