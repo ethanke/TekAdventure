@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Thu Apr 14 02:48:28 2016 Victor Sousa
-** Last update Thu Apr 14 05:56:11 2016 Victor Sousa
+** Last update Sat Apr 16 19:35:09 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -21,10 +21,10 @@ int			catch_button(t_prog *prog)
   i = -2;
   while (i < 2)
     {
-      center.x = WIN_WIDTH / 2 + (i * prog->magic_button->width) +
-	  prog->magic_button->width / 2;
-      if ((m_pos->x - center.x) * (m_pos->x - center.x) +
-	  (m_pos->y - center.y) * (m_pos->y - center.y) <=
+      center.x = WIN_WIDTH / 2 + (i * prog->magic_button->width)
+	  + prog->magic_button->width / 2;
+      if ((m_pos->x - center.x) * (m_pos->x - center.x)
+	  + (m_pos->y - center.y) * (m_pos->y - center.y) <=
 	  (prog->magic_button->width / 2) * (prog->magic_button->width / 2))
 	prog->fight->last_action = i + 2;
       i++;

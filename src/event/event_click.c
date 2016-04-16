@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:10:29 2016 Victor Sousa
-** Last update Sat Apr 16 09:13:45 2016 Ethan Kerdelhue
+** Last update Sat Apr 16 19:34:29 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -14,10 +14,10 @@ void	state_npc_chose(t_prog *prog, int npc_choose,
 			t_bunny_position *npc_choose_pos)
 {
 
-  npc_choose_pos->x = WIN_WIDTH / 2 - prog->npc_choose->width / 2 +
-      prog->npc_choose->width / 3 / 2;
-  npc_choose_pos->y = WIN_HEIGHT / 2 - prog->npc_choose->height / 2 +
-      prog->npc_choose->height / 3  / 2;
+  npc_choose_pos->x = WIN_WIDTH / 2 - prog->npc_choose->width / 2
+      + prog->npc_choose->width / 3 / 2;
+  npc_choose_pos->y = WIN_HEIGHT / 2 - prog->npc_choose->height / 2
+      + prog->npc_choose->height / 3  / 2;
   if ((npc_choose = get_highlight(prog, npc_choose_pos)) == -2)
     prog->state = STATE_GAME;
   else if (npc_choose == 0 && prog->current_click.npc != NULL)
