@@ -5,7 +5,7 @@
 ## Login   <lefevr_h@epitech.net>
 ##
 ## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
-## Last update Sat Apr 16 21:44:29 2016 Gaëtan Léandre
+## Last update Sat Apr 16 23:12:54 2016 Gaëtan Léandre
 ##
 
 NAME		=	tekadventure
@@ -193,7 +193,8 @@ SRC		+=	$(UTILSDIR)/xmalloc.c			\
 			$(UTILSDIR)/my_tablen.c			\
 			$(UTILSDIR)/my_swap.c			\
 			$(UTILSDIR)/my_put_nbr.c		\
-			$(UTILSDIR)/my_strcmp.c
+			$(UTILSDIR)/my_strcmp.c			\
+			$(UTILSDIR)/my_getnbr_free.c
 
 SRC		+=	$(IMGDIR)/disp_image.c			\
 			$(IMGDIR)/hitbox_creator.c		\
