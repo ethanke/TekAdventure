@@ -5,20 +5,10 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Mon Oct  5 13:31:52 2015 Gaëtan Léandre
-** Last update Sat Apr 16 06:43:17 2016 Gaëtan Léandre
+** Last update Sat Apr 16 06:50:11 2016 Gaëtan Léandre
 */
 
 #include "main.h"
-
-int	my_strlen(char *base)
-{
-  int	i;
-
-  i = 0;
-  while (base[i] != '\0')
-    i++;
-  return (i);
-}
 
 int	power(int nbr, int pow)
 {
