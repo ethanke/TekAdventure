@@ -1,13 +1,12 @@
 /*
-** parsing_player.c for  in /Users/ethankerdelhue/Documents/Shared/TekAdventure/src/parsing/
+** parsing_player.c for TekAdventure in /media/storage/my_files/Repository/Epitech/Year_1/Infographie/gfx_tekadventure/src/parsing/
 **
-** Made by Ethan Kerdelhue
-** Login   <kerdel_e@epitech.eu>
+** Made by Philippe Lefevre
+** Login   <lefevr_h@epitech.net>
 **
-** Started on  Fri Apr  8 00:59:55 2016 Ethan Kerdelhue
-** Last update Sat Apr 16 05:59:14 2016 Philippe Lefevre
+** Started on  Sat Apr 16 06:51:47 2016 Philippe Lefevre
+** Last update Sat Apr 16 07:15:32 2016 Philippe Lefevre
 */
-
 #include	"main.h"
 
 int		get_item_id(char *str, int *id, int *amount)
