@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Sat Apr 16 04:45:40 2016 Ethan Kerdelhue
+** Last update Sat Apr 16 04:59:11 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -31,7 +31,7 @@ int			init_prog(t_prog *prog, char *str)
   prog->player->caract->agility = 50;
   prog->player->caract->armor = 50;
   prog->player->caract->intellect = 50;
-  prog->player->life = 100;
+  prog->player->life = prog->player->caract->stamina * 2 + prog->player->life;
   prog->disp_delay = 0;
   prog->player->item_selected = -1;
   prog->state = STATE_GAME;
