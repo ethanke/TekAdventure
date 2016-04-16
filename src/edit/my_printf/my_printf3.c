@@ -5,38 +5,38 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Fri Nov 13 10:52:38 2015 Gaëtan Léandre
-** Last update Sat Apr 16 06:00:35 2016 Gaëtan Léandre
+** Last update Sat Apr 16 06:31:26 2016 Gaëtan Léandre
 */
 
-#include "main.h"
+#include 		"main.h"
 
-void	va_my_octal(va_list ap)
+void			va_my_octal(int fd, va_list ap)
 {
-  my_putnbr_base(va_arg(ap, int), "01234567", -1);
+  my_putnbr_base_in(fd, va_arg(ap, int), "01234567", -1);
 }
 
-void	va_my_examin(va_list ap)
+void			va_my_examin(int fd, va_list ap)
 {
-  my_putnbr_base(va_arg(ap, int), "0123456789abcdef", -1);
+  my_putnbr_base_in(fd, va_arg(ap, int), "0123456789abcdef", -1);
 }
 
-void	va_my_examaj(va_list ap)
+void			va_my_examaj(int fd, va_list ap)
 {
-  my_putnbr_base(va_arg(ap, int), "0123456789ABCDEF", -1);
+  my_putnbr_base_in(fd, va_arg(ap, int), "0123456789ABCDEF", -1);
 }
 
-void	va_my_adress(va_list ap)
+void			va_my_adress(int fd, va_list ap)
 {
   if (ap != NULL)
     {
-      my_putstr("0x");
-      my_putnbr_base_add(va_arg(ap, size_t), "0123456789abcdef", -1);
+      my_putstr_in(int fd, "0x");
+      my_putnbr_base_add_in(fd, va_arg(ap, size_t), "0123456789abcdef", -1);
     }
   else
-    my_putstr("(null)");
+    my_putstr_in(fd, "(null)");
 }
 
-void	va_my_bin(va_list ap)
+void			va_my_bin(int fd, va_list ap)
 {
-  my_putnbr_base_u(va_arg(ap, unsigned int), "01");
+  my_putnbr_base_u_in(fd, va_arg(ap, unsigned int), "01");
 }

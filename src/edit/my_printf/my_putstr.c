@@ -5,23 +5,23 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Thu Oct  1 08:59:15 2015 Gaëtan Léandre
-** Last update Sat Apr 16 06:01:08 2016 Gaëtan Léandre
+** Last update Sat Apr 16 06:33:02 2016 Gaëtan Léandre
 */
 
 #include "main.h"
 
-void	my_putstr(char *str)
+void	my_putstr_in(int fdchar *str)
 {
   int	i;
 
   i = 0;
   if (str == NULL)
-    my_putstr("(null)");
+    my_putstr_in(fd, "(null)");
   else
     {
       while (str[i] != '\0')
 	{
-	  my_putchar(str[i]);
+	  my_putchar_in(fd, str[i]);
 	  i++;
 	}
     }

@@ -5,12 +5,12 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Thu Nov 12 14:59:18 2015 Gaëtan Léandre
-** Last update Sat Apr 16 06:00:18 2016 Gaëtan Léandre
+** Last update Sat Apr 16 06:26:25 2016 Gaëtan Léandre
 */
 
 #include "main.h"
 
-void	disp_unprintable(char *str)
+void	disp_unprintable_in(int fd, char *str)
 {
   int	i;
 
@@ -19,11 +19,11 @@ void	disp_unprintable(char *str)
     {
       if (str[i] < 32 || str[i] > 126)
 	{
-	  my_putchar('\\');
-	  my_putnbr_base(str[i], "01234567", 2);
+	  my_putchar_in(fd, '\\');
+	  my_putnbr_base_in(fd, str[i], "01234567", 2);
 	}
       else
-	my_putchar(str[i]);
+	my_putchar_in(fd, str[i]);
       i++;
     }
 }

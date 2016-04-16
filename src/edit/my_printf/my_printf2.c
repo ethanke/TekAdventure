@@ -5,32 +5,32 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Fri Nov 13 10:51:48 2015 Gaëtan Léandre
-** Last update Sat Apr 16 06:00:26 2016 Gaëtan Léandre
+** Last update Sat Apr 16 06:30:41 2016 Gaëtan Léandre
 */
 
-#include "main.h"
+#include 		"main.h"
 
-void	va_my_putchar(va_list ap)
+void			va_my_putchar(int fd, va_list ap)
 {
-  my_putchar(va_arg(ap, int));
+  my_putchar_in(fd, va_arg(ap, int));
 }
 
-void	va_my_putstr(va_list ap)
+void			va_my_putstr(va_list ap)
 {
-  my_putstr(va_arg(ap, char*));
+  my_putstr_in(fd, va_arg(ap, char*));
 }
 
-void	va_my_putnbr(va_list ap)
+void			va_my_putnbr(int fd, va_list ap)
 {
-  my_put_nbr(va_arg(ap, int));
+  my_put_nbr_in(fd, va_arg(ap, int));
 }
 
-void	va_my_putunbr(va_list ap)
+void			va_my_putunbr(int fd, va_list ap)
 {
-  my_put_unbr(va_arg(ap, unsigned int));
+  my_put_unbr_in(fd, va_arg(ap, unsigned int));
 }
 
-void	va_my_disp_unp(va_list ap)
+void			va_my_disp_unp(int fd, va_list ap)
 {
-  disp_unprintable(va_arg(ap, char*));
+  disp_unprintable_in(fd, va_arg(ap, char*));
 }

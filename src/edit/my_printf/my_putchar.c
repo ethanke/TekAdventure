@@ -5,12 +5,12 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Tue Oct  6 10:35:20 2015 Gaëtan Léandre
-** Last update Sat Apr 16 06:00:51 2016 Gaëtan Léandre
+** Last update Sat Apr 16 06:25:46 2016 Gaëtan Léandre
 */
 
 #include "main.h"
 
-void	my_putchar(char c)
+void	my_putchar_in(int fd, char c)
 {
-  write(1, &c, 1);
+  write(fd, &c, 1);
 }

@@ -5,27 +5,27 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Wed Sep 30 12:45:43 2015 Gaëtan Léandre
-** Last update Sat Apr 16 06:00:47 2016 Gaëtan Léandre
+** Last update Sat Apr 16 06:24:04 2016 Gaëtan Léandre
 */
 
-#include "main.h"
+#include 		"main.h"
 
-void	my_put_unbr(unsigned int nbr)
+void			my_put_unbr_in(int fd, unsigned int nbr)
 {
-  int	i;
-  int	number;
-  int	first;
+  int			i;
+  int			number;
+  int			first;
 
   first = 0;
   i = 1000000000;
   if (nbr == 0)
-    my_putchar('0');
+    my_putchar_in(fd, '0');
   while (i > 0)
     {
       number = nbr / i;
       if (number != 0 || first != 0)
 	{
-	  my_putchar(number + 48);
+	  my_putchar_in(number + 48);
 	  nbr = nbr % i;
 	  first = 1;
 	}

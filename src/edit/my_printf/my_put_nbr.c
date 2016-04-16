@@ -5,18 +5,18 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Wed Sep 30 12:45:43 2015 Gaëtan Léandre
-** Last update Sat Apr 16 06:00:38 2016 Gaëtan Léandre
+** Last update Sat Apr 16 06:20:52 2016 Gaëtan Léandre
 */
 
-#include	"main.h"
+#include		"main.h"
 
-void		my_put_nbr(int nbr)
+void			my_put_nbr_in(int fd, int nbr)
 {
-  int		mod;
+  int			mod;
 
   if (nbr < 0)
     {
-      my_putchar('-');
+      my_putchar_in(fd, '-');
       nbr = nbr * (-1);
     }
   if (nbr >= 0)
@@ -25,10 +25,10 @@ void		my_put_nbr(int nbr)
 	{
 	  mod = (nbr % 10);
           nbr = (nbr - mod) / 10;
-	  my_put_nbr(nbr);
-	  my_putchar(48 + mod);
+	  my_put_nbr_in(fd, nbr);
+	  my_putchar_in(fd, 48 + mod);
         }
       else
-        my_putchar(48 + nbr % 10);
+        my_putchar_in(fd, 48 + nbr % 10);
     }
 }

@@ -5,12 +5,12 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Thu Nov 12 12:27:44 2015 Gaëtan Léandre
-** Last update Sat Apr 16 06:00:13 2016 Gaëtan Léandre
+** Last update Sat Apr 16 06:35:38 2016 Gaëtan Léandre
 */
 
-#include "main.h"
+#include 		"main.h"
 
-t_fonct	*init_struct(t_fonct *tab)
+t_fonct			*init_struct(t_fonct *tab)
 {
   tab = xmalloc(11 * sizeof(t_fonct));
   tab[0].flag = 'c';
@@ -38,9 +38,9 @@ t_fonct	*init_struct(t_fonct *tab)
   return (tab);
 }
 
-int	chose_function(char c, t_fonct *tab)
+int			chose_function(char c, t_fonct *tab)
 {
-  int	i;
+  int			i;
 
   i = 0;
   while (i < 11)
@@ -54,57 +54,57 @@ int	chose_function(char c, t_fonct *tab)
   return (-1);
 }
 
-int	print_fct(va_list ap, t_fonct *tab, char *str, int i)
+int			print_fct(va_list ap, t_fonct *tab,
+				  char *str, t_print pri)
 {
-  int	fct;
-  int	wait;
+  int			fct;
+  int			wait;
 
-  wait = str[i] == ' ' ? 1 : 0;
-  while (str[i] == ' ')
+  pri.i++;
+  wait = str[pri.i] == ' ' ? 1 : 0;
+  while (str[pri.i] == ' ')
     i++;
-  fct = chose_function(str[i], tab);
+  fct = chose_function(str[pri.i], tab);
   if (fct == -1)
     {
-      my_putchar('%');
-      if (str[i] != '%')
+      my_putchar_in(pri.fd, '%');
+      if (str[pri.i] != '%')
 	{
 	  if (wait == 1)
-	    my_putchar(' ');
-	  my_putchar(str[i]);
+	    my_putchar_in(pri.fd, ' ');
+	  my_putchar_in(pri.fd, str[pri.i]);
 	}
     }
   else if (fct > -1)
     {
       if (wait == 1)
-	my_putchar(' ');
-      tab[fct].f(ap);
+	my_putchar_in(pri.fd, ' ');
+      tab[fct].f(pri.fd, ap);
     }
-  return (i);
+  return (pri.i);
 }
 
-int	my_printf(char *str, ...)
+int			my_printf(int fd, char *str, ...)
 {
   va_list	ap;
   t_fonct	*tab;
-  int		i;
+  t_print	pri;
 
+  pri.fd = fd;
   tab = NULL;
   tab = init_struct(tab);
-  i = 0;
+  pri = 0;
   if (str == NULL || tab == NULL)
     return (-1);
   va_start(ap, str);
-  while (i < my_strlen(str))
+  while (pri.i < my_strlen(str))
     {
-      if (str[i] == '%')
-	i = print_fct(ap, tab, str, i + 1);
-      else if (str[i] == '#')
-	i = my_put_color(str, i + 1);
+      if (str[pri.i] == '%')
+	pri.i = print_fct(ap, tab, str, pri);
       else
-	my_putchar(str[i]);
+	my_putchar_in(fd, str[pri.i]);
       i++;
     }
-  color(-1);
   va_end(ap);
   free(tab);
   return (0);
