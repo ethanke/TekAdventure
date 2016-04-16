@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr 13 06:17:45 2016 Ethan Kerdelhue
-** Last update Sat Apr 16 08:27:11 2016 Ethan Kerdelhue
+** Last update Sat Apr 16 09:06:15 2016 Ethan Kerdelhue
 */
 
 #ifndef			FIGHT_H_
@@ -86,9 +86,6 @@ int 			player_damage_magic(t_player *player,
 int 			player_damage(t_player *player,
 				      t_fight *fight,
 				      t_prog *prog);
-void			set_magic(t_prog *prog, t_bunny_position *magic);
-void			set_defend(t_prog *prog, t_bunny_position *defend);
-void			set_attack(t_prog *prog, t_bunny_position *attack);
 void			set_val(t_prog *prog,
 				t_bunny_position *attack,
 				t_bunny_position *defend,
