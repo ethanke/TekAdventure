@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 07:45:43 2016 Gaëtan Léandre
-** Last update Sat Apr 16 08:29:17 2016 Gaëtan Léandre
+** Last update Sat Apr 16 09:11:12 2016 Gaëtan Léandre
 */
 
 #include 		"main.h"
@@ -20,9 +20,9 @@ int			write_sprite_id(t_sprite *sprite, int fd, int size)
   while (tmp != NULL)
     {
       if (i != size - 1)
-	my_printf(fd, "\"%d\", ", sprite->id);
+	my_printf(fd, "\"%d\", ", tmp->id);
       else
-	my_printf(fd, "\"%d\"\n", sprite->id);
+	my_printf(fd, "\"%d\"\n", tmp->id);
       tmp = tmp->next;
       i++;
     }
@@ -38,9 +38,9 @@ int			write_sprite_path(t_sprite *sprite, int fd, int size)
   while (tmp != NULL)
     {
       if (i != size - 1)
-	my_printf(fd, "\"%s\", ", sprite->path);
+	my_printf(fd, "\"%s\", ", tmp->path);
       else
-	my_printf(fd, "\"%s\"\n", sprite->path);
+	my_printf(fd, "\"%s\"\n", tmp->path);
       tmp = tmp->next;
       i++;
     }
