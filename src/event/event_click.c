@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:10:29 2016 Victor Sousa
-** Last update Sat Apr 16 19:34:29 2016 Ethan Kerdelhue
+** Last update Sun Apr 17 00:21:58 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -29,11 +29,12 @@ void	state_npc_chose(t_prog *prog, int npc_choose,
 }
 
 void			check_prog_state(t_prog *prog,
-					 t_bunny_position *mouse_pos)
+					 t_bunny_position *mouse_pos,
+					 t_bunny_event_state state)
 {
-if (prog->state == STATE_GAME )
+if (prog->state == STATE_GAME)
   {
-    if (prog->player->move.select_move == 1)
+    if (prog->player->move.select_move == 1 && state == GO_UP)
       test_move(prog, mouse_pos);
     else
       prog->current_click = click_map(prog, mouse_pos,
@@ -50,7 +51,7 @@ if (prog->player->move.select_move != 1 && prog->state == STATE_GAME &&
 
 void			bmb_left_on(t_prog *prog, int npc_choose,
 				    t_bunny_position npc_choose_pos,
-				     t_bunny_event_state state)
+				    t_bunny_event_state state)
 {
   if (state == GO_UP && prog->state == STATE_FIGHT)
     catch_button(prog);
@@ -85,7 +86,7 @@ t_bunny_response        event_click(t_bunny_event_state            state,
     return (check_game_over_button(prog, mouse_pos));
   if (prog->state == STATE_MENU)
     return (check_menu_button(prog, mouse_pos));
-  check_prog_state(prog, mouse_pos);
+  check_prog_state(prog, mouse_pos, state);
   if (button == BMB_LEFT)
     bmb_left_on(prog, npc_choose, npc_choose_pos, state);
   return (GO_ON);

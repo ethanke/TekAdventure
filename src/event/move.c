@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 04:57:09 2016 Gaëtan Léandre
-** Last update Sat Apr 16 09:43:09 2016 Ethan Kerdelhue
+** Last update Sun Apr 17 00:25:15 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -33,6 +33,11 @@ void			make_astar(t_player *player,
       free(depla);
     }
   player->move.depla = a_star(ground, &siz, &pos, &end);
+  if (player->move.depla != NULL)
+    {
+      player->x_vec = ((float)player->move.depla->x - player->x) / 2;
+      player->y_vec = ((float)player->move.depla->y - player->y) / 2;
+    }
 }
 
 void			disp_deplacement(t_player *player,
@@ -68,9 +73,6 @@ void			disp_deplacement(t_player *player,
 void			make_deplacement(t_player *player)
 {
   t_depla		*depla;
-  float			x_vec;
-  float			y_vec;
-  float			norme;
 
   depla = player->move.depla;
   if (depla != NULL && depla->x == player->x && depla->y == player->y)
@@ -78,24 +80,19 @@ void			make_deplacement(t_player *player)
       player->move.depla = depla->next;
       free(depla);
       depla = player->move.depla;
+      if (depla != NULL)
+	{
+	  player->x_vec = ((float)depla->x - player->x) / 2;
+	  player->y_vec = ((float)depla->y - player->y) / 2;
+	}
+      else
+	{
+	  player->x_vec = 0;
+	  player->y_vec = 0;
+	}
     }
-  if (depla == NULL)
-    return;
-  x_vec = (float)depla->x - player->x;
-  y_vec = (float)depla->y - player->y;
-  norme = sqrt(x_vec * x_vec + y_vec * y_vec);
-  x_vec /= norme;
-  y_vec /= norme;
-  player->x += x_vec;
-  player->y += y_vec;
-/*  player->x = (x_vec < 0 && player->x + x_vec < depla->x)
-      ? depla->x : player->x + x_vec;
-  player->y = (y_vec < 0 && player->y + y_vec < depla->y) ?
-      depla->y : player->y + y_vec;
-  player->x = (x_vec > 0 && player->x + x_vec > depla->x) ?
-      depla->x : player->x + x_vec;
-  player->y = (y_vec > 0 && player->y + y_vec > depla->y) ?
-      depla->y : player->y + y_vec;*/
+  player->x += player->x_vec;
+  player->y += player->y_vec;
 }
 
 void			deplacement(t_player *player, t_scene *scene,
