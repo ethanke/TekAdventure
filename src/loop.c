@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:58:37 2016 Philippe Lefevre
-** Last update Sat Apr 16 05:24:23 2016 Victor Sousa
+** Last update Sat Apr 16 06:30:39 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -38,6 +38,8 @@ t_bunny_response	mainloop(void *p)
   prog = p;
   if (prog->state == STATE_GAME_OVER)
     disp_game_over(prog);
+  else if (prog->state == STATE_MENU)
+    disp_menu(prog);
   else
     {
       font.font_img = prog->font->font_img;

@@ -8,7 +8,7 @@
 ** Last update Sat Apr  9 04:12:12 2016 Gaëtan Léandre
 */
 
-#include		"minishell.h"
+#include		"main.h"
 
 int			is_separate(char c, char *str)
 {

@@ -5,14 +5,20 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:49:05 2016 Victor Sousa
-** Last update Sat Apr 16 05:49:38 2016 Victor Sousa
+** Last update Sat Apr 16 05:58:35 2016 Victor Sousa
 */
 
 #include		"main.h"
+
+int			adventure_shell(void)
+{
+  
+  return (1);
+}
 
 void			start_shell(int ac, char **av)
 {
   (void)ac;
   (void)av;
-  while (1);
+  while (adventure_shell());
 }

@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Sat Apr 16 05:55:03 2016 Victor Sousa
+** Last update Sat Apr 16 06:36:05 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -34,7 +34,7 @@ int			init_prog(t_prog *prog, char *str)
   prog->player->life = prog->player->caract->stamina * 2 + prog->player->life;
   prog->disp_delay = 0;
   prog->player->item_selected = -1;
-  prog->state = STATE_GAME;
+  prog->state = STATE_MENU;
   prog->need_init_fight = 1;
   if ((prog->font =
        xmalloc(sizeof(t_font), &prog->ptr_list)) == NULL)
@@ -68,6 +68,15 @@ int			init_prog(t_prog *prog, char *str)
 		  &prog->ptr_list)) == NULL)
     return (ERROR);
   /* penser vérifié le retour */
+  prog->menu_bg_pos.x = 50;
+  prog->menu_bg_pos.y = 0;
+  prog->menu_dir = 0;
+  prog->menu_bg =
+  load_image("ressources/sprites/menubg.png", &prog->ptr_list);
+  prog->menu_text =
+  load_image("ressources/sprites/textmenu.png", &prog->ptr_list);
+  prog->game_over_img =
+  load_image("ressources/sprites/gameover.png", &prog->ptr_list);
   prog->game_over_img =
   load_image("ressources/sprites/gameover.png", &prog->ptr_list);
   prog->over_quit =

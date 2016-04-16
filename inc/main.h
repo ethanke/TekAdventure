@@ -33,6 +33,7 @@
 # include		"parsing.h"
 # include		"disp.h"
 # include		"edit.h"
+# include		"my_printf.h"
 
 # ifndef		WIN_SETTING
 #  define		WIN_SETTING
