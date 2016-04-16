@@ -56,6 +56,7 @@ SRC		=	$(SRCDIR)/main.c			\
 SRC		+=	$(EDITDIR)/start_shell.c		\
 			$(EDITDIR)/get_next_line.c		\
 			$(EDITDIR)/str_to_wordtab.c		\
+			$(EDITDIR)/load_ini.c			\
 			$(EDITDIR)/free_shell.c
 
 SRC		+=	$(PRTFDIR)/my_disp_unprintable.c	\
