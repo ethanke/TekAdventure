@@ -155,6 +155,7 @@ SRC		+=	$(UTILSDIR)/xmalloc.c			\
 			$(UTILSDIR)/list_create_node.c		\
 			$(UTILSDIR)/list_add_node.c		\
 			$(UTILSDIR)/my_draw_square.c		\
+			$(UTILSDIR)/my_tablen.c			\
 			$(UTILSDIR)/my_swap.c			\
 			$(UTILSDIR)/my_put_nbr.c		\
 			$(UTILSDIR)/my_strcmp.c
