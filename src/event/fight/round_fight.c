@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr 15 01:35:20 2016 Ethan Kerdelhue
-** Last update Sat Apr 16 09:19:39 2016 Ethan Kerdelhue
+** Last update Sat Apr 16 09:40:42 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -15,7 +15,8 @@ void			player_round(t_prog *prog)
   if (prog->fight->last_action != -1)
     {
       if (prog->fight->last_action == ATTACK)
-	prog->fight->npc->life -= player_damage(prog->fight->player, prog->fight, prog);
+	prog->fight->npc->life -=
+	  player_damage(prog->fight->player, prog->fight, prog);
       if (prog->fight->last_action == DEFEND)
 	{
 	  if (prog->fight->player_action >= DEFEND_ENERGY)
@@ -28,7 +29,8 @@ void			player_round(t_prog *prog)
       if (prog->fight->last_action == MAGIC)
 	{
 	  prog->fight->animate_fireball = 1;
-	  prog->fight->npc->life -= player_damage_magic(prog->fight->player, prog->fight, prog);
+	  prog->fight->npc->life -=
+	      player_damage_magic(prog->fight->player, prog->fight, prog);
 	}
       if (prog->fight->last_action == SKIP)
 	prog->fight->round_state = 2;
@@ -38,10 +40,13 @@ void			player_round(t_prog *prog)
 
 void			npc_round(t_prog *prog)
 {
-  prog->fight->player_action = prog->fight->round_energy + prog->fight->bonus_action;
-  prog->fight->player->life -= npc_damage(prog->fight->npc, prog->player, prog);
+  prog->fight->player_action =
+      prog->fight->round_energy + prog->fight->bonus_action;
+  prog->fight->player->life -=
+      npc_damage(prog->fight->npc, prog->player, prog);
   prog->fight->round_state = 1;
-  prog->fight->bar_action->value_cur = prog->fight->round_energy + prog->fight->bonus_action;
+  prog->fight->bar_action->value_cur =
+      prog->fight->round_energy + prog->fight->bonus_action;
   prog->fight->bar_action->value_default =
   prog->fight->bar_action->value_cur;
   prog->fight->player_action = prog->fight->bar_action->value_default;

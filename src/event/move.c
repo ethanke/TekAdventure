@@ -5,13 +5,15 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 04:57:09 2016 Gaëtan Léandre
-** Last update Sat Apr 16 07:56:45 2016 Ethan Kerdelhue
+** Last update Sat Apr 16 09:43:09 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
 
-void			make_astar(t_player *player, t_bunny_position *size,
-				    t_bunny_position *to_go, t_ground *ground)
+void			make_astar(t_player *player,
+				   t_bunny_position *size,
+				   t_bunny_position *to_go,
+				   t_ground *ground)
 {
   t_posi		siz;
   t_posi		pos;
@@ -33,8 +35,10 @@ void			make_astar(t_player *player, t_bunny_position *size,
   player->move.depla = a_star(ground, &siz, &pos, &end);
 }
 
-void			disp_deplacement(t_player *player, t_grille *grille,
-					 t_bunny_pixelarray *pix, float percent)
+void			disp_deplacement(t_player *player,
+					 t_grille *grille,
+					 t_bunny_pixelarray *pix,
+					 float percent)
 {
   float			case_x;
   float			coef;
@@ -84,10 +88,14 @@ void			make_deplacement(t_player *player)
   y_vec /= norme;
   player->x += x_vec;
   player->y += y_vec;
-/*  player->x = (x_vec < 0 && player->x + x_vec < depla->x) ? depla->x : player->x + x_vec;
-  player->y = (y_vec < 0 && player->y + y_vec < depla->y) ? depla->y : player->y + y_vec;
-  player->x = (x_vec > 0 && player->x + x_vec > depla->x) ? depla->x : player->x + x_vec;
-  player->y = (y_vec > 0 && player->y + y_vec > depla->y) ? depla->y : player->y + y_vec;*/
+/*  player->x = (x_vec < 0 && player->x + x_vec < depla->x)
+      ? depla->x : player->x + x_vec;
+  player->y = (y_vec < 0 && player->y + y_vec < depla->y) ?
+      depla->y : player->y + y_vec;
+  player->x = (x_vec > 0 && player->x + x_vec > depla->x) ?
+      depla->x : player->x + x_vec;
+  player->y = (y_vec > 0 && player->y + y_vec > depla->y) ?
+      depla->y : player->y + y_vec;*/
 }
 
 void			deplacement(t_player *player, t_scene *scene,

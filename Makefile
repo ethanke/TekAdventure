@@ -5,7 +5,7 @@
 ## Login   <lefevr_h@epitech.net>
 ##
 ## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
-## Last update Sat Apr 16 18:54:15 2016 Gaëtan Léandre
+## Last update Sat Apr 16 19:21:49 2016 Ethan Kerdelhue
 ##
 
 NAME		=	tekadventure
@@ -124,6 +124,9 @@ SRC		+=	$(DISPDIR)/disp_hotbar.c		\
 			$(DISPDIR)/disp_info_text.c		\
 			$(DISPDIR)/disp_fight.c			\
 			$(DISPDIR)/disp_game_over.c		\
+			$(DISPDIR)/chose_color.c		\
+		        $(DISPDIR)/disp_case.c			\
+			$(DISPDIR)/norm_triste.c
 
 SRC		+=	$(EVENTDIR)/event_key.c			\
 			$(EVENTDIR)/event_click.c		\
@@ -140,7 +143,7 @@ SRC		+=	$(EVENTDIR)/event_key.c			\
 			$(EVENTDIR)/stack_item.c		\
 			$(EVENTDIR)/where_to_swap.c		\
 			$(EVENTDIR)/is_valid_equip.c		\
-			$(EVENTDIR)/set_click.c			\
+			$(EVENTDIR)/set_click.c
 
 SRC		+=	$(FIGHTDIR)/start_fight.c		\
 			$(FIGHTDIR)/round_fight.c		\
