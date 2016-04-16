@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Thu Apr  7 03:01:13 2016 victor sousa
-** Last update Sat Apr 16 04:30:34 2016 Ethan Kerdelhue
+** Last update Sat Apr 16 07:19:01 2016 Victor Sousa
 */
 
 #ifndef 		DISP_H_
@@ -24,6 +24,9 @@
 #endif			/* !EQUIP_INFO_SIZE_ */
 
 void			disp_game_over(t_prog *prog);
+void			disp_menu(t_prog *prog);
+t_bunny_response	check_menu_button(t_prog *prog,
+					  t_bunny_position *m_pos);
 void			disp_hotbar(t_prog *prog, t_bunny_position *m_pos);
 void			disp_inventory(t_prog *prog);
 void			disp_equip(t_prog *prog, t_bunny_position *m_pos);

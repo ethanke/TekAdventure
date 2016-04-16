@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Fri Nov 13 10:51:48 2015 Gaëtan Léandre
-** Last update Sat Apr 16 06:30:41 2016 Gaëtan Léandre
+** Last update Sat Apr 16 06:46:26 2016 Gaëtan Léandre
 */
 
 #include 		"main.h"
@@ -15,7 +15,7 @@ void			va_my_putchar(int fd, va_list ap)
   my_putchar_in(fd, va_arg(ap, int));
 }
 
-void			va_my_putstr(va_list ap)
+void			va_my_putstr(int fd, va_list ap)
 {
   my_putstr_in(fd, va_arg(ap, char*));
 }

@@ -63,7 +63,10 @@ int	add_end(t_text *text, char *stock)
       if ((new = malloc(size + 1)) == NULL)
 	return (-1);
       while (text->result[i])
-	new[i] = text->result[i++];
+	{
+	  new[i] = text->result[i];
+	  i++;
+	}
       while (stock[j] != '\0' && stock[j] != '\n')
 	new[i++] = stock[j++];
       new[i] = '\0';

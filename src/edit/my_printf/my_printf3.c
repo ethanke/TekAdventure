@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Fri Nov 13 10:52:38 2015 Gaëtan Léandre
-** Last update Sat Apr 16 06:31:26 2016 Gaëtan Léandre
+** Last update Sat Apr 16 06:47:16 2016 Gaëtan Léandre
 */
 
 #include 		"main.h"
@@ -29,7 +29,7 @@ void			va_my_adress(int fd, va_list ap)
 {
   if (ap != NULL)
     {
-      my_putstr_in(int fd, "0x");
+      my_putstr_in(fd, "0x");
       my_putnbr_base_add_in(fd, va_arg(ap, size_t), "0123456789abcdef", -1);
     }
   else

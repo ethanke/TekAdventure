@@ -5,14 +5,14 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Thu Oct  1 08:59:15 2015 Gaëtan Léandre
-** Last update Sat Apr 16 06:43:19 2016 Gaëtan Léandre
+** Last update Sat Apr 16 06:50:57 2016 Gaëtan Léandre
 */
 
-#include "main.h"
+#include 		"main.h"
 
-void	my_putstr_in(int fd, char *str)
+void			my_putstr_in(int fd, char *str)
 {
-  int	i;
+  int			i;
 
   i = 0;
   if (str == NULL)

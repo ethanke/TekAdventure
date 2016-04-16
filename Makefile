@@ -26,6 +26,7 @@ IMGDIR		=	$(SRCDIR)/image
 PARSDIR		=	$(SRCDIR)/parsing
 ASTAR		=	$(SRCDIR)/astar
 EDITDIR		=	$(SRCDIR)/edit
+PRTFDIR		=	$(EDITDIR)/my_printf
 
 INCDIR		=	inc
 LIBDIR		=	lib
@@ -53,7 +54,20 @@ SRC		=	$(SRCDIR)/main.c			\
 			$(SRCDIR)/end.c
 
 SRC		+=	$(EDITDIR)/start_shell.c		\
-			$(EDITDIR)/get_next_line.c
+			$(EDITDIR)/get_next_line.c		\
+			$(EDITDIR)/str_to_wordtab.c
+
+SRC		+=	$(PRTFDIR)/my_disp_unprintable.c	\
+			$(PRTFDIR)/my_printf.c			\
+			$(PRTFDIR)/my_printf2.c			\
+			$(PRTFDIR)/my_printf3.c			\
+			$(PRTFDIR)/my_put_nbr.c			\
+			$(PRTFDIR)/my_put_u_nbr_base.c		\
+			$(PRTFDIR)/my_put_unbr.c		\
+			$(PRTFDIR)/my_putchar.c			\
+			$(PRTFDIR)/my_putnbr_base.c		\
+			$(PRTFDIR)/my_putnbr_base_add.c		\
+			$(PRTFDIR)/my_putstr.c
 
 SRC		+=	$(PARSDIR)/parsing_error_msg_1.c	\
 			$(PARSDIR)/parsing_error_msg_2.c	\
@@ -76,6 +90,7 @@ SRC		+=	$(PARSDIR)/parsing_error_msg_1.c	\
 
 SRC		+=	$(DISPDIR)/disp_hotbar.c		\
 			$(DISPDIR)/disp_inventory.c		\
+			$(DISPDIR)/disp_menu.c			\
 			$(DISPDIR)/disp_equipement.c		\
 			$(DISPDIR)/disp_selected_inv_item.c	\
 			$(DISPDIR)/disp_item_info.c		\

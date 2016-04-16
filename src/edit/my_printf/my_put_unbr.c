@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Wed Sep 30 12:45:43 2015 Gaëtan Léandre
-** Last update Sat Apr 16 06:24:04 2016 Gaëtan Léandre
+** Last update Sat Apr 16 06:48:02 2016 Gaëtan Léandre
 */
 
 #include 		"main.h"
@@ -25,7 +25,7 @@ void			my_put_unbr_in(int fd, unsigned int nbr)
       number = nbr / i;
       if (number != 0 || first != 0)
 	{
-	  my_putchar_in(number + 48);
+	  my_putchar_in(fd, number + 48);
 	  nbr = nbr % i;
 	  first = 1;
 	}
