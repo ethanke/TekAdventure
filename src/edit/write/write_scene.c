@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 19:43:02 2016 Gaëtan Léandre
-** Last update Sat Apr 16 22:43:50 2016 Gaëtan Léandre
+** Last update Sat Apr 16 22:48:26 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -54,6 +54,7 @@ void			write_particular_scene(t_scene *scene, int fd)
       my_printf(fd, "scene_grid_height=\"%d\"\n", tmp->height);
       write_scene_npc_count(tmp, fd);
       write_scene_decors_count(tmp, fd);
+      write_scene_gate_count(tmp, fd);
       disp_scene_ground(tmp, fd);
       write_sprite_sky(tmp->sky, fd);
       tmp = tmp->next;
@@ -93,6 +94,6 @@ void			write_scene(t_scene *scene, int fd)
     }
   my_printf(fd, "[scene]\nscene_count=\"%d\"\n", i);
   write_scene_name(scene, fd, i);
-  write_particular_scene(scene, fd);  
+  write_particular_scene(scene, fd);
   my_printf(fd, "\n\n");
 }

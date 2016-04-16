@@ -5,12 +5,12 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 20:38:05 2016 Gaëtan Léandre
-** Last update Sat Apr 16 21:49:27 2016 Gaëtan Léandre
+** Last update Sat Apr 16 22:47:36 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
 
-void			write_scene_decors_pos_x(t_scene *scene, int fd,
+void			write_scene_decors_pos_y(t_scene *scene, int fd,
 						 int size)
 {
   int			x;
@@ -39,7 +39,7 @@ void			write_scene_decors_pos_x(t_scene *scene, int fd,
     }
 }
 
-void			write_scene_decors_pos_y(t_scene *scene, int fd,
+void			write_scene_decors_pos_x(t_scene *scene, int fd,
 						 int size)
 {
   int			x;
