@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Sat Apr 16 06:51:47 2016 Philippe Lefevre
-** Last update Sat Apr 16 08:17:30 2016 Philippe Lefevre
+** Last update Sat Apr 16 08:32:52 2016 Philippe Lefevre
 */
 #include		"main.h"
 
@@ -110,23 +110,40 @@ t_hitbox		*create_player_hitbox(int id, t_bunny_ini *ini,
   if ((hitbox = player_hitbox_y(id, ini, "player", hitbox)) == NULL)
     return (NULL);
   if ((hitbox = player_hitbox_width(id, ini, "player", hitbox)) == NULL)
-    return (NULL);
-  if ((hitbox = player_hitbox_height(id, ini, "player", hitbox)) == NULL)
+      return (NULL);
+    if ((hitbox = player_hitbox_height(id, ini, "player", hitbox)) == NULL)
     return (NULL);
   return (hitbox);
 }
-/*
-t_item			*fill_inventory()
+
+t_item			*fill_inventory(int i, int inventory_count,
+					t_bunny_ini *ini, t_item *inventory)
 {
+    char		*tmp;
+    int			slot;
 
-
+    while (++i < inventory_count)
+      {
+	if ((tmp = (char *)bunny_ini_get_field(ini, "player", "player_inventory_slot", i)) == NULL)
+	  return (my_puterror_item("Error: player:player_inventory_slot ", -1, "field not found\n"));
+	if (((slot = my_getnbr(tmp)) < 0) || (slot > SIZE_INVENTORY))
+	  return (my_puterror_item("Error: player:player_inventory field ", i, " should not be negative or greater than the size of the inventory"));
+	if ((tmp = (char *)bunny_ini_get_field(ini, "player", "player_inventory_item", i)) == NULL)
+	  return (my_puterror_item("Error: player:player_inventory_item ", -1, "field not found\n"));
+	if ((inventory[slot].id = my_getnbr(tmp)) < 0)
+	  return (my_puterror_item("Error: player:player_inventory_count field ", i, " object id should not be negative"));
+	if ((tmp = (char *)bunny_ini_get_field(ini, "player", "player_inventory_amount", i)) == NULL)
+	  return (my_puterror_item("Error: player:player_inventory_amount ", -1, "field not found\n"));
+	if ((inventory[slot].amount = my_getnbr(tmp)) < 0)
+	  return (my_puterror_item("Error: player:player_inventory_count field ", i, " object amount should not be negative"));
+      }
+    return (inventory);
 }
-*/
+
 t_item			*load_player_inventory(t_item *inventory, t_bunny_ini *ini,
 					       t_ptr_list **ptr_list, char *tmp)
 {
   int			inventory_count;
-  int			slot;
   int			i;
 
   inventory = NULL;
@@ -137,32 +154,16 @@ t_item			*load_player_inventory(t_item *inventory, t_bunny_ini *ini,
   while (++i != (SIZE_INVENTORY + 1))
     {
       inventory[i].id = -1;
-      inventory[i].amount = -1;
+	inventory[i].amount = -1;
     }
   if ((tmp = (char *)bunny_ini_get_field(ini, "player", "player_inventory_count", 0)) == NULL)
     return (my_puterror_item("Error: player:player_inventory_count ", -1, "field not found\n"));
   if ((inventory_count = my_getnbr(tmp)) < 0)
-    return (my_puterror_item("Error: player:player_inventory_count ", -1, "should not be negative\n"));
-  else
-    {
-      i = -1;
-      while (++i < inventory_count)
-	{
-	    if ((tmp = (char *)bunny_ini_get_field(ini, "player", "player_inventory_slot", i)) == NULL)
-	      return (my_puterror_item("Error: player:player_inventory_slot ", -1, "field not found\n"));
-	    if (((slot = my_getnbr(tmp)) < 0) || (slot > SIZE_INVENTORY))
-	      return (my_puterror_item("Error: player:player_inventory field ", i, " should not be negative or greater than the size of the inventory"));
-	    if ((tmp = (char *)bunny_ini_get_field(ini, "player", "player_inventory_item", i)) == NULL)
-	      return (my_puterror_item("Error: player:player_inventory_item ", -1, "field not found\n"));
-	    if ((inventory[slot].id = my_getnbr(tmp)) < 0)
-	      return (my_puterror_item("Error: player:player_inventory_count field ", i, " object id should not be negative"));
-	    if ((tmp = (char *)bunny_ini_get_field(ini, "player", "player_inventory_amount", i)) == NULL)
-	      return (my_puterror_item("Error: player:player_inventory_amount ", -1, "field not found\n"));
-	    if ((inventory[slot].amount = my_getnbr(tmp)) < 0)
-	      return (my_puterror_item("Error: player:player_inventory_count field ", i, " object amount should not be negative"));
-	}
-    }
-  return (inventory);
+      return (my_puterror_item("Error: player:player_inventory_count ", -1, "should not be negative\n"));
+    else
+      if ((fill_inventory(-1, inventory_count, ini, inventory)) == NULL)
+	return (NULL);
+    return (inventory);
 }
 
 t_item			*load_player_equiped(t_item *equiped, t_bunny_ini *ini,
