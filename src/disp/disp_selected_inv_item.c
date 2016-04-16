@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 14:34:08 2016 Victor Sousa
-** Last update Wed Apr 13 23:19:59 2016 Victor Sousa
+** Last update Sat Apr 16 03:27:19 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -43,13 +43,21 @@ void			disp_selected_full_inv_item(t_prog *prog)
 
   if (prog->player->inv_selected == -1)
     return;
-  pos.x = WIN_WIDTH / 2 - (prog->player->hotbar_sprite->width / 2) / 4 + 10;
-  if (prog->player->inv_selected > 11)
+  if (prog->player->inv_selected > 11 && prog->player->inv_selected < 48)
     {
+      pos.x = WIN_WIDTH / 2 - (prog->player->hotbar_sprite->width / 2) / 4 + 10;
       pos.y = WIN_HEIGHT / 2 - (prog->player->inv_open_sprite->height / 2) / 4
 	  + 10;
       pos.x += 40.45 * (prog->player->inv_selected % 12);
       pos.y += 36 * (prog->player->inv_selected / 12 - 1);
+      draw_selected(prog, create_hitbox_ptr(pos, 36, 30, prog->ptr_list));
+    }
+  else if (prog->player->inv_selected >= 48)
+    {
+      pos.x = WIN_WIDTH / 2 - ((prog->player->inv_open_sprite->width / 4) / 2) -
+	  prog->equip_sprite->width + 1;
+      pos.y = WIN_HEIGHT / 2 - prog->equip_sprite->height / 2 + 2;
+      pos.y += 36 * (prog->player->inv_selected - 48);
       draw_selected(prog, create_hitbox_ptr(pos, 36, 30, prog->ptr_list));
     }
 }

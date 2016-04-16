@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Sat Apr 16 00:43:15 2016 Ethan Kerdelhue
+** Last update Sat Apr 16 02:25:41 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -25,11 +25,12 @@ int			init_prog(t_prog *prog, char *str)
   prog->player->y = 0;
   if ((prog->player->caract = xmalloc(sizeof(t_caract), &prog->ptr_list)) == NULL)
     return (0);
-  prog->player->caract->strength = 12;
-  prog->player->caract->critical = 20;
-  prog->player->caract->agility = 30;
+  prog->player->caract->stamina = 50;
+  prog->player->caract->strength = 50;
+  prog->player->caract->critical = 50;
+  prog->player->caract->agility = 50;
   prog->player->caract->armor = 50;
-  prog->player->caract->intellect = 8;
+  prog->player->caract->intellect = 50;
   prog->disp_delay = 0;
   prog->player->item_selected = -1;
   prog->state = STATE_GAME;
