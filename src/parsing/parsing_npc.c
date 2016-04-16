@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Fri Apr  8 02:30:51 2016 Ethan Kerdelhue
-** Last update Fri Apr 15 22:54:09 2016 Philippe Lefevre
+** Last update Sat Apr 16 06:17:37 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -141,7 +141,7 @@ t_npc			*list_add_npc(t_npc *list, int id, t_bunny_ini *ini,
   while (npc->next != NULL)
     npc = npc->next;
   if (npc == NULL)
-  new->prev = npc;
+    new->prev = npc;
   new->next = NULL;
   npc->next = new;
   return (list);

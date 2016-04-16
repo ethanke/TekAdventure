@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr 14 02:52:33 2016 Philippe Lefevre
-** Last update Sat Apr 16 00:42:59 2016 Philippe Lefevre
+** Last update Sat Apr 16 05:23:12 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -26,9 +26,11 @@ t_ground		*ground_fill(t_bunny_ini *ini, t_scene *scene,
     {
       scene->ground[i].npc = NULL;
       scene->ground[i].decors = NULL;
+      scene->ground[i].gate = NULL;
     }
   scene->ground[i].npc = NULL;
   scene->ground[i].decors = NULL;
+  scene->ground[i].gate = NULL;
   if ((str = (char *)bunny_ini_get_field(ini, name, "scene_npc_count", 0)) == NULL)
     return (my_puterror_ground("Error ", name, ":scene_npc_count field ", -1, "not found\n"));
   if ((i = my_getnbr(str)) < 0)

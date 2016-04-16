@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Sat Apr 16 05:14:04 2016 Philippe Lefevre
+** Last update Sat Apr 16 06:19:10 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -28,6 +28,8 @@ t_scene			*create_scene_node(char *name, t_bunny_ini *ini,
     return (NULL);
   if ((scene->sky = link_sky(scene->sky, scene->sprite)) == NULL)
     return (NULL);
+  if ((scene->name = my_strdup(name, ptr_list)) == NULL)
+    return (my_puterror_scene("Error: ", name, ":my_strdup ", -1, "failed in create_scene_node\n"));
 
   if ((scene = link_ground(ini, scene, ptr_list, name)) == NULL)
     return (NULL);

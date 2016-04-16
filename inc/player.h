@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 03:51:52 2016 Gaëtan Léandre
-** Last update Fri Apr 15 06:25:24 2016 Victor Sousa
+** Last update Sat Apr 16 05:59:27 2016 Philippe Lefevre
 */
 
 #ifndef			PLAYER_H_
@@ -48,7 +48,6 @@ typedef struct		s_player
   float			x;
   float			y;
   int			life;
-  int			token;
   char			*name;
   int			damage;
   int			magic_damage;

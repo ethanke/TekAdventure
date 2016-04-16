@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Sat Apr 16 05:02:51 2016 Philippe Lefevre
+** Last update Sat Apr 16 06:11:38 2016 Philippe Lefevre
 */
 
 #ifndef			SCENE_H_
@@ -60,6 +60,7 @@ typedef struct		s_sky
 
 typedef struct		s_scene
 {
+  char			*name;
   t_bunny_position	*start_pos;
   int			height;
   int			sol_id;
