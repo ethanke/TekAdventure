@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 04:57:09 2016 Gaëtan Léandre
-** Last update Wed Apr 13 21:52:15 2016 Gaëtan Léandre
+** Last update Sat Apr 16 07:56:45 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -50,9 +50,9 @@ void			disp_deplacement(t_player *player, t_grille *grille,
   case_x = ((float)grille->case_x * coef);
   hauteur = case_x * player->sprite->height
       / player->sprite->width;
-  pos_x = 10 +(int)(((float)(grille->coef *
-		 (float)((float)grille->grille_y - 1 - player->y))) * percent) +
-  ((float)player->x * case_x);
+  pos_x = 10 + (int)(((float)(grille->coef *
+		 (float)((float)grille->grille_y - 1 - player->y))) * percent)
+  + ((float)player->x * case_x);
   pal_prev = grille->start_y + 10 + get_pos_y((int)player->y, grille);
   pal_next = grille->start_y + 10 + get_pos_y((int)player->y + 1, grille);
   pos_y = 20 + (float)((player->y - (int)player->y)

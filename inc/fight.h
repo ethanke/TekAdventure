@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr 13 06:17:45 2016 Ethan Kerdelhue
-** Last update Sat Apr 16 04:41:58 2016 Ethan Kerdelhue
+** Last update Sat Apr 16 08:04:21 2016 Ethan Kerdelhue
 */
 
 #ifndef			FIGHT_H_
@@ -76,4 +76,14 @@ int 			player_damage(t_player *player, t_fight *fight,
 				      t_prog *prog);
 int			get_life_player(t_player *player);
 
+void			npc_damage_more(t_prog *prog,
+					t_player *player,
+					int *damage);
+int 			npc_damage(t_npc *npc, t_player *player, t_prog *prog);
+int 			player_damage_magic(t_player *player,
+					    t_fight *fight,
+					    t_prog *prog);
+int 			player_damage(t_player *player,
+				      t_fight *fight,
+				      t_prog *prog);
 #endif

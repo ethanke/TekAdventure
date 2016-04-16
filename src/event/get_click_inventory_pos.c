@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:47:01 2016 Victor Sousa
-** Last update Fri Apr 15 07:12:59 2016 Victor Sousa
+** Last update Sat Apr 16 07:58:41 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -15,8 +15,8 @@ int			get_click_place_hotbar(t_prog *prog,
 {
   if (click_pos->x >= WIN_WIDTH / 2 -
       (prog->player->hotbar_sprite->width / 2) / 4 + 10 &&
-      click_pos->x <= WIN_WIDTH / 2 +
-      (prog->player->hotbar_sprite->width / 2) / 4 - 10 &&
+      click_pos->x <= WIN_WIDTH / 2
+      + (prog->player->hotbar_sprite->width / 2) / 4 - 10 &&
       click_pos->y >= WIN_HEIGHT -
       prog->player->hotbar_sprite->height / 4 + 10 &&
       click_pos->y <= WIN_HEIGHT - 10)
@@ -41,7 +41,8 @@ int			get_click_place_equip(t_prog *prog,
   while (++i < 4)
     {
       if (click_pos->x >= size.x && click_pos->x <= size.x + 35 &&
-	  click_pos->y >= size.y + 36 * i && click_pos->y <= size.y + 36 * (i + 1))
+	  click_pos->y >= size.y
+	  + 36 * i && click_pos->y <= size.y + 36 * (i + 1))
 	return (i + 48);
     }
   return (-1);
@@ -52,8 +53,8 @@ static int		find_y_place_inv(t_prog *prog,
 {
   if (click_pos->x >= WIN_WIDTH / 2 -
       (prog->player->hotbar_sprite->width / 2) / 4 + 10 &&
-      click_pos->x <= WIN_WIDTH / 2 +
-      (prog->player->hotbar_sprite->width / 2) / 4 - 10 &&
+      click_pos->x <= WIN_WIDTH / 2
+      + (prog->player->hotbar_sprite->width / 2) / 4 - 10 &&
       click_pos->y >= WIN_HEIGHT / 2 -
       (prog->player->inv_open_sprite->height / 2) / 4 + 12 &&
       click_pos->y <= WIN_HEIGHT / 2 +

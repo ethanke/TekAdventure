@@ -5,55 +5,10 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Sat Apr 16 04:55:37 2016 Victor Sousa
+** Last update Sat Apr 16 08:00:15 2016 Ethan Kerdelhue
 */
 
 #include	"main.h"
-
-void	my_putchar(char c)
-{
-  write(1, &c, 1);
-}
-
-void	my_putstr(char *str)
-{
-  write(1, str, my_strlen(str));
-}
-
-int	my_putnbr(int nb)
-{
-  int	mod;
-
-  mod = 0;
-  if (nb < 0)
-    {
-      my_putchar('-');
-      nb = nb * (-1);
-    }
-  if (nb >= 0)
-    {
-      if (nb >= 10)
-	{
-	  mod = (nb % 10);
-          nb = (nb - mod) / 10;
-	  my_putnbr(nb);
-	  my_putchar(48 + mod);
-        }
-      else
-        my_putchar(48 + nb % 10);
-    }
-  return (0);
-}
-
-
-int			my_puts(char *str, int nb, int flag)
-{
-  my_putstr(str);
-  my_putnbr(nb);
-  if (flag == 1)
-    my_putchar('\n');
-  return (0);
-}
 
 int			get_player_magic_damage(t_player *player, t_prog *prog)
 {
@@ -71,92 +26,6 @@ int			get_player_damage(t_player *player, t_prog *prog)
   (void)prog;
   player_damage = 5 + (1 + player->caract->strength / 2);
   return (player_damage);
-}
-
-int 			npc_damage(t_npc *npc, t_player *player, t_prog *prog)
-{
-  int			damage;
-  int			max;
-  int			min;
-
-  max = npc->damage * 1200;
-  min = npc->damage * 800;
-  damage = ((rand() % (max - min)) + min);
-  if (((rand() % (100 - 0)) + 0) <= 5)
-    {
-      damage = damage * 1.5;
-      event_on_player(prog, 0);
-    }
-  if (((rand() % (100 - 0)) + 0) <= player->caract->agility / 3)
-    {
-      damage = 0;
-      event_on_player(prog, 1);
-    }
-  if (player->fight_defense == 1)
-    {
-      player->fight_defense = 0;
-      if (((rand() % (100 - 0)) + 0) <= player->caract->armor / 3)
-	{
-	  prog->fight->bonus_action += 20;
-	  event_on_player(prog, 2);
-	  damage = 0;
-	}
-      else
-	{
-	  damage = (damage / 1000) - player->caract->armor / 5;
-	  event_on_player(prog, 3);
-	  return (damage_on_player(prog, damage));
-	}
-    }
-  return (damage_on_player(prog, damage / 1000));
-}
-
-int 			player_damage_magic(t_player *player, t_fight *fight, t_prog *prog)
-{
-  t_bunny_position	pos;
-  int			damage;
-  int			max;
-  int			min;
-
-  if (fight->player_action >= ATTACK_ENERGY)
-    {
-      min = player->magic_damage * 1200;
-      max = player->magic_damage * 800;
-      damage = ((rand() % (max - min )) + min);
-      if (((rand() % (100 - 0)) + 0) <= player->caract->critical)
-	{
-	  damage = damage * 1.5;
-	  event_on_npc(prog);
-	}
-      pos.x = WIN_WIDTH / 2;
-      pos.y = WIN_HEIGHT / 2;
-      pos = pos;
-      fight->player_action -= MAGIC_ENERGY;
-      return (damage_on_npc(prog, damage / 1000));
-    }
-  return (0);
-}
-
-int 			player_damage(t_player *player, t_fight *fight, t_prog *prog)
-{
-  int			damage;
-  int			max;
-  int			min;
-
-  if (fight->player_action >= ATTACK_ENERGY)
-    {
-      min = player->damage * 1200;
-      max = player->damage * 800;
-      damage = ((rand() % (max - min )) + min);
-      if (((rand() % (100 - 0)) + 0) <= player->caract->critical)
-	{
-	  damage = damage * 1.5;
-	  event_on_npc(prog);
-	}
-      fight->player_action -= ATTACK_ENERGY;
-      return (damage_on_npc(prog, damage / 1000));
-    }
-  return (0);
 }
 
 int			prepare_fight(t_prog *prog, t_npc *npc)

@@ -5,10 +5,17 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr 13 19:36:12 2016 Ethan Kerdelhue
-** Last update Sat Apr 16 02:39:38 2016 Gaëtan Léandre
+** Last update Sat Apr 16 08:15:20 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
+
+
+void			set_attack(t_prog *prog, t_bunny_position *attack)
+{
+  attack->x = WIN_WIDTH / 2 - 2 * prog->skip_button->width;
+  attack->y = 600;
+}
 
 void			draw_fight(t_prog *prog)
 {
@@ -30,8 +37,7 @@ void			draw_fight(t_prog *prog)
   magic.y = 600;
   defend.x = WIN_WIDTH / 2 - 1 * prog->defend_button->width;
   defend.y = 600;
-  attack.x = WIN_WIDTH / 2 - 2 * prog->skip_button->width;
-  attack.y = 600;
+  set_attack(prog, &attack);
   put_image(prog->fight_img, prog->pix, &prog->blit_pos);
   put_image(prog->player->sprite, prog->pix, &player_pos);
   put_image(prog->attack_button, prog->pix, &attack);
