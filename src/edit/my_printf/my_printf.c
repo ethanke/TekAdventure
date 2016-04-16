@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Thu Nov 12 12:27:44 2015 Gaëtan Léandre
-** Last update Sat Apr 16 06:44:27 2016 Gaëtan Léandre
+** Last update Sat Apr 16 06:45:12 2016 Gaëtan Léandre
 */
 
 #include 		"main.h"
@@ -94,7 +94,7 @@ int			my_printf(int fd, char *str, ...)
   pri.fd = fd;
   tab = NULL;
   tab = init_struct(tab);
-  pri = 0;
+  pri.i = 0;
   if (str == NULL || tab == NULL)
     return (-1);
   va_start(ap, str);
@@ -104,7 +104,7 @@ int			my_printf(int fd, char *str, ...)
 	pri.i = print_fct(ap, tab, str, pri);
       else
 	my_putchar_in(fd, str[pri.i]);
-      i++;
+      pri.i++;
     }
   va_end(ap);
   free(tab);
