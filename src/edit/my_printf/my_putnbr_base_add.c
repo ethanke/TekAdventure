@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Mon Oct  5 13:31:52 2015 Gaëtan Léandre
-** Last update Sat Apr 16 06:32:05 2016 Gaëtan Léandre
+** Last update Sat Apr 16 06:49:00 2016 Gaëtan Léandre
 */
 
 #include "main.h"
@@ -38,7 +38,7 @@ int	big_pow_add(size_t nbr, int base_size)
   return (i);
 }
 
-void	my_putnbr_base_add_in(int fd, ize_t nbr, char *base, int taille)
+void	my_putnbr_base_add_in(int fd, size_t nbr, char *base, int taille)
 {
   int	base_size;
   int	i;
