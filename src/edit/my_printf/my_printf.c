@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.net>
 **
 ** Started on  Thu Nov 12 12:27:44 2015 Gaëtan Léandre
-** Last update Sat Apr 16 06:42:30 2016 Gaëtan Léandre
+** Last update Sat Apr 16 06:44:27 2016 Gaëtan Léandre
 */
 
 #include 		"main.h"
@@ -64,7 +64,7 @@ int			print_fct(va_list ap, t_fonct *tab,
   pri.i++;
   wait = str[pri.i] == ' ' ? 1 : 0;
   while (str[pri.i] == ' ')
-    i++;
+    pri.i++;
   fct = chose_function(str[pri.i], tab);
   if (fct == -1)
     {
