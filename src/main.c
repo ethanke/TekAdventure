@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Sat Apr 16 21:11:37 2016 Philippe Lefevre
+** Last update Sat Apr 16 21:22:50 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -42,7 +42,6 @@ int			init_prog(t_prog *prog, char *str)
        load_image("ressources/sprites/equip.png",
 		  &prog->ptr_list)) == NULL)
     return (ERROR);
-  /* penser vérifié le retour */
   prog->menu_bg_pos.x = 50;
   prog->menu_bg_pos.y = 0;
   prog->menu_dir = 0;
@@ -103,7 +102,7 @@ int			pars_arg(int ac, char **av)
     return (my_puterror(av[0]) + my_puterror(": too many argument\n"));
   else if (ac == 2)
     {
-      len = my_getnbr(av[1]);
+      len = my_strlen(av[1]);
       if (!(my_strcmp("--shell", av[1])))
 	{
 	  start_shell(ac, av);
@@ -113,13 +112,15 @@ int			pars_arg(int ac, char **av)
 	return (write(1, "	TekAdventure\n", 14)
 		+ write(1, "Leadre Gaetan - Sousa Victor - ", 31)
 		+ write (1, "Philippe Lefvre - Ethan Kerdelhue\n", 34));
- /*     else if ((len < 5) || !(my_strcmp((av[1] - 5), ".ini")))
-	return (0);*/
+      else if ((len > 4) && av[1][len - 4] == '.' && av[1][len - 3] == 'i'
+	       && av[1][len - 2] == 'n' && av[1][len - 1] == 'i')
+	return (0);
+      return (my_puterror(av[0]) + my_puterror(": [ARG]\n")
+	      + my_puterror("	--shell		launch editor\n")
+	      + my_puterror("	exemple.ini	ini file game\n")
+	      + my_puterror("	--credit	display (c) credit\n") - 1);
     }
-  return (my_puterror(av[0]) + my_puterror(": [ARG]\n")
-	  + my_puterror("	--shell		launch editor\n")
-	  + my_puterror("	exemple.ini	ini file game\n")
-	  + my_puterror("	--credit	display (c) credit\n") - 1);
+  return (-1);
 }
 
 int			main(int ac, char **av, char **env)
