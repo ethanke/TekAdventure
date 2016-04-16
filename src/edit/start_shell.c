@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:49:05 2016 Victor Sousa
-** Last update Sat Apr 16 08:00:41 2016 Victor Sousa
+** Last update Sat Apr 16 08:08:25 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -15,13 +15,16 @@ void			put_prompt(void)
   my_printf(1, "tekadventure editor >> ");
 }
 
-void			treat_cmd(char **tab, t_ini *ini)
+int			treat_cmd(int ac, char **av, t_ini *ini)
 {
-  int			len;
-
   (void)ini;
-  len = my_tablen(tab);
-  printf("len: %d", len);
+  if (ac == 3 && my_strcmp(av[0], "load") == 0 && my_strcmp(av[1], "ini") == 0)
+    {
+      if (load_ini(av[2], ini) == -1)
+	return (-1);
+      my_printf(1, "player name: %s", ini->player->name);
+    }
+  return (0);
 }
 
 void			start_shell()
@@ -34,7 +37,8 @@ void			start_shell()
   while ((cmd = get_next_line(0)) != NULL)
     {
       tab = str_to_wordtab(cmd, " \t");
-      treat_cmd(tab, &ini);
+      if (treat_cmd(my_tablen(tab), tab, &ini) == -1)
+	return;
       free_tab(tab);
       free(cmd);
       put_prompt();
