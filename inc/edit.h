@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:51:56 2016 Victor Sousa
-** Last update Sat Apr 16 19:13:53 2016 Victor Sousa
+** Last update Sat Apr 16 19:43:36 2016 Victor Sousa
 */
 
 #ifndef			EDIT_H_
@@ -25,6 +25,7 @@ int			load_ini(char *path, t_ini *ini);
 void			close_ini(t_ini *ini);
 void			aff_stuff(int ac, char **av, t_ini *ini);
 void			aff_all(int fd, t_ini *ini);
+void			add_stuff(int ac, char **av, t_ini *ini);
 
 /* write */
 int			write_ini(char *path, t_ini *ini);
@@ -58,6 +59,27 @@ void			write_object_equip_slot(t_object *object, int fd,
 						int size);
 void			write_object_equip(t_object *object, int fd,
 					   int size);
+void			write_npc_trade_needed_id(t_npc *npc, int fd, int size);
+void			write_npc_text(t_npc *npc, int fd, int size);
+void			write_npc_name(t_npc *npc, int fd, int size);
+void			write_npc_id(t_npc *npc, int fd, int size);
+void			write_npc(t_npc *npc, int fd);
+void			write_npc_sprite_hitbox_x(t_npc *npc, int fd,
+						  int size);
+void			write_npc_sprite_id(t_npc *npc, int fd,
+					    int size);
+void			write_npc_trade_given_amount(t_npc *npc, int fd,
+						     int size);
+void			write_npc_trade_given_id(t_npc *npc, int fd,
+						 int size);
+void			write_npc_trade_needed_ammout(t_npc *npc, int fd,
+						      int size);
+void			write_npc_sprite_hitbox_h(t_npc *npc, int fd,
+						  int size);
+void			write_npc_sprite_hitbox_w(t_npc *npc, int fd,
+						  int size);
+void			write_npc_sprite_hitbox_y(t_npc *npc, int fd,
+						  int size);
 
 char			*get_next_line(const int fd);
 void			start_shell();

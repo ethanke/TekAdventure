@@ -59,6 +59,7 @@ SRC		+=	$(EDITDIR)/start_shell.c		\
 			$(EDITDIR)/str_to_wordtab.c		\
 			$(EDITDIR)/load_ini.c			\
 			$(EDITDIR)/aff_stuff.c			\
+			$(EDITDIR)/add_stuff.c			\
 			$(EDITDIR)/free_shell.c
 
 SRC		+=	$(WRITEDIR)/write_ini.c			\
@@ -71,6 +72,9 @@ SRC		+=	$(WRITEDIR)/write_ini.c			\
 			$(WRITEDIR)/write_decors.c		\
 			$(WRITEDIR)/write_decors2.c		\
 			$(WRITEDIR)/write_decors3.c		\
+			$(WRITEDIR)/write_npc.c			\
+			$(WRITEDIR)/write_npc2.c		\
+			$(WRITEDIR)/write_npc3.c		\
 
 SRC		+=	$(PRTFDIR)/my_disp_unprintable.c	\
 			$(PRTFDIR)/my_printf.c			\

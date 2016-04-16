@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:49:05 2016 Victor Sousa
-** Last update Sat Apr 16 09:39:36 2016 Victor Sousa
+** Last update Sat Apr 16 19:20:37 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -34,9 +34,10 @@ int			treat_cmd(int ac, char **av, t_ini *ini)
   if (ac == 2 && my_strcmp(av[0], "close") == 0
       && my_strcmp(av[1], "ini") == 0)
     close_ini(ini);
-
   if (ac >= 1 && my_strcmp(av[0], "aff") == 0)
     aff_stuff(ac, av, ini);
+  if (ac >= 1 && my_strcmp(av[0], "add") == 0)
+    add_stuff(ac, av, ini);
   return (0);
 }
 
