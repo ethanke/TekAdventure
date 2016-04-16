@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Mon Apr 11 07:08:46 2016 Victor Sousa
-** Last update Sat Apr 16 04:03:03 2016 Victor Sousa
+** Last update Sat Apr 16 04:26:24 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -35,7 +35,7 @@ void			disp_damage(t_prog *prog, t_font font, t_item *item,
 
   if ((str = malloc(20)) == NULL)
     return;
-  str = my_strcpy(str, "damage : ");
+  str = my_strcpy(str, "damage   : ");
   if ((nbr = my_itoa(item->object->damage)) == NULL)
     return;
   str = my_strcat(str, nbr);
@@ -62,7 +62,8 @@ void			disp_simple_item_info(t_prog *prog, t_item *item,
   rect_pos.x += 10;
   rect_pos.y += 10;
   tektext(item->object->name, &rect_pos, prog->pix, &font);
-  rect_pos.y += 15;
+  rect_pos.x += 10;
+  rect_pos.y += 25;
   disp_quatity(prog, font, item, rect_pos);
   rect_pos.y += 15;
   disp_damage(prog, font, item, rect_pos);

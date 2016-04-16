@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Thu Apr  7 03:01:13 2016 victor sousa
-** Last update Sat Apr 16 04:04:59 2016 Victor Sousa
+** Last update Sat Apr 16 04:28:01 2016 Victor Sousa
 */
 
 #ifndef 		DISP_H_
@@ -13,14 +13,14 @@
 
 #ifndef 		ITEM_INFO_SIZE_
 # define 		ITEM_INFO_SIZE_
-# define		IIS_WIDTH	165
-# define		IIS_HEIGHT	60
+# define		IIS_WIDTH	180
+# define		IIS_HEIGHT	70
 #endif			/* !ITEM_INFO_SIZE_ */
 
 #ifndef 		EQUIP_INFO_SIZE_
 # define 		EQUIP_INFO_SIZE_
-# define		EIS_WIDTH	(IIS_WIDTH + 25)
-# define		EIS_HEIGHT	(IIS_HEIGHT + 150)
+# define		EIS_WIDTH	(IIS_WIDTH + 35)
+# define		EIS_HEIGHT	(IIS_HEIGHT + 115)
 #endif			/* !EQUIP_INFO_SIZE_ */
 
 void			disp_hotbar(t_prog *prog, t_bunny_position *m_pos);
@@ -36,6 +36,16 @@ void			disp_damage(t_prog *prog, t_font font, t_item *item,
 				    t_bunny_position rect_pos);
 void			disp_floating_item(t_prog *prog,
 					   t_bunny_position *click_pos);
+void			disp_stamina(t_prog *prog, t_font *font, t_item *item,
+				     t_bunny_position rect_pos);
+void			disp_strength(t_prog *prog, t_font *font, t_item *item,
+				      t_bunny_position rect_pos);
+void			disp_critical(t_prog *prog, t_font *font, t_item *item,
+				      t_bunny_position rect_pos);
+void			disp_intel(t_prog *prog, t_font *font, t_item *item,
+				   t_bunny_position rect_pos);
+void			disp_armor(t_prog *prog, t_font *font, t_item *item,
+				   t_bunny_position rect_pos);
 void			disp_selected_hotbar_inv_item(t_prog *prog);
 void			disp_selected_full_inv_item(t_prog *prog);
 int			there_is_place_in_inv(t_item *inv);
