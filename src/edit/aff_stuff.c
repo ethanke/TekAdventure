@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 09:07:37 2016 Victor Sousa
-** Last update Sat Apr 16 20:21:30 2016 Victor Sousa
+** Last update Sat Apr 16 22:42:22 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -17,6 +17,7 @@ void			aff_all(int fd, t_ini *ini)
   write_object(ini->scene->object, fd);
   write_decors(ini->scene->decors, fd);
   write_npc(ini->scene->npc, fd);
+  write_scene(ini->scene, fd);
 }
 
 void			aff_stuff(int ac, char **av, t_ini *ini)
@@ -38,4 +39,6 @@ void			aff_stuff(int ac, char **av, t_ini *ini)
     write_decors(ini->scene->decors, 1);
   if (ac == 2 && my_strcmp(av[1], "npc") == 0)
     write_npc(ini->scene->npc, 1);
+  if (ac == 2 && my_strcmp(av[1], "scene") == 0)
+    write_scene(ini->scene, 1);
 }

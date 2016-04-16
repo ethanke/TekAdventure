@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.net>
 **
 ** Started on  Wed Apr  6 23:08:25 2016 victor sousa
-** Last update Sat Apr 16 07:59:44 2016 Victor Sousa
+** Last update Sat Apr 16 23:21:13 2016 Victor Sousa
 */
 
 #ifndef                 UTILS_H_
@@ -24,6 +24,7 @@ void			free_ptr(t_ptr_list *ptr_list);
 int			my_puterror(char *str);
 int			my_strlen(char *str);
 int			my_getnbr(char *str);
+int			my_getnbr_free(char *str);
 void                    *xmalloc(int size, t_ptr_list **ptr_list);
 char			*my_strdup(char *str, t_ptr_list **ptr_list);
 char			*my_strcpy(char *dest, char *src);
