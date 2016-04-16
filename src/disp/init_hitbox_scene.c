@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Mon Apr 11 00:14:36 2016 Gaëtan Léandre
-** Last update Fri Apr 15 23:32:04 2016 Victor Sousa
+** Last update Sat Apr 16 05:22:46 2016 Gaëtan Léandre
 */
 #include		"main.h"
 
@@ -122,8 +122,6 @@ int			set_hitbox_ground(t_scene *scene, t_ptr_list *ptr_list)
       pos.x = -1;
       while (++pos.x < scene->size.x)
 	{
-	  /* INITIALISATION A VIRER */
-	  scene->ground[pos.x + pos.y * scene->size.x].gate = NULL;
 	  if (mega_condition_turfu(scene, pos, ptr_list, grille) == -1)
 	    return (-1);
 	}
