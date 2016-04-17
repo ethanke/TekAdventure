@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sun Apr 17 03:10:09 2016 Gaëtan Léandre
-** Last update Sun Apr 17 03:12:15 2016 Gaëtan Léandre
+** Last update Sun Apr 17 05:28:57 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -32,7 +32,7 @@ char			*get_dec_name(t_ini *ini)
     return (NULL);
   while (decors_name_is_taken(ini, str) == 1)
     {
-      my_printf(1, "name already taken by another decors\n");
+      my_printf(1, "name already taken by another decors\nTry again : ");
       free(str);
       if ((str = get_next_line(0)) == NULL)
 	return (NULL);

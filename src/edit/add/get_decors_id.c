@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sun Apr 17 03:03:55 2016 Gaëtan Léandre
-** Last update Sun Apr 17 03:11:05 2016 Gaëtan Léandre
+** Last update Sun Apr 17 05:29:13 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -47,16 +47,16 @@ int			get_dec_id(t_ini *ini)
     return (-1);
   while ((id = my_getnbr(str) - 1) <= -1)
     {
-      my_printf(1, "Id must be superior to 0\n");
+      my_printf(1, "Id must be superior to 0\nTry again : ");
       free(str);
       if ((str = get_next_line(0)) == NULL)
 	return (-1);
     }
-  if (object_id_is_taken(ini, id) == 1)
+  if (decors_id_is_taken(ini, id + 1) == 1)
     {
-      my_printf(1, "Id already taken by decors : %s\n",
-		look_for_decors_name(ini, id));
+      my_printf(1, "Id already taken by decors : %s\nTry again : ",
+		look_for_decors_name(ini, id + 1));
       return (get_dec_id(ini));
     }
-  return (id);
+  return (id + 1);
 }

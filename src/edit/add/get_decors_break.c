@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sun Apr 17 03:36:50 2016 Gaëtan Léandre
-** Last update Sun Apr 17 04:56:21 2016 Gaëtan Léandre
+** Last update Sun Apr 17 05:29:34 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -20,27 +20,7 @@ int			get_dec_collect(char *msg, t_ini *ini)
     return (-1);
   while (my_strcmp(str, "yes") != 0 && my_strcmp(str, "no") != 0)
     {
-      my_printf(1, "yes or no\n");
-      free(str);
-      if ((str = get_next_line(0)) == NULL)
-	return (-1);
-    }
-  if (my_strcmp(str, "yes") == 0)
-    return (1);
-  return (0);
-}
-
-int			get_dec_lootable(char *msg, t_ini *ini)
-{
-  char			*str;
-
-  (void)ini;
-  my_printf(1, msg);
-  if ((str = get_next_line(0)) == NULL)
-    return (-1);
-  while (my_strcmp(str, "yes") != 0 && my_strcmp(str, "no") != 0)
-    {
-      my_printf(1, "yes or no\n");
+      my_printf(1, "yes or no\n : ");
       free(str);
       if ((str = get_next_line(0)) == NULL)
 	return (-1);
@@ -67,7 +47,7 @@ int			get_object(char *msg, t_ini *ini)
 	    return (id);
 	  tmp = tmp->next;
 	}
-      my_printf(1, msg);
+      my_printf(1, "no item with that id\nTry again : ");
     }
   return (0);
 }
@@ -84,7 +64,7 @@ int			get_id_posi(char *msg, t_ini *ini)
       id = my_getnbr_free(str);
       if (id > 0)
 	return (id);
-      my_printf(1, "Id must be superior to 0\n");
+      my_printf(1, "Id must be superior to 0\nTry again : ");
     }
   return (0);
 }
