@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:51:56 2016 Victor Sousa
-** Last update Sun Apr 17 06:47:14 2016 Victor Sousa
+** Last update Sun Apr 17 06:49:22 2016 Victor Sousa
 */
 
 #ifndef			EDIT_H_
@@ -60,7 +60,6 @@ int			get_npc_trade_id_given(t_ini *ini);
 char			*look_for_obj_name(t_ini *ini, int id);
 int			decors_name_is_taken(t_ini *ini, char *str);
 char			*get_dec_name(t_ini *ini);
-
 
 /* write */
 int			write_ini(char *path, t_ini *ini);
