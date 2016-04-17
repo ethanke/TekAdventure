@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 04:57:09 2016 Gaëtan Léandre
-** Last update Sun Apr 17 03:22:35 2016 Gaëtan Léandre
+** Last update Sun Apr 17 07:24:02 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -87,16 +87,15 @@ void			make_deplacement(t_player *player)
 	  player->y_vec = ((float)depla->y - player->y) / 4;
 	}
       else
-	{
-	  player->x_vec = 0;
-	  player->y_vec = 0;
-	}
+	player->x_vec = (player->y_vec = 0) * 0;
     }
   if (depla != NULL)
     {
       player->x += player->x_vec;
       player->y += player->y_vec;
     }
+  else
+    player->x_vec = (player->y_vec = 0) * 0;
 }
 
 void			deplacement(t_player *player, t_scene *scene,
