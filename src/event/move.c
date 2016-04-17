@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 04:57:09 2016 Gaëtan Léandre
-** Last update Sun Apr 17 02:37:18 2016 Gaëtan Léandre
+** Last update Sun Apr 17 03:22:35 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -83,8 +83,8 @@ void			make_deplacement(t_player *player)
       depla = player->move.depla;
       if (depla != NULL)
 	{
-	  player->x_vec = ((float)depla->x - player->x) / 2;
-	  player->y_vec = ((float)depla->y - player->y) / 2;
+	  player->x_vec = ((float)depla->x - player->x) / 4;
+	  player->y_vec = ((float)depla->y - player->y) / 4;
 	}
       else
 	{
