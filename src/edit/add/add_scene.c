@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sun Apr 17 07:10:26 2016 Gaëtan Léandre
-** Last update Sun Apr 17 09:17:13 2016 Gaëtan Léandre
+** Last update Sun Apr 17 09:20:19 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -114,7 +114,6 @@ void			create_sky(t_ini *ini, t_scene *scene)
   if ((sky = malloc(sizeof(t_sky))) == NULL
       || (sky->hitbox = malloc(sizeof(t_hitbox))) == NULL)
     return;
-  my_printf(1, "Enter sprite id for sky : ");
   sky->sky_sprite_id = get_sprite_id(ini);
   sky->hitbox->y = get_x_pos_sprite(ini, sky->sky_sprite_id);
   sky->hitbox->y = get_y_pos_sprite(ini, sky->sky_sprite_id);
@@ -153,7 +152,6 @@ void			add_scene(t_ini *ini)
   spr->start_pos->x = get_major_2("start x", ini, spr->size.x);
   spr->start_pos->y = get_major_2("start y", ini, spr->size.y);
   spr->height = get_major("ground height", ini);
-  my_printf(1, "Enter sprite id for ground : ");
   spr->sol_id = get_sprite_id(ini);
   spr->sol_hitbox->x = get_x_pos_sprite(ini, spr->sol_id);
   spr->sol_hitbox->y = get_y_pos_sprite(ini, spr->sol_id);
