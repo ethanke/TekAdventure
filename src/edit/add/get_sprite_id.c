@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sun Apr 17 02:56:54 2016 Victor Sousa
-** Last update Sun Apr 17 09:20:08 2016 Gaëtan Léandre
+** Last update Sun Apr 17 09:26:32 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -57,7 +57,6 @@ int			get_sprite_id(t_ini *ini)
   char			*str;
   int			id;
 
-  my_printf(1, "Enter sprite id : ");
   if ((str = get_next_line(0)) == NULL)
     return (-1);
   while ((id = my_getnbr(str) - 1) <= -1)
