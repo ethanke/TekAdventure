@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr 14 03:00:55 2016 Philippe Lefevre
-** Last update Sat Apr 16 08:13:59 2016 Philippe Lefevre
+** Last update Sun Apr 17 02:59:07 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -28,20 +28,4 @@ t_item			*link_inventory_item(t_item *inventory, t_object *object)
 	}
     }
   return (inventory);
-}
-
-t_player		*link_player(t_player *player, t_sprite *sprite)
-{
-  t_player		*tmp_player;
-  t_sprite		*tmp_sprite;
-/* verifie que le player ne spawn pas sur une case' deja alloué */
-  tmp_player = player;
-  tmp_sprite = sprite;
-  while (tmp_sprite != NULL)
-    {
-      if (tmp_sprite->id == tmp_player->sprite_id)
-	tmp_player->sprite = tmp_sprite->sprite;
-      tmp_sprite = tmp_sprite->next;
-    }
-  return (player);
 }

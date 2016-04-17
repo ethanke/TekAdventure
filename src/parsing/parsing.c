@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:08:59 2016 Philippe Lefevre
-** Last update Sun Apr 17 00:43:05 2016 Philippe Lefevre
+** Last update Sun Apr 17 02:58:39 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -46,9 +46,6 @@ t_scene			*parsing_link_all(t_scene *stockage)
     return (NULL);
   if ((stockage->npc =
        link_npc(stockage->npc, stockage->sprite, stockage->object)) == NULL)
-    return (NULL);
-  if ((stockage->player =
-       link_player(stockage->player, stockage->sprite)) == NULL)
     return (NULL);
   if ((stockage->player->inventory =
        link_inventory_item(stockage->player->inventory,

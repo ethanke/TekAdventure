@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Sun Apr 17 00:51:01 2016 Philippe Lefevre
+** Last update Sun Apr 17 02:42:57 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -181,49 +181,37 @@ t_object		*create_object_node(int id,
 					 "object_stamina", id)) == NULL)
     return (my_puterror_object("Error: object:object_stamina field ",
 			       id, " not found\n"));
-  if ((object->caract->stamina = my_getnbr(str)) < 0)
-    return (my_puterror_object("Error: object:object_stamina field ",
-			       id, " should not be negative\n"));
+  object->caract->stamina = my_getnbr(str);
 
   if ((str = (char *)bunny_ini_get_field(ini, "object",
 					 "object_strength", id)) == NULL)
     return (my_puterror_object("Error: object:object_strength field ",
 			       id, " not found\n"));
-  if ((object->caract->strength = my_getnbr(str)) < 0)
-    return (my_puterror_object("Error: object:object_strength field ",
-			       id, " should not be negative\n"));
+  object->caract->strength = my_getnbr(str);
 
   if ((str = (char *)bunny_ini_get_field(ini, "object",
 					 "object_critical", id)) == NULL)
     return (my_puterror_object("Error: object:object_critical field ",
 			       id, " not found\n"));
-  if ((object->caract->critical = my_getnbr(str)) < 0)
-    return (my_puterror_object("Error: object:object_critical field ",
-			       id, " should not be negative\n"));
+object->caract->critical = my_getnbr(str);
 
   if ((str = (char *)bunny_ini_get_field(ini, "object",
 					 "object_intellect", id)) == NULL)
     return (my_puterror_object("Error: object:object_intellect field ",
 			       id, " not found\n"));
-  if ((object->caract->intellect = my_getnbr(str)) < 0)
-    return (my_puterror_object("Error: object:object_intellect field ",
-			       id, " should not be negative\n"));
+  object->caract->intellect = my_getnbr(str);
 
   if ((str = (char *)bunny_ini_get_field(ini, "object",
 					 "object_armor", id)) == NULL)
     return (my_puterror_object("Error: object:object_armor field ",
 			       id, " not found\n"));
-  if ((object->caract->armor = my_getnbr(str)) < 0)
-    return (my_puterror_object("Error: object:object_armor field ",
-			       id, " should not be negative\n"));
+object->caract->armor = my_getnbr(str);
 
   if ((str = (char *)bunny_ini_get_field(ini, "object",
 					 "object_agility", id)) == NULL)
     return (my_puterror_object("Error: object:object_agility field ",
 			       id, " not found\n"));
-  if ((object->caract->agility = my_getnbr(str)) < 0)
-    return (my_puterror_object("Error: object:object_agility field ",
-			       id, " should not be negative\n"));
+  object->caract->agility = my_getnbr(str);
 
   object->next = NULL;
   object->prev = NULL;

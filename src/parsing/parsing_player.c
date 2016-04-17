@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Sat Apr 16 06:51:47 2016 Philippe Lefevre
-** Last update Sun Apr 17 02:34:16 2016 Philippe Lefevre
+** Last update Sun Apr 17 02:59:51 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -259,6 +259,10 @@ t_player		*load_player_init(t_ptr_list **ptr_list, char *tmp,
        load_image(T_INVENTORY, ptr_list)) == NULL)
     return (my_puterror_player("Error: player:inv_open_sprite \
 			       failed load_image ", -1, T_INVENTORY));
+  if ((player->sprite =
+       load_image(T_PLAYER, ptr_list)) == NULL)
+    return (my_puterror_player("Error: player:texture failed load_image ",
+			       -1, T_INVENTORY));
   if ((player->hotbar_sprite = load_image(T_HOTBAR, ptr_list)) == NULL)
     return (my_puterror_player("Error: player:inv_open_sprite \
 				 failed load_image ", -1, T_HOTBAR));
@@ -288,7 +292,6 @@ t_player		*load_player_setting(t_player *player,
 t_player		*load_player(t_bunny_ini *ini, t_ptr_list **ptr_list)
 {
   t_player		*player;
-  char			*tmp;
 
   if ((player = load_player_init(ptr_list, NULL, ini, NULL)) == NULL)
     return (NULL);
@@ -298,15 +301,6 @@ t_player		*load_player(t_bunny_ini *ini, t_ptr_list **ptr_list)
   if ((player->inventory = load_player_equiped(player->inventory,
 					       ini, ptr_list, NULL)) == NULL)
     return (NULL);
-  if ((tmp = (char *)bunny_ini_get_field(ini, "player",
-					 "player_sprite_id", 0)) == NULL)
-    return (my_puterror_player("Error: player:player_sprite_id ",
-			       -1, "field not found\n"));
-  if ((player->sprite_id = my_getnbr(tmp)) < 0)
-    return (my_puterror_player("Error: player:player_sprite_id ",
-			       -1, "should not be negative\n"));
-  /*if ((player->sprite_hitbox = create_player_hitbox(0, ini, ptr_list)) == NULL)
-    return (NULL);*/
   if ((player = load_player_setting(player, ptr_list)) == NULL)
     return (my_puterror_player("Error: player:xmalloc ", -1,
 			       "failed in load_player_setting\n"));

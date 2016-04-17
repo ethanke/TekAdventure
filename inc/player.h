@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 03:51:52 2016 Gaëtan Léandre
-** Last update Sun Apr 17 02:19:47 2016 Gaëtan Léandre
+** Last update Sun Apr 17 03:00:03 2016 Philippe Lefevre
 */
 
 #ifndef			PLAYER_H_
@@ -16,6 +16,7 @@
 #  define		PLAYER_DEFAULT_TEXTURE_H_
 #  define		T_INVENTORY	 "ressources/sprites/inventory_full.png"
 #  define		T_HOTBAR	"ressources/sprites/hotbar.png"
+#  define		T_PLAYER	"ressources/sprites/player.png"
 
 # endif			/* !PLAYER_DEFAULT_TEXTURE_H_ */
 
@@ -59,7 +60,6 @@ typedef struct		s_player
   char			*name;
   int			damage;
   int			magic_damage;
-  int			sprite_id;
   t_anim		left;
   t_anim		right;
   t_anim		up;
