@@ -84,7 +84,10 @@ SRC		+=	$(WRITEDIR)/write_ini.c			\
 			$(WRITEDIR)/write_scene6.c
 
 SRC		+=	$(ADDDIR)/add_object.c			\
+			$(ADDDIR)/add_sprite.c			\
 			$(ADDDIR)/get_obj_id.c			\
+			$(ADDDIR)/get_sprite_id.c		\
+			$(ADDDIR)/get_sprite_path.c		\
 			$(ADDDIR)/get_obj_name.c		\
 			$(ADDDIR)/get_obj_equipable.c		\
 			$(ADDDIR)/get_obj_equip_slot.c		\

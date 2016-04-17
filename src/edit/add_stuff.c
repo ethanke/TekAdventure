@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 19:20:47 2016 Victor Sousa
-** Last update Sat Apr 16 20:21:38 2016 Victor Sousa
+** Last update Sun Apr 17 03:04:12 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -14,7 +14,7 @@ void			pick_what_to_add(char *str, t_ini *ini)
 {
   (void)ini;
   if (my_strcmp(str, "1") == 0)
-    my_printf(1, "Add sprite\n");
+    add_sprite(ini);
   if (my_strcmp(str, "2") == 0)
     add_object(ini);
   if (my_strcmp(str, "3") == 0)
