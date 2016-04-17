@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sun Apr 17 07:10:26 2016 Gaëtan Léandre
-** Last update Sun Apr 17 09:01:03 2016 Gaëtan Léandre
+** Last update Sun Apr 17 09:07:32 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -23,6 +23,24 @@ void			list_add_new_scene(t_ini *ini, t_scene *new)
     tmp->next = new;
   else
     ini->scene = new;
+}
+
+int			get_major_2(char *msg, t_ini *ini, int max)
+{
+  char			*str;
+  int			id;
+
+  (void)ini;
+  my_printf(1, "Enter %s : ", msg);
+  while ((str = get_next_line(0)) != NULL)
+    {
+      id = my_getnbr(str);
+      free(str);
+      if (id >= 0 && id < max)
+	return (id);
+      my_printf(1, "%s must be superior to 0\nTry again : ", msg);
+    }
+  return (8);
 }
 
 int			get_major(char *msg, t_ini *ini)
@@ -125,12 +143,14 @@ void			add_scene(t_ini *ini)
       || (spr->sol_hitbox = xmalloc(sizeof(t_hitbox), &ini->ptr_list)) == NULL)
     return;
   spr->name = get_sce_name(ini);
-  spr->size.x = get_major("start x", ini);
-  spr->size.y = get_major("start y", ini);
+  spr->size.x = get_major("size x", ini);
+  spr->size.y = get_major("size y", ini);
   if ((spr->ground = malloc(spr->size.x * spr->size.x * sizeof(t_ground)))
       == NULL)
     return;
   init_gound(spr);
+  spr->start_pos->x = get_major_2("start x", ini, spr->size.x);
+  spr->start_pos->y = get_major_2("start y", ini, spr->size.y);
   spr->height = get_major("ground height", ini);
   spr->sol_id = get_sprite_id(ini);
   spr->sol_hitbox->x = get_x_pos_sprite(ini, spr->sol_id);
