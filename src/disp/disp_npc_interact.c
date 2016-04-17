@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Wed Apr 13 00:01:51 2016 Victor Sousa
-** Last update Wed Apr 13 00:34:01 2016 Victor Sousa
+** Last update Sun Apr 17 06:14:38 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -33,8 +33,7 @@ void			disp_player(t_prog *prog, t_player *player)
   place_image(create_hitbox(pos.x, pos.y, (float)player->sprite->width *
 			    (float)((float)WIN_HEIGHT / (float)WIN_WIDTH),
 			    WIN_HEIGHT / 3),
-	      create_hitbox(0, 0, player->sprite->width,
-			    player->sprite->height),
+	      create_hitbox(68, 0, 35, 34),
 	      player->sprite, prog->pix);
 }
 

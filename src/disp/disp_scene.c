@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 02:56:24 2016 Gaëtan Léandre
-** Last update Sun Apr 17 06:00:32 2016 Gaëtan Léandre
+** Last update Sun Apr 17 06:23:19 2016 Gaëtan Léandre
 */
 
 #include	 	"main.h"
@@ -41,7 +41,7 @@ void			add_img_grille(t_prog *prog, t_bunny_position pos,
 {
   t_ground		*gro;
   t_hitbox		*tmp;
-  int			percent;
+  float			percent;
 
   gro = prog->scene->ground;
   percent = prog->percent;
