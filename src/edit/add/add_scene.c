@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sun Apr 17 07:10:26 2016 Gaëtan Léandre
-** Last update Sun Apr 17 08:59:45 2016 Victor Sousa
+** Last update Sun Apr 17 09:01:03 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -36,7 +36,7 @@ int			get_major(char *msg, t_ini *ini)
     {
       id = my_getnbr(str);
       free(str);
-      if (id <= 0)
+      if (id > 0)
 	return (id);
       my_printf(1, "%s must be superior to 0\nTry again : ", msg);
     }
