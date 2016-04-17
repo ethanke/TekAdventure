@@ -5,8 +5,10 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sun Apr 17 03:36:50 2016 Gaëtan Léandre
-** Last update Sun Apr 17 04:48:30 2016 Gaëtan Léandre
+** Last update Sun Apr 17 04:50:34 2016 Gaëtan Léandre
 */
+
+#include		"main.h"
 
 int			get_dec_collect(t_ini *ini)
 {
@@ -48,14 +50,19 @@ int			get_dec_lootable(char *msg, t_ini *ini)
   return (0);
 }
 
-int			get_object(char *str, t_ini *ini)
+int			get_object(char *msg, t_ini *ini)
 {
   t_object		*tmp;
   char			*str;
   int			id;
 
+<<<<<<< HEAD
   my_printf(1, str);
   while ((str = get_next_line(0)) != NULL)
+=======
+  my_printf(1, msg);
+  while ((str = get_next_line(0)) == NULL)
+>>>>>>> b5d6ab67b4024d2bd773104786ed6c529bacc232
     {
       id = my_getnbr_free(str);
       tmp = ini->scene->object;
@@ -65,19 +72,24 @@ int			get_object(char *str, t_ini *ini)
 	    return (id);
 	  tmp = tmp->next;
 	}
-      my_printf(1, str);
+      my_printf(1, msg);
     }
   return (0);
 }
 
-int			get_id_posi(char *str, t_ini *ini)
+int			get_id_posi(char *msg, t_ini *ini)
 {
-  t_object		*tmp;
   char			*str;
   int			id;
 
+<<<<<<< HEAD
   my_printf(1, str);
   while ((str = get_next_line(0)) != NULL)
+=======
+  (void)ini;
+  my_printf(1, msg);
+  while ((str = get_next_line(0)) == NULL)
+>>>>>>> b5d6ab67b4024d2bd773104786ed6c529bacc232
     {
       id = my_getnbr_free(str);
       if (id > 0)

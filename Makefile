@@ -86,6 +86,10 @@ SRC		+=	$(WRITEDIR)/write_ini.c			\
 SRC		+=	$(ADDDIR)/add_object.c			\
 			$(ADDDIR)/add_sprite.c			\
 			$(ADDDIR)/add_npc.c			\
+			$(ADDDIR)/add_decors.c			\
+			$(ADDDIR)/get_decors_break.c		\
+			$(ADDDIR)/get_decors_id.c		\
+			$(ADDDIR)/get_decors_name.c		\
 			$(ADDDIR)/get_obj_id.c			\
 			$(ADDDIR)/get_sprite_id.c		\
 			$(ADDDIR)/get_npc_id.c			\
