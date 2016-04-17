@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 17 05:23:04 2016 Ethan Kerdelhue
-** Last update Sun Apr 17 06:33:33 2016 Ethan Kerdelhue
+** Last update Sun Apr 17 06:41:47 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -25,6 +25,25 @@ int			update_volume(t_prog *prog)
       bunny_sound_volume(&prog->music->fight_dodge->sound, prog->music->volume);
       bunny_sound_volume(&prog->music->brouek->sound, prog->music->volume);
       bunny_sound_volume(&prog->music->player_win->sound, prog->music->volume);
+    }
+  return (0);
+}
+
+int			update_music(t_prog *prog)
+{
+  if (prog->state == STATE_GAME)
+    {
+      bunny_sound_stop(&prog->music->menu->sound);
+      bunny_sound_loop(&prog->music->menu->sound, false);
+      bunny_sound_play(&prog->music->game->sound);
+      bunny_sound_loop(&prog->music->game->sound, true);
+    }
+  if (prog->state == STATE_FIGHT)
+    {
+      bunny_sound_stop(&prog->music->game->sound);
+      bunny_sound_loop(&prog->music->game->sound, false);
+      bunny_sound_play(&prog->music->fight->sound);
+      bunny_sound_loop(&prog->music->fight->sound, true);
     }
   return (0);
 }
