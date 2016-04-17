@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 19:20:47 2016 Victor Sousa
-** Last update Sun Apr 17 03:04:12 2016 Victor Sousa
+** Last update Sun Apr 17 03:44:34 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -20,7 +20,7 @@ void			pick_what_to_add(char *str, t_ini *ini)
   if (my_strcmp(str, "3") == 0)
     my_printf(1, "Add decors\n");
   if (my_strcmp(str, "4") == 0)
-    my_printf(1, "Add npc\n");
+    add_npc(ini);
   if (my_strcmp(str, "5") == 0)
     my_printf(1, "Add scene\n");
 }
