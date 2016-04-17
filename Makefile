@@ -5,7 +5,7 @@
 ## Login   <lefevr_h@epitech.net>
 ##
 ## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
-## Last update Sun Apr 17 00:35:34 2016 Kerdelhue Ethan
+## Last update Sun Apr 17 08:53:26 2016 Gaëtan Léandre
 ##
 
 NAME		=	tekadventure
@@ -89,6 +89,7 @@ SRC		+=	$(WRITEDIR)/write_ini.c			\
 			$(WRITEDIR)/write_scene6.c
 
 SRC		+=	$(ADDDIR)/add_object.c			\
+			$(ADDDIR)/add_scene.c			\
 			$(ADDDIR)/add_sprite.c			\
 			$(ADDDIR)/add_npc.c			\
 			$(ADDDIR)/add_decors.c			\

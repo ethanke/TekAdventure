@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:51:56 2016 Victor Sousa
-** Last update Sun Apr 17 08:40:28 2016 Victor Sousa
+** Last update Sun Apr 17 08:54:42 2016 Gaëtan Léandre
 */
 
 #ifndef			EDIT_H_
@@ -161,6 +161,7 @@ void			write_scene_gate_sprite_hit_y(t_scene *scene, int fd,
 						      int size);
 void			write_scene_gate_sprite_hit_x(t_scene *scene, int fd,
 						      int size);
+void			add_scene(t_ini *ini);
 void			write_sky_hitbox_w(t_sky *sky, int fd,
 					   int size);
 void			write_sky_hitbox_y(t_sky *sky, int fd,
