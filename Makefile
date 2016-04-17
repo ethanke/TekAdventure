@@ -5,7 +5,7 @@
 ## Login   <lefevr_h@epitech.net>
 ##
 ## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
-## Last update Sun Apr 17 00:35:34 2016 Kerdelhue Ethan
+## Last update Sun Apr 17 03:06:01 2016 Kerdelhue Ethan
 ##
 
 NAME		=	tekadventure
@@ -149,6 +149,7 @@ SRC		+=	$(DISPDIR)/disp_hotbar.c		\
 			$(DISPDIR)/disp_equip_carac.c		\
 			$(DISPDIR)/disp_floating_item.c		\
 			$(DISPDIR)/disp_scene.c			\
+			$(DISPDIR)/disp_p_a.c			\
 			$(DISPDIR)/init_hitbox_scene.c		\
 			$(DISPDIR)/disp_utils.c			\
 			$(DISPDIR)/disp_choose_npc_action.c	\

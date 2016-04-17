@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr 13 06:17:45 2016 Ethan Kerdelhue
-** Last update Sat Apr 16 09:06:15 2016 Ethan Kerdelhue
+** Last update Sun Apr 17 09:04:34 2016 Ethan Kerdelhue
 */
 
 #ifndef			FIGHT_H_
@@ -94,4 +94,8 @@ void			set_size(t_prog *prog,
 				 t_hitbox *size,
 				 t_hitbox *size2,
 				 t_hitbox *size3);
+t_bunny_response	check_p_a_button(t_prog *prog,
+					 t_bunny_position *m_pos);
+void			disp_p_a(t_prog *prog);
+
 #endif

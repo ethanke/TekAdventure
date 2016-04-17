@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Sun Apr 17 07:04:00 2016 Ethan Kerdelhue
+** Last update Sun Apr 17 09:14:57 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -20,6 +20,9 @@ int			load_bunny_music(t_music *music)
     return (ERROR);
   if ((music->game =
        bunny_load_music("ressources/music/game.ogg")) == NULL)
+    return (ERROR);
+    if ((music->pegi18 =
+         bunny_load_music("ressources/music/pegi18.ogg")) == NULL)
     return (ERROR);
   return (0);
 }
@@ -67,7 +70,7 @@ int			init_prog(t_prog *prog, char *str)
   if ((prog->scene = parsing(str, &prog->player, &prog->ptr_list)) == NULL)
     return (ERROR);
   prog->disp_delay = 0;
-  prog->state = STATE_MENU;
+  prog->state = STATE_P_A;
   prog->need_init_fight = 1;
   if ((prog->font = xmalloc(sizeof(t_font), &prog->ptr_list)) == NULL)
     return (ERROR);
@@ -139,8 +142,11 @@ int			init_prog(t_prog *prog, char *str)
   if ((prog->skip_button_hover =
        load_image("ressources/sprites/SKIP_HOVER.png", &prog->ptr_list)) == NULL)
     return (ERROR);
+  if ((prog->p_a_img =
+       load_image("ressources/sprites/parental_advisory.png", &prog->ptr_list)) == NULL)
+    return (ERROR);
+  bunny_sound_play(&prog->music->pegi18->sound);
   prog->text = NULL;
-  start_music(prog);
   return (SUCCESS);
 }
 

@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 17 05:23:04 2016 Ethan Kerdelhue
-** Last update Sun Apr 17 07:57:04 2016 Ethan Kerdelhue
+** Last update Sun Apr 17 09:15:53 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -63,6 +63,7 @@ int			close_music(t_prog *prog)
   bunny_delete_sound(&prog->music->fight_dodge->sound);
   bunny_delete_sound(&prog->music->brouek->sound);
   bunny_delete_sound(&prog->music->player_win->sound);
+  bunny_delete_sound(&prog->music->pegi18->sound);
   return (0);
 }
 

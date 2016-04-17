@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 06:31:23 2016 Victor Sousa
-** Last update Sun Apr 17 06:55:08 2016 Ethan Kerdelhue
+** Last update Sun Apr 17 09:13:08 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -33,6 +33,7 @@ t_bunny_response	check_menu_button(t_prog *prog,
 
 void			disp_menu(t_prog *prog)
 {
+  start_music(prog);
   place_image(create_hitbox(prog->blit_pos.x, prog->blit_pos.y,
       			    prog->menu_bg->width, prog->menu_bg->height),
       	      create_hitbox(prog->menu_bg_pos.x, prog->menu_bg_pos.y,
