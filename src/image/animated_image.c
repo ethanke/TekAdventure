@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Fri Apr 15 03:06:55 2016 Gaëtan Léandre
-** Last update Sun Apr 17 00:49:33 2016 Gaëtan Léandre
+** Last update Sun Apr 17 02:39:38 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -19,7 +19,7 @@ void			animated_image(t_anim *anim, t_hitbox hitbox,
 			 anim->hitbox.y, anim->hitbox.width,
 			 anim->hitbox.height);
   place_image(hitbox, actual, anim->texture, pix);
-  anim->pos = (anim->pos >= anim->max - 2
-	       || actual.width + actual.x >= anim->texture->width) ?
+  anim->pos = (anim->pos >= anim->max - 1
+	       || actual.width * 2 + actual.x >= anim->texture->width) ?
 	  (0) : (anim->pos + 1);
 }

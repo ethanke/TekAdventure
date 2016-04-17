@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 03:51:52 2016 Gaëtan Léandre
-** Last update Sun Apr 17 00:50:31 2016 Gaëtan Léandre
+** Last update Sun Apr 17 02:19:47 2016 Gaëtan Léandre
 */
 
 #ifndef			PLAYER_H_
@@ -64,6 +64,7 @@ typedef struct		s_player
   t_anim		right;
   t_anim		up;
   t_anim		down;
+  t_anim		stop;
   t_texture		*sprite;
   t_caract		*caract;
   t_hitbox		*sprite_hitbox;

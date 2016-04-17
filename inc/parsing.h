@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Sat Apr 16 04:52:44 2016 Philippe Lefevre
+** Last update Sun Apr 17 02:38:25 2016 Gaëtan Léandre
 */
 
 #ifndef			PARSING_H_
@@ -57,5 +57,6 @@ t_ground		*ground_fill(t_bunny_ini *ini, t_scene *scene,
 t_hitbox		*create_sol_hitbox(int id, t_bunny_ini *ini,
 					   t_ptr_list **ptr_list,
 					   char *name);
+void			init_player(t_prog *prog);
 
 #endif			/* !PARSING_H_ */

@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr  9 11:49:08 2016 Victor Sousa
-** Last update Sat Apr 16 18:50:37 2016 Gaëtan Léandre
+** Last update Sun Apr 17 02:41:56 2016 Gaëtan Léandre
 */
 
 #ifndef			EVENT_H_
@@ -96,5 +96,6 @@ void			write_decors_loot_id(t_decors *decors, int fd,
 					     int size);
 void			write_decors_loot_amount(t_decors *decors, int fd,
 						 int size);
+t_anim			*chose_deplacement(t_player *player);
 
 #endif			/* !EVENT_H_ */

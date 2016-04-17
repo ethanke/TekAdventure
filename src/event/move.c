@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 04:57:09 2016 Gaëtan Léandre
-** Last update Sun Apr 17 01:34:49 2016 Gaëtan Léandre
+** Last update Sun Apr 17 02:37:18 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -48,10 +48,10 @@ void			disp_deplacement(t_player *player,
   float			case_x;
   float			coef;
   int			hauteur;
-  int			pos_x;
-  int			pos_y;
+  t_bunny_position	pos;
   int			pal_prev;
   int			pal_next;
+  t_anim		*anim;
 
   coef = (float)((float)grille->size_x - (float)(grille->coef
                * (float)((float)grille->grille_y - (float)player->y - 1)))
@@ -59,14 +59,16 @@ void			disp_deplacement(t_player *player,
   case_x = ((float)grille->case_x * coef);
   hauteur = case_x * player->sprite->height
       / player->sprite->width;
-  pos_x = 10 + (int)(((float)(grille->coef *
+  pos.x = 10 + (int)(((float)(grille->coef *
 		 (float)((float)grille->grille_y - 1 - player->y))) * percent)
   + ((float)player->x * case_x);
   pal_prev = grille->start_y + 10 + get_pos_y((int)player->y, grille);
   pal_next = grille->start_y + 10 + get_pos_y((int)player->y + 1, grille);
-  pos_y = 20 + (float)((player->y - (int)player->y)
+  pos.y = 20 + (float)((player->y - (int)player->y)
 		* (float)(pal_next - pal_prev)) + pal_prev - hauteur;
-  animated_image(&player->up, create_hitbox(pos_x, pos_y, (int)case_x, hauteur), pix);
+  anim = chose_deplacement(player);
+  animated_image(anim, create_hitbox(pos.x, pos.y, (int)case_x, hauteur),
+		 pix);
 }
 
 void			make_deplacement(t_player *player)

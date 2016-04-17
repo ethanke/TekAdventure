@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 02:56:24 2016 Gaëtan Léandre
-** Last update Sat Apr 16 19:19:48 2016 Ethan Kerdelhue
+** Last update Sun Apr 17 02:37:06 2016 Gaëtan Léandre
 */
 
 #include	 	"main.h"
@@ -46,7 +46,7 @@ void			put_grille(t_prog *prog, t_grille *gri,
   pos.y = -1;
   while (++pos.y < gri->grille_y - 1)
     {
-      if ((int)prog->player->y == pos.y)
+      if ((int)prog->player->y == pos.y - 1)
 	deplacement(prog->player, prog->scene, prog->pix, prog->percent);
       pos.x = -1;
       while (++pos.x < gri->grille_x)
@@ -81,7 +81,6 @@ void			disp_ground(t_prog *prog, int disp)
   make_deplacement(prog->player);
   disp_background(prog->scene->sky, prog->pix, prog->percent, prog->scene->height);
   place_image(place, *prog->scene->sol_hitbox, prog->scene->sol, prog->pix);
-  deplacement(prog->player, prog->scene, prog->pix, prog->percent);
   prog->scene->coef = (float)(EQUART *  2) / (float)prog->scene->size.y;
   put_grille(prog, &grille, prog->percent, prog->pix);
   if (disp == 1)
