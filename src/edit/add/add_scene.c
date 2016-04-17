@@ -5,137 +5,47 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sun Apr 17 07:10:26 2016 Gaëtan Léandre
-** Last update Sun Apr 17 09:45:34 2016 Gaëtan Léandre
+** Last update Sun Apr 17 10:41:06 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
 
-void			list_add_new_scene(t_ini *ini, t_scene *new)
+void			end_scene(t_scene *spr, t_ini *ini)
 {
-  t_scene		*tmp;
-
-  tmp = ini->scene;
-  while (tmp && tmp->next != NULL)
-    tmp = tmp->next;
-  new->prev = tmp;
-  new->next = NULL;
-  if (tmp != NULL)
-    tmp->next = new;
-  else
-    ini->scene = new;
-}
-
-int			get_major_2(char *msg, t_ini *ini, int max)
-{
-  char			*str;
-  int			id;
-
-  (void)ini;
-  my_printf(1, "Enter %s : ", msg);
-  while ((str = get_next_line(0)) != NULL)
+  if (get_dec_collect("Do you want to add it in ini?  (yes or no) : ", ini)
+      == 1)
     {
-      id = my_getnbr(str);
-      free(str);
-      if (id >= 0 && id < max)
-	return (id);
-      my_printf(1, "%s must be between 0 and %d\nTry again : ", msg, max - 1);
-    }
-  return (8);
-}
-
-int			get_major(char *msg, t_ini *ini)
-{
-  char			*str;
-  int			id;
-
-  (void)ini;
-  my_printf(1, "Enter %s : ", msg);
-  while ((str = get_next_line(0)) != NULL)
-    {
-      id = my_getnbr(str);
-      free(str);
-      if (id > 0)
-	return (id);
-      my_printf(1, "%s must be superior to 0\nTry again : ", msg);
-    }
-  return (8);
-}
-
-void			init_gound(t_scene *scene)
-{
-  int			i;
-  int			max;
-
-  max = scene->size.x * scene->size.y;
-  i = 0;
-  while (i < max)
-    {
-      scene->ground[i].npc = NULL;
-      scene->ground[i].decors = NULL;
-      scene->ground[i].gate = NULL;
-      i++;
+      list_add_new_scene(ini, spr);
+      my_printf(1, "Decors added in your ini file :D\nYou can write it using");
+      my_printf(1, " 'write ini path_to_file.ini'\n\n");
     }
 }
 
-int			scene_name_is_taken(t_ini *ini, char *str)
-{
-  t_scene		*tmp;
-
-  tmp = ini->scene;
-  while (tmp != NULL)
-    {
-      if (my_strcmp(tmp->name, str) == 0)
-	return (1);
-      tmp = tmp->next;
-    }
-  return (0);
-}
-
-char			*get_sce_name(t_ini *ini)
-{
-  char			*str;
-
-  my_printf(1, "Enter scene name : ");
-  while ((str = get_next_line(0)) != NULL)
-    {
-      if (scene_name_is_taken(ini, str) == 0)
-	return (str);
-      my_printf(1, "Name already taken by another scene\nTry again : ");
-      free(str);
-    }
-  return (str);
-}
-
-void			create_sky(t_ini *ini, t_scene *scene)
+void			resum_scene(t_scene *scene)
 {
   t_sky			*sky;
-  t_sky			*tmp;
 
-  if ((sky = xmalloc(sizeof(t_sky), &ini->ptr_list)) == NULL
-      || (sky->hitbox = xmalloc(sizeof(t_hitbox), &ini->ptr_list)) == NULL)
-    return;
-  my_printf(1, "Choose a sprite id for your sky : ");
-  sky->sky_sprite_id = get_existing_sprite(ini);
-  my_printf(1, "top left position in the sprite\nx : ");
-  sky->hitbox->x = get_x_pos_sprite(ini, sky->sky_sprite_id);
-  my_printf(1, "y : ");
-  sky->hitbox->y = get_y_pos_sprite(ini, sky->sky_sprite_id);
-  my_printf(1, "width in the sprite : ");
-  sky->hitbox->width = get_x_pos_sprite(ini, sky->sky_sprite_id);
-  my_printf(1, "height in the sprite : ");
-  sky->hitbox->height = get_y_pos_sprite(ini, sky->sky_sprite_id);
-  sky->distance = get_major("distance", ini);
-  sky->next = NULL;
-  sky->prev = NULL;
-  if (scene->sky == NULL)
-    scene->sky = sky;
-  else
+  my_printf(1, "\n\nHere is your scene\n");
+  my_printf(1, "name: %s\n", scene->name);
+  my_printf(1, "map size: %d %d\n", scene->size.x, scene->size.y);
+  my_printf(1, "start pos: %d %d\n", scene->start_pos->x, scene->start_pos->y);
+  my_printf(1, "ground height: %d\n", scene->height);
+  my_printf(1, "ground texture: %d\n", scene->sol_id);
+  my_printf(1, "ground pos x: %d\n", scene->sol_hitbox->x);
+  my_printf(1, "ground pos y: %d\n", scene->sol_hitbox->y);
+  my_printf(1, "ground width: %d\n", scene->sol_hitbox->width);
+  my_printf(1, "ground height: %d\n", scene->sol_hitbox->height);
+  my_printf(1, "\nHere is your sky\n");
+  sky = scene->sky;
+  while (sky != NULL)
     {
-      tmp = scene->sky;
-      while (tmp->next != NULL)
-	tmp = tmp->next;
-      sky->prev = tmp;
-      tmp->next = sky;
+      my_printf(1, "sprite id: %d\n", sky->sky_sprite_id);
+      my_printf(1, "sprite pos x: %d\n", sky->hitbox->x);
+      my_printf(1, "sprite pos y: %d\n", sky->hitbox->y);
+      my_printf(1, "sprite width: %d\n", sky->hitbox->width);
+      my_printf(1, "sprite height: %d\n", sky->hitbox->height);
+      my_printf(1, "sprite distance: %d\n", sky->distance);
+      sky = sky->next;
     }
 }
 
@@ -144,15 +54,11 @@ void			add_scene(t_ini *ini)
   t_scene		*spr;
 
   if ((spr = xmalloc(sizeof(t_scene), &ini->ptr_list)) == NULL
-      || (spr->start_pos = xmalloc(sizeof(t_bunny_position), &ini->ptr_list)) == NULL
+      || (spr->start_pos = xmalloc(sizeof(t_bunny_position), &ini->ptr_list))
+      == NULL
       || (spr->sol_hitbox = xmalloc(sizeof(t_hitbox), &ini->ptr_list)) == NULL)
     return;
-  spr->sky = NULL;
-  spr->sprite = NULL;
-  spr->npc = NULL;
-  spr->object = NULL;
-  spr->decors = NULL;
-  spr->player = NULL;
+  init_scene_null(spr);
   spr->name = get_sce_name(ini);
   spr->size.x = get_major("size x", ini);
   spr->size.y = get_major("size y", ini);
@@ -163,20 +69,10 @@ void			add_scene(t_ini *ini)
   spr->start_pos->x = get_major_2("start x", ini, spr->size.x);
   spr->start_pos->y = get_major_2("start y", ini, spr->size.y);
   spr->height = get_major("ground height", ini);
-  my_printf(1, "Choose a sprite id for your ground : ");
-  spr->sol_id = get_existing_sprite(ini);
-  my_printf(1, "top left position in the sprite\nx : ");
-  spr->sol_hitbox->x = get_x_pos_sprite(ini, spr->sol_id);
-    my_printf(1, "y : ");
-  spr->sol_hitbox->y = get_y_pos_sprite(ini, spr->sol_id);
-  my_printf(1, "width in the sprite : ");
-  spr->sol_hitbox->width = get_x_pos_sprite(ini, spr->sol_id);
-  my_printf(1, "height in the sprite : ");
-  spr->sol_hitbox->height = get_y_pos_sprite(ini, spr->sol_id);
+  init_scene_sol(ini, spr);
   create_sky(ini, spr);
   while (get_dec_collect("Add more sky?  (yes or no) : ", ini) == 1)
     create_sky(ini, spr);
-  if (get_dec_collect("Do you want to add it in ini?  (yes or no) :", ini) == 1)
-    list_add_new_scene(ini, spr);
-  my_printf(1, "Decors added in your ini file :D\n\n");
+  resum_scene(spr);
+  end_scene(spr, ini);
 }

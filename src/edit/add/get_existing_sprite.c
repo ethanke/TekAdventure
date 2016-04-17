@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 23:33:24 2016 Victor Sousa
-** Last update Sat Apr 16 23:44:42 2016 Victor Sousa
+** Last update Sun Apr 17 10:02:21 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -31,7 +31,7 @@ int			get_existing_sprite(t_ini *ini)
 
   if ((str = get_next_line(0)) == NULL)
     return (-1);
-  while ((id = my_getnbr(str) - 1) <= -1)
+  while ((id = my_getnbr(str)) - 1 <= -1)
     {
       my_printf(1, "Id must be superior or equal to 0\n");
       free(str);
