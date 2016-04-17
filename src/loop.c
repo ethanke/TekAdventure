@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:58:37 2016 Philippe Lefevre
-** Last update Sun Apr 17 06:55:42 2016 Ethan Kerdelhue
+** Last update Sun Apr 17 09:07:18 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -36,7 +36,9 @@ t_bunny_response	mainloop(void *p)
   t_bunny_position	f_pos;
 
   prog = p;
-  if (prog->state == STATE_GAME_OVER)
+  if (prog->state == STATE_P_A)
+    disp_p_a(prog);
+  else if (prog->state == STATE_GAME_OVER)
     disp_game_over(prog);
   else if (prog->state == STATE_MENU)
     disp_menu(prog);

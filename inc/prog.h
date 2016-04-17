@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 00:11:13 2016 Gaëtan Léandre
-** Last update Sun Apr 17 04:15:57 2016 Ethan Kerdelhue
+** Last update Sun Apr 17 09:02:46 2016 Ethan Kerdelhue
 */
 
 #ifndef			PROG_H_
@@ -20,6 +20,7 @@
 # define		STATE_NPC_CHOOSE	4
 # define		STATE_DECOR_CHOOSE	5
 # define		STATE_GAME_OVER		6
+# define		STATE_P_A		7
 #endif			/*!PROG_STATE_*/
 
 typedef struct		s_text
@@ -62,7 +63,7 @@ typedef	struct		s_prog
   struct s_fight	*fight;
 
   char			need_init_fight;
-
+  t_texture		*p_a_img;
   t_texture		*fight_img;
   t_texture		*npc_choose;
   t_texture		*exchange_sprite;

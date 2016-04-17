@@ -4,9 +4,6 @@
 ## Made by Philippe Lefevre
 ## Login   <lefevr_h@epitech.net>
 ##
-## Started on  Tue Mar  8 04:03:23 2016 Philippe Lefevre
-## Last update Sun Apr 17 08:53:26 2016 Gaëtan Léandre
-##
 
 NAME		=	tekadventure
 
@@ -150,6 +147,7 @@ SRC		+=	$(DISPDIR)/disp_hotbar.c		\
 			$(DISPDIR)/disp_equip_carac.c		\
 			$(DISPDIR)/disp_floating_item.c		\
 			$(DISPDIR)/disp_scene.c			\
+			$(DISPDIR)/disp_p_a.c			\
 			$(DISPDIR)/init_hitbox_scene.c		\
 			$(DISPDIR)/disp_utils.c			\
 			$(DISPDIR)/disp_choose_npc_action.c	\
