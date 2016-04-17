@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Sun Apr 17 10:23:16 2016 Philippe Lefevre
+** Last update Sun Apr 17 10:36:15 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -67,9 +67,9 @@ int			init_prog(t_prog *prog, char *str)
   prog->blit_pos.x = 0;
   prog->blit_pos.y = 0;
   prog->ptr_list = NULL;
-  if ((prog->scene = parsing(str, &prog->player, &prog->ptr_list)) == NULL)
-    return (ERROR);
   if ((load_music(prog)) == ERROR)
+    return (ERROR);
+  if ((prog->scene = parsing(str, &prog->player, &prog->ptr_list)) == NULL)
     return (ERROR);
   prog->disp_delay = 0;
   prog->state = STATE_P_A;
