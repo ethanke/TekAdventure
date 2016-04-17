@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 17 05:23:04 2016 Ethan Kerdelhue
-** Last update Sun Apr 17 09:15:53 2016 Ethan Kerdelhue
+** Last update Sun Apr 17 09:26:31 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -79,6 +79,7 @@ int			fight_to_game(t_prog *prog)
 
 int			start_music(t_prog *prog)
 {
+  bunny_sound_stop(&prog->music->pegi18->sound);
   update_volume(prog);
   bunny_sound_play(&prog->music->menu->sound);
   bunny_sound_loop(&prog->music->menu->sound, true);

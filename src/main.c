@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Sun Apr 17 09:14:57 2016 Ethan Kerdelhue
+** Last update Sun Apr 17 09:27:05 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -146,6 +146,7 @@ int			init_prog(t_prog *prog, char *str)
        load_image("ressources/sprites/parental_advisory.png", &prog->ptr_list)) == NULL)
     return (ERROR);
   bunny_sound_play(&prog->music->pegi18->sound);
+  prog->music->current = prog->music->pegi18;
   prog->text = NULL;
   return (SUCCESS);
 }
