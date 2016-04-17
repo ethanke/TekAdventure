@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 00:11:13 2016 Gaëtan Léandre
-** Last update Sun Apr 17 09:02:46 2016 Ethan Kerdelhue
+** Last update Sun Apr 17 10:22:55 2016 Philippe Lefevre
 */
 
 #ifndef			PROG_H_
@@ -79,6 +79,7 @@ typedef	struct		s_prog
   t_texture		*game_over_img;
   t_texture		*over_quit;
   t_texture		*over_continue;
+  int			music_load;
   struct s_music	*music;
   t_texture		*menu_bg;
   t_bunny_position	menu_bg_pos;

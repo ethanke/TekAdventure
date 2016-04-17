@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:59:10 2016 Philippe Lefevre
-** Last update Sun Apr 17 07:44:43 2016 Ethan Kerdelhue
+** Last update Sun Apr 17 10:23:35 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -15,7 +15,8 @@ int			clean(t_prog *prog, int out)
   bunny_delete_clipable(&prog->pix0->clipable);
   bunny_delete_clipable(&prog->pix1->clipable);
   bunny_delete_clipable(&prog->pix2->clipable);
-  close_music(prog);
+  if (prog->music_load)
+    close_music(prog);
   bunny_stop(prog->win);
   free_ptr(prog->ptr_list);
   return (out);

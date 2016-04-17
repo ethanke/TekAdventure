@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Sun Apr 17 09:53:31 2016 Victor Sousa
+** Last update Sun Apr 17 10:23:16 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -57,11 +57,13 @@ int			load_music(t_prog *prog)
 	 bunny_load_music("ressources/music/player_win.ogg")) == NULL)
     return (ERROR);
   prog->music = music;
+  prog->music_load = 1;
   return (0);
 }
 
 int			init_prog(t_prog *prog, char *str)
 {
+  prog->music_load = 0;
   prog->blit_pos.x = 0;
   prog->blit_pos.y = 0;
   prog->ptr_list = NULL;
