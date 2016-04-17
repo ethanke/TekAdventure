@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 17 05:23:04 2016 Ethan Kerdelhue
-** Last update Sun Apr 17 07:02:02 2016 Ethan Kerdelhue
+** Last update Sun Apr 17 07:44:20 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -14,7 +14,6 @@ int			update_volume(t_prog *prog)
 {
   if (prog->state == STATE_MENU)
     {
-      printf(" 2 - %d\n", prog->music->volume);
       bunny_sound_volume(&prog->music->fight->sound, prog->music->volume);
       bunny_sound_volume(&prog->music->menu->sound, prog->music->volume);
       bunny_sound_volume(&prog->music->game->sound, prog->music->volume);
@@ -37,6 +36,7 @@ int			update_music(t_prog *prog)
       bunny_sound_loop(&prog->music->menu->sound, false);
       bunny_sound_play(&prog->music->game->sound);
       bunny_sound_loop(&prog->music->game->sound, true);
+      prog->music->current = prog->music->game;
     }
   if (prog->state == STATE_FIGHT)
     {
@@ -44,7 +44,25 @@ int			update_music(t_prog *prog)
       bunny_sound_loop(&prog->music->game->sound, false);
       bunny_sound_play(&prog->music->fight->sound);
       bunny_sound_loop(&prog->music->fight->sound, true);
+      prog->music->current = prog->music->fight;
     }
+  return (0);
+}
+
+int			close_music(t_prog *prog)
+{
+  bunny_sound_stop(&prog->music->current->sound);
+  bunny_sound_loop(&prog->music->current->sound, false);
+  bunny_delete_sound(&prog->music->menu->sound);
+  bunny_delete_sound(&prog->music->fight->sound);
+  bunny_delete_sound(&prog->music->game->sound);
+  bunny_delete_sound(&prog->music->fight_sword->sound);
+  bunny_delete_sound(&prog->music->fight_critic->sound);
+  bunny_delete_sound(&prog->music->fight_resist->sound);
+  bunny_delete_sound(&prog->music->fight_magic->sound);
+  bunny_delete_sound(&prog->music->fight_dodge->sound);
+  bunny_delete_sound(&prog->music->brouek->sound);
+  bunny_delete_sound(&prog->music->player_win->sound);
   return (0);
 }
 
@@ -54,6 +72,8 @@ int			fight_to_game(t_prog *prog)
   bunny_sound_loop(&prog->music->fight->sound, false);
   bunny_sound_play(&prog->music->game->sound);
   bunny_sound_loop(&prog->music->game->sound, true);
+  prog->music->current = prog->music->game;
+  return (0);
 }
 
 int			start_music(t_prog *prog)
@@ -61,5 +81,6 @@ int			start_music(t_prog *prog)
   update_volume(prog);
   bunny_sound_play(&prog->music->menu->sound);
   bunny_sound_loop(&prog->music->menu->sound, true);
+  prog->music->current = prog->music->menu;
   return (0);
 }
