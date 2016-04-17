@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:51:56 2016 Victor Sousa
-** Last update Sun Apr 17 08:54:42 2016 Gaëtan Léandre
+** Last update Sun Apr 17 10:09:58 2016 Victor Sousa
 */
 
 #ifndef			EDIT_H_
@@ -34,14 +34,17 @@ void			edit_stuff(t_ini *ini);
 void			edit_sprite(t_ini *ini);
 void			edit_object(t_ini *ini, int id, char *str);
 void			edit_decors(t_ini *ini);
-void			edit_npc(t_ini *ini);
+void			edit_npc(t_ini *ini, int id, char *str);
 t_sprite		*look_for_sprite(t_ini *ini, int id);
 t_object		*look_for_obj(t_ini *ini, int id);
+t_npc			*look_for_npc(t_ini *ini, int id);
 
 /* add */
 void			add_object(t_ini *ini);
 void			add_sprite(t_ini *ini);
 void			add_decors(t_ini *ini);
+void			get_trade_and_hitbox(t_npc *npc, t_ini *ini);
+int			npc_id_is_taken(t_ini *ini, int id);
 void			add_npc(t_ini *ini);
 int			get_obj_id(t_ini *ini);
 int			get_npc_id(t_ini *ini);
@@ -64,6 +67,7 @@ int			get_dec_lootable(char *msg, t_ini *ini);
 int			get_object(char *msg, t_ini *ini);
 int			get_id_posi(char *what, char *msg, t_ini *ini);
 char			*look_for_decors_name(t_ini *ini, int id);
+char			*look_for_npc_name(t_ini *ini, int id);
 int			decors_id_is_taken(t_ini *ini, int id);
 int			get_dec_id(t_ini *ini);
 int			object_id_is_taken(t_ini *ini, int id);

@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sun Apr 17 04:01:24 2016 Victor Sousa
-** Last update Sun Apr 17 04:04:17 2016 Victor Sousa
+** Last update Sun Apr 17 09:58:31 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -19,6 +19,20 @@ char			*look_for_npc_name(t_ini *ini, int id)
     {
       if (tmp->npc_id == id)
 	return (tmp->name);
+      tmp = tmp->next;
+    }
+  return (NULL);
+}
+
+t_npc			*look_for_npc(t_ini *ini, int id)
+{
+  t_npc			*tmp;
+
+  tmp = ini->scene->npc;
+  while (tmp != NULL)
+    {
+      if (tmp->npc_id == id)
+	return (tmp);
       tmp = tmp->next;
     }
   return (NULL);

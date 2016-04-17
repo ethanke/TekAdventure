@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sun Apr 17 03:43:36 2016 Victor Sousa
-** Last update Sun Apr 17 06:01:59 2016 Victor Sousa
+** Last update Sun Apr 17 10:07:56 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -63,7 +63,7 @@ static void		recap(t_npc *npc)
   my_printf(1, "So do you want to add it in ini?  (yes or no)\n");
 }
 
-static void		get_trade_and_hitbox(t_npc *npc, t_ini *ini)
+void			get_trade_and_hitbox(t_npc *npc, t_ini *ini)
 {
   my_printf(1, "\nWhat is your npc trading\nid : ");
   if ((npc->trade->given->id = get_npc_trade_id_given(ini)) == -1)
@@ -104,7 +104,7 @@ void			add_npc(t_ini *ini)
   my_printf(1, "Give a name to your npc : ");
   if ((npc->name = get_obj_name(ini)) == NULL)
     return;
-  my_printf(1, "\nGive some text to your npc,\n It will be displayed while");
+  my_printf(1, "\nGive some text for your npc,\n It will be displayed while");
   my_printf(1, " trading with him.\nYou can skip line using ';'\n");
   if ((npc->text = get_next_line(0)) == NULL)
     return;

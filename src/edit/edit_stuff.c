@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sun Apr 17 07:17:21 2016 Victor Sousa
-** Last update Sun Apr 17 08:30:42 2016 Victor Sousa
+** Last update Sun Apr 17 09:56:01 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -20,7 +20,7 @@ void			pick_what_to_edit(char *str, t_ini *ini)
   if (my_strcmp(str, "3") == 0)
     edit_decors(ini);
   if (my_strcmp(str, "4") == 0)
-    edit_npc(ini);
+    edit_npc(ini, 0, NULL);
   if (my_strcmp(str, "5") == 0)
     my_printf(1, "edit scene\n");
 }
