@@ -103,7 +103,9 @@ SRC		+=	$(ADDDIR)/add_object.c			\
 			$(ADDDIR)/get_existing_sprite.c		\
 			$(ADDDIR)/get_sprite_hitbox_pos_x.c	\
 			$(ADDDIR)/get_sprite_hitbox_pos_y.c	\
-			$(ADDDIR)/get_npc_trade_id_given.c
+			$(ADDDIR)/get_npc_trade_id_given.c	\
+			$(ADDDIR)/add_scene_utils.c		\
+			$(ADDDIR)/add_scene_utils2.c
 
 SRC		+=	$(PRTFDIR)/my_disp_unprintable.c	\
 			$(PRTFDIR)/my_printf.c			\

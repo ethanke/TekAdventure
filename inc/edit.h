@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:51:56 2016 Victor Sousa
-** Last update Sun Apr 17 10:09:58 2016 Victor Sousa
+** Last update Sun Apr 17 10:43:31 2016 Gaëtan Léandre
 */
 
 #ifndef			EDIT_H_
@@ -175,6 +175,16 @@ void			write_sky_hitbox_x(t_sky *sky, int fd,
 void			write_sky_id(t_sky *sky, int fd,
 				     int size);
 void			write_sprite_sky(t_sky *sky, int fd);
+void			list_add_new_scene(t_ini *ini, t_scene *new);
+void			init_sprite_hitbox(t_ini *ini, t_sky *sky);
+void			create_sky(t_ini *ini, t_scene *scene);
+void			init_scene_null(t_scene *spr);
+void			init_scene_sol(t_ini *ini, t_scene *spr);
+int			get_major_2(char *msg, t_ini *ini, int max);
+int			get_major(char *msg, t_ini *ini);
+void			init_gound(t_scene *scene);
+int			scene_name_is_taken(t_ini *ini, char *str);
+char			*get_sce_name(t_ini *ini);
 
 char			*get_next_line(const int fd);
 void			start_shell();
