@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 17 05:23:04 2016 Ethan Kerdelhue
-** Last update Sun Apr 17 07:44:20 2016 Ethan Kerdelhue
+** Last update Sun Apr 17 07:55:31 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -14,7 +14,7 @@ int			update_volume(t_prog *prog)
 {
   if (prog->state == STATE_MENU)
     {
-      bunny_sound_volume(&prog->music->fight->sound, prog->music->volume);
+      bunny_sound_volume(&prog->music->fight->sound, 50);
       bunny_sound_volume(&prog->music->menu->sound, prog->music->volume);
       bunny_sound_volume(&prog->music->game->sound, prog->music->volume);
       bunny_sound_volume(&prog->music->fight_sword->sound, prog->music->volume);

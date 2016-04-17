@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sat Apr 16 08:00:22 2016 Ethan Kerdelhue
-** Last update Sun Apr 17 07:20:29 2016 Ethan Kerdelhue
+** Last update Sun Apr 17 07:55:00 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -16,11 +16,13 @@ void			npc_damage_more(t_prog *prog,
 {
   if (((rand() % (100 - 0)) + 0) <= 5)
     {
+      bunny_sound_play(&prog->music->fight_critic->sound);
       *damage = *damage * 1.5;
       event_on_player(prog, 0);
     }
   if (((rand() % (100 - 0)) + 0) <= player->caract->agility / 3)
     {
+      bunny_sound_play(&prog->music->fight_dodge->sound);
       *damage = 0;
       event_on_player(prog, 1);
     }
@@ -37,6 +39,7 @@ int 			npc_damage(t_npc *npc, t_player *player, t_prog *prog)
   damage = ((rand() % (max - min)) + min);
   if (player->fight_defense == 1)
     {
+      bunny_sound_play(&prog->music->fight_resist->sound);
       npc_damage_more(prog, player, &damage);
       player->fight_defense = 0;
       if (((rand() % (100 - 0)) + 0) <= player->caract->armor / 3)
@@ -69,6 +72,7 @@ int 			player_damage_magic(t_player *player,
       min = player->magic_damage * 1200;
       max = player->magic_damage * 800;
       damage = ((rand() % (max - min )) + min);
+      bunny_sound_play(&prog->music->fight_magic->sound);
       if (((rand() % (100 - 0)) + 0) <= player->caract->critical)
 	{
 	  damage = damage * 1.5;
@@ -93,11 +97,13 @@ int 			player_damage(t_player *player,
 
   if (fight->player_action >= ATTACK_ENERGY)
     {
+      bunny_sound_play(&prog->music->fight_sword->sound);
       min = player->damage * 1200;
       max = player->damage * 800;
       damage = ((rand() % (max - min )) + min);
       if (((rand() % (100 - 0)) + 0) <= player->caract->critical)
 	{
+	  bunny_sound_play(&prog->music->fight_critic->sound);
 	  damage = damage * 1.5;
 	  event_on_npc(prog);
 	}
