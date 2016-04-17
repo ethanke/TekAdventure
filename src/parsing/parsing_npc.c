@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Sun Apr 17 00:44:45 2016 Philippe Lefevre
-** Last update Sun Apr 17 01:34:55 2016 Philippe Lefevre
+** Last update Sun Apr 17 01:50:48 2016 Philippe Lefevre
 */
 
 
@@ -118,7 +118,57 @@ t_hitbox		*create_npc_hitbox(int id, t_bunny_ini *ini,
   return (hitbox);
 }
 
-t_trade			*get_trade(char *str, t_ptr_list **ptr_list,
+t_trade			*get_trade_needed(t_trade *trade, t_ptr_list **ptr_list,
+					  int id, t_bunny_ini *ini)
+{
+  char		*str;
+
+  if ((trade->needed = xmalloc(sizeof(t_item), ptr_list)) == NULL)
+    return (my_puterror_trade("Error: trade->needed:xmalloc ",
+			      -1, "failed in get_trade\n"));
+  if ((str = (char *)bunny_ini_get_field(ini, "npc",
+					 "npc_trade_needed_id", id)) == NULL)
+    return (my_puterror_trade("Error: npc:npc_trade_needed_id field ", id,
+			      " not found\n"));
+  if ((trade->needed->id = my_getnbr(str)) < 0)
+    return (my_puterror_trade("Error: npc:npc_trade field ",
+			      id, " needed id should not be negative\n"));
+  if ((str = (char *)bunny_ini_get_field(ini, "npc", "npc_trade_needed_ammout",
+					 id)) == NULL)
+    return (my_puterror_trade("Error: npc:npc_trade_needed_ammout field ", id,
+			      " not found\n"));
+  if ((trade->needed->amount = my_getnbr(str)) < 0)
+    return (my_puterror_trade("Error: npc:npc_trade field ",
+      			      id, " needed amount should not be negative\n"));
+  return (trade);
+}
+
+t_trade			*get_trade_given(t_trade *trade, t_ptr_list **ptr_list,
+					 int id, t_bunny_ini *ini)
+{
+  char			*str;
+
+  if ((trade->given = xmalloc(sizeof(t_item), ptr_list)) == NULL)
+    return (my_puterror_trade("Error: trade->given:xmalloc ",
+			      -1, "failed in get_trade\n"));
+  if ((str = (char *)bunny_ini_get_field(ini, "npc",
+					 "npc_trade_given_id", id)) == NULL)
+    return (my_puterror_trade("Error: npc:npc_trade_given_id field ", id,
+			      " not found\n"));
+  if ((trade->given->id = my_getnbr(str)) < 0)
+    return (my_puterror_trade("Error: npc:npc_trade field ",
+			      id, " given id should not be negative\n"));
+  if ((str = (char *)bunny_ini_get_field(ini, "npc", "npc_trade_given_amount",
+					 id)) == NULL)
+    return (my_puterror_trade("Error: npc:npc_trade_given_amount field ", id,
+			      " not found\n"));
+  if ((trade->given->amount = my_getnbr(str)) < 0)
+    return (my_puterror_trade("Error: npc:npc_trade field ",
+			      id, " given amount should not be negative\n"));
+  return (trade);
+}
+
+t_trade			*get_trade(t_ptr_list **ptr_list,
 				   int id, t_bunny_ini *ini)
 {
   t_trade		*trade;
@@ -126,40 +176,11 @@ t_trade			*get_trade(char *str, t_ptr_list **ptr_list,
   if ((trade = xmalloc(sizeof(*trade), ptr_list)) == NULL)
     return (my_puterror_trade("Error: trade:xmalloc ",
 			      -1, "failed in get_trade\n"));
+  if ((trade = get_trade_needed(trade, ptr_list, id, ini)) == NULL)
+    return (NULL);
+  if ((trade = get_trade_given(trade, ptr_list, id, ini)) == NULL)
+    return (NULL);
 
-
-  if ((trade->needed = xmalloc(sizeof(t_item), ptr_list)) == NULL)
-    return (my_puterror_trade("Error: trade->needed:xmalloc ",
-			      -1, "failed in get_trade\n"));
-  if ((str = (char *)bunny_ini_get_field(ini, "npc", "npc_trade_needed_id", id)) == NULL)
-    return (my_puterror_trade("Error: npc:npc_trade_needed_id field ", id,
-			      " not found\n"));
-  if ((trade->needed->id = my_getnbr(str)) < 0)
-    return (my_puterror_trade("Error: npc:npc_trade field ",
-			      id, " needed id should not be negative\n"));
-  if ((str = (char *)bunny_ini_get_field(ini, "npc", "npc_trade_needed_ammout", id)) == NULL)
-    return (my_puterror_trade("Error: npc:npc_trade_needed_ammout field ", id,
-			      " not found\n"));
-  if ((trade->needed->amount = my_getnbr(str)) < 0)
-    return (my_puterror_trade("Error: npc:npc_trade field ",
-			      id, " needed amount should not be negative\n"));
-
-
-  if ((trade->given = xmalloc(sizeof(t_item), ptr_list)) == NULL)
-    return (my_puterror_trade("Error: trade->given:xmalloc ",
-			      -1, "failed in get_trade\n"));
-  if ((str = (char *)bunny_ini_get_field(ini, "npc", "npc_trade_given_id", id)) == NULL)
-    return (my_puterror_trade("Error: npc:npc_trade_given_id field ", id,
-			      " not found\n"));
-  if ((trade->given->id = my_getnbr(str)) < 0)
-    return (my_puterror_trade("Error: npc:npc_trade field ",
-			      id, " given id should not be negative\n"));
-  if ((str = (char *)bunny_ini_get_field(ini, "npc", "npc_trade_given_amount", id)) == NULL)
-    return (my_puterror_trade("Error: npc:npc_trade_given_amount field ", id,
-			      " not found\n"));
-  if ((trade->given->amount = my_getnbr(str)) < 0)
-    return (my_puterror_trade("Error: npc:npc_trade field ",
-			      id, " given amount should not be negative\n"));
 
 
 
@@ -173,6 +194,31 @@ t_trade			*get_trade(char *str, t_ptr_list **ptr_list,
   trade->in_stock->amount = 0;
   trade->in_stock->object = NULL;
   return (trade);
+}
+
+t_npc			*create_npc_node_bis(int id, t_bunny_ini *ini,
+					     t_ptr_list **ptr_list,
+					     t_npc *npc)
+{
+  char			*str;
+
+  if ((str = (char *)bunny_ini_get_field(ini, "npc", "npc_text", id)) == NULL)
+    return (my_puterror_npc("Error: npc:npc_text field ", id, " not found\n"));
+  if ((npc->text = my_strdup(str, ptr_list)) == NULL)
+    return (my_puterror_npc("Error: npc->text:my_strdup ",
+			    -1, "failed in create_npc_node\n"));
+  if ((npc->trade = get_trade(ptr_list, id, ini)) == NULL)
+    return (NULL);
+  if ((npc->texture_hitbox = create_npc_hitbox(id, ini, ptr_list)) == NULL)
+    return (NULL);
+  if ((str = (char *)bunny_ini_get_field(ini, "npc",
+					 "npc_sprite_id", id)) == NULL)
+    return (my_puterror_npc("Error: npc:npc_sprite_id field ",
+			    id, " not found\n"));
+  if ((npc->sprite_id = my_getnbr(str)) < 0)
+    return (my_puterror_npc("Error: npc:npc_sprite_id field ",
+			    id, " should not be negative\n"));
+  return (npc);
 }
 
 t_npc			*create_npc_node(int id, t_bunny_ini *ini,
@@ -194,22 +240,8 @@ t_npc			*create_npc_node(int id, t_bunny_ini *ini,
   if ((npc->name = my_strdup(str, ptr_list)) == NULL)
     return (my_puterror_npc("Error: npc->name:my_strdup ",
 			    -1, "failed in create_npc_node\n"));
-  if ((str = (char *)bunny_ini_get_field(ini, "npc", "npc_text", id)) == NULL)
-    return (my_puterror_npc("Error: npc:npc_text field ", id, " not found\n"));
-  if ((npc->text = my_strdup(str, ptr_list)) == NULL)
-    return (my_puterror_npc("Error: npc->text:my_strdup ",
-			    -1, "failed in create_npc_node\n"));
-  if ((npc->trade = get_trade(str, ptr_list, id, ini)) == NULL)
+  if ((npc = create_npc_node_bis(id, ini, ptr_list, npc)) == NULL)
     return (NULL);
-  if ((npc->texture_hitbox = create_npc_hitbox(id, ini, ptr_list)) == NULL)
-    return (NULL);
-  if ((str = (char *)bunny_ini_get_field(ini, "npc",
-					 "npc_sprite_id", id)) == NULL)
-    return (my_puterror_npc("Error: npc:npc_sprite_id field ",
-			    id, " not found\n"));
-  if ((npc->sprite_id = my_getnbr(str)) < 0)
-    return (my_puterror_npc("Error: npc:npc_sprite_id field ",
-			    id, " should not be negative\n"));
   npc->next = NULL;
   npc->prev = NULL;
   return (npc);
