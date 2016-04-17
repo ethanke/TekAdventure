@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Sat Apr 16 06:51:47 2016 Philippe Lefevre
-** Last update Sun Apr 17 07:09:58 2016 Philippe Lefevre
+** Last update Sun Apr 17 10:39:15 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -246,9 +246,9 @@ t_player		*load_player_texture(t_ptr_list **ptr_list,
        load_image(T_PLAYER, ptr_list)) == NULL)
     return (my_puterror_player("Error: player:texture failed load_image ",
 			       -1, T_PLAYER));
-  if ((player->sprite->width != 210) || (player->sprite->height != 136))
+  if ((player->sprite->width != 230) || (player->sprite->height != 166))
     return (my_puterror_player("Error: player:texture authorized value width:\
-			       210 height:136, size is out of range of:",
+			       230 height:166, size is out of range of:",
 			       -1, T_PLAYER));
   if ((player->hotbar_sprite = load_image(T_HOTBAR, ptr_list)) == NULL)
     return (my_puterror_player("Error: player:inv_open_sprite \
