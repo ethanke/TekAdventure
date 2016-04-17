@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sun Apr 17 03:00:51 2016 Gaëtan Léandre
-** Last update Sun Apr 17 04:24:51 2016 Gaëtan Léandre
+** Last update Sun Apr 17 04:29:24 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -41,7 +41,7 @@ void			add_decors(t_ini *ini)
     return;
   if ((dec->decors_breakable->is_breakable = get_decors_collect(ini)) == -1)
     return;
-  if (dec->->decors_breakable->is_breakable == 0)
+  if (dec->decors_breakable->is_breakable == 0)
     {
       dec->decors_breakable->life = 0;
       dec->decors_breakable->breakable_by = 0;

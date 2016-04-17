@@ -5,8 +5,10 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sun Apr 17 03:36:50 2016 Gaëtan Léandre
-** Last update Sun Apr 17 04:01:39 2016 Gaëtan Léandre
+** Last update Sun Apr 17 04:29:42 2016 Victor Sousa
 */
+
+#include		"main.h"
 
 int			get_dec_collect(t_ini *ini)
 {
