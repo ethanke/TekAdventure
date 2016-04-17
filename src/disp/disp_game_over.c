@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sat Apr 16 03:53:37 2016 Ethan Kerdelhue
-** Last update Sat Apr 16 05:29:53 2016 Victor Sousa
+** Last update Sun Apr 17 07:02:50 2016 Ethan Kerdelhue
 */
 
 #include 		"main.h"
@@ -31,6 +31,7 @@ t_bunny_response	check_game_over_button(t_prog *prog,
     {
       prog->player->life = 100 + prog->player->caract->stamina * 2;
       prog->state = STATE_GAME;
+      fight_to_game(prog);
     }
   return (GO_ON);
 }

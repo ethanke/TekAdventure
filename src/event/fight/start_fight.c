@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sun Apr 10 23:41:37 2016 Ethan Kerdelhue
-** Last update Sat Apr 16 09:40:25 2016 Ethan Kerdelhue
+** Last update Sun Apr 17 06:59:07 2016 Ethan Kerdelhue
 */
 
 #include	"main.h"
@@ -30,6 +30,7 @@ int			get_player_damage(t_player *player, t_prog *prog)
 
 int			prepare_fight(t_prog *prog, t_npc *npc)
 {
+  update_music(prog);
   if ((prog->fight = xmalloc(sizeof(t_fight), &prog->ptr_list)) == NULL)
     return (-1);
   prog->fight->bar_action = xmalloc(sizeof(t_bar), &prog->ptr_list);
