@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 19:20:47 2016 Victor Sousa
-** Last update Sun Apr 17 07:05:51 2016 Victor Sousa
+** Last update Sun Apr 17 08:57:58 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -22,7 +22,7 @@ void			pick_what_to_add(char *str, t_ini *ini)
   if (my_strcmp(str, "4") == 0)
     add_npc(ini);
   if (my_strcmp(str, "5") == 0)
-    my_printf(1, "Add scene\n");
+    add_scene(ini);
 }
 
 void			add_all(t_ini *ini)
@@ -62,5 +62,5 @@ void			add_stuff(int ac, char **av, t_ini *ini)
   if (ac == 2 && my_strcmp(av[1], "npc") == 0)
     add_npc(ini);
   if (ac == 2 && my_strcmp(av[1], "scene") == 0)
-    my_printf(1, "Add scene\n");
+    add_scene(ini);
 }

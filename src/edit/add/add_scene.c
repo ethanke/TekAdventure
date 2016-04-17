@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sun Apr 17 07:10:26 2016 Gaëtan Léandre
-** Last update Sun Apr 17 08:54:18 2016 Gaëtan Léandre
+** Last update Sun Apr 17 08:59:45 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -120,8 +120,8 @@ void			add_scene(t_ini *ini)
 {
   t_scene		*spr;
 
-  if ((spr = xmalloc(sizeof(t_sprite), &ini->ptr_list)) == NULL
-      || (spr->start_pos = xmalloc(sizeof(t_bunny_position), &ini->ptr_list))
+  if ((spr = xmalloc(sizeof(t_scene), &ini->ptr_list)) == NULL
+      || (spr->start_pos = xmalloc(sizeof(t_bunny_position), &ini->ptr_list)) == NULL
       || (spr->sol_hitbox = xmalloc(sizeof(t_hitbox), &ini->ptr_list)) == NULL)
     return;
   spr->name = get_sce_name(ini);
