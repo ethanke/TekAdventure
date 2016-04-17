@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sun Apr 17 07:10:26 2016 Gaëtan Léandre
-** Last update Sun Apr 17 09:41:39 2016 Gaëtan Léandre
+** Last update Sun Apr 17 09:45:34 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -156,8 +156,8 @@ void			add_scene(t_ini *ini)
   spr->name = get_sce_name(ini);
   spr->size.x = get_major("size x", ini);
   spr->size.y = get_major("size y", ini);
-  if ((spr->ground = malloc(spr->size.x * spr->size.x * sizeof(t_ground)))
-      == NULL)
+  if ((spr->ground = xmalloc(spr->size.x * spr->size.y * sizeof(t_ground),
+			     &ini->ptr_list)) == NULL)
     return;
   init_gound(spr);
   spr->start_pos->x = get_major_2("start x", ini, spr->size.x);
