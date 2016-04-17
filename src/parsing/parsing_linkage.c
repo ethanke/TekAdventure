@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr 14 02:50:32 2016 Philippe Lefevre
-** Last update Sat Apr 16 10:32:39 2016 Philippe Lefevre
+** Last update Sun Apr 17 04:33:06 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -68,11 +68,26 @@ t_decors		*link_decors(t_decors *decors, t_sprite *sprite)
   return (decors);
 }
 
+t_npc			*link_npc_trade_object(t_object *object, t_npc *tmp_npc)
+{
+  t_object		*tmp_object;
+
+  tmp_object = object;
+  while (tmp_object != NULL)
+    {
+      if (tmp_object->object_id == tmp_npc->trade->needed->id)
+	tmp_npc->trade->needed->object = tmp_object;
+      if (tmp_object->object_id == tmp_npc->trade->given->id)
+	tmp_npc->trade->given->object = tmp_object;
+      tmp_object = tmp_object->next;
+    }
+  return (tmp_npc->next);
+}
+
 t_npc			*link_npc(t_npc *npc, t_sprite *sprite,
 				  t_object *object)
 {
   t_npc			*tmp_npc;
-  t_object		*tmp_object;
   t_sprite		*tmp_sprite;
 
   tmp_npc = npc;
@@ -94,16 +109,7 @@ t_npc			*link_npc(t_npc *npc, t_sprite *sprite,
 	    }
 	  tmp_sprite = tmp_sprite->next;
 	}
-      tmp_object = object;
-      while (tmp_object != NULL)
-	{
-	  if (tmp_object->object_id == tmp_npc->trade->needed->id)
-	    tmp_npc->trade->needed->object = tmp_object;
-	  if (tmp_object->object_id == tmp_npc->trade->given->id)
-	    tmp_npc->trade->given->object = tmp_object;
-	  tmp_object = tmp_object->next;
-	}
-      tmp_npc = tmp_npc->next;
+      tmp_npc = link_npc_trade_object(object, tmp_npc);
     }
   return (npc);
 }

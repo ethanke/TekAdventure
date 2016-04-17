@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:08:59 2016 Philippe Lefevre
-** Last update Sun Apr 17 02:58:39 2016 Philippe Lefevre
+** Last update Sun Apr 17 03:28:35 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -135,5 +135,7 @@ t_scene			*parsing(const char *file, t_player **player,
 /*  if (parsing_check_spawn_zone(scene))
     return (NULL);*/
     /* start pos proteted zone */
+
+      /* gestion decors breakable by if existing object*/
   return (link_ptr_gate(scene));
 }

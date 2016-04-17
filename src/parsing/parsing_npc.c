@@ -5,9 +5,8 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Sun Apr 17 00:44:45 2016 Philippe Lefevre
-** Last update Sun Apr 17 01:50:48 2016 Philippe Lefevre
+** Last update Sun Apr 17 04:04:19 2016 Philippe Lefevre
 */
-
 
 #include		"main.h"
 
@@ -180,10 +179,6 @@ t_trade			*get_trade(t_ptr_list **ptr_list,
     return (NULL);
   if ((trade = get_trade_given(trade, ptr_list, id, ini)) == NULL)
     return (NULL);
-
-
-
-
   if ((trade->in_stock = xmalloc(sizeof(t_item), ptr_list)) == NULL)
     return (my_puterror_trade("Error: trade->in_stock:xmalloc ",
 			      -1, "failed in get_trade\n"));
