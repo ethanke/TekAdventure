@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sun Apr 17 03:36:50 2016 Gaëtan Léandre
-** Last update Sun Apr 17 04:29:42 2016 Victor Sousa
+** Last update Sun Apr 17 04:37:23 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -50,13 +50,13 @@ int			get_dec_lootable(t_ini *ini)
   return (0);
 }
 
-int			get_object(char *str, t_ini *ini)
+int			get_object(char *msg, t_ini *ini)
 {
   t_object		*tmp;
   char			*str;
   int			id;
 
-  my_printf(1, str);
+  my_printf(1, msg);
   while ((str = get_next_line(0)) == NULL)
     {
       id = my_getnbr_free(str);
@@ -67,18 +67,18 @@ int			get_object(char *str, t_ini *ini)
 	    return (id);
 	  tmp = tmp->next;
 	}
-      my_printf(1, str);
+      my_printf(1, msg);
     }
   return (0);
 }
 
-int			get_id_posi(char *str, t_ini *ini)
+int			get_id_posi(char *msg, t_ini *ini)
 {
-  t_object		*tmp;
   char			*str;
   int			id;
 
-  my_printf(1, str);
+  (void)ini;
+  my_printf(1, msg);
   while ((str = get_next_line(0)) == NULL)
     {
       id = my_getnbr_free(str);

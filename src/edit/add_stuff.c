@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 19:20:47 2016 Victor Sousa
-** Last update Sun Apr 17 03:44:34 2016 Victor Sousa
+** Last update Sun Apr 17 04:38:45 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -18,7 +18,7 @@ void			pick_what_to_add(char *str, t_ini *ini)
   if (my_strcmp(str, "2") == 0)
     add_object(ini);
   if (my_strcmp(str, "3") == 0)
-    my_printf(1, "Add decors\n");
+    add_decors(ini);
   if (my_strcmp(str, "4") == 0)
     add_npc(ini);
   if (my_strcmp(str, "5") == 0)
