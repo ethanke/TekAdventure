@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sun Apr 17 03:36:50 2016 Gaëtan Léandre
-** Last update Sun Apr 17 05:29:34 2016 Gaëtan Léandre
+** Last update Sun Apr 17 05:43:50 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -52,7 +52,7 @@ int			get_object(char *msg, t_ini *ini)
   return (0);
 }
 
-int			get_id_posi(char *msg, t_ini *ini)
+int			get_id_posi(char *what, char *msg, t_ini *ini)
 {
   char			*str;
   int			id;
@@ -64,7 +64,7 @@ int			get_id_posi(char *msg, t_ini *ini)
       id = my_getnbr_free(str);
       if (id > 0)
 	return (id);
-      my_printf(1, "Id must be superior to 0\nTry again : ");
+      my_printf(1, "%s must be superior to 0\nTry again : ", what);
     }
   return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sun Apr 17 03:00:51 2016 Gaëtan Léandre
-** Last update Sun Apr 17 05:28:40 2016 Gaëtan Léandre
+** Last update Sun Apr 17 05:44:31 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -52,7 +52,7 @@ void			add_decors(t_ini *ini)
     }
   else
     {
-      dec->decors_breakable->life = get_id_posi("Give life to your decors : ", ini);
+      dec->decors_breakable->life = get_id_posi("Life", "Give life to your decors : ", ini);
       dec->decors_breakable->breakable_by = get_object("Give item to break your decors : ", ini);
       if ((dec->decors_breakable->lootable = get_dec_collect("Is your decors lootable?  (yes or no) : ", ini)) == -1)
 	return;
@@ -64,7 +64,7 @@ void			add_decors(t_ini *ini)
       else
 	{
 	  dec->decors_breakable->loot[0] =  get_object("What is your decors loot : ", ini);
-	  dec->decors_breakable->loot[1] = get_id_posi("How many : ", ini);
+	  dec->decors_breakable->loot[1] = get_id_posi("Number", "How many : ", ini);
         }
       }
   my_printf(1, "\nChoose a sprite id for your decors : ");

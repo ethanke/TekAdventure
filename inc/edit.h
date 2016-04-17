@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:51:56 2016 Victor Sousa
-** Last update Sun Apr 17 05:29:21 2016 Victor Sousa
+** Last update Sun Apr 17 05:45:25 2016 Gaëtan Léandre
 */
 
 #ifndef			EDIT_H_
@@ -48,7 +48,7 @@ int			get_dec_collect(char *str, t_ini *ini);
 int			get_npc_trade_amount_given(t_ini *ini);
 int			get_dec_lootable(char *msg, t_ini *ini);
 int			get_object(char *msg, t_ini *ini);
-int			get_id_posi(char *msg, t_ini *ini);
+int			get_id_posi(char *what, char *msg, t_ini *ini);
 char			*look_for_decors_name(t_ini *ini, int id);
 int			decors_id_is_taken(t_ini *ini, int id);
 int			get_dec_id(t_ini *ini);

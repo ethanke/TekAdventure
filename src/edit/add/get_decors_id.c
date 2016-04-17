@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sun Apr 17 03:03:55 2016 Gaëtan Léandre
-** Last update Sun Apr 17 05:29:13 2016 Gaëtan Léandre
+** Last update Sun Apr 17 05:43:13 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -47,7 +47,7 @@ int			get_dec_id(t_ini *ini)
     return (-1);
   while ((id = my_getnbr(str) - 1) <= -1)
     {
-      my_printf(1, "Id must be superior to 0\nTry again : ");
+      my_printf(1, "%s must be superior to 0\nTry again : ");
       free(str);
       if ((str = get_next_line(0)) == NULL)
 	return (-1);
