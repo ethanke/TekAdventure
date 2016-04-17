@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sun Apr 17 03:00:51 2016 Gaëtan Léandre
-** Last update Sun Apr 17 04:34:33 2016 Victor Sousa
+** Last update Sun Apr 17 04:53:10 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -39,7 +39,7 @@ void			add_decors(t_ini *ini)
     return;
   if ((dec->decors_breakable = xmalloc(sizeof(t_breakable), &ini->ptr_list)) == NULL)
     return;
-  if ((dec->decors_breakable->is_breakable = get_dec_collect(ini)) == -1)
+  if ((dec->decors_breakable->is_breakable = get_dec_collect("Is your decors breakable?  (yes or no)", ini)) == -1)
     return;
   if (dec->decors_breakable->is_breakable == 0)
     {
@@ -53,7 +53,7 @@ void			add_decors(t_ini *ini)
     {
       dec->decors_breakable->life = get_id_posi("Give life to your decors : ", ini);
       dec->decors_breakable->breakable_by = get_object("Give item to break your decors : ", ini);
-      if ((dec->decors_breakable->lootable = get_dec_collect(ini)) == -1)
+      if ((dec->decors_breakable->lootable = get_dec_collect("Is your decors lootable?  (yes or no)", ini)) == -1)
 	return;
       if (dec->decors_breakable->lootable == 0)
 	{

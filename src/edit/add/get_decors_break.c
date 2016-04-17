@@ -5,17 +5,17 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sun Apr 17 03:36:50 2016 Gaëtan Léandre
-** Last update Sun Apr 17 04:50:34 2016 Gaëtan Léandre
+** Last update Sun Apr 17 04:56:21 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
 
-int			get_dec_collect(t_ini *ini)
+int			get_dec_collect(char *msg, t_ini *ini)
 {
   char			*str;
 
   (void)ini;
-  my_printf(1, "Is your decors breakable?  (yes or no)\n");
+  my_printf(1, msg);
   if ((str = get_next_line(0)) == NULL)
     return (-1);
   while (my_strcmp(str, "yes") != 0 && my_strcmp(str, "no") != 0)
@@ -56,13 +56,8 @@ int			get_object(char *msg, t_ini *ini)
   char			*str;
   int			id;
 
-<<<<<<< HEAD
-  my_printf(1, str);
-  while ((str = get_next_line(0)) != NULL)
-=======
   my_printf(1, msg);
-  while ((str = get_next_line(0)) == NULL)
->>>>>>> b5d6ab67b4024d2bd773104786ed6c529bacc232
+  while ((str = get_next_line(0)) != NULL)
     {
       id = my_getnbr_free(str);
       tmp = ini->scene->object;
@@ -82,14 +77,9 @@ int			get_id_posi(char *msg, t_ini *ini)
   char			*str;
   int			id;
 
-<<<<<<< HEAD
-  my_printf(1, str);
-  while ((str = get_next_line(0)) != NULL)
-=======
   (void)ini;
   my_printf(1, msg);
-  while ((str = get_next_line(0)) == NULL)
->>>>>>> b5d6ab67b4024d2bd773104786ed6c529bacc232
+  while ((str = get_next_line(0)) != NULL)
     {
       id = my_getnbr_free(str);
       if (id > 0)
