@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Wed Apr 13 00:01:51 2016 Victor Sousa
-** Last update Wed Apr 13 00:34:01 2016 Victor Sousa
+** Last update Sun Apr 17 06:33:56 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -15,7 +15,8 @@ void			disp_npc(t_prog *prog, t_npc *npc)
   t_bunny_position	pos;
 
   pos.x = WIN_WIDTH - npc->texture->width;
-  pos.y = WIN_HEIGHT / 2 - npc->texture->height / 5;
+  pos.y = WIN_HEIGHT / 2 - (float)npc->texture->width *
+      (float)((float)WIN_HEIGHT / (float)WIN_WIDTH) / 2;
   place_image(create_hitbox(pos.x, pos.y, (float)npc->texture->width *
 			    (float)((float)WIN_HEIGHT / (float)WIN_WIDTH),
 			    WIN_HEIGHT / 3),
@@ -29,12 +30,12 @@ void			disp_player(t_prog *prog, t_player *player)
   t_bunny_position	pos;
 
   pos.x = 0;
-  pos.y = WIN_HEIGHT / 2 - player->sprite->height / 5;
+  pos.y = WIN_HEIGHT / 2 - (float)player->sprite->width *
+      (float)((float)WIN_HEIGHT / (float)WIN_WIDTH) / 2;
   place_image(create_hitbox(pos.x, pos.y, (float)player->sprite->width *
 			    (float)((float)WIN_HEIGHT / (float)WIN_WIDTH),
 			    WIN_HEIGHT / 3),
-	      create_hitbox(0, 0, player->sprite->width,
-			    player->sprite->height),
+	      create_hitbox(68, 0, 35, 34),
 	      player->sprite, prog->pix);
 }
 
