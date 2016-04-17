@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sun Apr 17 03:43:36 2016 Victor Sousa
-** Last update Sun Apr 17 04:18:58 2016 Victor Sousa
+** Last update Sun Apr 17 05:27:26 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -40,6 +40,26 @@ void			add_npc(t_ini *ini)
   my_printf(1, " trading with him.\nYou can skip line using ';'\n");
   if ((npc->text = get_next_line(0)) == NULL)
     return;
+
+  if ((npc->trade = xmalloc(sizeof(t_trade), &ini->ptr_list)) == NULL)
+    return;
+  if ((npc->trade->needed = xmalloc(sizeof(t_item), &ini->ptr_list)) == NULL)
+    return;
+  if ((npc->trade->given = xmalloc(sizeof(t_item), &ini->ptr_list)) == NULL)
+    return;
+  my_printf(1, "\nWhat is your npc trading\nid : ");
+  if ((npc->trade->given->id = get_npc_trade_id_given(ini)) == -1)
+    return;
+  my_printf(1, "amount : ");
+  if ((npc->trade->given->amount = get_npc_trade_amount_given(ini)) == -1)
+    return;
+  my_printf(1, "\nWhat your npc require for trading\nid : ");
+  if ((npc->trade->needed->id = get_npc_trade_id_given(ini)) == -1)
+    return;
+  my_printf(1, "amount : ");
+  if ((npc->trade->needed->amount = get_npc_trade_amount_given(ini)) == -1)
+    return;
+
   my_printf(1, "\nChoose a sprite id for your object : ");
   npc->sprite_id = get_existing_sprite(ini);
   if ((npc->texture_hitbox = xmalloc(sizeof(t_hitbox),
@@ -58,6 +78,10 @@ void			add_npc(t_ini *ini)
   my_printf(1, "\n\nHere is your item\nid: %d\n", npc->npc_id);
   my_printf(1, "name: %s\n", npc->name);
   my_printf(1, "texte: %s\n", npc->text);
+  my_printf(1, "require id: %d\n", npc->trade->needed->id);
+  my_printf(1, "require amount: %d\n", npc->trade->needed->amount);
+  my_printf(1, "given id: %d\n", npc->trade->given->id);
+  my_printf(1, "given amount: %d\n", npc->trade->given->amount);
   my_printf(1, "sprite id: %d\n", npc->sprite_id);
   my_printf(1, "sprite pos x: %d\n", npc->texture_hitbox->x);
   my_printf(1, "sprite pos y: %d\n", npc->texture_hitbox->y);
