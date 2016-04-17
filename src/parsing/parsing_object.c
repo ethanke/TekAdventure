@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Sun Apr 17 02:42:57 2016 Philippe Lefevre
+** Last update Sun Apr 17 05:27:33 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -117,17 +117,13 @@ t_hitbox		*create_object_hitbox(int id, t_bunny_ini *ini,
   return (hitbox);
 }
 
-t_object		*create_object_node(int id,
-					    t_bunny_ini *ini,
-					    t_ptr_list **ptr_list)
+t_object		*create_object_node_one(int id,
+						t_bunny_ini *ini,
+						t_ptr_list **ptr_list,
+						t_object *object)
 {
-  t_object		*object;
-  t_caract		*caract;
-  char			*str;
+  char		*str;
 
-  if ((object = xmalloc(sizeof(t_object), ptr_list)) == NULL)
-    return (my_puterror_object("Error: object:xmalloc ", -1,
-			       "failed in create_object_node\n"));
   if ((str = (char *)bunny_ini_get_field(ini, "object",
 					 "object_id", id)) == NULL)
     return (my_puterror_object("Error: object:object_id field ",
@@ -136,27 +132,25 @@ t_object		*create_object_node(int id,
     return (my_puterror_object("Error: object:object_id field ",
 			       id, " should not be negative\n"));
   if ((str = (char *)bunny_ini_get_field(ini, "object",
-					 "object_name", id)) == NULL)
+      					 "object_name", id)) == NULL)
     return (my_puterror_object("Error: object:object_name field ",
-			       id, " not found\n"));
+      			       id, " not found\n"));
   if ((object->name = my_strdup(str, ptr_list)) == NULL)
     return (my_puterror_object("Error: object->name:my_strdup ",
-			       -1, "failed in create_object_node\n"));
+      			       -1, "failed in create_object_node\n"));
   if ((str = (char *)bunny_ini_get_field(ini, "object",
-					 "object_damage", id)) == NULL)
+      					 "object_damage", id)) == NULL)
     return (my_puterror_object("Error: object:object_damage field ",
-			       id, " not found\n"));
+      			       id, " not found\n"));
   object->damage = my_getnbr(str);
-  if ((str = (char *)bunny_ini_get_field(ini, "object", "object_sprite_id",
-					 id)) == NULL)
-    return (my_puterror_object("Error: object:object_sprite_id field ",
-			       id, " not found\n"));
-  if ((object->sprite_id = my_getnbr(str)) < 0)
-    return (my_puterror_object("Error: object:object_sprite_id field ",
-			       id, " should not be negative\n"));
-  if ((object->texture_hitbox = create_object_hitbox(id,
-						     ini, ptr_list)) == NULL)
-    return (NULL);
+  return (object);
+}
+
+t_object		*create_object_node_two(int id,
+						t_bunny_ini *ini,
+						t_object *object)
+{
+  char			*str;
 
   if ((str = (char *)bunny_ini_get_field(ini, "object",
 					 "object_is_equipable", id)) == NULL)
@@ -173,6 +167,37 @@ t_object		*create_object_node(int id,
   if ((object->slot = my_getnbr(str)) < 0)
     return (my_puterror_object("Error: object:object_equipable_slot field ",
 			       id, " must be 0,1,2 or 3\n"));
+  return (object);
+}
+
+t_object		*create_object_node_three(int id,
+						  t_bunny_ini *ini,
+						  t_ptr_list **ptr_list,
+						  t_object *object)
+{
+  char 			*str;
+
+  if ((str = (char *)bunny_ini_get_field(ini, "object", "object_sprite_id",
+					 id)) == NULL)
+    return (my_puterror_object("Error: object:object_sprite_id field ",
+			       id, " not found\n"));
+  if ((object->sprite_id = my_getnbr(str)) < 0)
+    return (my_puterror_object("Error: object:object_sprite_id field ",
+			       id, " should not be negative\n"));
+  if ((object->texture_hitbox = create_object_hitbox(id,
+						     ini, ptr_list)) == NULL)
+    return (NULL);
+  return (object);
+}
+
+t_object		*create_object_node_four(int id,
+						 t_bunny_ini *ini,
+						 t_ptr_list **ptr_list,
+						 t_object *object)
+{
+  char 			*str;
+  t_caract		*caract;
+
   if ((caract = xmalloc(sizeof(*caract), ptr_list)) == NULL)
     return (my_puterror_object("Error: object->caract->starmina:xmalloc ",
 			       -1, "failed in create_object_node\n"));
@@ -182,40 +207,88 @@ t_object		*create_object_node(int id,
     return (my_puterror_object("Error: object:object_stamina field ",
 			       id, " not found\n"));
   object->caract->stamina = my_getnbr(str);
-
   if ((str = (char *)bunny_ini_get_field(ini, "object",
 					 "object_strength", id)) == NULL)
     return (my_puterror_object("Error: object:object_strength field ",
 			       id, " not found\n"));
   object->caract->strength = my_getnbr(str);
-
   if ((str = (char *)bunny_ini_get_field(ini, "object",
 					 "object_critical", id)) == NULL)
     return (my_puterror_object("Error: object:object_critical field ",
 			       id, " not found\n"));
-object->caract->critical = my_getnbr(str);
+  object->caract->critical = my_getnbr(str);
+  return (object);
+}
+
+t_object		*create_object_node_five(int id,
+						 t_bunny_ini *ini,
+						 t_object *object)
+{
+  char			*str;
 
   if ((str = (char *)bunny_ini_get_field(ini, "object",
 					 "object_intellect", id)) == NULL)
     return (my_puterror_object("Error: object:object_intellect field ",
 			       id, " not found\n"));
   object->caract->intellect = my_getnbr(str);
-
   if ((str = (char *)bunny_ini_get_field(ini, "object",
 					 "object_armor", id)) == NULL)
     return (my_puterror_object("Error: object:object_armor field ",
 			       id, " not found\n"));
-object->caract->armor = my_getnbr(str);
-
+  object->caract->armor = my_getnbr(str);
   if ((str = (char *)bunny_ini_get_field(ini, "object",
 					 "object_agility", id)) == NULL)
     return (my_puterror_object("Error: object:object_agility field ",
 			       id, " not found\n"));
   object->caract->agility = my_getnbr(str);
+  return (object);
+}
 
+t_object		*create_object_node(int id,
+					    t_bunny_ini *ini,
+					    t_ptr_list **ptr_list)
+{
+  t_object		*object;
+
+  if ((object = xmalloc(sizeof(t_object), ptr_list)) == NULL)
+    return (my_puterror_object("Error: object:xmalloc ", -1,
+			       "failed in create_object_node\n"));
+  if ((object = create_object_node_one(id, ini, ptr_list, object)) == NULL)
+    return (NULL);
+  if ((object = create_object_node_two(id, ini, object)) == NULL)
+    return (NULL);
+  if ((object = create_object_node_three(id, ini, ptr_list, object)) == NULL)
+    return (NULL);
+  if ((object = create_object_node_four(id, ini, ptr_list, object)) == NULL)
+    return (NULL);
+  if ((object = create_object_node_five(id, ini, object)) == NULL)
+    return (NULL);
   object->next = NULL;
   object->prev = NULL;
   return (object);
+}
+
+t_object		*list_add_object_bis(t_object *tmp, t_object *new,
+					     int id)
+{
+  int			i;
+
+  i = 0;
+  while (tmp->next != NULL && ++i)
+    {
+      if (tmp->object_id == new->object_id)
+	{
+	  my_puterror_object("Error: object:object_id field ", id, " ");
+      	  return (my_puterror_object("already declared in field ", i, "\n"));
+	}
+      tmp = tmp->next;
+    }
+  if (tmp->object_id == new->object_id)
+    {
+      my_puterror_object("Error: object:object_id field ", (id + 1), " ");
+      return (my_puterror_object("already declared in field ", i, "\n"));
+    }
+  return (tmp);
 }
 
 t_object		*list_add_object(t_object *list, int id,
@@ -230,8 +303,8 @@ t_object		*list_add_object(t_object *list, int id,
   if (list == NULL)
     return (new);
   tmp = list;
-  while (tmp->next != NULL)
-    tmp = tmp->next;
+  if ((tmp = list_add_object_bis(tmp, new, id)) == NULL)
+    return (NULL);
   new->prev = tmp;
   new->next = NULL;
   tmp->next = new;

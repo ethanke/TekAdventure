@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr  6 23:35:23 2016 Ethan Kerdelhue
-** Last update Sat Apr 16 21:27:35 2016 Victor Sousa
+** Last update Sun Apr 17 05:26:43 2016 Philippe Lefevre
 */
 
 #ifndef 		OBJECT_H_

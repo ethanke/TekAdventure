@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:07:19 2016 Philippe Lefevre
-** Last update Sun Apr 17 02:58:58 2016 Philippe Lefevre
+** Last update Sun Apr 17 08:57:50 2016 Philippe Lefevre
 */
 
 #ifndef			PARSING_H_
@@ -29,7 +29,8 @@ t_decors		*my_puterror_decors(char *beg, int id, char *end);
 t_hitbox		*my_puterror_hitbox(char *beg, int id, char *end);
 t_trade			*my_puterror_trade(char *beg, int id, char *end);
 t_item			*my_puterror_item(char *beg, int id, char *end);
-
+char			**my_puterror_chartab(char *beg, char *name, char *mid,
+					   int id, char *end);
 t_scene			*parsing(const char *file, t_player **player,
 				 t_ptr_list **ptr_list);
 t_scene			*load_scene(t_bunny_ini *ini, t_scene *scene,

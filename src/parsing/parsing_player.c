@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Sat Apr 16 06:51:47 2016 Philippe Lefevre
-** Last update Sun Apr 17 02:59:51 2016 Philippe Lefevre
+** Last update Sun Apr 17 07:09:58 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -170,18 +170,18 @@ t_item			*fill_inventory(int i, int inventory_count,
       	return (NULL);
       if (((slot = my_getnbr(tmp)) < 0) || (slot > SIZE_INVENTORY))
 	return (my_puterror_item("Error: player:player_inventory field ", i,
-				 " should not be negative or greater than \
-the size of the inventory"));
+				 " should not be negative or greater \
+than the size of the inventory\n"));
       if ((tmp = fill_inventory_item(tmp, ini, i)) == NULL)
 	return (NULL);
       if ((inventory[slot].id = my_getnbr(tmp)) < 0)
 	return (my_puterror_item("Error: player:player_inventory_count field ",
-				 i, " object id should not be negative"));
+				 i, " object id should not be negative\n"));
       if ((tmp = fill_inventory_amount(tmp, ini, i)) == NULL)
 	return (NULL);
       if ((inventory[slot].amount = my_getnbr(tmp)) < 0)
 	return (my_puterror_item("Error: player:player_inventory_count field ",
-				 i, " object amount should not be negative"));
+				 i, " object amount should not be negative\n"));
     }
   return (inventory);
 }
@@ -235,6 +235,27 @@ t_item			*load_player_equiped(t_item *equiped, t_bunny_ini *ini,
   return (equiped);
 }
 
+t_player		*load_player_texture(t_ptr_list **ptr_list,
+					     t_player *player)
+{
+  if ((player->inv_open_sprite =
+       load_image(T_INVENTORY, ptr_list)) == NULL)
+    return (my_puterror_player("Error: player:inv_open_sprite \
+	  			       failed load_image ", -1, T_INVENTORY));
+  if ((player->sprite =
+       load_image(T_PLAYER, ptr_list)) == NULL)
+    return (my_puterror_player("Error: player:texture failed load_image ",
+			       -1, T_PLAYER));
+  if ((player->sprite->width != 210) || (player->sprite->height != 136))
+    return (my_puterror_player("Error: player:texture authorized value width:\
+			       210 height:136, size is out of range of:",
+			       -1, T_PLAYER));
+  if ((player->hotbar_sprite = load_image(T_HOTBAR, ptr_list)) == NULL)
+    return (my_puterror_player("Error: player:inv_open_sprite \
+	  				 failed load_image ", -1, T_HOTBAR));
+  return (player);
+}
+
 t_player		*load_player_init(t_ptr_list **ptr_list, char *tmp,
 					  t_bunny_ini *ini, t_player *player)
 {
@@ -255,17 +276,8 @@ t_player		*load_player_init(t_ptr_list **ptr_list, char *tmp,
   if ((player->name = my_strdup(tmp, ptr_list)) == NULL)
     return (my_puterror_player("Error: player->name:my_strdup ",
 			       -1, "failed in load_player_init\n"));
-  if ((player->inv_open_sprite =
-       load_image(T_INVENTORY, ptr_list)) == NULL)
-    return (my_puterror_player("Error: player:inv_open_sprite \
-			       failed load_image ", -1, T_INVENTORY));
-  if ((player->sprite =
-       load_image(T_PLAYER, ptr_list)) == NULL)
-    return (my_puterror_player("Error: player:texture failed load_image ",
-			       -1, T_INVENTORY));
-  if ((player->hotbar_sprite = load_image(T_HOTBAR, ptr_list)) == NULL)
-    return (my_puterror_player("Error: player:inv_open_sprite \
-				 failed load_image ", -1, T_HOTBAR));
+  if ((player = load_player_texture(ptr_list, player)) == NULL)
+    return (my_puterror_player("\n", -1, ""));
   return (player);
 }
 

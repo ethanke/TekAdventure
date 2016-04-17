@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:51:56 2016 Victor Sousa
-** Last update Sun Apr 17 07:39:07 2016 Victor Sousa
+** Last update Sun Apr 17 08:54:42 2016 Gaëtan Léandre
 */
 
 #ifndef			EDIT_H_
@@ -32,10 +32,11 @@ void			add_stuff(int ac, char **av, t_ini *ini);
 /* edit */
 void			edit_stuff(t_ini *ini);
 void			edit_sprite(t_ini *ini);
-void			edit_object(t_ini *ini);
+void			edit_object(t_ini *ini, int id, char *str);
 void			edit_decors(t_ini *ini);
 void			edit_npc(t_ini *ini);
 t_sprite		*look_for_sprite(t_ini *ini, int id);
+t_object		*look_for_obj(t_ini *ini, int id);
 
 /* add */
 void			add_object(t_ini *ini);
@@ -54,6 +55,7 @@ int			get_existing_sprite(t_ini *ini);
 void			get_dec_break_info(t_ini *ini, t_decors *dec);
 void			fill_dec_break(t_ini *ini, t_decors *dec);
 int			get_x_pos_sprite(t_ini *ini, int id);
+void			get_object_caract(t_ini *ini, t_object *obj);
 void			get_object_sprite_info(t_ini *ini, t_object *obj);
 int			get_y_pos_sprite(t_ini *ini, int id);
 int			get_dec_collect(char *str, t_ini *ini);
@@ -159,6 +161,7 @@ void			write_scene_gate_sprite_hit_y(t_scene *scene, int fd,
 						      int size);
 void			write_scene_gate_sprite_hit_x(t_scene *scene, int fd,
 						      int size);
+void			add_scene(t_ini *ini);
 void			write_sky_hitbox_w(t_sky *sky, int fd,
 					   int size);
 void			write_sky_hitbox_y(t_sky *sky, int fd,

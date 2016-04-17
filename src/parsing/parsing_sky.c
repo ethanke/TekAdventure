@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr 14 02:52:33 2016 Philippe Lefevre
-** Last update Sun Apr 17 02:32:21 2016 Philippe Lefevre
+** Last update Sun Apr 17 04:03:03 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -122,6 +122,21 @@ t_hitbox		*create_sky_hitbox(int id, t_bunny_ini *ini,
   return (hitbox);
 }
 
+t_sky			*create_sky_node_id(int id, t_bunny_ini *ini,
+					    t_sky *sky, char *name)
+{
+  char		*str;
+  if ((str = (char *)bunny_ini_get_field(ini, name,
+					 "scene_sky_sprite_id", id)) == NULL)
+    return (my_puterror_sky("Error: ", name,
+			    ":scene_sky_sprite_id field ", id,
+			    " not found\n"));
+  if ((sky->sky_sprite_id = my_getnbr(str)) < 0)
+    return (my_puterror_sky("Error ", name, "sky_sprite_id field ",
+			    id, " should not be negative\n"));
+  return (sky);
+}
+
 t_sky			*create_sky_node(int id, t_bunny_ini *ini,
 					 t_ptr_list **ptr_list, char *name)
 {
@@ -131,14 +146,8 @@ t_sky			*create_sky_node(int id, t_bunny_ini *ini,
   if ((sky = xmalloc(sizeof(t_sky), ptr_list)) == NULL)
     return (my_puterror_sky("Error: ", "sky", ":xmalloc ",
 			    -1, "failed in create_sky_node\n"));
-  if ((str = (char *)bunny_ini_get_field(ini, name,
-					 "scene_sky_sprite_id", id)) == NULL)
-    return (my_puterror_sky("Error: ", name,
-			    ":scene_sky_sprite_id field ", id,
-			    " not found\n"));
-  if ((sky->sky_sprite_id = my_getnbr(str)) < 0)
-    return (my_puterror_sky("Error ", name, "sky_sprite_id field ",
-			    id, " should not be negative\n"));
+  if ((create_sky_node_id(id, ini, sky, name)) == NULL)
+    return (NULL);
   if ((str = (char *)bunny_ini_get_field(ini, name,
 					 "scene_sky_sprite_distance",
 					 id)) == NULL)

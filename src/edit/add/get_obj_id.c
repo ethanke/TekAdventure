@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 20:21:50 2016 Victor Sousa
-** Last update Sat Apr 16 21:05:16 2016 Victor Sousa
+** Last update Sun Apr 17 08:04:17 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -36,6 +36,20 @@ int			object_id_is_taken(t_ini *ini, int id)
       tmp = tmp->next;
     }
   return (0);
+}
+
+t_object		*look_for_obj(t_ini *ini, int id)
+{
+  t_object		*tmp;
+
+  tmp = ini->scene->object;
+  while (tmp != NULL)
+    {
+      if (tmp->object_id == id)
+	return (tmp);
+      tmp = tmp->next;
+    }
+  return (NULL);
 }
 
 int			get_obj_id(t_ini *ini)
