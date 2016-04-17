@@ -5,22 +5,24 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sun Apr 17 03:43:36 2016 Victor Sousa
-** Last update Sun Apr 17 05:27:26 2016 Victor Sousa
+** Last update Sun Apr 17 05:37:28 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
 
-t_npc		*list_add_new_npc(t_npc *list, t_npc *new)
+void			list_add_new_npc(t_scene *scene, t_npc *new)
 {
-  t_npc		*tmp;
+  t_npc			*tmp;
 
-  tmp = list;
-  while (tmp->next != NULL)
+  tmp = scene->npc;
+  while (tmp && tmp->next != NULL)
     tmp = tmp->next;
   new->prev = tmp;
   new->next = NULL;
-  tmp->next = new;
-  return (list);
+  if (tmp != NULL)
+    tmp->next = new;
+  else
+    scene->npc = new;
 }
 
 void			add_npc(t_ini *ini)
@@ -100,7 +102,7 @@ void			add_npc(t_ini *ini)
     }
   if (my_strcmp(str, "yes") == 0)
     {
-      list_add_new_npc(ini->scene->npc, npc);
+      list_add_new_npc(ini->scene, npc);
       my_printf(1, "Object added in your ini file :D\nYou can write it using");
       my_printf(1, " 'write ini path_to_file.ini'\n\n");
     }

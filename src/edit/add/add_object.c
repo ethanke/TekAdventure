@@ -5,22 +5,24 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 19:48:52 2016 Victor Sousa
-** Last update Sun Apr 17 01:45:07 2016 Victor Sousa
+** Last update Sun Apr 17 05:37:14 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
 
-t_object		*list_add_new_object(t_object *list, t_object *new)
+void			list_add_new_object(t_scene *scene, t_object *new)
 {
   t_object		*tmp;
 
-  tmp = list;
-  while (tmp->next != NULL)
+  tmp = scene->object;
+  while (tmp && tmp->next != NULL)
     tmp = tmp->next;
   new->prev = tmp;
   new->next = NULL;
-  tmp->next = new;
-  return (list);
+  if (tmp != NULL)
+    tmp->next = new;
+  else
+    scene->object = new;
 }
 
 void			add_object(t_ini *ini)
@@ -110,7 +112,7 @@ void			add_object(t_ini *ini)
     }
   if (my_strcmp(str, "yes") == 0)
     {
-      list_add_new_object(ini->scene->object, obj);
+      list_add_new_object(ini->scene, obj);
       my_printf(1, "Object added in your ini file :D\nYou can write it using");
       my_printf(1, " 'write ini path_to_file.ini'\n\n");
     }

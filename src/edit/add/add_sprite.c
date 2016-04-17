@@ -5,22 +5,24 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sun Apr 17 02:54:03 2016 Victor Sousa
-** Last update Sun Apr 17 03:11:14 2016 Victor Sousa
+** Last update Sun Apr 17 05:37:56 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
 
-t_sprite		*list_add_new_sprite(t_sprite *list, t_sprite *new)
+void			list_add_new_sprite(t_scene *scene, t_sprite *new)
 {
   t_sprite		*tmp;
 
-  tmp = list;
-  while (tmp->next != NULL)
+  tmp = scene->sprite;
+  while (tmp && tmp->next != NULL)
     tmp = tmp->next;
   new->prev = tmp;
   new->next = NULL;
-  tmp->next = new;
-  return (list);
+  if (tmp != NULL)
+    tmp->next = new;
+  else
+    scene->sprite = new;
 }
 
 void			add_sprite(t_ini *ini)
@@ -53,7 +55,7 @@ void			add_sprite(t_ini *ini)
     }
   if (my_strcmp(str, "yes") == 0)
     {
-      list_add_new_sprite(ini->scene->sprite, spr);
+      list_add_new_sprite(ini->scene, spr);
       my_printf(1, "Sprite added in your ini file :D\nYou can write it using");
       my_printf(1, " 'write ini path_to_file.ini'\n\n");
     }
