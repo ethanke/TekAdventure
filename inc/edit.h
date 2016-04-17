@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:51:56 2016 Victor Sousa
-** Last update Sun Apr 17 07:25:25 2016 Victor Sousa
+** Last update Sun Apr 17 07:39:07 2016 Victor Sousa
 */
 
 #ifndef			EDIT_H_
@@ -35,6 +35,7 @@ void			edit_sprite(t_ini *ini);
 void			edit_object(t_ini *ini);
 void			edit_decors(t_ini *ini);
 void			edit_npc(t_ini *ini);
+t_sprite		*look_for_sprite(t_ini *ini, int id);
 
 /* add */
 void			add_object(t_ini *ini);
@@ -45,6 +46,7 @@ int			get_obj_id(t_ini *ini);
 int			get_npc_id(t_ini *ini);
 int			get_sprite_id(t_ini *ini);
 char			*get_obj_name(t_ini *ini);
+int			sprite_id_is_taken(t_ini *ini, int id);
 char			*get_sprite_path(t_ini *ini);
 int			get_obj_equipable(t_ini *ini);
 int			get_obj_equip_slot();
