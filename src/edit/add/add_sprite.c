@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sun Apr 17 02:54:03 2016 Victor Sousa
-** Last update Sun Apr 17 06:09:13 2016 Victor Sousa
+** Last update Sun Apr 17 07:43:04 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -55,7 +55,7 @@ void			add_sprite(t_ini *ini)
 
   if ((spr = xmalloc(sizeof(t_sprite), &ini->ptr_list)) == NULL)
     return;
-  my_printf(1, "\nGive and id to your sprite : ");
+  my_printf(1, "\nGive an id to your sprite : ");
   if ((spr->id = get_sprite_id(ini)) == -1)
     return;
   my_printf(1, "Give me the path to your sprite : ");

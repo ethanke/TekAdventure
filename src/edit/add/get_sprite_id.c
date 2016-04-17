@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sun Apr 17 02:56:54 2016 Victor Sousa
-** Last update Sun Apr 17 03:01:30 2016 Victor Sousa
+** Last update Sun Apr 17 07:35:01 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -19,6 +19,20 @@ char			*look_for_sprite_name(t_ini *ini, int id)
     {
       if (tmp->id == id)
 	return (tmp->path);
+      tmp = tmp->next;
+    }
+  return (NULL);
+}
+
+t_sprite		*look_for_sprite(t_ini *ini, int id)
+{
+  t_sprite		*tmp;
+
+  tmp = ini->scene->sprite;
+  while (tmp != NULL)
+    {
+      if (tmp->id == id)
+	return (tmp);
       tmp = tmp->next;
     }
   return (NULL);
