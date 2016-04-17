@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Thu Apr  7 01:13:52 2016 Philippe Lefevre
-** Last update Sun Apr 17 09:09:58 2016 Philippe Lefevre
+** Last update Sun Apr 17 10:44:36 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -118,6 +118,7 @@ t_scene			*load_scene(t_bunny_ini *ini, t_scene *stockage,
   i = -1;
   while (scene_tab[++i])
     {
+      printf("%s\n", scene_tab[i]);
       if ((new_list = list_add_scene(new_list, scene_tab[i],
 				     ini, stockage, ptr_list)) == NULL)
 	return (NULL);
