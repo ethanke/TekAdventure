@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 20:53:36 2016 Gaëtan Léandre
-** Last update Sat Apr 16 22:56:52 2016 Gaëtan Léandre
+** Last update Sun Apr 17 02:03:41 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -17,25 +17,24 @@ void			write_scene_gate_sprite_id(t_scene *scene, int fd,
   int			y;
   int			i;
 
-  i = 0;
-  x = 0;
+  i = 0 * (x = -1);
   my_printf(fd, "scene_gate_sprite_id=");
-  while(x < scene->size.x)
+  while (++x < scene->size.x)
     {
-      y = 0;
-      while (y < scene->size.y)
+      y = -1;
+      while (++y < scene->size.y)
 	{
 	  if (scene->ground[x + y * scene->size.x].gate != NULL)
 	    {
 	      if (i != size - 1)
-		my_printf(fd, "\"%d\", ", scene->ground[x + y * scene->size.x].gate->sprite_id);
+		my_printf(fd, "\"%d\", ", scene->ground[x + y * scene->size.x].
+			  gate->sprite_id);
 	      else
-		my_printf(fd, "\"%d\"\n", scene->ground[x + y * scene->size.x].gate->sprite_id);
+		my_printf(fd, "\"%d\"\n", scene->ground[x + y * scene->size.x].
+			  gate->sprite_id);
 	      i++;
 	    }
-	  y++;
 	}
-      x++;
     }
   if (size == 0)
     my_printf(fd, "\n");
@@ -48,13 +47,12 @@ void			write_scene_gate_pos_x(t_scene *scene, int fd,
   int			y;
   int			i;
 
-  i = 0;
-  x = 0;
+  i = 0 * (x = -1);
   my_printf(fd, "scene_gate_pos_x=");
-  while(x < scene->size.x)
+  while (++x < scene->size.x)
     {
-      y = 0;
-      while (y < scene->size.y)
+      y = -1;
+      while (++y < scene->size.y)
 	{
 	  if (scene->ground[x + y * scene->size.x].gate != NULL)
 	    {
@@ -64,9 +62,7 @@ void			write_scene_gate_pos_x(t_scene *scene, int fd,
 		my_printf(fd, "\"%d\"\n", y);
 	      i++;
 	    }
-	  y++;
 	}
-      x++;
     }
   if (size == 0)
     my_printf(fd, "\n");
@@ -80,9 +76,9 @@ void			write_scene_gate_pos_y(t_scene *scene, int fd,
   int			i;
 
   i = 0;
-  x = 0;
+  x = -1;
   my_printf(fd, "scene_gate_pos_y=");
-  while(x < scene->size.x)
+  while (++x < scene->size.x)
     {
       y = 0;
       while (y < scene->size.y)
@@ -97,7 +93,6 @@ void			write_scene_gate_pos_y(t_scene *scene, int fd,
 	    }
 	  y++;
 	}
-      x++;
     }
   if (size == 0)
     my_printf(fd, "\n");
@@ -110,25 +105,24 @@ void			write_scene_gate_name(t_scene *scene, int fd,
   int			y;
   int			i;
 
-  i = 0;
-  x = 0;
+  i = 0 * (x = -1);
   my_printf(fd, "scene_gate_name=");
-  while(x < scene->size.x)
+  while (++x < scene->size.x)
     {
-      y = 0;
-      while (y < scene->size.y)
+      y = -1;
+      while (++y < scene->size.y)
 	{
 	  if (scene->ground[x + y * scene->size.x].gate != NULL)
 	    {
 	      if (i != size - 1)
-		my_printf(fd, "\"%s\", ", scene->ground[x + y * scene->size.x].gate->name);
+		my_printf(fd, "\"%s\", ", scene->ground[x + y * scene->size.x].
+			  gate->name);
 	      else
-		my_printf(fd, "\"%s\"\n", scene->ground[x + y * scene->size.x].gate->name);
+		my_printf(fd, "\"%s\"\n", scene->ground[x + y * scene->size.x].
+			  gate->name);
 	      i++;
 	    }
-	  y++;
 	}
-      x++;
     }
   if (size == 0)
     my_printf(fd, "\n");
@@ -141,8 +135,8 @@ void			write_scene_gate_count(t_scene *scene, int fd)
   int			i;
 
   i = 0;
-  x = 0;
-  while(x < scene->size.x)
+  x = -1;
+  while (++x < scene->size.x)
     {
       y = 0;
       while (y < scene->size.y)
@@ -151,7 +145,6 @@ void			write_scene_gate_count(t_scene *scene, int fd)
 	    i++;
 	  y++;
 	}
-      x++;
     }
   my_printf(fd, "scene_gate_count=\"%d\"\n", i);
   write_scene_gate_name(scene, fd, i);

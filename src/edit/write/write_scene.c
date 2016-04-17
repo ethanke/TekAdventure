@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 19:43:02 2016 Gaëtan Léandre
-** Last update Sat Apr 16 22:55:45 2016 Gaëtan Léandre
+** Last update Sun Apr 17 01:58:15 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -37,8 +37,10 @@ void			disp_scene_ground(t_scene *tmp, int fd)
   my_printf(fd, "scene_ground_sprite_id=\"%d\"\n", tmp->sol_id);
   my_printf(fd, "scene_ground_sprite_hitbox_x=\"%d\"\n", tmp->sol_hitbox->x);
   my_printf(fd, "scene_ground_sprite_hitbox_y=\"%d\"\n", tmp->sol_hitbox->y);
-  my_printf(fd, "scene_ground_sprite_hitbox_width=\"%d\"\n", tmp->sol_hitbox->width);
-  my_printf(fd, "scene_ground_sprite_hitbox_height=\"%d\"\n", tmp->sol_hitbox->height);
+  my_printf(fd, "scene_ground_sprite_hitbox_width=\"%d\"\n", tmp->sol_hitbox->
+	    width);
+  my_printf(fd, "scene_ground_sprite_hitbox_height=\"%d\"\n", tmp->sol_hitbox->
+	    height);
 }
 
 void			write_particular_scene(t_scene *scene, int fd)

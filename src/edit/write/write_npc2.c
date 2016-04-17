@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 19:17:26 2016 Gaëtan Léandre
-** Last update Sat Apr 16 22:59:38 2016 Gaëtan Léandre
+** Last update Sun Apr 17 02:08:40 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -31,7 +31,6 @@ void			write_npc_sprite_hitbox_x(t_npc *npc, int fd,
   if (size == 0)
     my_printf(fd, "\n");
 }
-
 
 void			write_npc_sprite_id(t_npc *npc, int fd,
 					    int size)
