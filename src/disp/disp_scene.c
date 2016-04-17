@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Thu Apr  7 02:56:24 2016 Gaëtan Léandre
-** Last update Sun Apr 17 03:16:26 2016 Gaëtan Léandre
+** Last update Sun Apr 17 03:20:59 2016 Gaëtan Léandre
 */
 
 #include	 	"main.h"
@@ -47,7 +47,7 @@ void			put_grille(t_prog *prog, t_grille *gri,
   while (++pos.y < gri->grille_y - 1)
     {
       if ((int)prog->player->y == pos.y - 1 || ((int)prog->player->y == pos.y
-	   && pos.y == gri->grille_y - 1))
+	   && pos.y == gri->grille_y - 2))
 	deplacement(prog->player, prog->scene, prog->pix, prog->percent);
       pos.x = -1;
       while (++pos.x < gri->grille_x)
