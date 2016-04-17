@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Sun Apr 17 06:33:55 2016 Ethan Kerdelhue
+** Last update Sun Apr 17 07:04:00 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -54,7 +54,6 @@ int			load_music(t_prog *prog)
 	 bunny_load_music("ressources/music/player_win.ogg")) == NULL)
     return (ERROR);
   prog->music = music;
-  printf(" 2 - %p\n", prog->music);
   return (0);
 }
 
