@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:51:56 2016 Victor Sousa
-** Last update Sun Apr 17 03:12:30 2016 Victor Sousa
+** Last update Sun Apr 17 03:29:25 2016 Victor Sousa
 */
 
 #ifndef			EDIT_H_
@@ -74,6 +74,8 @@ void			write_object_equip_slot(t_object *object, int fd,
 						int size);
 void			write_object_equip(t_object *object, int fd,
 					   int size);
+void			write_sky_dist(t_sky *sky, int fd,
+				       int size);
 void			write_npc_trade_needed_id(t_npc *npc, int fd, int size);
 void			write_npc_text(t_npc *npc, int fd, int size);
 void			write_npc_name(t_npc *npc, int fd, int size);

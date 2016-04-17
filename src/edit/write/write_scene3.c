@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 20:38:05 2016 Gaëtan Léandre
-** Last update Sun Apr 17 02:00:44 2016 Victor Sousa
+** Last update Sun Apr 17 03:28:43 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -123,4 +123,26 @@ void			write_scene_decors_count(t_scene *scene, int fd)
   write_scene_decors_id(scene, fd, i);
   write_scene_decors_pos_x(scene, fd, i);
   write_scene_decors_pos_y(scene, fd, i);
+}
+
+void			write_sky_dist(t_sky *sky, int fd,
+				       int size)
+{
+  t_sky			*tmp;
+  int			i;
+
+  i = 0;
+  tmp = sky;
+  my_printf(fd, "scene_sky_sprite_distance=");
+  while (tmp != NULL)
+    {
+      if (i != size - 1)
+	my_printf(fd, "\"%d\", ", tmp->distance);
+      else
+	my_printf(fd, "\"%d\"\n", tmp->distance);
+      tmp = tmp->next;
+      i++;
+    }
+  if (size == 0)
+    my_printf(fd, "\n");
 }
