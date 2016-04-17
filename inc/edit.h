@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:51:56 2016 Victor Sousa
-** Last update Sun Apr 17 06:49:22 2016 Victor Sousa
+** Last update Sun Apr 17 07:25:25 2016 Victor Sousa
 */
 
 #ifndef			EDIT_H_
@@ -28,6 +28,13 @@ void			close_ini(t_ini *ini);
 void			aff_stuff(int ac, char **av, t_ini *ini);
 void			aff_all(int fd, t_ini *ini);
 void			add_stuff(int ac, char **av, t_ini *ini);
+
+/* edit */
+void			edit_stuff(t_ini *ini);
+void			edit_sprite(t_ini *ini);
+void			edit_object(t_ini *ini);
+void			edit_decors(t_ini *ini);
+void			edit_npc(t_ini *ini);
 
 /* add */
 void			add_object(t_ini *ini);

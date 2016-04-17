@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:49:05 2016 Victor Sousa
-** Last update Sun Apr 17 06:52:55 2016 Victor Sousa
+** Last update Sun Apr 17 07:25:58 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -51,6 +51,11 @@ int			try_complex_cmd(int ac, char **av, t_ini *ini)
   if (ac >= 1 && my_strcmp(av[0], "add") == 0)
     {
       add_stuff(ac, av, ini);
+      ini->cmd_found = 1;
+    }
+  if (ac == 1 && my_strcmp(av[0], "edit") == 0)
+    {
+      edit_stuff(ini);
       ini->cmd_found = 1;
     }
   return (0);
