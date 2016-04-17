@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 08:11:18 2016 Gaëtan Léandre
-** Last update Sat Apr 16 22:57:52 2016 Gaëtan Léandre
+** Last update Sun Apr 17 02:56:41 2016 Gaëtan Léandre
 */
 
 #include 		"main.h"
@@ -106,6 +106,5 @@ void			write_player(t_player *player, int fd)
   write_player_slot(player, fd, size);
   write_player_item(player, fd, size);
   write_player_amount(player, fd, size);
-  my_printf(fd, "player_sprite_id=\"%d\"\n", player->sprite_id);
   my_printf(fd, "\n\n");
 }
