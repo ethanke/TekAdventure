@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sun Apr 17 07:10:26 2016 Gaëtan Léandre
-** Last update Sun Apr 17 09:20:19 2016 Gaëtan Léandre
+** Last update Sun Apr 17 09:30:00 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -114,10 +114,15 @@ void			create_sky(t_ini *ini, t_scene *scene)
   if ((sky = malloc(sizeof(t_sky))) == NULL
       || (sky->hitbox = malloc(sizeof(t_hitbox))) == NULL)
     return;
-  sky->sky_sprite_id = get_sprite_id(ini);
+  my_printf(1, "Choose a sprite id for your ground : ");
+  sky->sky_sprite_id = get_existing_sprite(ini);
+  my_printf(1, "top left position in the sprite\nx : ");
   sky->hitbox->y = get_x_pos_sprite(ini, sky->sky_sprite_id);
+  my_printf(1, "y : ");
   sky->hitbox->y = get_y_pos_sprite(ini, sky->sky_sprite_id);
+  my_printf(1, "width in the sprite : ");
   sky->hitbox->width = get_x_pos_sprite(ini, sky->sky_sprite_id);
+  my_printf(1, "height in the sprite : ");
   sky->hitbox->height = get_y_pos_sprite(ini, sky->sky_sprite_id);
   sky->distance = get_major("distance", ini);
   sky->next = NULL;
@@ -152,10 +157,15 @@ void			add_scene(t_ini *ini)
   spr->start_pos->x = get_major_2("start x", ini, spr->size.x);
   spr->start_pos->y = get_major_2("start y", ini, spr->size.y);
   spr->height = get_major("ground height", ini);
-  spr->sol_id = get_sprite_id(ini);
+  my_printf(1, "Choose a sprite id for your ground : ");
+  spr->sol_id = get_existing_sprite(ini);
+  my_printf(1, "top left position in the sprite\nx : ");
   spr->sol_hitbox->x = get_x_pos_sprite(ini, spr->sol_id);
+    my_printf(1, "y : ");
   spr->sol_hitbox->y = get_y_pos_sprite(ini, spr->sol_id);
+  my_printf(1, "width in the sprite : ");
   spr->sol_hitbox->width = get_x_pos_sprite(ini, spr->sol_id);
+  my_printf(1, "height in the sprite : ");
   spr->sol_hitbox->height = get_y_pos_sprite(ini, spr->sol_id);
   create_sky(ini, spr);
   while (get_dec_collect("Add more sky?  (yes or no) : ", ini) == 1)
