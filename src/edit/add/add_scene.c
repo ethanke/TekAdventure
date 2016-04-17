@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sun Apr 17 07:10:26 2016 Gaëtan Léandre
-** Last update Sun Apr 17 09:30:00 2016 Gaëtan Léandre
+** Last update Sun Apr 17 09:36:32 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -111,10 +111,10 @@ void			create_sky(t_ini *ini, t_scene *scene)
   t_sky			*sky;
   t_sky			*tmp;
 
-  if ((sky = malloc(sizeof(t_sky))) == NULL
-      || (sky->hitbox = malloc(sizeof(t_hitbox))) == NULL)
+  if ((sky = xmalloc(sizeof(t_sky), &ini->ptr_list)) == NULL
+      || (sky->hitbox = xmalloc(sizeof(t_hitbox), &ini->ptr_list)) == NULL)
     return;
-  my_printf(1, "Choose a sprite id for your ground : ");
+  my_printf(1, "Choose a sprite id for your sky : ");
   sky->sky_sprite_id = get_existing_sprite(ini);
   my_printf(1, "top left position in the sprite\nx : ");
   sky->hitbox->y = get_x_pos_sprite(ini, sky->sky_sprite_id);
@@ -147,6 +147,12 @@ void			add_scene(t_ini *ini)
       || (spr->start_pos = xmalloc(sizeof(t_bunny_position), &ini->ptr_list)) == NULL
       || (spr->sol_hitbox = xmalloc(sizeof(t_hitbox), &ini->ptr_list)) == NULL)
     return;
+  spr->sky = NULL;
+  spr->sprite = NULL;
+  spr->npc = NULL;
+  spr->object = NULL;
+  spr->decors = NULL;
+  spr->player = NULL;
   spr->name = get_sce_name(ini);
   spr->size.x = get_major("size x", ini);
   spr->size.y = get_major("size y", ini);
