@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sun Apr 17 07:10:26 2016 Gaëtan Léandre
-** Last update Sun Apr 17 09:36:32 2016 Gaëtan Léandre
+** Last update Sun Apr 17 09:41:39 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -117,7 +117,7 @@ void			create_sky(t_ini *ini, t_scene *scene)
   my_printf(1, "Choose a sprite id for your sky : ");
   sky->sky_sprite_id = get_existing_sprite(ini);
   my_printf(1, "top left position in the sprite\nx : ");
-  sky->hitbox->y = get_x_pos_sprite(ini, sky->sky_sprite_id);
+  sky->hitbox->x = get_x_pos_sprite(ini, sky->sky_sprite_id);
   my_printf(1, "y : ");
   sky->hitbox->y = get_y_pos_sprite(ini, sky->sky_sprite_id);
   my_printf(1, "width in the sprite : ");
