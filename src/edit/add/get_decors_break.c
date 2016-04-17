@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sun Apr 17 03:36:50 2016 Gaëtan Léandre
-** Last update Sun Apr 17 04:01:39 2016 Gaëtan Léandre
+** Last update Sun Apr 17 04:48:30 2016 Gaëtan Léandre
 */
 
 int			get_dec_collect(t_ini *ini)
@@ -28,12 +28,12 @@ int			get_dec_collect(t_ini *ini)
   return (0);
 }
 
-int			get_dec_lootable(t_ini *ini)
+int			get_dec_lootable(char *msg, t_ini *ini)
 {
   char			*str;
 
   (void)ini;
-  my_printf(1, "Is your decors lootable?  (yes or no)\n");
+  my_printf(1, msg);
   if ((str = get_next_line(0)) == NULL)
     return (-1);
   while (my_strcmp(str, "yes") != 0 && my_strcmp(str, "no") != 0)
@@ -55,7 +55,7 @@ int			get_object(char *str, t_ini *ini)
   int			id;
 
   my_printf(1, str);
-  while ((str = get_next_line(0)) == NULL)
+  while ((str = get_next_line(0)) != NULL)
     {
       id = my_getnbr_free(str);
       tmp = ini->scene->object;
@@ -77,7 +77,7 @@ int			get_id_posi(char *str, t_ini *ini)
   int			id;
 
   my_printf(1, str);
-  while ((str = get_next_line(0)) == NULL)
+  while ((str = get_next_line(0)) != NULL)
     {
       id = my_getnbr_free(str);
       if (id > 0)
