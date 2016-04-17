@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Wed Apr  6 23:08:59 2016 Philippe Lefevre
-** Last update Sun Apr 17 03:28:35 2016 Philippe Lefevre
+** Last update Sun Apr 17 09:38:25 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -70,7 +70,7 @@ t_scene			*parsing_load_all(t_bunny_ini *ini, t_scene *stockage,
   return (stockage);
 }
 
-/*int			parsing_check_spawn_zone(t_scene *scene)
+int			parsing_check_spawn_zone(t_scene *scene)
 {
   int			x;
   int			y;
@@ -82,32 +82,37 @@ t_scene			*parsing_load_all(t_bunny_ini *ini, t_scene *stockage,
     {
       i = -1;
       y = -1;
-      printf("==[%d]==[%d]==\n", scene->size.x, scene->size.y);
-      while (++y < scene->size.y)
+      while (++y < tmp_scene->size.y)
 	{
 	  x = -1;
-	  while (++x < scene->size.x)
+	  while (++x < tmp_scene->size.x)
 	    {
-	      i = x + (y * scene->size.x);
-	      if (((scene->ground[i].npc != NULL)
-		   || (scene->ground[i].decors != NULL))
-		  && (scene->ground[i].gate != NULL))
+	      i = x + (y * tmp_scene->size.x);
+	      if ((tmp_scene->ground[i].npc != NULL)
+		  && (tmp_scene->ground[i].decors != NULL))
+		return (my_printf(2, "Error: npc id %d and decors id %d set on same case in %d;%d\n",
+				  tmp_scene->ground[i].npc->npc_id,
+				  tmp_scene->ground[i].decors->decors_id, x, y) - 1);
+	      if (((tmp_scene->ground[i].npc != NULL)
+		   || (tmp_scene->ground[i].decors != NULL))
+		  && (tmp_scene->ground[i].gate != NULL))
 		{
-		  printf("(%s)\n", "conflict double set object\n");
-		  return (-1);
+		  printf("(%s)(%d)\n", "conflict double set object\n", i);
 		}
-	      else if ((scene->ground[i].gate != NULL)
-		       && (scene->start_pos->x == x)
-		       && (scene->start_pos->y == y))
+	      else if (((tmp_scene->ground[i].npc != NULL)
+			|| (tmp_scene->ground[i].decors != NULL)
+			|| (tmp_scene->ground[i].gate != NULL))
+		       && (tmp_scene->start_pos->x == x)
+		       && (tmp_scene->start_pos->y == y))
 		{
-		  return (-1);
-	      printf("i [%d]	x [%d]	y [%d]\n", i, x, y);
+		  return (my_printf(2, "Error: Spawn on same case of [decors|npc|gate] %d;%d\n", x, y) - 1);
+		}
 	    }
-	  tmp_scene = tmp_scene->next;
 	}
+      tmp_scene = tmp_scene->next;
     }
- rfeturn (0);
-}*/
+  return (0);
+}
 
 t_scene			*parsing(const char *file, t_player **player,
 				 t_ptr_list **ptr_list)
@@ -122,20 +127,19 @@ t_scene			*parsing(const char *file, t_player **player,
   if ((stockage = xmalloc(sizeof(*stockage), ptr_list)) == NULL)
     return (my_puterror_scene("Error: ", "stockage",
 			      ":xmalloc ", -1, "failed\n"));
-    if ((stockage = parsing_load_all(ini, stockage, ptr_list)) == NULL)
-      return (NULL);
-    if ((stockage = parsing_link_all(stockage)) == NULL)
-      return (NULL);
-    if ((scene = load_scene(ini, stockage, ptr_list)) == NULL)
+  if ((stockage = parsing_load_all(ini, stockage, ptr_list)) == NULL)
     return (NULL);
-    scene->player->x = scene->start_pos->x;
-    scene->player->y = scene->start_pos->y;
-    (*player) = stockage->player;
+  if ((stockage = parsing_link_all(stockage)) == NULL)
+    return (NULL);
+  if ((scene = load_scene(ini, stockage, ptr_list)) == NULL)
+    return (NULL);
+  scene->player->x = scene->start_pos->x;
+  scene->player->y = scene->start_pos->y;
+  (*player) = stockage->player;
   bunny_delete_ini(ini);
-/*  if (parsing_check_spawn_zone(scene))
-    return (NULL);*/
-    /* start pos proteted zone */
-
-      /* gestion decors breakable by if existing object*/
-  return (link_ptr_gate(scene));
+  if ((scene = link_ptr_gate(scene)) == NULL)
+    return (NULL);
+  if (parsing_check_spawn_zone(scene))
+    return (NULL);
+  return (scene);
 }
