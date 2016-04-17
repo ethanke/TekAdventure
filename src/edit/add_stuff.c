@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 19:20:47 2016 Victor Sousa
-** Last update Sun Apr 17 04:38:45 2016 Victor Sousa
+** Last update Sun Apr 17 07:05:51 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -53,6 +53,14 @@ void			add_stuff(int ac, char **av, t_ini *ini)
     }
   if (ac == 1)
     add_all(ini);
-  if (ac == 2 && my_strcmp(av[1], "player") == 0)
-    write_player(ini->player, 1);
+  if (ac == 2 && my_strcmp(av[1], "sprite") == 0)
+    add_sprite(ini);
+  if (ac == 2 && my_strcmp(av[1], "object") == 0)
+    add_object(ini);
+  if (ac == 2 && my_strcmp(av[1], "decors") == 0)
+    add_decors(ini);
+  if (ac == 2 && my_strcmp(av[1], "npc") == 0)
+    add_npc(ini);
+  if (ac == 2 && my_strcmp(av[1], "scene") == 0)
+    my_printf(1, "Add scene\n");
 }
