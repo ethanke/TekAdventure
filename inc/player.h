@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Wed Apr 13 03:51:52 2016 Gaëtan Léandre
-** Last update Sun Apr 17 03:00:03 2016 Philippe Lefevre
+** Last update Sun Apr 17 03:12:33 2016 Philippe Lefevre
 */
 
 #ifndef			PLAYER_H_

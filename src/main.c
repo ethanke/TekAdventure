@@ -5,7 +5,7 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Sun Apr 17 01:22:00 2016 Gaëtan Léandre
+** Last update Sun Apr 17 03:06:35 2016 Philippe Lefevre
 */
 
 #include		"main.h"
@@ -106,7 +106,7 @@ int			pars_arg(int ac, char **av)
       if (!(my_strcmp("--shell", av[1])))
 	{
 	  start_shell(ac, av);
-          return (0);
+          return (-1);
 	}
       else if (!(my_strcmp("--credit", av[1])))
 	return (write(1, "	TekAdventure\n", 14)
