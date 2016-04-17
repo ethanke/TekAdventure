@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sat Apr 16 08:00:22 2016 Ethan Kerdelhue
-** Last update Sun Apr 17 08:02:02 2016 Ethan Kerdelhue
+** Last update Sun Apr 17 08:13:53 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -55,6 +55,7 @@ int 			npc_damage(t_npc *npc, t_player *player, t_prog *prog)
 	  return (damage_on_player(prog, damage));
 	}
     }
+  bunny_sound_play(&prog->music->fight_sword->sound);
   return (damage_on_player(prog, damage / 1000));
 }
 
