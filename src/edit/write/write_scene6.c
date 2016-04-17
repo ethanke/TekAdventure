@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sat Apr 16 21:35:08 2016 Gaëtan Léandre
-** Last update Sat Apr 16 23:09:51 2016 Gaëtan Léandre
+** Last update Sun Apr 17 02:52:37 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -84,7 +84,7 @@ void			write_sky_id(t_sky *sky, int fd,
 
   i = 0;
   tmp = sky;
-  my_printf(fd, "object_sprite_id=");
+  my_printf(fd, "scene_sky_sprite_id=");
   while (tmp != NULL)
     {
       if (i != size - 1)
