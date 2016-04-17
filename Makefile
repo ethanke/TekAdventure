@@ -88,6 +88,7 @@ SRC		+=	$(ADDDIR)/add_object.c			\
 			$(ADDDIR)/add_npc.c			\
 			$(ADDDIR)/get_obj_id.c			\
 			$(ADDDIR)/get_sprite_id.c		\
+			$(ADDDIR)/get_npc_id.c			\
 			$(ADDDIR)/get_sprite_path.c		\
 			$(ADDDIR)/get_obj_name.c		\
 			$(ADDDIR)/get_obj_equipable.c		\
