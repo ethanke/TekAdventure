@@ -5,16 +5,66 @@
 ** Login   <lefevr_h@epitech.net>
 **
 ** Started on  Mon Mar 28 19:53:19 2016 Philippe Lefevre
-** Last update Sun Apr 17 03:06:35 2016 Philippe Lefevre
+** Last update Sun Apr 17 06:33:55 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
+
+int			load_bunny_music(t_music *music)
+{
+  if ((music->fight =
+       bunny_load_music("ressources/music/fight.ogg")) == NULL)
+    return (ERROR);
+  if ((music->menu =
+       bunny_load_music("ressources/music/menu.ogg")) == NULL)
+    return (ERROR);
+  if ((music->game =
+       bunny_load_music("ressources/music/game.ogg")) == NULL)
+    return (ERROR);
+  return (0);
+}
+
+int			load_music(t_prog *prog)
+{
+  t_music		*music;
+
+  music = malloc(sizeof(t_music));
+  music->volume = 80;
+  if ((load_bunny_music(music)) == ERROR)
+    return (ERROR);
+  if ((music->fight_sword =
+      bunny_load_music("ressources/music/fight_sword.ogg")) == NULL)
+    return (ERROR);
+  if ((music->fight_resist =
+      bunny_load_music("ressources/music/fight_block.ogg")) == NULL)
+    return (ERROR);
+  if ((music->fight_critic =
+      bunny_load_music("ressources/music/fight_critical.ogg")) == NULL)
+    return (ERROR);
+  if ((music->fight_magic =
+      bunny_load_music("ressources/music/fight_magic.ogg")) == NULL)
+    return (ERROR);
+  if ((music->fight_dodge =
+      bunny_load_music("ressources/music/fight_dodge.ogg")) == NULL)
+    return (ERROR);
+  if ((music->brouek =
+       bunny_load_music("ressources/music/break.ogg")) == NULL)
+    return (ERROR);
+  if ((music->player_win =
+	 bunny_load_music("ressources/music/player_win.ogg")) == NULL)
+    return (ERROR);
+  prog->music = music;
+  printf(" 2 - %p\n", prog->music);
+  return (0);
+}
 
 int			init_prog(t_prog *prog, char *str)
 {
   prog->blit_pos.x = 0;
   prog->blit_pos.y = 0;
   prog->ptr_list = NULL;
+  if ((load_music(prog)) == ERROR)
+    return (ERROR);
   if ((prog->scene = parsing(str, &prog->player, &prog->ptr_list)) == NULL)
     return (ERROR);
   prog->disp_delay = 0;
@@ -91,6 +141,7 @@ int			init_prog(t_prog *prog, char *str)
        load_image("ressources/sprites/SKIP_HOVER.png", &prog->ptr_list)) == NULL)
     return (ERROR);
   prog->text = NULL;
+  start_music(prog);
   return (SUCCESS);
 }
 
