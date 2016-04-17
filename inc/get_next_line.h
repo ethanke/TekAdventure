@@ -8,15 +8,15 @@
 ** Last update Sun Jan 17 09:26:16 2016 Gaëtan Léandre
 */
 
-#ifndef READ_SIZE
-# define READ_SIZE (14)
-#endif /* !READ_SIZE */
+#ifndef			GET_NEXT_LINE_H_
+# define		GET_NEXT_LINE_H_
 
-#ifndef GET_NEXT_LINE
-# define GET_NEXT_LINE
+#ifndef			READ_SIZE
+# define		READ_SIZE (14)
+#endif			/* !READ_SIZE */
 
-#include <stdlib.h>
-#include <unistd.h>
+#include		<stdlib.h>
+#include		<unistd.h>
 
 typedef struct		s_text
 {
@@ -25,6 +25,6 @@ typedef struct		s_text
   char	*stock;
 }			t_text;
 
-char	*get_next_line(const int fd);
+char			*get_next_line(const int fd);
 
-#endif /* !GET_NEXT_LINE*/
+#endif			/* !GET_NEXT_LINE_H_*/
