@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Wed Apr 13 19:36:12 2016 Ethan Kerdelhue
-** Last update Sat Apr 16 08:26:04 2016 Ethan Kerdelhue
+** Last update Sun Apr 17 06:37:24 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -15,19 +15,17 @@ void			draw_fight(t_prog *prog)
   t_hitbox		size;
   t_hitbox		size2;
   t_hitbox		size3;
-  t_bunny_position	player_pos;
   t_bunny_position	attack;
   t_bunny_position	defend;
   t_bunny_position	magic;
   t_bunny_position	skip;
 
-  player_pos.x = prog->fight->player->sprite->width / 2;
-  player_pos.y = WIN_HEIGHT / 2 - (prog->fight->player->sprite->height / 2);
   skip.x = WIN_WIDTH / 2 + 1 * prog->attack_button->width;
   skip.y = 600;
   set_val(prog, &magic, &defend, &attack);
   put_image(prog->fight_img, prog->pix, &prog->blit_pos);
-  put_image(prog->player->sprite, prog->pix, &player_pos);
+  disp_npc(prog, prog->fight->npc);
+  disp_player(prog, prog->player);
   put_image(prog->attack_button, prog->pix, &attack);
   put_image(prog->defend_button, prog->pix, &defend);
   put_image(prog->magic_button, prog->pix, &magic);
