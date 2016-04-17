@@ -60,8 +60,13 @@ SRC		+=	$(EDITDIR)/start_shell.c		\
 			$(EDITDIR)/str_to_wordtab.c		\
 			$(EDITDIR)/load_ini.c			\
 			$(EDITDIR)/aff_stuff.c			\
+			$(EDITDIR)/edit_stuff.c			\
 			$(EDITDIR)/add_stuff.c			\
-			$(EDITDIR)/free_shell.c
+			$(EDITDIR)/free_shell.c			\
+			$(EDITDIR)/edit_sprite.c		\
+			$(EDITDIR)/edit_object.c		\
+			$(EDITDIR)/edit_decors.c		\
+			$(EDITDIR)/edit_npc.c
 
 SRC		+=	$(WRITEDIR)/write_ini.c			\
 			$(WRITEDIR)/write_player.c		\
