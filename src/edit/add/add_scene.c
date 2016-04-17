@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sun Apr 17 07:10:26 2016 Gaëtan Léandre
-** Last update Sun Apr 17 09:07:32 2016 Gaëtan Léandre
+** Last update Sun Apr 17 09:13:13 2016 Gaëtan Léandre
 */
 
 #include		"main.h"
@@ -38,7 +38,7 @@ int			get_major_2(char *msg, t_ini *ini, int max)
       free(str);
       if (id >= 0 && id < max)
 	return (id);
-      my_printf(1, "%s must be superior to 0\nTry again : ", msg);
+      my_printf(1, "%s must be between 0 and %d\nTry again : ", msg, max - 1);
     }
   return (8);
 }
@@ -152,7 +152,9 @@ void			add_scene(t_ini *ini)
   spr->start_pos->x = get_major_2("start x", ini, spr->size.x);
   spr->start_pos->y = get_major_2("start y", ini, spr->size.y);
   spr->height = get_major("ground height", ini);
+  puts("a");
   spr->sol_id = get_sprite_id(ini);
+  puts("b");
   spr->sol_hitbox->x = get_x_pos_sprite(ini, spr->sol_id);
   spr->sol_hitbox->y = get_y_pos_sprite(ini, spr->sol_id);
   spr->sol_hitbox->width = get_x_pos_sprite(ini, spr->sol_id);
