@@ -5,7 +5,7 @@
 ** Login   <kerdel_e@epitech.eu>
 **
 ** Started on  Sat Apr 16 08:00:22 2016 Ethan Kerdelhue
-** Last update Sun Apr 17 07:55:00 2016 Ethan Kerdelhue
+** Last update Sun Apr 17 08:02:02 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -69,8 +69,8 @@ int 			player_damage_magic(t_player *player,
 
   if (fight->player_action >= ATTACK_ENERGY)
     {
-      min = player->magic_damage * 1200;
-      max = player->magic_damage * 800;
+      min = player->magic_damage * 12000;
+      max = player->magic_damage * 8000;
       damage = ((rand() % (max - min )) + min);
       bunny_sound_play(&prog->music->fight_magic->sound);
       if (((rand() % (100 - 0)) + 0) <= player->caract->critical)
