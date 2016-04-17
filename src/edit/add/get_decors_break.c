@@ -5,10 +5,51 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Sun Apr 17 03:36:50 2016 Gaëtan Léandre
-** Last update Sun Apr 17 05:43:50 2016 Gaëtan Léandre
+** Last update Sun Apr 17 06:47:02 2016 Victor Sousa
 */
 
 #include		"main.h"
+
+void			get_dec_break_info(t_ini *ini, t_decors *dec)
+{
+  dec->decors_breakable->life =
+  get_id_posi("Life", "Give life to your decors : ", ini);
+  dec->decors_breakable->breakable_by =
+  get_object("Give item to break your decors : ", ini);
+  if ((dec->decors_breakable->lootable =
+       get_dec_collect("Is your decors lootable?  (yes or no) : ", ini))
+      == -1)
+    return;
+  if (dec->decors_breakable->lootable == 0)
+    {
+      dec->decors_breakable->loot[0] = 0;
+      dec->decors_breakable->loot[1] = 0;
+    }
+  else
+    {
+      dec->decors_breakable->loot[0] =
+      get_object("What is your decors loot : ", ini);
+      dec->decors_breakable->loot[1] =
+      get_id_posi("Number", "How many : ", ini);
+    }
+}
+
+void			fill_dec_break(t_ini *ini, t_decors *dec)
+{
+  if ((dec->decors_breakable->is_breakable =
+       get_dec_collect("Is your decors breakable? (yes or no) : ", ini)) == -1)
+    return;
+  if (dec->decors_breakable->is_breakable == 0)
+    {
+      dec->decors_breakable->life = 0;
+      dec->decors_breakable->breakable_by = 0;
+      dec->decors_breakable->lootable = 0;
+      dec->decors_breakable->loot[0] = 0;
+      dec->decors_breakable->loot[1] = 0;
+    }
+  else
+    get_dec_break_info(ini, dec);
+}
 
 int			get_dec_collect(char *msg, t_ini *ini)
 {

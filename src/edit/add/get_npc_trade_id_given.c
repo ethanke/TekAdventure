@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sun Apr 17 05:17:43 2016 Victor Sousa
-** Last update Sun Apr 17 05:32:03 2016 Victor Sousa
+** Last update Sun Apr 17 05:52:08 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -27,7 +27,6 @@ int			get_npc_trade_amount_given(t_ini *ini)
     }
   return (id);
 }
-
 
 int			get_npc_trade_id_given(t_ini *ini)
 {

@@ -5,10 +5,27 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sun Apr 17 00:39:47 2016 Victor Sousa
-** Last update Sun Apr 17 01:15:57 2016 Victor Sousa
+** Last update Sun Apr 17 06:17:12 2016 Victor Sousa
 */
 
 #include		"main.h"
+
+void			get_object_sprite_info(t_ini *ini, t_object *obj)
+{
+  my_printf(1, "\nChoose a sprite id for your object : ");
+  obj->sprite_id = get_existing_sprite(ini);
+  if ((obj->texture_hitbox = xmalloc(sizeof(t_hitbox),
+				     &ini->ptr_list)) == NULL)
+    return;
+  my_printf(1, "\ntop left position in the sprite\nx : ");
+  obj->texture_hitbox->x = get_x_pos_sprite(ini, obj->sprite_id);
+  my_printf(1, "y : ");
+  obj->texture_hitbox->y = get_y_pos_sprite(ini, obj->sprite_id);
+  my_printf(1, "\nwidth in the sprite : ");
+  obj->texture_hitbox->width = get_x_pos_sprite(ini, obj->sprite_id);
+  my_printf(1, "height in the sprite : ");
+  obj->texture_hitbox->height = get_y_pos_sprite(ini, obj->sprite_id);
+}
 
 int			valid_pos_x_in_sprite(t_ini *ini, int id, int pos)
 {

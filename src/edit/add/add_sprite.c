@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sun Apr 17 02:54:03 2016 Victor Sousa
-** Last update Sun Apr 17 05:37:56 2016 Gaëtan Léandre
+** Last update Sun Apr 17 06:09:13 2016 Victor Sousa
 */
 
 #include		"main.h"
@@ -25,24 +25,12 @@ void			list_add_new_sprite(t_scene *scene, t_sprite *new)
     scene->sprite = new;
 }
 
-void			add_sprite(t_ini *ini)
+static void		final_choice(t_sprite *spr, t_ini *ini)
 {
   char			*str;
-  t_sprite		*spr;
 
-  if ((spr = xmalloc(sizeof(t_sprite), &ini->ptr_list)) == NULL)
-    return;
-  my_printf(1, "\nGive and id to your sprite : ");
-  if ((spr->id = get_sprite_id(ini)) == -1)
-    return;
-  my_printf(1, "Give me the path to your sprite : ");
-  if ((spr->path = get_sprite_path(ini)) == NULL)
-    return;
-
-  /* recap */
   my_printf(1, "\n\nHere is your item\nid: %d\n", spr->id);
   my_printf(1, "path: %s\n", spr->path);
-
   my_printf(1, "So do you want to add it in ini?  (yes or no)\n");
   if ((str = get_next_line(0)) == NULL)
     return;
@@ -59,4 +47,19 @@ void			add_sprite(t_ini *ini)
       my_printf(1, "Sprite added in your ini file :D\nYou can write it using");
       my_printf(1, " 'write ini path_to_file.ini'\n\n");
     }
+}
+
+void			add_sprite(t_ini *ini)
+{
+  t_sprite		*spr;
+
+  if ((spr = xmalloc(sizeof(t_sprite), &ini->ptr_list)) == NULL)
+    return;
+  my_printf(1, "\nGive and id to your sprite : ");
+  if ((spr->id = get_sprite_id(ini)) == -1)
+    return;
+  my_printf(1, "Give me the path to your sprite : ");
+  if ((spr->path = get_sprite_path(ini)) == NULL)
+    return;
+ final_choice(spr, ini);
 }

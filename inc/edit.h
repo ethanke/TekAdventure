@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 05:51:56 2016 Victor Sousa
-** Last update Sun Apr 17 05:45:25 2016 Gaëtan Léandre
+** Last update Sun Apr 17 06:47:14 2016 Victor Sousa
 */
 
 #ifndef			EDIT_H_
@@ -42,7 +42,10 @@ char			*get_sprite_path(t_ini *ini);
 int			get_obj_equipable(t_ini *ini);
 int			get_obj_equip_slot();
 int			get_existing_sprite(t_ini *ini);
+void			get_dec_break_info(t_ini *ini, t_decors *dec);
+void			fill_dec_break(t_ini *ini, t_decors *dec);
 int			get_x_pos_sprite(t_ini *ini, int id);
+void			get_object_sprite_info(t_ini *ini, t_object *obj);
 int			get_y_pos_sprite(t_ini *ini, int id);
 int			get_dec_collect(char *str, t_ini *ini);
 int			get_npc_trade_amount_given(t_ini *ini);
