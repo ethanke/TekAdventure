@@ -5,7 +5,7 @@
 ** Login   <sousa_v@epitech.eu>
 **
 ** Started on  Sat Apr 16 06:31:23 2016 Victor Sousa
-** Last update Sun Apr 17 06:10:59 2016 Ethan Kerdelhue
+** Last update Sun Apr 17 06:55:08 2016 Ethan Kerdelhue
 */
 
 #include		"main.h"
@@ -26,6 +26,7 @@ t_bunny_response	check_menu_button(t_prog *prog,
     {
       prog->player->life = 100 + prog->player->caract->stamina * 2;
       prog->state = STATE_GAME;
+      update_music(prog);
     }
   return (GO_ON);
 }
